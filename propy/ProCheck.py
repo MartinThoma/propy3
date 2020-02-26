@@ -43,20 +43,20 @@ AALetter = [
 
 def ProteinCheck(ProteinSequence):
     """
-	###################################################################################
-	Check whether the protein sequence is a valid amino acid sequence or not
+    ###################################################################################
+    Check whether the protein sequence is a valid amino acid sequence or not
 
-	Usage:
+    Usage:
 
-	result=ProteinCheck(protein)
+    result=ProteinCheck(protein)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	Output: if the check is no problem, result will return the length of protein.
+    Output: if the check is no problem, result will return the length of protein.
 
-	if the check has problems, result will return 0.
-	###################################################################################
-	"""
+    if the check has problems, result will return 0.
+    ###################################################################################
+    """
 
     NumPro = len(ProteinSequence)
     for i in ProteinSequence:

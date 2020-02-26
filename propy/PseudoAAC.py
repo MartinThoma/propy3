@@ -58,7 +58,6 @@ Clarendon Press Oxford (1986).
 
 # Core Library
 import math
-import string
 
 # import scipy
 
@@ -228,28 +227,28 @@ _pI = {
 
 def _mean(listvalue):
     """
-	########################################################################################
-	The mean value of the list data.
+    ########################################################################################
+    The mean value of the list data.
 
-	Usage:
+    Usage:
 
-	result=_mean(listvalue)
-	########################################################################################
-	"""
+    result=_mean(listvalue)
+    ########################################################################################
+    """
     return sum(listvalue) / len(listvalue)
 
 
 ##############################################################################################
 def _std(listvalue, ddof=1):
     """
-	########################################################################################
-	The standard deviation of the list data.
+    ########################################################################################
+    The standard deviation of the list data.
 
-	Usage:
+    Usage:
 
-	result=_std(listvalue)
-	########################################################################################
-	"""
+    result=_std(listvalue)
+    ########################################################################################
+    """
     mean = _mean(listvalue)
     temp = [math.pow(i - mean, 2) for i in listvalue]
     res = math.sqrt(sum(temp) / (len(listvalue) - ddof))
@@ -259,22 +258,22 @@ def _std(listvalue, ddof=1):
 ##############################################################################################
 def NormalizeEachAAP(AAP):
     """
-	########################################################################################
-	All of the amino acid indices are centralized and
+    ########################################################################################
+    All of the amino acid indices are centralized and
 
-	standardized before the calculation.
+    standardized before the calculation.
 
-	Usage:
+    Usage:
 
-	result=NormalizeEachAAP(AAP)
+    result=NormalizeEachAAP(AAP)
 
-	Input: AAP is a dict form containing the properties of 20 amino acids.
+    Input: AAP is a dict form containing the properties of 20 amino acids.
 
-	Output: result is the a dict form containing the normalized properties
+    Output: result is the a dict form containing the normalized properties
 
-	of 20 amino acids.
-	########################################################################################
-	"""
+    of 20 amino acids.
+    ########################################################################################
+    """
     if len(list(AAP.values())) != 20:
         print("You can not input the correct number of properities of Amino acids!")
     else:
@@ -297,20 +296,20 @@ def _GetCorrelationFunction(
     Ri="S", Rj="D", AAP=[_Hydrophobicity, _hydrophilicity, _residuemass]
 ):
     """
-	########################################################################################
-	Computing the correlation between two given amino acids using the above three
+    ########################################################################################
+    Computing the correlation between two given amino acids using the above three
 
-	properties.
+    properties.
 
-	Usage:
+    Usage:
 
-	result=_GetCorrelationFunction(Ri,Rj)
+    result=_GetCorrelationFunction(Ri,Rj)
 
-	Input: Ri and Rj are the amino acids, respectively.
+    Input: Ri and Rj are the amino acids, respectively.
 
-	Output: result is the correlation value between two amino acids.
-	########################################################################################
-	"""
+    Output: result is the correlation value between two amino acids.
+    ########################################################################################
+    """
     Hydrophobicity = NormalizeEachAAP(AAP[0])
     hydrophilicity = NormalizeEachAAP(AAP[1])
     residuemass = NormalizeEachAAP(AAP[2])
@@ -326,22 +325,22 @@ def _GetCorrelationFunction(
 
 def _GetSequenceOrderCorrelationFactor(ProteinSequence, k=1):
     """
-	########################################################################################
-	Computing the Sequence order correlation factor with gap equal to k based on
+    ########################################################################################
+    Computing the Sequence order correlation factor with gap equal to k based on
 
-	[_Hydrophobicity,_hydrophilicity,_residuemass].
+    [_Hydrophobicity,_hydrophilicity,_residuemass].
 
-	Usage:
+    Usage:
 
-	result=_GetSequenceOrderCorrelationFactor(protein,k)
+    result=_GetSequenceOrderCorrelationFactor(protein,k)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	k is the gap.
+    k is the gap.
 
-	Output: result is the correlation factor value with the gap equal to k.
-	########################################################################################
-	"""
+    Output: result is the correlation factor value with the gap equal to k.
+    ########################################################################################
+    """
     LengthSequence = len(ProteinSequence)
     res = []
     for i in range(LengthSequence - k):
@@ -358,22 +357,22 @@ def _GetSequenceOrderCorrelationFactor(ProteinSequence, k=1):
 def GetAAComposition(ProteinSequence):
 
     """
-	########################################################################################
-	Calculate the composition of Amino acids
+    ########################################################################################
+    Calculate the composition of Amino acids
 
-	for a given protein sequence.
+    for a given protein sequence.
 
-	Usage:
+    Usage:
 
-	result=CalculateAAComposition(protein)
+    result=CalculateAAComposition(protein)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	Output: result is a dict form containing the composition of
+    Output: result is a dict form containing the composition of
 
-	20 amino acids.
-	########################################################################################
-	"""
+    20 amino acids.
+    ########################################################################################
+    """
     LengthSequence = len(ProteinSequence)
     Result = {}
     for i in AALetter:
@@ -384,12 +383,12 @@ def GetAAComposition(ProteinSequence):
 #############################################################################################
 def _GetPseudoAAC1(ProteinSequence, lamda=10, weight=0.05):
     """
-	#######################################################################################
-	Computing the first 20 of type I pseudo-amino acid compostion descriptors based on
+    #######################################################################################
+    Computing the first 20 of type I pseudo-amino acid compostion descriptors based on
 
-	[_Hydrophobicity,_hydrophilicity,_residuemass].
-	########################################################################################
-	"""
+    [_Hydrophobicity,_hydrophilicity,_residuemass].
+    ########################################################################################
+    """
     rightpart = 0.0
     for i in range(lamda):
         rightpart = rightpart + _GetSequenceOrderCorrelationFactor(
@@ -408,12 +407,12 @@ def _GetPseudoAAC1(ProteinSequence, lamda=10, weight=0.05):
 #############################################################################################
 def _GetPseudoAAC2(ProteinSequence, lamda=10, weight=0.05):
     """
-	########################################################################################
-	Computing the last lamda of type I pseudo-amino acid compostion descriptors based on
+    ########################################################################################
+    Computing the last lamda of type I pseudo-amino acid compostion descriptors based on
 
-	[_Hydrophobicity,_hydrophilicity,_residuemass].
-	########################################################################################
-	"""
+    [_Hydrophobicity,_hydrophilicity,_residuemass].
+    ########################################################################################
+    """
     rightpart = []
     for i in range(lamda):
         rightpart.append(_GetSequenceOrderCorrelationFactor(ProteinSequence, k=i + 1))
@@ -433,40 +432,40 @@ def _GetPseudoAAC2(ProteinSequence, lamda=10, weight=0.05):
 
 def _GetPseudoAAC(ProteinSequence, lamda=10, weight=0.05):
     """
-	#######################################################################################
-	Computing all of type I pseudo-amino acid compostion descriptors based on three given
+    #######################################################################################
+    Computing all of type I pseudo-amino acid compostion descriptors based on three given
 
-	properties. Note that the number of PAAC strongly depends on the lamda value. if lamda
+    properties. Note that the number of PAAC strongly depends on the lamda value. if lamda
 
-	= 20, we can obtain 20+20=40 PAAC descriptors. The size of these values depends on the
+    = 20, we can obtain 20+20=40 PAAC descriptors. The size of these values depends on the
 
-	choice of lamda and weight simultaneously.
+    choice of lamda and weight simultaneously.
 
-	AAP=[_Hydrophobicity,_hydrophilicity,_residuemass]
+    AAP=[_Hydrophobicity,_hydrophilicity,_residuemass]
 
-	Usage:
+    Usage:
 
-	result=_GetAPseudoAAC(protein,lamda,weight)
+    result=_GetAPseudoAAC(protein,lamda,weight)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
+    lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
 
-	Note that (1)lamda should NOT be larger than the length of input protein sequence;
+    Note that (1)lamda should NOT be larger than the length of input protein sequence;
 
-	(2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
+    (2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
 
-	output of PseAA server is the 20-D amino acid composition.
+    output of PseAA server is the 20-D amino acid composition.
 
-	weight factor is designed for the users to put weight on the additional PseAA components
+    weight factor is designed for the users to put weight on the additional PseAA components
 
-	with respect to the conventional AA components. The user can select any value within the
+    with respect to the conventional AA components. The user can select any value within the
 
-	region from 0.05 to 0.7 for the weight factor.
+    region from 0.05 to 0.7 for the weight factor.
 
-	Output: result is a dict form containing calculated 20+lamda PAAC descriptors.
-	########################################################################################
-	"""
+    Output: result is a dict form containing calculated 20+lamda PAAC descriptors.
+    ########################################################################################
+    """
     res = {}
     res.update(_GetPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
     res.update(_GetPseudoAAC2(ProteinSequence, lamda=lamda, weight=weight))
@@ -482,20 +481,20 @@ def _GetCorrelationFunctionForAPAAC(
     Ri="S", Rj="D", AAP=[_Hydrophobicity, _hydrophilicity]
 ):
     """
-	########################################################################################
-	Computing the correlation between two given amino acids using the above two
+    ########################################################################################
+    Computing the correlation between two given amino acids using the above two
 
-	properties for APAAC (type II PseAAC).
+    properties for APAAC (type II PseAAC).
 
-	Usage:
+    Usage:
 
-	result=_GetCorrelationFunctionForAPAAC(Ri,Rj)
+    result=_GetCorrelationFunctionForAPAAC(Ri,Rj)
 
-	Input: Ri and Rj are the amino acids, respectively.
+    Input: Ri and Rj are the amino acids, respectively.
 
-	Output: result is the correlation value between two amino acids.
-	########################################################################################
-	"""
+    Output: result is the correlation value between two amino acids.
+    ########################################################################################
+    """
     Hydrophobicity = NormalizeEachAAP(AAP[0])
     hydrophilicity = NormalizeEachAAP(AAP[1])
     theta1 = round(Hydrophobicity[Ri] * Hydrophobicity[Rj], 3)
@@ -507,22 +506,22 @@ def _GetCorrelationFunctionForAPAAC(
 #############################################################################################
 def GetSequenceOrderCorrelationFactorForAPAAC(ProteinSequence, k=1):
     """
-	########################################################################################
-	Computing the Sequence order correlation factor with gap equal to k based on
+    ########################################################################################
+    Computing the Sequence order correlation factor with gap equal to k based on
 
-	[_Hydrophobicity,_hydrophilicity] for APAAC (type II PseAAC) .
+    [_Hydrophobicity,_hydrophilicity] for APAAC (type II PseAAC) .
 
-	Usage:
+    Usage:
 
-	result=GetSequenceOrderCorrelationFactorForAPAAC(protein,k)
+    result=GetSequenceOrderCorrelationFactorForAPAAC(protein,k)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	k is the gap.
+    k is the gap.
 
-	Output: result is the correlation factor value with the gap equal to k.
-	########################################################################################
-	"""
+    Output: result is the correlation factor value with the gap equal to k.
+    ########################################################################################
+    """
     LengthSequence = len(ProteinSequence)
     resHydrophobicity = []
     reshydrophilicity = []
@@ -541,12 +540,12 @@ def GetSequenceOrderCorrelationFactorForAPAAC(ProteinSequence, k=1):
 #############################################################################################
 def GetAPseudoAAC1(ProteinSequence, lamda=30, weight=0.5):
     """
-	########################################################################################
-	Computing the first 20 of type II pseudo-amino acid compostion descriptors based on
+    ########################################################################################
+    Computing the first 20 of type II pseudo-amino acid compostion descriptors based on
 
-	[_Hydrophobicity,_hydrophilicity].
-	########################################################################################
-	"""
+    [_Hydrophobicity,_hydrophilicity].
+    ########################################################################################
+    """
     rightpart = 0.0
     for i in range(lamda):
         rightpart = rightpart + sum(
@@ -565,12 +564,12 @@ def GetAPseudoAAC1(ProteinSequence, lamda=30, weight=0.5):
 #############################################################################################
 def GetAPseudoAAC2(ProteinSequence, lamda=30, weight=0.5):
     """
-	#######################################################################################
-	Computing the last lamda of type II pseudo-amino acid compostion descriptors based on
+    #######################################################################################
+    Computing the last lamda of type II pseudo-amino acid compostion descriptors based on
 
-	[_Hydrophobicity,_hydrophilicity].
-	#######################################################################################
-	"""
+    [_Hydrophobicity,_hydrophilicity].
+    #######################################################################################
+    """
     rightpart = []
     for i in range(lamda):
         temp = GetSequenceOrderCorrelationFactorForAPAAC(ProteinSequence, k=i + 1)
@@ -590,38 +589,38 @@ def GetAPseudoAAC2(ProteinSequence, lamda=30, weight=0.5):
 #############################################################################################
 def GetAPseudoAAC(ProteinSequence, lamda=30, weight=0.5):
     """
-	#######################################################################################
-	Computing all of type II pseudo-amino acid compostion descriptors based on the given
+    #######################################################################################
+    Computing all of type II pseudo-amino acid compostion descriptors based on the given
 
-	properties. Note that the number of PAAC strongly depends on the lamda value. if lamda
+    properties. Note that the number of PAAC strongly depends on the lamda value. if lamda
 
-	= 20, we can obtain 20+20=40 PAAC descriptors. The size of these values depends on the
+    = 20, we can obtain 20+20=40 PAAC descriptors. The size of these values depends on the
 
-	choice of lamda and weight simultaneously.
+    choice of lamda and weight simultaneously.
 
-	Usage:
+    Usage:
 
-	result=GetAPseudoAAC(protein,lamda,weight)
+    result=GetAPseudoAAC(protein,lamda,weight)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
+    lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
 
-	Note that (1)lamda should NOT be larger than the length of input protein sequence;
+    Note that (1)lamda should NOT be larger than the length of input protein sequence;
 
-	(2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
+    (2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
 
-	output of PseAA server is the 20-D amino acid composition.
+    output of PseAA server is the 20-D amino acid composition.
 
-	weight factor is designed for the users to put weight on the additional PseAA components
+    weight factor is designed for the users to put weight on the additional PseAA components
 
-	with respect to the conventional AA components. The user can select any value within the
+    with respect to the conventional AA components. The user can select any value within the
 
-	region from 0.05 to 0.7 for the weight factor.
+    region from 0.05 to 0.7 for the weight factor.
 
-	Output: result is a dict form containing calculated 20+lamda PAAC descriptors.
-	#######################################################################################
-	"""
+    Output: result is a dict form containing calculated 20+lamda PAAC descriptors.
+    #######################################################################################
+    """
     res = {}
     res.update(GetAPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
     res.update(GetAPseudoAAC2(ProteinSequence, lamda=lamda, weight=weight))
@@ -637,22 +636,22 @@ def GetAPseudoAAC(ProteinSequence, lamda=30, weight=0.5):
 #############################################################################################
 def GetCorrelationFunction(Ri="S", Rj="D", AAP=[]):
     """
-	########################################################################################
-	Computing the correlation between two given amino acids using the given
+    ########################################################################################
+    Computing the correlation between two given amino acids using the given
 
-	properties.
+    properties.
 
-	Usage:
+    Usage:
 
-	result=GetCorrelationFunction(Ri,Rj,AAP)
+    result=GetCorrelationFunction(Ri,Rj,AAP)
 
-	Input: Ri and Rj are the amino acids, respectively.
+    Input: Ri and Rj are the amino acids, respectively.
 
-	AAP is a list form containing the properties, each of which is a dict form.
+    AAP is a list form containing the properties, each of which is a dict form.
 
-	Output: result is the correlation value between two amino acids.
-	########################################################################################
-	"""
+    Output: result is the correlation value between two amino acids.
+    ########################################################################################
+    """
     NumAAP = len(AAP)
     theta = 0.0
     for i in range(NumAAP):
@@ -665,24 +664,24 @@ def GetCorrelationFunction(Ri="S", Rj="D", AAP=[]):
 #############################################################################################
 def GetSequenceOrderCorrelationFactor(ProteinSequence, k=1, AAP=[]):
     """
-	########################################################################################
-	Computing the Sequence order correlation factor with gap equal to k based on
+    ########################################################################################
+    Computing the Sequence order correlation factor with gap equal to k based on
 
-	the given properities.
+    the given properities.
 
-	Usage:
+    Usage:
 
-	result=GetSequenceOrderCorrelationFactor(protein,k,AAP)
+    result=GetSequenceOrderCorrelationFactor(protein,k,AAP)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	k is the gap.
+    k is the gap.
 
-	AAP is a list form containing the properties, each of which is a dict form.
+    AAP is a list form containing the properties, each of which is a dict form.
 
-	Output: result is the correlation factor value with the gap equal to k.
-	########################################################################################
-	"""
+    Output: result is the correlation factor value with the gap equal to k.
+    ########################################################################################
+    """
     LengthSequence = len(ProteinSequence)
     res = []
     for i in range(LengthSequence - k):
@@ -696,12 +695,12 @@ def GetSequenceOrderCorrelationFactor(ProteinSequence, k=1, AAP=[]):
 #############################################################################################
 def GetPseudoAAC1(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
     """
-	#######################################################################################
-	Computing the first 20 of type I pseudo-amino acid compostion descriptors based on the given
+    #######################################################################################
+    Computing the first 20 of type I pseudo-amino acid compostion descriptors based on the given
 
-	properties.
-	########################################################################################
-	"""
+    properties.
+    ########################################################################################
+    """
     rightpart = 0.0
     for i in range(lamda):
         rightpart = rightpart + GetSequenceOrderCorrelationFactor(
@@ -720,12 +719,12 @@ def GetPseudoAAC1(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
 #############################################################################################
 def GetPseudoAAC2(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
     """
-	#######################################################################################
-	Computing the last lamda of type I pseudo-amino acid compostion descriptors based on the given
+    #######################################################################################
+    Computing the last lamda of type I pseudo-amino acid compostion descriptors based on the given
 
-	properties.
-	########################################################################################
-	"""
+    properties.
+    ########################################################################################
+    """
     rightpart = []
     for i in range(lamda):
         rightpart.append(GetSequenceOrderCorrelationFactor(ProteinSequence, i + 1, AAP))
@@ -745,40 +744,40 @@ def GetPseudoAAC2(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
 
 def GetPseudoAAC(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
     """
-	#######################################################################################
-	Computing all of type I pseudo-amino acid compostion descriptors based on the given
+    #######################################################################################
+    Computing all of type I pseudo-amino acid compostion descriptors based on the given
 
-	properties. Note that the number of PAAC strongly depends on the lamda value. if lamda
+    properties. Note that the number of PAAC strongly depends on the lamda value. if lamda
 
-	= 20, we can obtain 20+20=40 PAAC descriptors. The size of these values depends on the
+    = 20, we can obtain 20+20=40 PAAC descriptors. The size of these values depends on the
 
-	choice of lamda and weight simultaneously. You must specify some properties into AAP.
+    choice of lamda and weight simultaneously. You must specify some properties into AAP.
 
-	Usage:
+    Usage:
 
-	result=GetPseudoAAC(protein,lamda,weight)
+    result=GetPseudoAAC(protein,lamda,weight)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
+    lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
 
-	Note that (1)lamda should NOT be larger than the length of input protein sequence;
+    Note that (1)lamda should NOT be larger than the length of input protein sequence;
 
-	(2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
+    (2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
 
-	output of PseAA server is the 20-D amino acid composition.
+    output of PseAA server is the 20-D amino acid composition.
 
-	weight factor is designed for the users to put weight on the additional PseAA components
+    weight factor is designed for the users to put weight on the additional PseAA components
 
-	with respect to the conventional AA components. The user can select any value within the
+    with respect to the conventional AA components. The user can select any value within the
 
-	region from 0.05 to 0.7 for the weight factor.
+    region from 0.05 to 0.7 for the weight factor.
 
-	AAP is a list form containing the properties, each of which is a dict form.
+    AAP is a list form containing the properties, each of which is a dict form.
 
-	Output: result is a dict form containing calculated 20+lamda PAAC descriptors.
-	########################################################################################
-	"""
+    Output: result is a dict form containing calculated 20+lamda PAAC descriptors.
+    ########################################################################################
+    """
     res = {}
     res.update(GetPseudoAAC1(ProteinSequence, lamda, weight, AAP))
     res.update(GetPseudoAAC2(ProteinSequence, lamda, weight, AAP))
@@ -788,8 +787,6 @@ def GetPseudoAAC(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
 #############################################################################################
 
 if __name__ == "__main__":
-    import string
-
     protein = "MTDRARLRLHDTAAGVVRDFVPLRPGHVSIYLCGATVQGLPHIGHVRSGVAFDILRRWLL\
 ARGYDVAFIRNVTDIEDKILAKAAAAGRPWWEWAATHERAFTAAYDALDVLPPSAEPRAT\
 GHITQMIEMIERLIQAGHAYTGGGDVYFDVLSYPEYGQLSGHKIDDVHQGEGVAAGKRDQ\
@@ -798,31 +795,31 @@ IAQSRAAGDGFARYWLHNGWVTMGGEKMSKSLGNVLSMPAMLQRVRPAELRYYLGSAHYR\
 SMLEFSETAMQDAVKAYVGLEDFLHRVRTRVGAVCPGDPTPRFAEALDDDLSVPIALAEI\
 HHVRAEGNRALDAGDHDGALRSASAIRAMMGILGCDPLDQRWESRDETSAALAAVDVLVQ\
 AELQNREKAREQRNWALADEIRGRLKRAGIEVTDTADGPQWSLLGGDTK"
-    protein = string.strip(protein)
-    # 	temp=_GetCorrelationFunction('S','D')
-    # 	print temp
+    protein = protein.strip()
+    #     temp=_GetCorrelationFunction('S','D')
+    #     print temp
     #
-    # 	print _GetSequenceOrderCorrelationFactor(protein,k=4)
+    #     print _GetSequenceOrderCorrelationFactor(protein,k=4)
     #
-    # 	PAAC1=_GetPseudoAAC1(protein,lamda=4)
-    # 	for i in PAAC1:
-    # 		print i, PAAC1[i]
-    # 	PAAC2=_GetPseudoAAC2(protein,lamda=4)
-    # 	for i in PAAC2:
-    # 		print i, PAAC2[i]
-    # 	print len(PAAC1)
-    # 	print _GetSequenceOrderCorrelationFactorForAPAAC(protein,k=1)
-    # 	APAAC1=_GetAPseudoAAC1(protein,lamda=4)
-    # 	for i in APAAC1:
-    # 		print i, APAAC1[i]
+    #     PAAC1=_GetPseudoAAC1(protein,lamda=4)
+    #     for i in PAAC1:
+    #         print i, PAAC1[i]
+    #     PAAC2=_GetPseudoAAC2(protein,lamda=4)
+    #     for i in PAAC2:
+    #         print i, PAAC2[i]
+    #     print len(PAAC1)
+    #     print _GetSequenceOrderCorrelationFactorForAPAAC(protein,k=1)
+    #     APAAC1=_GetAPseudoAAC1(protein,lamda=4)
+    #     for i in APAAC1:
+    #         print i, APAAC1[i]
 
-    # 	APAAC2=GetAPseudoAAC2(protein,lamda=4)
-    # 	for i in APAAC2:
-    # 		print i, APAAC2[i]
-    # 	APAAC=GetAPseudoAAC(protein,lamda=4)
+    #     APAAC2=GetAPseudoAAC2(protein,lamda=4)
+    #     for i in APAAC2:
+    #         print i, APAAC2[i]
+    #     APAAC=GetAPseudoAAC(protein,lamda=4)
     #
-    # 	for i in APAAC:
-    # 		print i, APAAC[i]
+    #     for i in APAAC:
+    #         print i, APAAC[i]
 
     PAAC = GetPseudoAAC(protein, lamda=5, AAP=[_Hydrophobicity, _hydrophilicity])
 

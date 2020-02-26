@@ -61,26 +61,27 @@ AALetter = [
     "Y",
     "V",
 ]
-#############################################################################################
+
+
 def CalculateAAComposition(ProteinSequence):
 
     """
-	########################################################################
-	Calculate the composition of Amino acids
+    ########################################################################
+    Calculate the composition of Amino acids
 
-	for a given protein sequence.
+    for a given protein sequence.
 
-	Usage:
+    Usage:
 
-	result=CalculateAAComposition(protein)
+    result=CalculateAAComposition(protein)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	Output: result is a dict form containing the composition of
+    Output: result is a dict form containing the composition of
 
-	20 amino acids.
-	########################################################################
-	"""
+    20 amino acids.
+    ########################################################################
+    """
     LengthSequence = len(ProteinSequence)
     Result = {}
     for i in AALetter:
@@ -91,20 +92,20 @@ def CalculateAAComposition(ProteinSequence):
 #############################################################################################
 def CalculateDipeptideComposition(ProteinSequence):
     """
-	########################################################################
-	Calculate the composition of dipeptidefor a given protein sequence.
+    ########################################################################
+    Calculate the composition of dipeptidefor a given protein sequence.
 
-	Usage:
+    Usage:
 
-	result=CalculateDipeptideComposition(protein)
+    result=CalculateDipeptideComposition(protein)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	Output: result is a dict form containing the composition of
+    Output: result is a dict form containing the composition of
 
-	400 dipeptides.
-	########################################################################
-	"""
+    400 dipeptides.
+    ########################################################################
+    """
 
     LengthSequence = len(ProteinSequence)
     Result = {}
@@ -122,17 +123,17 @@ def CalculateDipeptideComposition(ProteinSequence):
 
 def Getkmers():
     """
-	########################################################################
-	Get the amino acid list of 3-mers.
+    ########################################################################
+    Get the amino acid list of 3-mers.
 
-	Usage:
+    Usage:
 
-	result=Getkmers()
+    result=Getkmers()
 
-	Output: result is a list form containing 8000 tri-peptides.
+    Output: result is a list form containing 8000 tri-peptides.
 
-	########################################################################
-	"""
+    ########################################################################
+    """
     kmers = list()
     for i in AALetter:
         for j in AALetter:
@@ -144,20 +145,20 @@ def Getkmers():
 #############################################################################################
 def GetSpectrumDict(proteinsequence):
     """
-	########################################################################
-	Calcualte the spectrum descriptors of 3-mers for a given protein.
+    ########################################################################
+    Calcualte the spectrum descriptors of 3-mers for a given protein.
 
-	Usage:
+    Usage:
 
-	result=GetSpectrumDict(protein)
+    result=GetSpectrumDict(protein)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	Output: result is a dict form containing the composition values of 8000
+    Output: result is a dict form containing the composition values of 8000
 
-	3-mers.
-	########################################################################
-	"""
+    3-mers.
+    ########################################################################
+    """
     result = {}
     kmers = Getkmers()
     for i in kmers:
@@ -169,22 +170,22 @@ def GetSpectrumDict(proteinsequence):
 def CalculateAADipeptideComposition(ProteinSequence):
 
     """
-	########################################################################
-	Calculate the composition of AADs, dipeptide and 3-mers for a
+    ########################################################################
+    Calculate the composition of AADs, dipeptide and 3-mers for a
 
-	given protein sequence.
+    given protein sequence.
 
-	Usage:
+    Usage:
 
-	result=CalculateAADipeptideComposition(protein)
+    result=CalculateAADipeptideComposition(protein)
 
-	Input: protein is a pure protein sequence.
+    Input: protein is a pure protein sequence.
 
-	Output: result is a dict form containing all composition values of
+    Output: result is a dict form containing all composition values of
 
-	AADs, dipeptide and 3-mers (8420).
-	########################################################################
-	"""
+    AADs, dipeptide and 3-mers (8420).
+    ########################################################################
+    """
 
     result = {}
     result.update(CalculateAAComposition(ProteinSequence))

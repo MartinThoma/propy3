@@ -54,22 +54,22 @@ AALetter = [
 def GetSubSequence(ProteinSequence, ToAA="S", window=3):
 
     """
-	#######################################################################
-	Get all 2*window+1 sub-sequences whose cener is ToAA in a protein.
+    #######################################################################
+    Get all 2*window+1 sub-sequences whose cener is ToAA in a protein.
 
-	Usage:
+    Usage:
 
-	result=GetSubSequence(protein,ToAA,window)
+    result=GetSubSequence(protein,ToAA,window)
 
-	Input:protein is a pure problem sequence.
+    Input:protein is a pure problem sequence.
 
-	ToAA is the central (query point) amino acid in the sub-sequence.
+    ToAA is the central (query point) amino acid in the sub-sequence.
 
-	window is the span.
+    window is the span.
 
-	result is a list form containing all satisfied sub-sequences.
-	#######################################################################
-	"""
+    result is a list form containing all satisfied sub-sequences.
+    #######################################################################
+    """
 
     if ToAA not in AALetter:
         ToAA = ProteinSequence[1]

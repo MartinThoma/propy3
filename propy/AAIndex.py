@@ -15,7 +15,6 @@ Email: oriental-cds@163.com
 
 # Core Library
 import os
-import string
 import sys
 
 AALetter = [
@@ -45,8 +44,8 @@ _aaindex = dict()
 #####################################################################################################
 class Record:
     """
-	Amino acid index (AAindex) Record
-	"""
+    Amino acid index (AAindex) Record
+    """
 
     aakeys = "ARNDCQEGHILKMFPSTWYV"
 
@@ -89,8 +88,8 @@ class Record:
 #####################################################################################################
 class MatrixRecord(Record):
     """
-	Matrix record for mutation matrices or pair-wise contact potentials
-	"""
+    Matrix record for mutation matrices or pair-wise contact potentials
+    """
 
     def __init__(self):
         Record.__init__(self)
@@ -132,9 +131,9 @@ class MatrixRecord(Record):
 #####################################################################################################
 def search(pattern, searchtitle=True, casesensitive=False):
     """
-	Search for pattern in description and title (optional) of all records and
-	return matched records as list. By default search case insensitive.
-	"""
+    Search for pattern in description and title (optional) of all records and
+    return matched records as list. By default search case insensitive.
+    """
     whatcase = lambda i: i
     if not casesensitive:
         pattern = pattern.lower()
@@ -153,10 +152,10 @@ def search(pattern, searchtitle=True, casesensitive=False):
 #####################################################################################################
 def grep(pattern):
     """
-	Search for pattern in title and description of all records (case
-	insensitive) and print results on standard output.
+    Search for pattern in title and description of all records (case
+    insensitive) and print results on standard output.
 
-	"""
+    """
     for record in search(pattern):
         print(record)
 
@@ -164,8 +163,8 @@ def grep(pattern):
 #####################################################################################################
 def get(key):
     """
-	Get record for key
-	"""
+    Get record for key
+    """
     if len(_aaindex) == 0:
         init()
     return _aaindex[key]
@@ -181,11 +180,11 @@ def _float_or_None(x):
 #####################################################################################################
 def init(path=None, index="123"):
     """
-	Read in the aaindex files. You need to run this (once) before you can
-	access any records. If the files are not within the current directory,
-	you need to specify the correct directory path. By default all three
-	aaindex files are read in.
-	"""
+    Read in the aaindex files. You need to run this (once) before you can
+    access any records. If the files are not within the current directory,
+    you need to specify the correct directory path. By default all three
+    aaindex files are read in.
+    """
     index = str(index)
     if path is None:
         for path in [os.path.split(__file__)[0], "."]:
@@ -208,18 +207,18 @@ def init_from_file(filename, type=Record):
 #####################################################################################################
 def _parse(filename, rec, quiet=True):
     """
-	Parse aaindex input file. `rec` must be `Record` for aaindex1 and
-	`MarixRecord` for aaindex2 and aaindex3.
-	"""
+    Parse aaindex input file. `rec` must be `Record` for aaindex1 and
+    `MarixRecord` for aaindex2 and aaindex3.
+    """
     if not os.path.exists(filename):
         import urllib.request, urllib.parse, urllib.error
 
         url = (
             "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
         )
-        # 		print 'Downloading "%s"' % (url)
+        #         print 'Downloading "%s"' % (url)
         filename = urllib.request.urlretrieve(url, filename)[0]
-    # 		print 'Saved to "%s"' % (filename)
+    #         print 'Saved to "%s"' % (filename)
     f = open(filename)
 
     current = rec()
@@ -286,20 +285,20 @@ def _parse(filename, rec, quiet=True):
 #####################################################################################################
 def GetAAIndex1(name, path="."):
     """
-	Get the amino acid property values from aaindex1
+    Get the amino acid property values from aaindex1
 
-	Usage:
+    Usage:
 
-	result=GetAAIndex1(name)
+    result=GetAAIndex1(name)
 
-	Input: name is the name of amino acid property (e.g., KRIW790103)
+    Input: name is the name of amino acid property (e.g., KRIW790103)
 
-	Output: result is a dict form containing the properties of 20 amino acids
-	"""
+    Output: result is a dict form containing the properties of 20 amino acids
+    """
 
     init(path=path)
     name = str(name)
-    temp = get(string.strip(name))
+    temp = get(name.strip())
     res = {}
     for i in AALetter:
         res[i] = temp.get(i)
@@ -309,19 +308,19 @@ def GetAAIndex1(name, path="."):
 #####################################################################################################
 def GetAAIndex23(name, path="."):
     """
-	Get the amino acid property values from aaindex2 and aaindex3
+    Get the amino acid property values from aaindex2 and aaindex3
 
-	Usage:
+    Usage:
 
-	result=GetAAIndex23(name)
+    result=GetAAIndex23(name)
 
-	Input: name is the name of amino acid property (e.g.,TANS760101,GRAR740104)
+    Input: name is the name of amino acid property (e.g.,TANS760101,GRAR740104)
 
-	Output: result is a dict form containing the properties of 400 amino acid pairs
-	"""
+    Output: result is a dict form containing the properties of 400 amino acid pairs
+    """
     init(path=path)
     name = str(name)
-    temp = get(string.strip(name))
+    temp = get(name.strip())
     res = {}
     for i in AALetter:
         for j in AALetter:
@@ -333,12 +332,12 @@ def GetAAIndex23(name, path="."):
 
 if __name__ == "__main__":
 
-    # 	init(path='.')
+    #     init(path='.')
 
-    # 	grep('volume')
-    # 	x = get('KRIW790103')
-    # 	print x
-    # 	print x.get('W')
+    #     grep('volume')
+    #     x = get('KRIW790103')
+    #     print x
+    #     print x.get('W')
     temp1 = GetAAIndex1("KRIW790103")
     print(len(temp1))
 

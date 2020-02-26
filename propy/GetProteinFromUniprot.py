@@ -20,7 +20,6 @@ Email: oriental-cds@163.com
 """
 
 # Core Library
-import string
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -29,18 +28,18 @@ import urllib.request
 ##################################################################################################
 def GetProteinSequence(ProteinID):
     """
-	#########################################################################################
-	Get the protein sequence from the uniprot website by ID.
+    #########################################################################################
+    Get the protein sequence from the uniprot website by ID.
 
-	Usage:
+    Usage:
 
-	result=GetProteinSequence(ProteinID)
+    result=GetProteinSequence(ProteinID)
 
-	Input: ProteinID is a string indicating ID such as "P48039".
+    Input: ProteinID is a string indicating ID such as "P48039".
 
-	Output: result is a protein sequence.
-	#########################################################################################
-	"""
+    Output: result is a protein sequence.
+    #########################################################################################
+    """
 
     ID = str(ProteinID)
     localfile = urllib.request.urlopen(
@@ -56,26 +55,26 @@ def GetProteinSequence(ProteinID):
 ##################################################################################################
 def GetProteinSequenceFromTxt(path, openfile, savefile):
     """
-	#########################################################################################
-	Get the protein sequence from the uniprot website by the file containing ID.
+    #########################################################################################
+    Get the protein sequence from the uniprot website by the file containing ID.
 
-	Usage:
+    Usage:
 
-	result=GetProteinSequenceFromTxt(path,openfile,savefile)
+    result=GetProteinSequenceFromTxt(path,openfile,savefile)
 
-	Input: path is a directory path containing the ID file such as "/home/orient/protein/"
+    Input: path is a directory path containing the ID file such as "/home/orient/protein/"
 
-	openfile is the ID file such as "proteinID.txt"
+    openfile is the ID file such as "proteinID.txt"
 
-	savefile is the file saving the obtained protein sequences such as "protein.txt"
-	#########################################################################################
-	"""
+    savefile is the file saving the obtained protein sequences such as "protein.txt"
+    #########################################################################################
+    """
     f1 = file(path + savefile, "wb")
     f2 = file(path + openfile, "r")
-    # 	res=[]
+    #     res=[]
     for index, i in enumerate(f2):
 
-        itrim = string.strip(i)
+        itrim = i.strip()
         if itrim == "":
             continue
         else:
@@ -85,8 +84,8 @@ def GetProteinSequenceFromTxt(path, openfile, savefile):
             print(temp)
             f1.write(temp + "\n")
             print("--------------------------------------------------------")
-    # 		res.append(temp+'\n')
-    # 	f1.writelines(res)
+    #         res.append(temp+'\n')
+    #     f1.writelines(res)
     f2.close()
     f1.close()
     return 0
@@ -98,12 +97,12 @@ if __name__ == "__main__":
     import os
 
     path = os.getcwd()  ##please run the script in the directory containing the files
-    # 	path="/home/orient/plosone/data/"
+    #     path="/home/orient/plosone/data/"
     savefile = file(path + "/result.txt", "wb")
     localfile = file(path + "/target.txt", "r")
-    # 	res=[]
+    #     res=[]
     for index, i in enumerate(localfile):
-        itrim = string.strip(i)
+        itrim = i.strip()
         if itrim == "":
             continue
         else:
@@ -113,8 +112,8 @@ if __name__ == "__main__":
             print(temp)
             savefile.write(temp + "\n")
             print("--------------------------------------------------------")
-    # 			res.append(temp+'\n')
-    # 	savefile.writelines(res)
+    #             res.append(temp+'\n')
+    #     savefile.writelines(res)
     localfile.close()
     savefile.close()
 

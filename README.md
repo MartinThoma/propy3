@@ -36,17 +36,18 @@ from the AAindex database. Thus, the user could calcualte thousands of protein f
 
 The protein descriptors calculated by propy
 
-(1) AAC: amino acid composition descriptors (20)
-(2) DPC: dipeptide composition descriptors (400)
-(3) TPC: tri-peptide composition descriptors (8000)
-(4) MBauto: Normalized Moreau-Broto autocorrelation descriptors (depend on the given properties, the default is 240)
-(5) Moranauto: Moran autocorrelation descriptors(depend on the given properties, the default is 240)
-(6) Gearyauto: Geary autocorrelation descriptors(depend on the given properties, the default is 240)
-(6) CTD: Composition, Transition, Distribution descriptors (CTD) (21+21+105=147)
-(7) SOCN: sequence order coupling numbers (depend on the choice of maxlag, the default is 60)
-(8) QSO: quasi-sequence order descriptors (depend on the choice of maxlag, the default is 100)
-(9) PAAC: pseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50)
-(10) APAAC: amphiphilic pseudo amino acid composition descriptors(depend on the choice of lamda, the default is 50)
+1. AAC: amino acid composition descriptors (20)
+2. DPC: dipeptide composition descriptors (400)
+3. TPC: tri-peptide composition descriptors (8000)
+4. MBauto: Normalized Moreau-Broto autocorrelation descriptors (depend on the given properties, the default is 240)
+5. Moranauto: Moran autocorrelation descriptors(depend on the given properties, the default is 240)
+6. Gearyauto: Geary autocorrelation descriptors(depend on the given properties, the default is 240)
+6. CTD: Composition, Transition, Distribution descriptors (CTD) (21+21+105=147)
+7. SOCN: sequence order coupling numbers (depend on the choice of maxlag, the default is 60)
+8. QSO: quasi-sequence order descriptors (depend on the choice of maxlag, the default is 100)
+9. PAAC: pseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50)
+10. APAAC: amphiphilic pseudo amino acid composition descriptors(depend on the choice of lamda, the default is 50)
+
 -------------------------------------------------------------------------------
 Download
 
@@ -59,15 +60,15 @@ propy can be download from http://protpy.googlecode.com/files/propy-1.0.tar.gz
 
 1. download the propy package (.gz)
 2. extract or uncompress the .gz file
-3. cd propy-1.0
-4. python setup.py install
+3. `cd propy-1.0`
+4. `pip install .`
 
 ### Linux
 
 1. download the propy package (.tar.gz)
-2. tar -zxf propy-1.0.tar.gz
-3. cd propy-1.0
-4. python setup.py install or sudo python setup.py install
+2. `tar -zxf propy-1.0.tar.gz`
+3. `cd propy-1.0`
+4. `pip install .`
 
 ## Usage Example
 
@@ -77,7 +78,7 @@ For more examples, please see the user guide.
 from propy import PyPro
 from propy.GetProteinFromUniprot import GetProteinSequence
 
-proteinsequence = GetProteinSequence('P33765')    # download the protein sequence by uniprot id
+proteinsequence = GetProteinSequence('P48039')    # download the protein sequence by uniprot id
 DesObject = PyPro.GetProDes(proteinsequence)      # construct a GetProDes object
 print(DesObject.GetCTD())                         # calculate 147 CTD descriptors
 print(DesObject.GetAAComp())                      # calculate 20 amino acid composition descriptors
