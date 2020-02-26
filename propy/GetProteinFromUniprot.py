@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-################################################################################################
 
 This module is used to download the protein sequence from the uniprot (http://www.uniprot.org/)
 
@@ -15,8 +14,6 @@ Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2012.9.3
 
 Email: oriental-cds@163.com
-
-################################################################################################
 """
 
 # Core Library
@@ -25,10 +22,8 @@ import urllib.parse
 import urllib.request
 
 
-##################################################################################################
 def GetProteinSequence(ProteinID):
     """
-    #########################################################################################
     Get the protein sequence from the uniprot website by ID.
 
     Usage:
@@ -38,7 +33,6 @@ def GetProteinSequence(ProteinID):
     Input: ProteinID is a string indicating ID such as "P48039".
 
     Output: result is a protein sequence.
-    #########################################################################################
     """
 
     ID = str(ProteinID)
@@ -52,10 +46,8 @@ def GetProteinSequence(ProteinID):
     return res
 
 
-##################################################################################################
 def GetProteinSequenceFromTxt(path, openfile, savefile):
     """
-    #########################################################################################
     Get the protein sequence from the uniprot website by the file containing ID.
 
     Usage:
@@ -67,7 +59,6 @@ def GetProteinSequenceFromTxt(path, openfile, savefile):
     openfile is the ID file such as "proteinID.txt"
 
     savefile is the file saving the obtained protein sequences such as "protein.txt"
-    #########################################################################################
     """
     f1 = file(path + savefile, "wb")
     f2 = file(path + openfile, "r")
@@ -91,12 +82,11 @@ def GetProteinSequenceFromTxt(path, openfile, savefile):
     return 0
 
 
-##################################################################################################
 if __name__ == "__main__":
 
     import os
 
-    path = os.getcwd()  ##please run the script in the directory containing the files
+    path = os.getcwd()  # please run the script in the directory containing the files
     #     path="/home/orient/plosone/data/"
     savefile = file(path + "/result.txt", "wb")
     localfile = file(path + "/target.txt", "r")

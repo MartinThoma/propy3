@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-#####################################################################################
 
 The prediction of functional sites (e.g.,methylation) of proteins usually needs to
 
@@ -18,13 +17,10 @@ Date: 2012.9.2
 
 Email: oriental-cds@163.com
 
-#####################################################################################
-
 """
 
 # Core Library
 import re
-import string
 
 AALetter = [
     "A",
@@ -48,13 +44,11 @@ AALetter = [
     "Y",
     "V",
 ]
-#############################################################################################
 
 
 def GetSubSequence(ProteinSequence, ToAA="S", window=3):
 
     """
-    #######################################################################
     Get all 2*window+1 sub-sequences whose cener is ToAA in a protein.
 
     Usage:
@@ -68,7 +62,6 @@ def GetSubSequence(ProteinSequence, ToAA="S", window=3):
     window is the span.
 
     result is a list form containing all satisfied sub-sequences.
-    #######################################################################
     """
 
     if ToAA not in AALetter:
@@ -89,7 +82,6 @@ def GetSubSequence(ProteinSequence, ToAA="S", window=3):
     return result
 
 
-#############################################################################################
 if __name__ == "__main__":
 
     protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"

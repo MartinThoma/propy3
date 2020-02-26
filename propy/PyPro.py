@@ -409,7 +409,6 @@ class GetProDes:
         return GetAAIndex23(name, path=path)
 
 
-#####################################################################################################
 if __name__ == "__main__":
 
     from .Autocorrelation import _Steric

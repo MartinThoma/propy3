@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-###############################################################################
-
 The module is used for computing the composition of amino acids, dipetide and
 
 3-mers (tri-peptide) for a given protein sequence. You can get 8420 descriptors
@@ -32,8 +30,6 @@ Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2012.3.27
 
 Email: oriental-cds@163.com
-
-###############################################################################
 """
 
 # Core Library
@@ -64,23 +60,18 @@ AALetter = [
 
 
 def CalculateAAComposition(ProteinSequence):
-
     """
-    ########################################################################
-    Calculate the composition of Amino acids
+    Calculate the composition of Amino acids for a given protein sequence.
 
-    for a given protein sequence.
-
-    Usage:
-
-    result=CalculateAAComposition(protein)
+    Usage
+    -----
+    result = CalculateAAComposition(protein)
 
     Input: protein is a pure protein sequence.
 
     Output: result is a dict form containing the composition of
 
     20 amino acids.
-    ########################################################################
     """
     LengthSequence = len(ProteinSequence)
     Result = {}
@@ -89,10 +80,8 @@ def CalculateAAComposition(ProteinSequence):
     return Result
 
 
-#############################################################################################
 def CalculateDipeptideComposition(ProteinSequence):
     """
-    ########################################################################
     Calculate the composition of dipeptidefor a given protein sequence.
 
     Usage:
@@ -104,7 +93,6 @@ def CalculateDipeptideComposition(ProteinSequence):
     Output: result is a dict form containing the composition of
 
     400 dipeptides.
-    ########################################################################
     """
 
     LengthSequence = len(ProteinSequence)
@@ -118,12 +106,8 @@ def CalculateDipeptideComposition(ProteinSequence):
     return Result
 
 
-#############################################################################################
-
-
 def Getkmers():
     """
-    ########################################################################
     Get the amino acid list of 3-mers.
 
     Usage:
@@ -131,8 +115,6 @@ def Getkmers():
     result=Getkmers()
 
     Output: result is a list form containing 8000 tri-peptides.
-
-    ########################################################################
     """
     kmers = list()
     for i in AALetter:
@@ -142,22 +124,19 @@ def Getkmers():
     return kmers
 
 
-#############################################################################################
 def GetSpectrumDict(proteinsequence):
     """
-    ########################################################################
     Calcualte the spectrum descriptors of 3-mers for a given protein.
 
     Usage:
 
-    result=GetSpectrumDict(protein)
+    result = GetSpectrumDict(protein)
 
     Input: protein is a pure protein sequence.
 
     Output: result is a dict form containing the composition values of 8000
 
     3-mers.
-    ########################################################################
     """
     result = {}
     kmers = Getkmers()
@@ -166,25 +145,20 @@ def GetSpectrumDict(proteinsequence):
     return result
 
 
-#############################################################################################
 def CalculateAADipeptideComposition(ProteinSequence):
-
     """
-    ########################################################################
     Calculate the composition of AADs, dipeptide and 3-mers for a
-
     given protein sequence.
 
     Usage:
 
-    result=CalculateAADipeptideComposition(protein)
+    result = CalculateAADipeptideComposition(protein)
 
     Input: protein is a pure protein sequence.
 
     Output: result is a dict form containing all composition values of
 
     AADs, dipeptide and 3-mers (8420).
-    ########################################################################
     """
 
     result = {}
@@ -195,9 +169,7 @@ def CalculateAADipeptideComposition(ProteinSequence):
     return result
 
 
-#############################################################################################
 if __name__ == "__main__":
-
     protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
 
     AAC = CalculateAAComposition(protein)

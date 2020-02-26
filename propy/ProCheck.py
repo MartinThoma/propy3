@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-#####################################################################################
 This module is used for checking whether the input protein sequence is valid amino acid
 
 sequence. You can freely use and distribute it. If you hava any problem, you could
@@ -12,8 +11,6 @@ Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2012.09.09
 
 Email: oriental-cds@163.com
-
-#####################################################################################
 
 """
 
@@ -43,7 +40,6 @@ AALetter = [
 
 def ProteinCheck(ProteinSequence):
     """
-    ###################################################################################
     Check whether the protein sequence is a valid amino acid sequence or not
 
     Usage:
@@ -55,7 +51,6 @@ def ProteinCheck(ProteinSequence):
     Output: if the check is no problem, result will return the length of protein.
 
     if the check has problems, result will return 0.
-    ###################################################################################
     """
 
     NumPro = len(ProteinSequence)

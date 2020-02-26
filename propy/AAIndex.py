@@ -14,8 +14,11 @@ Email: oriental-cds@163.com
 """
 
 # Core Library
+import logging
 import os
 import sys
+
+logger = logging.getLogger(__name__)
 
 AALetter = [
     "A",
@@ -41,7 +44,7 @@ AALetter = [
 ]
 _aaindex = dict()
 
-#####################################################################################################
+
 class Record:
     """
     Amino acid index (AAindex) Record
@@ -85,10 +88,9 @@ class Record:
         return "%s(%s: %s)" % (self.__class__.__name__, self.key, desc)
 
 
-#####################################################################################################
 class MatrixRecord(Record):
     """
-    Matrix record for mutation matrices or pair-wise contact potentials
+    Matrix record for mutation matrices or pair-wise contact potentials.
     """
 
     def __init__(self):
@@ -108,11 +110,13 @@ class MatrixRecord(Record):
     def get(self, aai, aaj, d=None):
         try:
             return self._get(aai, aaj)
-        except:
+        except Exception as e:
+            logger.debug(e)
             pass
         try:
             return self._get(aaj, aai)
-        except:
+        except Exception as e:
+            logger.debug(e)
             return d
 
     def __getitem__(self, aaij):
@@ -128,7 +132,6 @@ class MatrixRecord(Record):
         return sum(x[len(x) / 2 - 1 : len(x) / 2 + 1]) / 2.0
 
 
-#####################################################################################################
 def search(pattern, searchtitle=True, casesensitive=False):
     """
     Search for pattern in description and title (optional) of all records and
@@ -149,35 +152,28 @@ def search(pattern, searchtitle=True, casesensitive=False):
     return matches
 
 
-#####################################################################################################
 def grep(pattern):
     """
     Search for pattern in title and description of all records (case
     insensitive) and print results on standard output.
-
     """
     for record in search(pattern):
         print(record)
 
 
-#####################################################################################################
 def get(key):
-    """
-    Get record for key
-    """
+    """Get record for key."""
     if len(_aaindex) == 0:
         init()
     return _aaindex[key]
 
 
-#####################################################################################################
 def _float_or_None(x):
     if x == "NA" or x == "-":
         return None
     return float(x)
 
 
-#####################################################################################################
 def init(path=None, index="123"):
     """
     Read in the aaindex files. You need to run this (once) before you can
@@ -199,19 +195,19 @@ def init(path=None, index="123"):
         _parse(path + "/aaindex3", MatrixRecord)
 
 
-#####################################################################################################
 def init_from_file(filename, type=Record):
     _parse(filename, type)
 
 
-#####################################################################################################
 def _parse(filename, rec, quiet=True):
     """
     Parse aaindex input file. `rec` must be `Record` for aaindex1 and
     `MarixRecord` for aaindex2 and aaindex3.
     """
     if not os.path.exists(filename):
-        import urllib.request, urllib.parse, urllib.error
+        import urllib.request
+        import urllib.parse
+        import urllib.error
 
         url = (
             "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
@@ -258,7 +254,8 @@ def _parse(filename, rec, quiet=True):
                 try:
                     assert list(Record.aakeys[:10]) == [i[0] for i in a]
                     assert list(Record.aakeys[10:]) == [i[2] for i in a]
-                except:
+                except Exception as e:
+                    logger.debug(e)
                     print("Warning: wrong amino acid sequence for", current.key)
         elif key == "M ":
             a = line[2:].split()
@@ -282,7 +279,6 @@ def _parse(filename, rec, quiet=True):
     f.close()
 
 
-#####################################################################################################
 def GetAAIndex1(name, path="."):
     """
     Get the amino acid property values from aaindex1
@@ -305,14 +301,13 @@ def GetAAIndex1(name, path="."):
     return res
 
 
-#####################################################################################################
 def GetAAIndex23(name, path="."):
     """
     Get the amino acid property values from aaindex2 and aaindex3
 
     Usage:
 
-    result=GetAAIndex23(name)
+    result = GetAAIndex23(name)
 
     Input: name is the name of amino acid property (e.g.,TANS760101,GRAR740104)
 
@@ -328,16 +323,14 @@ def GetAAIndex23(name, path="."):
     return res
 
 
-#####################################################################################################
-
 if __name__ == "__main__":
 
-    #     init(path='.')
+    # init(path='.')
 
-    #     grep('volume')
-    #     x = get('KRIW790103')
-    #     print x
-    #     print x.get('W')
+    # grep('volume')
+    # x = get('KRIW790103')
+    # print x
+    # print x.get('W')
     temp1 = GetAAIndex1("KRIW790103")
     print(len(temp1))
 
