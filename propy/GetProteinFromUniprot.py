@@ -49,7 +49,7 @@ def GetProteinSequence(ProteinID):
     temp = localfile.readlines()
     res = ""
     for i in range(1, len(temp)):
-        res = res + string.strip(temp[i])
+        res = res + temp[i].decode("utf8").strip()
     return res
 
 

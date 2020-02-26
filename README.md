@@ -1,15 +1,17 @@
-# -*- coding: utf-8 -*-
-INSTRUCTION
-Sequence-derived structural and physicochemical features are highly useful for representing
-and distinguishing proteins or peptides of different structural, functional and interaction
-properties, and have been extensively used in developing methods and software for predicting
-protein structural and functional classes, protein-protein interactions, drug-target interactions,
-protein substrates, molecualr binding sites on proteins, subcellular locations, protein crystallization
-propensity and peptides of specific properties. In order to conveniently apply these structural features
-from a protein sequence for researchers, we developed a propy package using pure python language, which
+## INSTRUCTION
+
+Sequence-derived structural and physicochemical features are highly useful for
+representing and distinguishing proteins or peptides of different structural,
+functional and interaction properties, and have been extensively used in
+developing methods and software for predicting protein structural and
+functional classes, protein-protein interactions, drug-target interactions,
+protein substrates, molecualr binding sites on proteins, subcellular locations,
+protein crystallization propensity and peptides of specific properties. In
+order to conveniently apply these structural features from a protein sequence
+for researchers, we developed a propy package using pure python language, which
 could calculate a large number of protein descriptors from a protein sequence.
 
-#############################################FEATURES##################################################
+## FEATURES
 
 The propy package has the following significant features:
 (1): It is written by the pure python language. It only needs the support
@@ -30,7 +32,8 @@ sequence form uniprot website by uniprot id.
 (6): The package includes the module which could automatrically download the property
 from the AAindex database. Thus, the user could calcualte thousands of protein features.
 
-##########################################################################################################
+-------------------------------------------------------------------------------
+
 The protein descriptors calculated by propy
 
 (1) AAC: amino acid composition descriptors (20)
@@ -44,55 +47,42 @@ The protein descriptors calculated by propy
 (8) QSO: quasi-sequence order descriptors (depend on the choice of maxlag, the default is 100)
 (9) PAAC: pseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50)
 (10) APAAC: amphiphilic pseudo amino acid composition descriptors(depend on the choice of lamda, the default is 50)
-##########################################################################################################
+-------------------------------------------------------------------------------
 Download
 
 propy can be download from http://protpy.googlecode.com/files/propy-1.0.tar.gz
-##########################################################################################################
-Install
+-------------------------------------------------------------------------------
 
-On Windows:
+## Install
 
-(1): download the propy package (.gz)
+### Windows
 
-(2): extract or uncompress the .gz file
+1. download the propy package (.gz)
+2. extract or uncompress the .gz file
+3. cd propy-1.0
+4. python setup.py install
 
-(3): cd propy-1.0
+### Linux
 
-(4): python setup.py install
+1. download the propy package (.tar.gz)
+2. tar -zxf propy-1.0.tar.gz
+3. cd propy-1.0
+4. python setup.py install or sudo python setup.py install
 
-On Linux:
-
-(1): download the propy package (.tar.gz)
-
-(2): tar -zxf propy-1.0.tar.gz
-
-(3): cd propy-1.0
-
-(4): python setup.py install or sudo python setup.py install
-
-##########################################################################################################
-
-Example:
+## Usage Example
 
 For more examples, please see the user guide.
 
+```python
 from propy import PyPro
-
 from propy.GetProteinFromUniprot import GetProteinSequence
 
-proteinsequence=GetProteinSequence('P33765')      ##download the protein sequence by uniprot id
-
-DesObject=PyPro.GetProDes(proteinsequence)        ##construct a GetProDes object
-
-print DesObject.GetCTD()                          ##calculate 147 CTD descriptors
-
-print DesObject.GetAAComp()                       ##calculate 20 amino acid composition descriptors
-
-paac=DesObject.GetPAAC(lamda=10,weight=0.05)      ##calculate 30 pseudo amino acid composition descriptors
+proteinsequence = GetProteinSequence('P33765')    # download the protein sequence by uniprot id
+DesObject = PyPro.GetProDes(proteinsequence)      # construct a GetProDes object
+print(DesObject.GetCTD())                         # calculate 147 CTD descriptors
+print(DesObject.GetAAComp())                      # calculate 20 amino acid composition descriptors
+paac = DesObject.GetPAAC(lamda=10,weight=0.05)    # calculate 30 pseudo amino acid composition descriptors
 
 for i in paac:
-
-    print i, paaci
-
-##########################################################################################################
+    print(i, paaci)
+```

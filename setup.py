@@ -29,7 +29,7 @@ packagedata = {
 
 
 setup(
-    name="propy",
+    name="propy3",
     version="1.0",
     description="Compute protein descriptors",
     author="Dongsheng Cao",
@@ -38,8 +38,6 @@ setup(
     license="GPL",
     packages=["propy"],
     package_data=packagedata,
-    # 	data_files = datafiles,
-    package_dir={"propy": "src/propy"},
     scripts=[],
     py_modules=[],
 )
