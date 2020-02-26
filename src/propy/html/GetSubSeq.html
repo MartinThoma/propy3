@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module GetSubSeq</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>GetSubSeq</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/orient/ProPy/GetSubSeq.py">/home/orient/ProPy/GetSubSeq.py</a></font></td></tr></table>
+    <p><tt>#####################################################################################<br>
+&nbsp;<br>
+The&nbsp;prediction&nbsp;of&nbsp;functional&nbsp;sites&nbsp;(e.g.,methylation)&nbsp;of&nbsp;proteins&nbsp;usually&nbsp;needs&nbsp;to&nbsp;<br>
+&nbsp;<br>
+split&nbsp;the&nbsp;total&nbsp;protein&nbsp;into&nbsp;a&nbsp;set&nbsp;of&nbsp;segments&nbsp;around&nbsp;specific&nbsp;amino&nbsp;acid.&nbsp;Given&nbsp;a&nbsp;<br>
+&nbsp;<br>
+specific&nbsp;window&nbsp;size&nbsp;p,&nbsp;we&nbsp;can&nbsp;obtain&nbsp;all&nbsp;segments&nbsp;of&nbsp;length&nbsp;equal&nbsp;to&nbsp;(2*p+1)&nbsp;very&nbsp;<br>
+&nbsp;<br>
+easily.&nbsp;Note&nbsp;that&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;method&nbsp;is&nbsp;a&nbsp;list&nbsp;form.&nbsp;You&nbsp;can&nbsp;freely&nbsp;use&nbsp;and&nbsp;<br>
+&nbsp;<br>
+distribute&nbsp;it.&nbsp;If&nbsp;you&nbsp;have&nbsp;any&nbsp;problem,&nbsp;you&nbsp;could&nbsp;contact&nbsp;with&nbsp;us&nbsp;timely.<br>
+&nbsp;<br>
+Authors:&nbsp;Dongsheng&nbsp;Cao&nbsp;and&nbsp;Yizeng&nbsp;Liang.<br>
+&nbsp;<br>
+Date:&nbsp;2012.9.2<br>
+&nbsp;<br>
+Email:&nbsp;oriental-cds@163.com<br>
+&nbsp;<br>
+#####################################################################################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-GetSubSequence"><strong>GetSubSequence</strong></a>(ProteinSequence, ToAA<font color="#909090">='S'</font>, window<font color="#909090">=3</font>)</dt><dd><tt>#######################################################################<br>
+Get&nbsp;all&nbsp;2*window+1&nbsp;sub-sequences&nbsp;whose&nbsp;cener&nbsp;is&nbsp;ToAA&nbsp;in&nbsp;a&nbsp;protein.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-GetSubSequence">GetSubSequence</a>(protein,ToAA,window)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;problem&nbsp;sequence.<br>
+&nbsp;<br>
+ToAA&nbsp;is&nbsp;the&nbsp;central&nbsp;(query&nbsp;point)&nbsp;amino&nbsp;acid&nbsp;in&nbsp;the&nbsp;sub-sequence.<br>
+&nbsp;<br>
+window&nbsp;is&nbsp;the&nbsp;span.<br>
+&nbsp;<br>
+result&nbsp;is&nbsp;a&nbsp;list&nbsp;form&nbsp;containing&nbsp;all&nbsp;satisfied&nbsp;sub-sequences.<br>
+#######################################################################</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AALetter</strong> = ['A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']</td></tr></table>
+</body></html>

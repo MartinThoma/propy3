@@ -1,0 +1,308 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module QuasiSequenceOrder</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>QuasiSequenceOrder</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/orient/ProPy/src/propy/QuasiSequenceOrder.py">/home/orient/ProPy/src/propy/QuasiSequenceOrder.py</a></font></td></tr></table>
+    <p><tt>##############################################################################################<br>
+This&nbsp;module&nbsp;is&nbsp;used&nbsp;for&nbsp;computing&nbsp;the&nbsp;quasi&nbsp;sequence&nbsp;order&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;<br>
+&nbsp;<br>
+given&nbsp;protein&nbsp;sequence.&nbsp;We&nbsp;can&nbsp;obtain&nbsp;two&nbsp;types&nbsp;of&nbsp;descriptors:&nbsp;Sequence-order-coupling<br>
+&nbsp;<br>
+number&nbsp;and&nbsp;quasi-sequence-order&nbsp;descriptors.&nbsp;Two&nbsp;distance&nbsp;matrixes&nbsp;between&nbsp;20&nbsp;amino&nbsp;acids<br>
+&nbsp;<br>
+are&nbsp;employed.&nbsp;You&nbsp;can&nbsp;freely&nbsp;use&nbsp;and&nbsp;distribute&nbsp;it.&nbsp;If&nbsp;you&nbsp;have&nbsp;any&nbsp;problem,&nbsp;please&nbsp;contact<br>
+&nbsp;<br>
+us&nbsp;immediately.<br>
+&nbsp;<br>
+References:<br>
+&nbsp;<br>
+[1]:Kuo-Chen&nbsp;Chou.&nbsp;Prediction&nbsp;of&nbsp;Protein&nbsp;Subcellar&nbsp;Locations&nbsp;by&nbsp;Incorporating<br>
+&nbsp;<br>
+Quasi-Sequence-Order&nbsp;Effect.&nbsp;Biochemical&nbsp;and&nbsp;Biophysical&nbsp;Research&nbsp;Communications&nbsp;<br>
+&nbsp;<br>
+2000,&nbsp;278,&nbsp;477-483.<br>
+&nbsp;<br>
+[2]:&nbsp;Kuo-Chen&nbsp;Chou&nbsp;and&nbsp;Yu-Dong&nbsp;Cai.&nbsp;Prediction&nbsp;of&nbsp;Protein&nbsp;sucellular&nbsp;locations&nbsp;by<br>
+&nbsp;<br>
+GO-FunD-PseAA&nbsp;predictor,&nbsp;Biochemical&nbsp;and&nbsp;Biophysical&nbsp;Research&nbsp;Communications,<br>
+&nbsp;<br>
+2004,&nbsp;320,&nbsp;1236-1239.<br>
+&nbsp;<br>
+[3]:Gisbert&nbsp;Schneider&nbsp;and&nbsp;Paul&nbsp;wrede.&nbsp;The&nbsp;Rational&nbsp;Design&nbsp;of&nbsp;Amino&nbsp;Acid<br>
+&nbsp;<br>
+Sequences&nbsp;by&nbsp;Artifical&nbsp;Neural&nbsp;Networks&nbsp;and&nbsp;Simulated&nbsp;Molecular&nbsp;Evolution:&nbsp;Do<br>
+&nbsp;<br>
+Novo&nbsp;Design&nbsp;of&nbsp;an&nbsp;Idealized&nbsp;Leader&nbsp;Cleavge&nbsp;Site.&nbsp;Biophys&nbsp;Journal,&nbsp;1994,&nbsp;66,<br>
+&nbsp;<br>
+335-344.<br>
+&nbsp;<br>
+Authors:&nbsp;Dongsheng&nbsp;Cao&nbsp;and&nbsp;Yizeng&nbsp;Liang.<br>
+&nbsp;<br>
+Date:&nbsp;2012.09.03<br>
+&nbsp;<br>
+Email:&nbsp;oriental-cds@163.com<br>
+&nbsp;<br>
+##############################################################################################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-GetAAComposition"><strong>GetAAComposition</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################<br>
+Calculate&nbsp;the&nbsp;composition&nbsp;of&nbsp;Amino&nbsp;acids&nbsp;<br>
+&nbsp;<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=CalculateAAComposition(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;composition&nbsp;of&nbsp;<br>
+&nbsp;<br>
+20&nbsp;amino&nbsp;acids.<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrder"><strong>GetQuasiSequenceOrder</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;a&nbsp;given&nbsp;protein.<br>
+&nbsp;<br>
+[1]:Kuo-Chen&nbsp;Chou.&nbsp;Prediction&nbsp;of&nbsp;Protein&nbsp;Subcellar&nbsp;Locations&nbsp;by&nbsp;<br>
+&nbsp;<br>
+Incorporating&nbsp;Quasi-Sequence-Order&nbsp;Effect.&nbsp;Biochemical&nbsp;and&nbsp;Biophysical<br>
+&nbsp;<br>
+Research&nbsp;Communications&nbsp;2000,&nbsp;278,&nbsp;477-483.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrder">GetQuasiSequenceOrder</a>(protein,maxlag,weight)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence<br>
+&nbsp;<br>
+maxlag&nbsp;is&nbsp;the&nbsp;maximum&nbsp;lag&nbsp;and&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;protein&nbsp;should&nbsp;be&nbsp;larger<br>
+&nbsp;<br>
+than&nbsp;maxlag.&nbsp;default&nbsp;is&nbsp;30.<br>
+&nbsp;<br>
+weight&nbsp;is&nbsp;a&nbsp;weight&nbsp;factor.&nbsp;&nbsp;please&nbsp;see&nbsp;reference&nbsp;1&nbsp;for&nbsp;its&nbsp;choice.&nbsp;default&nbsp;is&nbsp;0.1.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;quasi-sequence-order&nbsp;descriptors<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrder1"><strong>GetQuasiSequenceOrder1</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>, distancematrix<font color="#909090">={}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;first&nbsp;20&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;<br>
+&nbsp;<br>
+a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrder1">GetQuasiSequenceOrder1</a>(protein,maxlag,weigt)<br>
+&nbsp;<br>
+see&nbsp;method&nbsp;GetQuasiSequenceOrder&nbsp;for&nbsp;the&nbsp;choice&nbsp;of&nbsp;parameters.<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrder1Grant"><strong>GetQuasiSequenceOrder1Grant</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>, distancematrix<font color="#909090">={'AA': 0.0, 'AC': 0.112, 'AD': 0.819, 'AE': 0.827, 'AF': 0.54, 'AG': 0.208, 'AH': 0.696, 'AI': 0.407, 'AK': 0.891, 'AL': 0.406, ...}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;first&nbsp;20&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;<br>
+&nbsp;<br>
+a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrder1Grant">GetQuasiSequenceOrder1Grant</a>(protein,maxlag,weigt)<br>
+&nbsp;<br>
+see&nbsp;method&nbsp;GetQuasiSequenceOrder&nbsp;for&nbsp;the&nbsp;choice&nbsp;of&nbsp;parameters.<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrder1SW"><strong>GetQuasiSequenceOrder1SW</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>, distancematrix<font color="#909090">={'AA': 0.0, 'AC': 0.112, 'AD': 0.819, 'AE': 0.827, 'AF': 0.54, 'AG': 0.208, 'AH': 0.696, 'AI': 0.407, 'AK': 0.891, 'AL': 0.406, ...}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;first&nbsp;20&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;<br>
+&nbsp;<br>
+a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrder1SW">GetQuasiSequenceOrder1SW</a>(protein,maxlag,weigt)<br>
+&nbsp;<br>
+see&nbsp;method&nbsp;GetQuasiSequenceOrder&nbsp;for&nbsp;the&nbsp;choice&nbsp;of&nbsp;parameters.<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrder2"><strong>GetQuasiSequenceOrder2</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>, distancematrix<font color="#909090">={}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;last&nbsp;maxlag&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;<br>
+&nbsp;<br>
+a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrder2">GetQuasiSequenceOrder2</a>(protein,maxlag,weigt)<br>
+&nbsp;<br>
+see&nbsp;method&nbsp;GetQuasiSequenceOrder&nbsp;for&nbsp;the&nbsp;choice&nbsp;of&nbsp;parameters.<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrder2Grant"><strong>GetQuasiSequenceOrder2Grant</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>, distancematrix<font color="#909090">={'AA': 0.0, 'AC': 0.112, 'AD': 0.819, 'AE': 0.827, 'AF': 0.54, 'AG': 0.208, 'AH': 0.696, 'AI': 0.407, 'AK': 0.891, 'AL': 0.406, ...}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;last&nbsp;maxlag&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrder2Grant">GetQuasiSequenceOrder2Grant</a>(protein,maxlag,weigt)<br>
+&nbsp;<br>
+see&nbsp;method&nbsp;GetQuasiSequenceOrder&nbsp;for&nbsp;the&nbsp;choice&nbsp;of&nbsp;parameters.<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrder2SW"><strong>GetQuasiSequenceOrder2SW</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>, distancematrix<font color="#909090">={'AA': 0.0, 'AC': 0.112, 'AD': 0.819, 'AE': 0.827, 'AF': 0.54, 'AG': 0.208, 'AH': 0.696, 'AI': 0.407, 'AK': 0.891, 'AL': 0.406, ...}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;last&nbsp;maxlag&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrder2SW">GetQuasiSequenceOrder2SW</a>(protein,maxlag,weigt)<br>
+&nbsp;<br>
+see&nbsp;method&nbsp;GetQuasiSequenceOrder&nbsp;for&nbsp;the&nbsp;choice&nbsp;of&nbsp;parameters.<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetQuasiSequenceOrderp"><strong>GetQuasiSequenceOrderp</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, weight<font color="#909090">=0.1</font>, distancematrix<font color="#909090">={}</font>)</dt><dd><tt>###############################################################################<br>
+&nbsp;<br>
+Computing&nbsp;quasi-sequence-order&nbsp;descriptors&nbsp;for&nbsp;a&nbsp;given&nbsp;protein.<br>
+&nbsp;<br>
+[1]:Kuo-Chen&nbsp;Chou.&nbsp;Prediction&nbsp;of&nbsp;Protein&nbsp;Subcellar&nbsp;Locations&nbsp;by&nbsp;<br>
+&nbsp;<br>
+Incorporating&nbsp;Quasi-Sequence-Order&nbsp;Effect.&nbsp;Biochemical&nbsp;and&nbsp;Biophysical<br>
+&nbsp;<br>
+Research&nbsp;Communications&nbsp;2000,&nbsp;278,&nbsp;477-483.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetQuasiSequenceOrderp">GetQuasiSequenceOrderp</a>(protein,maxlag,weight,distancematrix)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence<br>
+&nbsp;<br>
+maxlag&nbsp;is&nbsp;the&nbsp;maximum&nbsp;lag&nbsp;and&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;protein&nbsp;should&nbsp;be&nbsp;larger<br>
+&nbsp;<br>
+than&nbsp;maxlag.&nbsp;default&nbsp;is&nbsp;30.<br>
+&nbsp;<br>
+weight&nbsp;is&nbsp;a&nbsp;weight&nbsp;factor.&nbsp;&nbsp;please&nbsp;see&nbsp;reference&nbsp;1&nbsp;for&nbsp;its&nbsp;choice.&nbsp;default&nbsp;is&nbsp;0.1.<br>
+&nbsp;<br>
+distancematrix&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;400&nbsp;distance&nbsp;values<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;quasi-sequence-order&nbsp;descriptors<br>
+&nbsp;<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSequenceOrderCouplingNumber"><strong>GetSequenceOrderCouplingNumber</strong></a>(ProteinSequence, d<font color="#909090">=1</font>, distancematrix<font color="#909090">={'AA': 0.0, 'AC': 0.112, 'AD': 0.819, 'AE': 0.827, 'AF': 0.54, 'AG': 0.208, 'AH': 0.696, 'AI': 0.407, 'AK': 0.891, 'AL': 0.406, ...}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;dth-rank&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;number&nbsp;for&nbsp;a&nbsp;protein.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetSequenceOrderCouplingNumber">GetSequenceOrderCouplingNumber</a>(protein,d)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+d&nbsp;is&nbsp;the&nbsp;gap&nbsp;between&nbsp;two&nbsp;amino&nbsp;acids.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;numeric&nbsp;value.<br>
+&nbsp;<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSequenceOrderCouplingNumberGrant"><strong>GetSequenceOrderCouplingNumberGrant</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, distancematrix<font color="#909090">={'AA': 0.0, 'AC': 0.112, 'AD': 0.819, 'AE': 0.827, 'AF': 0.54, 'AG': 0.208, 'AH': 0.696, 'AI': 0.407, 'AK': 0.891, 'AL': 0.406, ...}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers&nbsp;from&nbsp;1&nbsp;to&nbsp;maxlag<br>
+&nbsp;<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence&nbsp;based&nbsp;on&nbsp;the&nbsp;Grantham&nbsp;chemical&nbsp;distance<br>
+&nbsp;<br>
+matrix.&nbsp;<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetSequenceOrderCouplingNumberGrant">GetSequenceOrderCouplingNumberGrant</a>(protein,&nbsp;maxlag,distancematrix)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence<br>
+&nbsp;<br>
+maxlag&nbsp;is&nbsp;the&nbsp;maximum&nbsp;lag&nbsp;and&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;protein&nbsp;should&nbsp;be&nbsp;larger<br>
+&nbsp;<br>
+than&nbsp;maxlag.&nbsp;default&nbsp;is&nbsp;30.<br>
+&nbsp;<br>
+distancematrix&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Grantham&nbsp;chemical&nbsp;distance<br>
+&nbsp;<br>
+matrix.&nbsp;omitted!<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers<br>
+&nbsp;<br>
+based&nbsp;on&nbsp;the&nbsp;Grantham&nbsp;chemical&nbsp;distance&nbsp;matrix<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSequenceOrderCouplingNumberSW"><strong>GetSequenceOrderCouplingNumberSW</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, distancematrix<font color="#909090">={'AA': 0.0, 'AC': 0.112, 'AD': 0.819, 'AE': 0.827, 'AF': 0.54, 'AG': 0.208, 'AH': 0.696, 'AI': 0.407, 'AK': 0.891, 'AL': 0.406, ...}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers&nbsp;from&nbsp;1&nbsp;to&nbsp;maxlag<br>
+&nbsp;<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence&nbsp;based&nbsp;on&nbsp;the&nbsp;Schneider-Wrede&nbsp;physicochemical&nbsp;<br>
+&nbsp;<br>
+distance&nbsp;matrix<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetSequenceOrderCouplingNumberSW">GetSequenceOrderCouplingNumberSW</a>(protein,&nbsp;maxlag,distancematrix)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence<br>
+&nbsp;<br>
+maxlag&nbsp;is&nbsp;the&nbsp;maximum&nbsp;lag&nbsp;and&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;protein&nbsp;should&nbsp;be&nbsp;larger<br>
+&nbsp;<br>
+than&nbsp;maxlag.&nbsp;default&nbsp;is&nbsp;30.<br>
+&nbsp;<br>
+distancematrix&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Schneider-Wrede&nbsp;physicochemical&nbsp;<br>
+&nbsp;<br>
+distance&nbsp;matrix.&nbsp;omitted!<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers&nbsp;based<br>
+&nbsp;<br>
+on&nbsp;the&nbsp;Schneider-Wrede&nbsp;physicochemical&nbsp;distance&nbsp;matrix<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSequenceOrderCouplingNumberTotal"><strong>GetSequenceOrderCouplingNumberTotal</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers&nbsp;from&nbsp;1&nbsp;to&nbsp;maxlag<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+Usage:<br>
+result&nbsp;=&nbsp;<a href="#-GetSequenceOrderCouplingNumberTotal">GetSequenceOrderCouplingNumberTotal</a>(protein,&nbsp;maxlag)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence<br>
+&nbsp;<br>
+maxlag&nbsp;is&nbsp;the&nbsp;maximum&nbsp;lag&nbsp;and&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;protein&nbsp;should&nbsp;be&nbsp;larger<br>
+&nbsp;<br>
+than&nbsp;maxlag.&nbsp;default&nbsp;is&nbsp;30.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers<br>
+###############################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSequenceOrderCouplingNumberp"><strong>GetSequenceOrderCouplingNumberp</strong></a>(ProteinSequence, maxlag<font color="#909090">=30</font>, distancematrix<font color="#909090">={}</font>)</dt><dd><tt>###############################################################################<br>
+Computing&nbsp;the&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers&nbsp;from&nbsp;1&nbsp;to&nbsp;maxlag<br>
+&nbsp;<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence&nbsp;based&nbsp;on&nbsp;the&nbsp;user-defined&nbsp;property.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result&nbsp;=&nbsp;<a href="#-GetSequenceOrderCouplingNumberp">GetSequenceOrderCouplingNumberp</a>(protein,&nbsp;maxlag,distancematrix)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence<br>
+&nbsp;<br>
+maxlag&nbsp;is&nbsp;the&nbsp;maximum&nbsp;lag&nbsp;and&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;protein&nbsp;should&nbsp;be&nbsp;larger<br>
+&nbsp;<br>
+than&nbsp;maxlag.&nbsp;default&nbsp;is&nbsp;30.<br>
+&nbsp;<br>
+distancematrix&nbsp;is&nbsp;the&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;400&nbsp;distance&nbsp;values<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;sequence&nbsp;order&nbsp;coupling&nbsp;numbers&nbsp;based<br>
+&nbsp;<br>
+on&nbsp;the&nbsp;given&nbsp;property<br>
+###############################################################################</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AALetter</strong> = ['A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']</td></tr></table>
+</body></html>

@@ -1,0 +1,605 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Autocorrelation</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Autocorrelation</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/orient/ProPy/Autocorrelation.py">/home/orient/ProPy/Autocorrelation.py</a></font></td></tr></table>
+    <p><tt>##########################################################################################<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;is&nbsp;used&nbsp;for&nbsp;computing&nbsp;the&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;different<br>
+&nbsp;<br>
+&nbsp;properties&nbsp;of&nbsp;AADs.You&nbsp;can&nbsp;also&nbsp;input&nbsp;your&nbsp;properties&nbsp;of&nbsp;AADs,&nbsp;then&nbsp;it&nbsp;can&nbsp;help&nbsp;you<br>
+&nbsp;<br>
+to&nbsp;compute&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;property&nbsp;of&nbsp;AADs.&nbsp;Currently,&nbsp;You&nbsp;<br>
+&nbsp;<br>
+can&nbsp;get&nbsp;720&nbsp;descriptors&nbsp;for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence&nbsp;based&nbsp;on&nbsp;our&nbsp;provided&nbsp;physicochemical<br>
+&nbsp;<br>
+properties&nbsp;of&nbsp;AADs.&nbsp;You&nbsp;can&nbsp;freely&nbsp;use&nbsp;and&nbsp;distribute&nbsp;it.&nbsp;If&nbsp;you&nbsp;hava&nbsp;&nbsp;any&nbsp;problem,&nbsp;<br>
+&nbsp;<br>
+you&nbsp;could&nbsp;contact&nbsp;with&nbsp;us&nbsp;timely!<br>
+&nbsp;<br>
+References:<br>
+&nbsp;<br>
+[1]:&nbsp;<a href="http://www.genome.ad.jp/dbget/aaindex.html">http://www.genome.ad.jp/dbget/aaindex.html</a><br>
+&nbsp;<br>
+[2]:Feng,&nbsp;Z.P.&nbsp;and&nbsp;Zhang,&nbsp;C.T.&nbsp;(2000)&nbsp;Prediction&nbsp;of&nbsp;membrane&nbsp;protein&nbsp;types&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+the&nbsp;hydrophobic&nbsp;index&nbsp;of&nbsp;amino&nbsp;acids.&nbsp;J&nbsp;Protein&nbsp;Chem,&nbsp;19,&nbsp;269-275.<br>
+&nbsp;<br>
+[3]:Horne,&nbsp;D.S.&nbsp;(1988)&nbsp;Prediction&nbsp;of&nbsp;protein&nbsp;helix&nbsp;content&nbsp;from&nbsp;an&nbsp;autocorrelation<br>
+&nbsp;<br>
+analysis&nbsp;of&nbsp;sequence&nbsp;hydrophobicities.&nbsp;Biopolymers,&nbsp;27,&nbsp;451-477.<br>
+&nbsp;<br>
+[4]:Sokal,&nbsp;R.R.&nbsp;and&nbsp;Thomson,&nbsp;B.A.&nbsp;(2006)&nbsp;Population&nbsp;structure&nbsp;inferred&nbsp;by&nbsp;local<br>
+&nbsp;<br>
+spatial&nbsp;autocorrelation:&nbsp;an&nbsp;Usage&nbsp;from&nbsp;an&nbsp;Amerindian&nbsp;tribal&nbsp;population.&nbsp;Am&nbsp;J<br>
+&nbsp;<br>
+Phys&nbsp;Anthropol,&nbsp;129,&nbsp;121-131.<br>
+&nbsp;<br>
+Authors:&nbsp;Dongsheng&nbsp;Cao&nbsp;and&nbsp;Yizeng&nbsp;Liang.<br>
+&nbsp;<br>
+Date:&nbsp;2010.11.22<br>
+&nbsp;<br>
+Email:&nbsp;oriental-cds@163.com<br>
+&nbsp;<br>
+##########################################################################################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-CalculateAutoTotal"><strong>CalculateAutoTotal</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;all&nbsp;autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;8&nbsp;properties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoTotal">CalculateGearyAutoTotal</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30*8*3=720&nbsp;normalized&nbsp;Moreau&nbsp;Broto,&nbsp;Moran,&nbsp;and&nbsp;Geary<br>
+&nbsp;<br>
+autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;properties(i.e.,&nbsp;_AAPropert).<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateEachGearyAuto"><strong>CalculateEachGearyAuto</strong></a>(ProteinSequence, AAP, AAPName)</dt><dd><tt>####################################################################################<br>
+you&nbsp;can&nbsp;use&nbsp;the&nbsp;function&nbsp;to&nbsp;compute&nbsp;GearyAuto<br>
+&nbsp;<br>
+descriptors&nbsp;for&nbsp;different&nbsp;properties&nbsp;based&nbsp;on&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateEachGearyAuto">CalculateEachGearyAuto</a>(protein,AAP,AAPName)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAP&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids&nbsp;(e.g.,&nbsp;_AvFlexibility).<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;string&nbsp;used&nbsp;for&nbsp;indicating&nbsp;the&nbsp;property&nbsp;(e.g.,&nbsp;'_AvFlexibility').&nbsp;<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;property.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateEachMoranAuto"><strong>CalculateEachMoranAuto</strong></a>(ProteinSequence, AAP, AAPName)</dt><dd><tt>####################################################################################<br>
+you&nbsp;can&nbsp;use&nbsp;the&nbsp;function&nbsp;to&nbsp;compute&nbsp;MoranAuto<br>
+&nbsp;<br>
+descriptors&nbsp;for&nbsp;different&nbsp;properties&nbsp;based&nbsp;on&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateEachMoranAuto">CalculateEachMoranAuto</a>(protein,AAP,AAPName)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAP&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids&nbsp;(e.g.,&nbsp;_AvFlexibility).<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;string&nbsp;used&nbsp;for&nbsp;indicating&nbsp;the&nbsp;property&nbsp;(e.g.,&nbsp;'_AvFlexibility').&nbsp;<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;property.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateEachNormalizedMoreauBrotoAuto"><strong>CalculateEachNormalizedMoreauBrotoAuto</strong></a>(ProteinSequence, AAP, AAPName)</dt><dd><tt>####################################################################################<br>
+you&nbsp;can&nbsp;use&nbsp;the&nbsp;function&nbsp;to&nbsp;compute&nbsp;MoreauBrotoAuto<br>
+&nbsp;<br>
+descriptors&nbsp;for&nbsp;different&nbsp;properties&nbsp;based&nbsp;on&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateEachNormalizedMoreauBrotoAuto">CalculateEachNormalizedMoreauBrotoAuto</a>(protein,AAP,AAPName)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAP&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids&nbsp;(e.g.,&nbsp;_AvFlexibility).<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;string&nbsp;used&nbsp;for&nbsp;indicating&nbsp;the&nbsp;property&nbsp;(e.g.,&nbsp;'_AvFlexibility').&nbsp;<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;property.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAuto"><strong>CalculateGearyAuto</strong></a>(ProteinSequence, AAProperty, AAPropertyName)</dt><dd><tt>####################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;GearyAuto&nbsp;for&nbsp;all&nbsp;properties<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAuto">CalculateGearyAuto</a>(protein,AAP,AAPName)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAProperty&nbsp;is&nbsp;a&nbsp;list&nbsp;or&nbsp;tuple&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids&nbsp;(e.g.,&nbsp;_AAProperty).<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;list&nbsp;or&nbsp;tuple&nbsp;form&nbsp;used&nbsp;for&nbsp;indicating&nbsp;the&nbsp;property&nbsp;(e.g.,&nbsp;'_AAPropertyName').&nbsp;<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30*p&nbsp;Geary&nbsp;autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;properties.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoAvFlexibility"><strong>CalculateGearyAutoAvFlexibility</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+AvFlexibility.<br>
+&nbsp;<br>
+Usage:<br>
+result=<a href="#-CalculateGearyAutoAvFlexibility">CalculateGearyAutoAvFlexibility</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;AvFlexibility.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoFreeEnergy"><strong>CalculateGearyAutoFreeEnergy</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+FreeEnergy.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoFreeEnergy">CalculateGearyAutoFreeEnergy</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;FreeEnergy.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoHydrophobicity"><strong>CalculateGearyAutoHydrophobicity</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+hydrophobicity.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoHydrophobicity">CalculateGearyAutoHydrophobicity</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;hydrophobicity.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoMutability"><strong>CalculateGearyAutoMutability</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+Mutability.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoMutability">CalculateGearyAutoMutability</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Mutability.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoPolarizability"><strong>CalculateGearyAutoPolarizability</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+Polarizability.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoPolarizability">CalculateGearyAutoPolarizability</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Polarizability.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoResidueASA"><strong>CalculateGearyAutoResidueASA</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+ResidueASA.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoResidueASA">CalculateGearyAutoResidueASA</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;ResidueASA.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoResidueVol"><strong>CalculateGearyAutoResidueVol</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+ResidueVol.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoResidueVol">CalculateGearyAutoResidueVol</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;ResidueVol.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoSteric"><strong>CalculateGearyAutoSteric</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;GearyAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+Steric.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoSteric">CalculateGearyAutoSteric</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Geary&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Steric.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateGearyAutoTotal"><strong>CalculateGearyAutoTotal</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;Geary&nbsp;autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;8&nbsp;properties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateGearyAutoTotal">CalculateGearyAutoTotal</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30*8=240&nbsp;Geary<br>
+&nbsp;<br>
+autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;properties(i.e.,&nbsp;_AAPropert).<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAuto"><strong>CalculateMoranAuto</strong></a>(ProteinSequence, AAProperty, AAPropertyName)</dt><dd><tt>####################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;MoranAuto&nbsp;for&nbsp;all&nbsp;properties<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAuto">CalculateMoranAuto</a>(protein,AAP,AAPName)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAProperty&nbsp;is&nbsp;a&nbsp;list&nbsp;or&nbsp;tuple&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids&nbsp;(e.g.,&nbsp;_AAProperty).<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;list&nbsp;or&nbsp;tuple&nbsp;form&nbsp;used&nbsp;for&nbsp;indicating&nbsp;the&nbsp;property&nbsp;(e.g.,&nbsp;'_AAPropertyName').&nbsp;<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30*p&nbsp;Moran&nbsp;autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;properties.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoAvFlexibility"><strong>CalculateMoranAutoAvFlexibility</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+AvFlexibility.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoAvFlexibility">CalculateMoranAutoAvFlexibility</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;AvFlexibility.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoFreeEnergy"><strong>CalculateMoranAutoFreeEnergy</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+FreeEnergy.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoFreeEnergy">CalculateMoranAutoFreeEnergy</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;FreeEnergy.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoHydrophobicity"><strong>CalculateMoranAutoHydrophobicity</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;hydrophobicity.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoHydrophobicity">CalculateMoranAutoHydrophobicity</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;hydrophobicity.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoMutability"><strong>CalculateMoranAutoMutability</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+Mutability.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoMutability">CalculateMoranAutoMutability</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Mutability.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoPolarizability"><strong>CalculateMoranAutoPolarizability</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+Polarizability.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoPolarizability">CalculateMoranAutoPolarizability</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Polarizability.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoResidueASA"><strong>CalculateMoranAutoResidueASA</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+ResidueASA.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoResidueASA">CalculateMoranAutoResidueASA</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;ResidueASA.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoResidueVol"><strong>CalculateMoranAutoResidueVol</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+ResidueVol.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoResidueVol">CalculateMoranAutoResidueVol</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;ResidueVol.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoSteric"><strong>CalculateMoranAutoSteric</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;MoranAuto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+AutoSteric.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoSteric">CalculateMoranAutoSteric</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Moran&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;AutoSteric.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateMoranAutoTotal"><strong>CalculateMoranAutoTotal</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;Moran&nbsp;autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;8&nbsp;properties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateMoranAutoTotal">CalculateMoranAutoTotal</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30*8=240&nbsp;Moran<br>
+&nbsp;<br>
+autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;properties(i.e.,&nbsp;_AAPropert).<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAuto"><strong>CalculateNormalizedMoreauBrotoAuto</strong></a>(ProteinSequence, AAProperty, AAPropertyName)</dt><dd><tt>####################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;MoreauBrotoAuto&nbsp;for&nbsp;all&nbsp;properties.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAuto">CalculateNormalizedMoreauBrotoAuto</a>(protein,AAP,AAPName)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAProperty&nbsp;is&nbsp;a&nbsp;list&nbsp;or&nbsp;tuple&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids&nbsp;(e.g.,&nbsp;_AAProperty).<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;list&nbsp;or&nbsp;tuple&nbsp;form&nbsp;used&nbsp;for&nbsp;indicating&nbsp;the&nbsp;property&nbsp;(e.g.,&nbsp;'_AAPropertyName').&nbsp;<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30*p&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;properties.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoAvFlexibility"><strong>CalculateNormalizedMoreauBrotoAutoAvFlexibility</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+AvFlexibility.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoAvFlexibility">CalculateNormalizedMoreauBrotoAutoAvFlexibility</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;AvFlexibility.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoFreeEnergy"><strong>CalculateNormalizedMoreauBrotoAutoFreeEnergy</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+FreeEnergy.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoFreeEnergy">CalculateNormalizedMoreauBrotoAutoFreeEnergy</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;FreeEnergy.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoHydrophobicity"><strong>CalculateNormalizedMoreauBrotoAutoHydrophobicity</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+hydrophobicity.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoHydrophobicity">CalculateNormalizedMoreauBrotoAutoHydrophobicity</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Hydrophobicity.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoMutability"><strong>CalculateNormalizedMoreauBrotoAutoMutability</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Mutability.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoMutability">CalculateNormalizedMoreauBrotoAutoMutability</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Mutability.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoPolarizability"><strong>CalculateNormalizedMoreauBrotoAutoPolarizability</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+Polarizability.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoPolarizability">CalculateNormalizedMoreauBrotoAutoPolarizability</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Polarizability.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoResidueASA"><strong>CalculateNormalizedMoreauBrotoAutoResidueASA</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+ResidueASA.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoResidueASA">CalculateNormalizedMoreauBrotoAutoResidueASA</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;ResidueASA.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoResidueVol"><strong>CalculateNormalizedMoreauBrotoAutoResidueVol</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+ResidueVol.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoResidueVol">CalculateNormalizedMoreauBrotoAutoResidueVol</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;ResidueVol.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoSteric"><strong>CalculateNormalizedMoreauBrotoAutoSteric</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+Calculte&nbsp;the&nbsp;NormalizedMoreauBorto&nbsp;Autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Steric.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoSteric">CalculateNormalizedMoreauBrotoAutoSteric</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30&nbsp;Normalized&nbsp;Moreau-Broto&nbsp;Autocorrelation<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;Steric.<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateNormalizedMoreauBrotoAutoTotal"><strong>CalculateNormalizedMoreauBrotoAutoTotal</strong></a>(ProteinSequence)</dt><dd><tt>####################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;normalized&nbsp;Moreau&nbsp;Broto&nbsp;autocorrelation&nbsp;descriptors&nbsp;based&nbsp;<br>
+&nbsp;<br>
+on&nbsp;8&nbsp;proterties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateNormalizedMoreauBrotoAutoTotal">CalculateNormalizedMoreauBrotoAutoTotal</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;30*8=240&nbsp;normalized&nbsp;Moreau&nbsp;Broto&nbsp;<br>
+&nbsp;<br>
+autocorrelation&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;properties(i.e.,&nbsp;_AAPropert).<br>
+####################################################################################</tt></dd></dl>
+ <dl><dt><a name="-NormalizeEachAAP"><strong>NormalizeEachAAP</strong></a>(AAP)</dt><dd><tt>####################################################################################<br>
+All&nbsp;of&nbsp;the&nbsp;amino&nbsp;acid&nbsp;indices&nbsp;are&nbsp;centralized&nbsp;and&nbsp;<br>
+&nbsp;<br>
+standardized&nbsp;before&nbsp;the&nbsp;calculation.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-NormalizeEachAAP">NormalizeEachAAP</a>(AAP)<br>
+&nbsp;<br>
+Input:&nbsp;AAP&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;the&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;normalized&nbsp;properties&nbsp;<br>
+&nbsp;<br>
+of&nbsp;20&nbsp;amino&nbsp;acids.<br>
+####################################################################################</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AALetter</strong> = ['A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']</td></tr></table>
+</body></html>

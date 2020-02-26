@@ -1,0 +1,2 @@
+2006-08-08 KAWASHIMA Shuichi
+  [Bug fix] The leucine value of OOBM770104 and OOBM770105 had the wrong sign.

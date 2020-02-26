@@ -1,0 +1,251 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module PseudoAAC</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>PseudoAAC</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/orient/ProPy/PseudoAAC.py">/home/orient/ProPy/PseudoAAC.py</a></font></td></tr></table>
+    <p><tt>#########################################################################################<br>
+&nbsp;<br>
+Instead&nbsp;of&nbsp;using&nbsp;the&nbsp;conventional&nbsp;20-D&nbsp;amino&nbsp;acid&nbsp;composition&nbsp;to&nbsp;represent&nbsp;the&nbsp;sample<br>
+&nbsp;<br>
+of&nbsp;a&nbsp;protein,&nbsp;Prof.&nbsp;Kuo-Chen&nbsp;Chou&nbsp;proposed&nbsp;the&nbsp;pseudo&nbsp;amino&nbsp;acid&nbsp;(PseAA)&nbsp;composition&nbsp;<br>
+&nbsp;<br>
+in&nbsp;order&nbsp;for&nbsp;inluding&nbsp;the&nbsp;sequence-order&nbsp;information.&nbsp;Based&nbsp;on&nbsp;the&nbsp;concept&nbsp;of&nbsp;Chou's&nbsp;<br>
+&nbsp;<br>
+pseudo&nbsp;amino&nbsp;acid&nbsp;composition,&nbsp;the&nbsp;server&nbsp;PseAA&nbsp;was&nbsp;designed&nbsp;in&nbsp;a&nbsp;flexible&nbsp;way,&nbsp;allowing&nbsp;<br>
+&nbsp;<br>
+users&nbsp;to&nbsp;generate&nbsp;various&nbsp;kinds&nbsp;of&nbsp;pseudo&nbsp;amino&nbsp;acid&nbsp;composition&nbsp;for&nbsp;a&nbsp;given&nbsp;protein<br>
+&nbsp;<br>
+sequence&nbsp;by&nbsp;selecting&nbsp;different&nbsp;parameters&nbsp;and&nbsp;their&nbsp;combinations.&nbsp;This&nbsp;module&nbsp;aims&nbsp;at&nbsp;<br>
+&nbsp;<br>
+computing&nbsp;two&nbsp;types&nbsp;of&nbsp;PseAA&nbsp;descriptors:&nbsp;Type&nbsp;I&nbsp;and&nbsp;Type&nbsp;II.&nbsp;<br>
+&nbsp;<br>
+You&nbsp;can&nbsp;freely&nbsp;use&nbsp;and&nbsp;distribute&nbsp;it.&nbsp;If&nbsp;you&nbsp;have&nbsp;any&nbsp;problem,&nbsp;you&nbsp;could&nbsp;contact&nbsp;<br>
+&nbsp;<br>
+with&nbsp;us&nbsp;timely.<br>
+&nbsp;<br>
+References:<br>
+&nbsp;<br>
+[1]:&nbsp;Kuo-Chen&nbsp;Chou.&nbsp;Prediction&nbsp;of&nbsp;Protein&nbsp;Cellular&nbsp;Attributes&nbsp;Using&nbsp;Pseudo-Amino&nbsp;Acid&nbsp;<br>
+&nbsp;<br>
+Composition.&nbsp;PROTEINS:&nbsp;Structure,&nbsp;Function,&nbsp;and&nbsp;Genetics,&nbsp;2001,&nbsp;43:&nbsp;246-255.<br>
+&nbsp;<br>
+[2]:&nbsp;<a href="http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/">http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/</a><br>
+&nbsp;<br>
+[3]:&nbsp;<a href="http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm">http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm</a><br>
+&nbsp;<br>
+[4]:&nbsp;Kuo-Chen&nbsp;Chou.&nbsp;Using&nbsp;amphiphilic&nbsp;pseudo&nbsp;amino&nbsp;acid&nbsp;composition&nbsp;to&nbsp;predict&nbsp;enzyme&nbsp;<br>
+&nbsp;<br>
+subfamily&nbsp;classes.&nbsp;Bioinformatics,&nbsp;2005,21,10-19.<br>
+&nbsp;<br>
+Authors:&nbsp;Dongsheng&nbsp;Cao&nbsp;and&nbsp;Yizeng&nbsp;Liang.<br>
+&nbsp;<br>
+Date:&nbsp;2012.9.2<br>
+&nbsp;<br>
+Email:&nbsp;oriental-cds@163.com<br>
+&nbsp;<br>
+&nbsp;<br>
+The&nbsp;hydrophobicity&nbsp;values&nbsp;are&nbsp;from&nbsp;JACS,&nbsp;1962,&nbsp;84:&nbsp;4240-4246.&nbsp;(C.&nbsp;Tanford).<br>
+&nbsp;<br>
+The&nbsp;hydrophilicity&nbsp;values&nbsp;are&nbsp;from&nbsp;PNAS,&nbsp;1981,&nbsp;78:3824-3828&nbsp;(T.P.Hopp&nbsp;&amp;&nbsp;K.R.Woods).<br>
+&nbsp;<br>
+The&nbsp;side-chain&nbsp;mass&nbsp;for&nbsp;each&nbsp;of&nbsp;the&nbsp;20&nbsp;amino&nbsp;acids.<br>
+&nbsp;<br>
+CRC&nbsp;Handbook&nbsp;of&nbsp;Chemistry&nbsp;and&nbsp;Physics,&nbsp;66th&nbsp;ed.,&nbsp;CRC&nbsp;Press,&nbsp;Boca&nbsp;Raton,&nbsp;Florida&nbsp;(1985).<br>
+&nbsp;<br>
+R.M.C.&nbsp;Dawson,&nbsp;D.C.&nbsp;Elliott,&nbsp;W.H.&nbsp;Elliott,&nbsp;K.M.&nbsp;Jones,&nbsp;Data&nbsp;for&nbsp;Biochemical&nbsp;Research&nbsp;3rd&nbsp;ed.,&nbsp;<br>
+&nbsp;<br>
+Clarendon&nbsp;Press&nbsp;Oxford&nbsp;(1986).<br>
+&nbsp;<br>
+#########################################################################################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-GetAAComposition"><strong>GetAAComposition</strong></a>(ProteinSequence)</dt><dd><tt>########################################################################################<br>
+Calculate&nbsp;the&nbsp;composition&nbsp;of&nbsp;Amino&nbsp;acids&nbsp;<br>
+&nbsp;<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=CalculateAAComposition(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;composition&nbsp;of&nbsp;<br>
+&nbsp;<br>
+20&nbsp;amino&nbsp;acids.<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetAPseudoAAC"><strong>GetAPseudoAAC</strong></a>(ProteinSequence, lamda<font color="#909090">=10</font>, weight<font color="#909090">=0.5</font>)</dt><dd><tt>#######################################################################################<br>
+Computing&nbsp;all&nbsp;of&nbsp;type&nbsp;II&nbsp;pseudo-amino&nbsp;acid&nbsp;compostion&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;<br>
+&nbsp;<br>
+properties.&nbsp;Note&nbsp;that&nbsp;the&nbsp;number&nbsp;of&nbsp;PAAC&nbsp;strongly&nbsp;depends&nbsp;on&nbsp;the&nbsp;lamda&nbsp;value.&nbsp;if&nbsp;lamda&nbsp;<br>
+&nbsp;<br>
+=&nbsp;20,&nbsp;we&nbsp;can&nbsp;obtain&nbsp;20+20=40&nbsp;PAAC&nbsp;descriptors.&nbsp;The&nbsp;size&nbsp;of&nbsp;these&nbsp;values&nbsp;depends&nbsp;on&nbsp;the&nbsp;<br>
+&nbsp;<br>
+choice&nbsp;of&nbsp;lamda&nbsp;and&nbsp;weight&nbsp;simultaneously.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-GetAPseudoAAC">GetAPseudoAAC</a>(protein,lamda,weight)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+lamda&nbsp;factor&nbsp;reflects&nbsp;the&nbsp;rank&nbsp;of&nbsp;correlation&nbsp;and&nbsp;is&nbsp;a&nbsp;non-Negative&nbsp;integer,&nbsp;such&nbsp;as&nbsp;15.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;(1)lamda&nbsp;should&nbsp;NOT&nbsp;be&nbsp;larger&nbsp;than&nbsp;the&nbsp;length&nbsp;of&nbsp;input&nbsp;protein&nbsp;sequence;<br>
+&nbsp;<br>
+(2)&nbsp;lamda&nbsp;must&nbsp;be&nbsp;non-Negative&nbsp;integer,&nbsp;such&nbsp;as&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;...;&nbsp;(3)&nbsp;when&nbsp;lamda&nbsp;=0,&nbsp;the&nbsp;<br>
+&nbsp;<br>
+output&nbsp;of&nbsp;PseAA&nbsp;server&nbsp;is&nbsp;the&nbsp;20-D&nbsp;amino&nbsp;acid&nbsp;composition.<br>
+&nbsp;<br>
+weight&nbsp;factor&nbsp;is&nbsp;designed&nbsp;for&nbsp;the&nbsp;users&nbsp;to&nbsp;put&nbsp;weight&nbsp;on&nbsp;the&nbsp;additional&nbsp;PseAA&nbsp;components&nbsp;<br>
+&nbsp;<br>
+with&nbsp;respect&nbsp;to&nbsp;the&nbsp;conventional&nbsp;AA&nbsp;components.&nbsp;The&nbsp;user&nbsp;can&nbsp;select&nbsp;any&nbsp;value&nbsp;within&nbsp;the&nbsp;<br>
+&nbsp;<br>
+region&nbsp;from&nbsp;0.05&nbsp;to&nbsp;0.7&nbsp;for&nbsp;the&nbsp;weight&nbsp;factor.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;calculated&nbsp;20+lamda&nbsp;PAAC&nbsp;descriptors.<br>
+#######################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetAPseudoAAC1"><strong>GetAPseudoAAC1</strong></a>(ProteinSequence, lamda<font color="#909090">=10</font>, weight<font color="#909090">=0.5</font>)</dt><dd><tt>########################################################################################<br>
+Computing&nbsp;the&nbsp;first&nbsp;20&nbsp;of&nbsp;type&nbsp;II&nbsp;pseudo-amino&nbsp;acid&nbsp;compostion&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+[_Hydrophobicity,_hydrophilicity].<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetAPseudoAAC2"><strong>GetAPseudoAAC2</strong></a>(ProteinSequence, lamda<font color="#909090">=10</font>, weight<font color="#909090">=0.5</font>)</dt><dd><tt>#######################################################################################<br>
+Computing&nbsp;the&nbsp;last&nbsp;lamda&nbsp;of&nbsp;type&nbsp;II&nbsp;pseudo-amino&nbsp;acid&nbsp;compostion&nbsp;descriptors&nbsp;based&nbsp;on<br>
+&nbsp;<br>
+[_Hydrophobicity,_hydrophilicity].<br>
+#######################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetCorrelationFunction"><strong>GetCorrelationFunction</strong></a>(Ri<font color="#909090">='S'</font>, Rj<font color="#909090">='D'</font>, AAP<font color="#909090">=[]</font>)</dt><dd><tt>########################################################################################<br>
+Computing&nbsp;the&nbsp;correlation&nbsp;between&nbsp;two&nbsp;given&nbsp;amino&nbsp;acids&nbsp;using&nbsp;the&nbsp;given<br>
+&nbsp;<br>
+properties.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-GetCorrelationFunction">GetCorrelationFunction</a>(Ri,Rj,AAP)<br>
+&nbsp;<br>
+Input:&nbsp;Ri&nbsp;and&nbsp;Rj&nbsp;are&nbsp;the&nbsp;amino&nbsp;acids,&nbsp;respectively.<br>
+&nbsp;<br>
+AAP&nbsp;is&nbsp;a&nbsp;list&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties,&nbsp;each&nbsp;of&nbsp;which&nbsp;is&nbsp;a&nbsp;dict&nbsp;form.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;the&nbsp;correlation&nbsp;value&nbsp;between&nbsp;two&nbsp;amino&nbsp;acids.<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetPseudoAAC"><strong>GetPseudoAAC</strong></a>(ProteinSequence, lamda<font color="#909090">=10</font>, weight<font color="#909090">=0.05</font>, AAP<font color="#909090">=[]</font>)</dt><dd><tt>#######################################################################################<br>
+Computing&nbsp;all&nbsp;of&nbsp;type&nbsp;I&nbsp;pseudo-amino&nbsp;acid&nbsp;compostion&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;<br>
+&nbsp;<br>
+properties.&nbsp;Note&nbsp;that&nbsp;the&nbsp;number&nbsp;of&nbsp;PAAC&nbsp;strongly&nbsp;depends&nbsp;on&nbsp;the&nbsp;lamda&nbsp;value.&nbsp;if&nbsp;lamda&nbsp;<br>
+&nbsp;<br>
+=&nbsp;20,&nbsp;we&nbsp;can&nbsp;obtain&nbsp;20+20=40&nbsp;PAAC&nbsp;descriptors.&nbsp;The&nbsp;size&nbsp;of&nbsp;these&nbsp;values&nbsp;depends&nbsp;on&nbsp;the&nbsp;<br>
+&nbsp;<br>
+choice&nbsp;of&nbsp;lamda&nbsp;and&nbsp;weight&nbsp;simultaneously.&nbsp;You&nbsp;must&nbsp;specify&nbsp;some&nbsp;properties&nbsp;into&nbsp;AAP.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-GetPseudoAAC">GetPseudoAAC</a>(protein,lamda,weight)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+lamda&nbsp;factor&nbsp;reflects&nbsp;the&nbsp;rank&nbsp;of&nbsp;correlation&nbsp;and&nbsp;is&nbsp;a&nbsp;non-Negative&nbsp;integer,&nbsp;such&nbsp;as&nbsp;15.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;(1)lamda&nbsp;should&nbsp;NOT&nbsp;be&nbsp;larger&nbsp;than&nbsp;the&nbsp;length&nbsp;of&nbsp;input&nbsp;protein&nbsp;sequence;<br>
+&nbsp;<br>
+(2)&nbsp;lamda&nbsp;must&nbsp;be&nbsp;non-Negative&nbsp;integer,&nbsp;such&nbsp;as&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;...;&nbsp;(3)&nbsp;when&nbsp;lamda&nbsp;=0,&nbsp;the&nbsp;<br>
+&nbsp;<br>
+output&nbsp;of&nbsp;PseAA&nbsp;server&nbsp;is&nbsp;the&nbsp;20-D&nbsp;amino&nbsp;acid&nbsp;composition.<br>
+&nbsp;<br>
+weight&nbsp;factor&nbsp;is&nbsp;designed&nbsp;for&nbsp;the&nbsp;users&nbsp;to&nbsp;put&nbsp;weight&nbsp;on&nbsp;the&nbsp;additional&nbsp;PseAA&nbsp;components&nbsp;<br>
+&nbsp;<br>
+with&nbsp;respect&nbsp;to&nbsp;the&nbsp;conventional&nbsp;AA&nbsp;components.&nbsp;The&nbsp;user&nbsp;can&nbsp;select&nbsp;any&nbsp;value&nbsp;within&nbsp;the&nbsp;<br>
+&nbsp;<br>
+region&nbsp;from&nbsp;0.05&nbsp;to&nbsp;0.7&nbsp;for&nbsp;the&nbsp;weight&nbsp;factor.<br>
+&nbsp;<br>
+AAP&nbsp;is&nbsp;a&nbsp;list&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties,&nbsp;each&nbsp;of&nbsp;which&nbsp;is&nbsp;a&nbsp;dict&nbsp;form.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;calculated&nbsp;20+lamda&nbsp;PAAC&nbsp;descriptors.<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetPseudoAAC1"><strong>GetPseudoAAC1</strong></a>(ProteinSequence, lamda<font color="#909090">=10</font>, weight<font color="#909090">=0.05</font>, AAP<font color="#909090">=[]</font>)</dt><dd><tt>#######################################################################################<br>
+Computing&nbsp;the&nbsp;first&nbsp;20&nbsp;of&nbsp;type&nbsp;I&nbsp;pseudo-amino&nbsp;acid&nbsp;compostion&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;<br>
+&nbsp;<br>
+properties.<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetPseudoAAC2"><strong>GetPseudoAAC2</strong></a>(ProteinSequence, lamda<font color="#909090">=10</font>, weight<font color="#909090">=0.05</font>, AAP<font color="#909090">=[]</font>)</dt><dd><tt>#######################################################################################<br>
+Computing&nbsp;the&nbsp;last&nbsp;lamda&nbsp;of&nbsp;type&nbsp;I&nbsp;pseudo-amino&nbsp;acid&nbsp;compostion&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;<br>
+&nbsp;<br>
+properties.<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSequenceOrderCorrelationFactor"><strong>GetSequenceOrderCorrelationFactor</strong></a>(ProteinSequence, k<font color="#909090">=1</font>, AAP<font color="#909090">=[]</font>)</dt><dd><tt>########################################################################################<br>
+Computing&nbsp;the&nbsp;Sequence&nbsp;order&nbsp;correlation&nbsp;factor&nbsp;with&nbsp;gap&nbsp;equal&nbsp;to&nbsp;k&nbsp;based&nbsp;on&nbsp;<br>
+&nbsp;<br>
+the&nbsp;given&nbsp;properities.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-GetSequenceOrderCorrelationFactor">GetSequenceOrderCorrelationFactor</a>(protein,k,AAP)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+k&nbsp;is&nbsp;the&nbsp;gap.<br>
+&nbsp;<br>
+AAP&nbsp;is&nbsp;a&nbsp;list&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties,&nbsp;each&nbsp;of&nbsp;which&nbsp;is&nbsp;a&nbsp;dict&nbsp;form.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;the&nbsp;correlation&nbsp;factor&nbsp;value&nbsp;with&nbsp;the&nbsp;gap&nbsp;equal&nbsp;to&nbsp;k.<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSequenceOrderCorrelationFactorForAPAAC"><strong>GetSequenceOrderCorrelationFactorForAPAAC</strong></a>(ProteinSequence, k<font color="#909090">=1</font>)</dt><dd><tt>########################################################################################<br>
+Computing&nbsp;the&nbsp;Sequence&nbsp;order&nbsp;correlation&nbsp;factor&nbsp;with&nbsp;gap&nbsp;equal&nbsp;to&nbsp;k&nbsp;based&nbsp;on&nbsp;<br>
+&nbsp;<br>
+[_Hydrophobicity,_hydrophilicity]&nbsp;for&nbsp;APAAC&nbsp;(type&nbsp;II&nbsp;PseAAC)&nbsp;.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-GetSequenceOrderCorrelationFactorForAPAAC">GetSequenceOrderCorrelationFactorForAPAAC</a>(protein,k)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+k&nbsp;is&nbsp;the&nbsp;gap.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;the&nbsp;correlation&nbsp;factor&nbsp;value&nbsp;with&nbsp;the&nbsp;gap&nbsp;equal&nbsp;to&nbsp;k.<br>
+########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-NormalizeEachAAP"><strong>NormalizeEachAAP</strong></a>(AAP)</dt><dd><tt>########################################################################################<br>
+All&nbsp;of&nbsp;the&nbsp;amino&nbsp;acid&nbsp;indices&nbsp;are&nbsp;centralized&nbsp;and&nbsp;<br>
+&nbsp;<br>
+standardized&nbsp;before&nbsp;the&nbsp;calculation.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-NormalizeEachAAP">NormalizeEachAAP</a>(AAP)<br>
+&nbsp;<br>
+Input:&nbsp;AAP&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;properties&nbsp;of&nbsp;20&nbsp;amino&nbsp;acids.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;the&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;normalized&nbsp;properties&nbsp;<br>
+&nbsp;<br>
+of&nbsp;20&nbsp;amino&nbsp;acids.<br>
+########################################################################################</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AALetter</strong> = ['A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']</td></tr></table>
+</body></html>

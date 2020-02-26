@@ -1,0 +1,135 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module AAComposition</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>AAComposition</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/orient/ProPy/AAComposition.py">/home/orient/ProPy/AAComposition.py</a></font></td></tr></table>
+    <p><tt>###############################################################################<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;is&nbsp;used&nbsp;for&nbsp;computing&nbsp;the&nbsp;composition&nbsp;of&nbsp;amino&nbsp;acids,&nbsp;dipetide&nbsp;and&nbsp;<br>
+&nbsp;<br>
+3-mers&nbsp;(tri-peptide)&nbsp;for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence.&nbsp;You&nbsp;can&nbsp;get&nbsp;8420&nbsp;descriptors&nbsp;<br>
+&nbsp;<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence.&nbsp;You&nbsp;can&nbsp;freely&nbsp;use&nbsp;and&nbsp;distribute&nbsp;it.&nbsp;If&nbsp;you&nbsp;hava&nbsp;<br>
+&nbsp;<br>
+any&nbsp;problem,&nbsp;you&nbsp;could&nbsp;contact&nbsp;with&nbsp;us&nbsp;timely!<br>
+&nbsp;<br>
+References:<br>
+&nbsp;<br>
+[1]:&nbsp;Reczko,&nbsp;M.&nbsp;and&nbsp;Bohr,&nbsp;H.&nbsp;(1994)&nbsp;The&nbsp;DEF&nbsp;data&nbsp;base&nbsp;of&nbsp;sequence&nbsp;based&nbsp;protein<br>
+&nbsp;<br>
+fold&nbsp;class&nbsp;predictions.&nbsp;Nucleic&nbsp;Acids&nbsp;Res,&nbsp;22,&nbsp;3616-3619.<br>
+&nbsp;<br>
+[2]:&nbsp;Hua,&nbsp;S.&nbsp;and&nbsp;Sun,&nbsp;Z.&nbsp;(2001)&nbsp;Support&nbsp;vector&nbsp;machine&nbsp;approach&nbsp;for&nbsp;protein<br>
+&nbsp;<br>
+subcellular&nbsp;localization&nbsp;prediction.&nbsp;Bioinformatics,&nbsp;17,&nbsp;721-728.<br>
+&nbsp;<br>
+&nbsp;<br>
+[3]:Grassmann,&nbsp;J.,&nbsp;Reczko,&nbsp;M.,&nbsp;Suhai,&nbsp;S.&nbsp;and&nbsp;Edler,&nbsp;L.&nbsp;(1999)&nbsp;Protein&nbsp;fold&nbsp;class<br>
+&nbsp;<br>
+prediction:&nbsp;new&nbsp;methods&nbsp;of&nbsp;statistical&nbsp;classification.&nbsp;Proc&nbsp;Int&nbsp;Conf&nbsp;Intell&nbsp;Syst&nbsp;Mol<br>
+&nbsp;<br>
+Biol,&nbsp;106-112.<br>
+&nbsp;<br>
+Authors:&nbsp;Dongsheng&nbsp;Cao&nbsp;and&nbsp;Yizeng&nbsp;Liang.<br>
+&nbsp;<br>
+Date:&nbsp;2012.3.27<br>
+&nbsp;<br>
+Email:&nbsp;oriental-cds@163.com<br>
+&nbsp;<br>
+###############################################################################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-CalculateAAComposition"><strong>CalculateAAComposition</strong></a>(ProteinSequence)</dt><dd><tt>########################################################################<br>
+Calculate&nbsp;the&nbsp;composition&nbsp;of&nbsp;Amino&nbsp;acids&nbsp;<br>
+&nbsp;<br>
+for&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateAAComposition">CalculateAAComposition</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;composition&nbsp;of&nbsp;<br>
+&nbsp;<br>
+20&nbsp;amino&nbsp;acids.<br>
+########################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateAADipeptideComposition"><strong>CalculateAADipeptideComposition</strong></a>(ProteinSequence)</dt><dd><tt>########################################################################<br>
+Calculate&nbsp;the&nbsp;composition&nbsp;of&nbsp;AADs,&nbsp;dipeptide&nbsp;and&nbsp;3-mers&nbsp;for&nbsp;a&nbsp;<br>
+&nbsp;<br>
+given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateAADipeptideComposition">CalculateAADipeptideComposition</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;composition&nbsp;values&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs,&nbsp;dipeptide&nbsp;and&nbsp;3-mers&nbsp;(8420).<br>
+########################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDipeptideComposition"><strong>CalculateDipeptideComposition</strong></a>(ProteinSequence)</dt><dd><tt>########################################################################<br>
+Calculate&nbsp;the&nbsp;composition&nbsp;of&nbsp;dipeptidefor&nbsp;a&nbsp;given&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDipeptideComposition">CalculateDipeptideComposition</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;composition&nbsp;of&nbsp;<br>
+&nbsp;<br>
+400&nbsp;dipeptides.<br>
+########################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetSpectrumDict"><strong>GetSpectrumDict</strong></a>(proteinsequence)</dt><dd><tt>########################################################################<br>
+Calcualte&nbsp;the&nbsp;spectrum&nbsp;descriptors&nbsp;of&nbsp;3-mers&nbsp;for&nbsp;a&nbsp;given&nbsp;protein.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-GetSpectrumDict">GetSpectrumDict</a>(protein)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;the&nbsp;composition&nbsp;values&nbsp;of&nbsp;8000<br>
+&nbsp;<br>
+3-mers.<br>
+########################################################################</tt></dd></dl>
+ <dl><dt><a name="-Getkmers"><strong>Getkmers</strong></a>()</dt><dd><tt>########################################################################<br>
+Get&nbsp;the&nbsp;amino&nbsp;acid&nbsp;list&nbsp;of&nbsp;3-mers.&nbsp;<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-Getkmers">Getkmers</a>()<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;list&nbsp;form&nbsp;containing&nbsp;8000&nbsp;tri-peptides.<br>
+&nbsp;<br>
+########################################################################</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AALetter</strong> = ['A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']</td></tr></table>
+</body></html>

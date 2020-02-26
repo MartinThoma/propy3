@@ -1,0 +1,445 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module CTD</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>CTD</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/orient/ProPy/CTD.py">/home/orient/ProPy/CTD.py</a></font></td></tr></table>
+    <p><tt>#####################################################################################<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;is&nbsp;used&nbsp;for&nbsp;computing&nbsp;the&nbsp;composition,&nbsp;transition&nbsp;and&nbsp;distribution&nbsp;<br>
+&nbsp;<br>
+descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;different&nbsp;properties&nbsp;of&nbsp;AADs.&nbsp;The&nbsp;AADs&nbsp;with&nbsp;the&nbsp;same&nbsp;<br>
+&nbsp;<br>
+properties&nbsp;is&nbsp;marked&nbsp;as&nbsp;the&nbsp;same&nbsp;number.&nbsp;You&nbsp;can&nbsp;get&nbsp;147&nbsp;descriptors&nbsp;for&nbsp;a&nbsp;given<br>
+&nbsp;<br>
+protein&nbsp;sequence.&nbsp;You&nbsp;can&nbsp;freely&nbsp;use&nbsp;and&nbsp;distribute&nbsp;it.&nbsp;If&nbsp;you&nbsp;hava&nbsp;&nbsp;any&nbsp;problem,&nbsp;<br>
+&nbsp;<br>
+you&nbsp;could&nbsp;contact&nbsp;with&nbsp;us&nbsp;timely!<br>
+&nbsp;<br>
+References:<br>
+&nbsp;<br>
+[1]:&nbsp;Inna&nbsp;Dubchak,&nbsp;Ilya&nbsp;Muchink,&nbsp;Stephen&nbsp;R.Holbrook&nbsp;and&nbsp;Sung-Hou&nbsp;Kim.&nbsp;Prediction&nbsp;<br>
+&nbsp;<br>
+of&nbsp;protein&nbsp;folding&nbsp;class&nbsp;using&nbsp;global&nbsp;description&nbsp;of&nbsp;amino&nbsp;acid&nbsp;sequence.&nbsp;Proc.Natl.<br>
+&nbsp;<br>
+Acad.Sci.USA,&nbsp;1995,&nbsp;92,&nbsp;8700-8704.<br>
+&nbsp;<br>
+[2]:Inna&nbsp;Dubchak,&nbsp;Ilya&nbsp;Muchink,&nbsp;Christopher&nbsp;Mayor,&nbsp;Igor&nbsp;Dralyuk&nbsp;and&nbsp;Sung-Hou&nbsp;Kim.&nbsp;<br>
+&nbsp;<br>
+Recognition&nbsp;of&nbsp;a&nbsp;Protein&nbsp;Fold&nbsp;in&nbsp;the&nbsp;Context&nbsp;of&nbsp;the&nbsp;SCOP&nbsp;classification.&nbsp;Proteins:&nbsp;<br>
+&nbsp;<br>
+Structure,&nbsp;Function&nbsp;and&nbsp;Genetics,1999,35,401-407.<br>
+&nbsp;<br>
+Authors:&nbsp;Dongsheng&nbsp;Cao&nbsp;and&nbsp;Yizeng&nbsp;Liang.<br>
+&nbsp;<br>
+Date:&nbsp;2010.11.22<br>
+&nbsp;<br>
+Email:&nbsp;oriental-cds@163.com<br>
+&nbsp;<br>
+#####################################################################################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-CalculateC"><strong>CalculateC</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+Calculate&nbsp;all&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;seven&nbsp;different&nbsp;properties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateC">CalculateC</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;composition&nbsp;descriptors.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCTD"><strong>CalculateCTD</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+Calculate&nbsp;all&nbsp;CTD&nbsp;descriptors&nbsp;based&nbsp;seven&nbsp;different&nbsp;properties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateCTD">CalculateCTD</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;CTD&nbsp;descriptors.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateComposition"><strong>CalculateComposition</strong></a>(ProteinSequence, AAProperty, AAPName)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;composition&nbsp;descriptors.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateComposition">CalculateComposition</a>(protein,AAProperty,AAPName)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAProperty&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;classifciation&nbsp;of&nbsp;amino&nbsp;acids&nbsp;such&nbsp;as&nbsp;_Polarizability.<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;string&nbsp;used&nbsp;for&nbsp;indicating&nbsp;a&nbsp;AAP&nbsp;name.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;property.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCompositionCharge"><strong>CalculateCompositionCharge</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Charge&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateCompositionCharge">CalculateCompositionCharge</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Charge.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCompositionHydrophobicity"><strong>CalculateCompositionHydrophobicity</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Hydrophobicity&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateCompositionHydrophobicity">CalculateCompositionHydrophobicity</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Hydrophobicity.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCompositionNormalizedVDWV"><strong>CalculateCompositionNormalizedVDWV</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;NormalizedVDWV&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateCompositionNormalizedVDWV">CalculateCompositionNormalizedVDWV</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;NormalizedVDWV.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCompositionPolarity"><strong>CalculateCompositionPolarity</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarity&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateCompositionPolarity">CalculateCompositionPolarity</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarity.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCompositionPolarizability"><strong>CalculateCompositionPolarizability</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarizability&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateCompositionPolarizability">CalculateCompositionPolarizability</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarizability.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCompositionSecondaryStr"><strong>CalculateCompositionSecondaryStr</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SecondaryStr&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateCompositionSecondaryStr">CalculateCompositionSecondaryStr</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SecondaryStr.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateCompositionSolventAccessibility"><strong>CalculateCompositionSolventAccessibility</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SolventAccessibility<br>
+&nbsp;<br>
+of&nbsp;&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateCompositionSolventAccessibility">CalculateCompositionSolventAccessibility</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Composition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SolventAccessibility.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateD"><strong>CalculateD</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+Calculate&nbsp;all&nbsp;distribution&nbsp;descriptors&nbsp;based&nbsp;seven&nbsp;different&nbsp;properties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateD">CalculateD</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;distribution&nbsp;descriptors.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistribution"><strong>CalculateDistribution</strong></a>(ProteinSequence, AAProperty, AAPName)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;distribution&nbsp;descriptors.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistribution">CalculateDistribution</a>(protein,AAProperty,AAPName)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAProperty&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;classifciation&nbsp;of&nbsp;amino&nbsp;acids&nbsp;such&nbsp;as&nbsp;_Polarizability.<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;string&nbsp;used&nbsp;for&nbsp;indicating&nbsp;a&nbsp;AAP&nbsp;name.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;property.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistributionCharge"><strong>CalculateDistributionCharge</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Charge&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistributionCharge">CalculateDistributionCharge</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Charge.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistributionHydrophobicity"><strong>CalculateDistributionHydrophobicity</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Hydrophobicity&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistributionHydrophobicity">CalculateDistributionHydrophobicity</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Hydrophobicity.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistributionNormalizedVDWV"><strong>CalculateDistributionNormalizedVDWV</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;NormalizedVDWV&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistributionNormalizedVDWV">CalculateDistributionNormalizedVDWV</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;NormalizedVDWV.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistributionPolarity"><strong>CalculateDistributionPolarity</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarity&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistributionPolarity">CalculateDistributionPolarity</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarity.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistributionPolarizability"><strong>CalculateDistributionPolarizability</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarizability&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistributionPolarizability">CalculateDistributionPolarizability</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarizability.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistributionSecondaryStr"><strong>CalculateDistributionSecondaryStr</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SecondaryStr&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistributionSecondaryStr">CalculateDistributionSecondaryStr</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SecondaryStr.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateDistributionSolventAccessibility"><strong>CalculateDistributionSolventAccessibility</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SolventAccessibility<br>
+&nbsp;<br>
+of&nbsp;&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateDistributionSolventAccessibility">CalculateDistributionSolventAccessibility</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Distribution&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SolventAccessibility.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateT"><strong>CalculateT</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+Calculate&nbsp;all&nbsp;transition&nbsp;descriptors&nbsp;based&nbsp;seven&nbsp;different&nbsp;properties&nbsp;of&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateT">CalculateT</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;all&nbsp;transition&nbsp;descriptors.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransition"><strong>CalculateTransition</strong></a>(ProteinSequence, AAProperty, AAPName)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;computing&nbsp;transition&nbsp;descriptors<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransition">CalculateTransition</a>(protein,AAProperty,AAPName)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAProperty&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;classifciation&nbsp;of&nbsp;amino&nbsp;acids&nbsp;such&nbsp;as&nbsp;_Polarizability.<br>
+&nbsp;<br>
+AAPName&nbsp;is&nbsp;a&nbsp;string&nbsp;used&nbsp;for&nbsp;indicating&nbsp;a&nbsp;AAP&nbsp;name.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;property.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransitionCharge"><strong>CalculateTransitionCharge</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Charge&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransitionCharge">CalculateTransitionCharge</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Charge.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransitionHydrophobicity"><strong>CalculateTransitionHydrophobicity</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Hydrophobicity&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransitionHydrophobicity">CalculateTransitionHydrophobicity</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Hydrophobicity.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransitionNormalizedVDWV"><strong>CalculateTransitionNormalizedVDWV</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;NormalizedVDWV&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransitionNormalizedVDWV">CalculateTransitionNormalizedVDWV</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;NormalizedVDWV.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransitionPolarity"><strong>CalculateTransitionPolarity</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarity&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransitionPolarity">CalculateTransitionPolarity</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarity.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransitionPolarizability"><strong>CalculateTransitionPolarizability</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarizability&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransitionPolarizability">CalculateTransitionPolarizability</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;Polarizability.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransitionSecondaryStr"><strong>CalculateTransitionSecondaryStr</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SecondaryStr&nbsp;of&nbsp;<br>
+&nbsp;<br>
+AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransitionSecondaryStr">CalculateTransitionSecondaryStr</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SecondaryStr.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-CalculateTransitionSolventAccessibility"><strong>CalculateTransitionSolventAccessibility</strong></a>(ProteinSequence)</dt><dd><tt>###############################################################################################<br>
+A&nbsp;method&nbsp;used&nbsp;for&nbsp;calculating&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SolventAccessibility<br>
+&nbsp;<br>
+of&nbsp;&nbsp;AADs.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-CalculateTransitionSolventAccessibility">CalculateTransitionSolventAccessibility</a>(protein)<br>
+&nbsp;<br>
+Input:protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+Output:result&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;Transition&nbsp;descriptors&nbsp;based&nbsp;on&nbsp;SolventAccessibility.<br>
+###############################################################################################</tt></dd></dl>
+ <dl><dt><a name="-StringtoNum"><strong>StringtoNum</strong></a>(ProteinSequence, AAProperty)</dt><dd><tt>###############################################################################################<br>
+Tranform&nbsp;the&nbsp;protein&nbsp;sequence&nbsp;into&nbsp;the&nbsp;string&nbsp;form&nbsp;such&nbsp;as&nbsp;32123223132121123.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-StringtoNum">StringtoNum</a>(protein,AAProperty)<br>
+&nbsp;<br>
+Input:&nbsp;protein&nbsp;is&nbsp;a&nbsp;pure&nbsp;protein&nbsp;sequence.<br>
+&nbsp;<br>
+AAProperty&nbsp;is&nbsp;a&nbsp;dict&nbsp;form&nbsp;containing&nbsp;classifciation&nbsp;of&nbsp;amino&nbsp;acids&nbsp;such&nbsp;as&nbsp;_Polarizability.<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;string&nbsp;such&nbsp;as&nbsp;123321222132111123222<br>
+###############################################################################################</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AALetter</strong> = ['A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']</td></tr></table>
+</body></html>

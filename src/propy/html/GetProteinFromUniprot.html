@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module GetProteinFromUniprot</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>GetProteinFromUniprot</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/orient/ProPy/GetProteinFromUniprot.py">/home/orient/ProPy/GetProteinFromUniprot.py</a></font></td></tr></table>
+    <p><tt>################################################################################################<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;is&nbsp;used&nbsp;to&nbsp;download&nbsp;the&nbsp;protein&nbsp;sequence&nbsp;from&nbsp;the&nbsp;uniprot&nbsp;(<a href="http://www.uniprot.org/">http://www.uniprot.org/</a>)&nbsp;<br>
+&nbsp;<br>
+website.&nbsp;You&nbsp;can&nbsp;only&nbsp;need&nbsp;input&nbsp;a&nbsp;protein&nbsp;ID&nbsp;or&nbsp;prepare&nbsp;a&nbsp;file&nbsp;(ID.txt)&nbsp;related&nbsp;to&nbsp;ID.&nbsp;You&nbsp;can<br>
+&nbsp;<br>
+&nbsp;obtain&nbsp;a&nbsp;.txt&nbsp;(ProteinSequence.txt)&nbsp;file&nbsp;saving&nbsp;protein&nbsp;sequence&nbsp;you&nbsp;need.&nbsp;&nbsp;You&nbsp;can&nbsp;freely&nbsp;use&nbsp;<br>
+&nbsp;<br>
+&nbsp;and&nbsp;distribute&nbsp;it.&nbsp;If&nbsp;you&nbsp;hava&nbsp;&nbsp;any&nbsp;problem,&nbsp;you&nbsp;could&nbsp;contact&nbsp;with&nbsp;us&nbsp;timely!<br>
+&nbsp;<br>
+Authors:&nbsp;Dongsheng&nbsp;Cao&nbsp;and&nbsp;Yizeng&nbsp;Liang.<br>
+&nbsp;<br>
+Date:&nbsp;2012.9.3<br>
+&nbsp;<br>
+Email:&nbsp;oriental-cds@163.com<br>
+&nbsp;<br>
+################################################################################################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top><a href="urllib.html">urllib</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-GetProteinSequence"><strong>GetProteinSequence</strong></a>(ProteinID)</dt><dd><tt>#########################################################################################<br>
+Get&nbsp;the&nbsp;protein&nbsp;sequence&nbsp;from&nbsp;the&nbsp;uniprot&nbsp;website&nbsp;by&nbsp;ID.<br>
+&nbsp;<br>
+Usage:<br>
+&nbsp;<br>
+result=<a href="#-GetProteinSequence">GetProteinSequence</a>(ProteinID)<br>
+&nbsp;<br>
+Input:&nbsp;ProteinID&nbsp;is&nbsp;a&nbsp;string&nbsp;indicating&nbsp;ID&nbsp;such&nbsp;as&nbsp;"P48039".<br>
+&nbsp;<br>
+Output:&nbsp;result&nbsp;is&nbsp;a&nbsp;protein&nbsp;sequence.<br>
+#########################################################################################</tt></dd></dl>
+ <dl><dt><a name="-GetProteinSequenceFromTxt"><strong>GetProteinSequenceFromTxt</strong></a>(path, openfile, savefile)</dt><dd><tt>#########################################################################################<br>
+Get&nbsp;the&nbsp;protein&nbsp;sequence&nbsp;from&nbsp;the&nbsp;uniprot&nbsp;website&nbsp;by&nbsp;the&nbsp;file&nbsp;containing&nbsp;ID.<br>
+&nbsp;<br>
+Usage:&nbsp;<br>
+&nbsp;<br>
+result=<a href="#-GetProteinSequenceFromTxt">GetProteinSequenceFromTxt</a>(path,openfile,savefile)<br>
+&nbsp;<br>
+Input:&nbsp;path&nbsp;is&nbsp;a&nbsp;directory&nbsp;path&nbsp;containing&nbsp;the&nbsp;ID&nbsp;file&nbsp;such&nbsp;as&nbsp;"/home/orient/protein/"&nbsp;<br>
+&nbsp;<br>
+openfile&nbsp;is&nbsp;the&nbsp;ID&nbsp;file&nbsp;such&nbsp;as&nbsp;"proteinID.txt"<br>
+&nbsp;<br>
+savefile&nbsp;is&nbsp;the&nbsp;file&nbsp;saving&nbsp;the&nbsp;obtained&nbsp;protein&nbsp;sequences&nbsp;such&nbsp;as&nbsp;"protein.txt"<br>
+#########################################################################################</tt></dd></dl>
+</td></tr></table>
+</body></html>
