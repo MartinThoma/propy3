@@ -11,68 +11,78 @@ Email: oriental-cds@163.com
 ######################################################################
 """
 
-modulelists=['AAComposition','Autocorrelation','CTD','QuasiSequenceOrder','PseudoAAC','GetProteinFromUniprot','GetSubSeq']
+modulelists = [
+    "AAComposition",
+    "Autocorrelation",
+    "CTD",
+    "QuasiSequenceOrder",
+    "PseudoAAC",
+    "GetProteinFromUniprot",
+    "GetSubSeq",
+]
 
-modules=list()
+modules = list()
 for i in modulelists:
-	modules.append(__import__(i))
+    modules.append(__import__(i))
 
-AAC  = modules[0]
-AC   = modules[1]
-CTD  = modules[2]
-QSO  = modules[3]
+AAC = modules[0]
+AC = modules[1]
+CTD = modules[2]
+QSO = modules[3]
 PAAC = modules[4]
 GPFU = modules[5]
-GSS  = modules[6]
+GSS = modules[6]
 
-print '...............................................................'
+print "..............................................................."
 
 print "testing the GetProteinFromUniprot module"
 
-ProteinSequence = GPFU.GetProteinSequence('P08172')
+ProteinSequence = GPFU.GetProteinSequence("P08172")
 
-print '...............................................................'
+print "..............................................................."
 
 print "testing the GetSubSeq module"
 
-temp=GSS.GetSubSequence(ProteinSequence,ToAA='D', window=5)
+temp = GSS.GetSubSequence(ProteinSequence, ToAA="D", window=5)
 
 print temp
 
-print '...............................................................'
+print "..............................................................."
 
 print "testing the AAComposition module"
 
-temp=AAC.CalculateAAComposition(ProteinSequence)
+temp = AAC.CalculateAAComposition(ProteinSequence)
 
 print temp
 
-temp=AAC.CalculateDipeptideComposition(ProteinSequence)
+temp = AAC.CalculateDipeptideComposition(ProteinSequence)
 
-temp=AAC.GetSpectrumDict(ProteinSequence)
+temp = AAC.GetSpectrumDict(ProteinSequence)
 
-temp=AAC.CalculateAADipeptideComposition(ProteinSequence)
+temp = AAC.CalculateAADipeptideComposition(ProteinSequence)
 
-print '...............................................................'
+print "..............................................................."
 
 print "testing the Autocorrelation module"
 
 
-temp=AC.CalculateNormalizedMoreauBrotoAuto(ProteinSequence,[AC._ResidueASA],['ResidueASA'])
+temp = AC.CalculateNormalizedMoreauBrotoAuto(
+    ProteinSequence, [AC._ResidueASA], ["ResidueASA"]
+)
 
 print temp
 
-temp=AC.CalculateMoranAuto(ProteinSequence,[AC._ResidueASA],['ResidueASA'])
+temp = AC.CalculateMoranAuto(ProteinSequence, [AC._ResidueASA], ["ResidueASA"])
 
 print temp
 
-temp=AC.CalculateGearyAuto(ProteinSequence,[AC._ResidueASA],['ResidueASA'])
+temp = AC.CalculateGearyAuto(ProteinSequence, [AC._ResidueASA], ["ResidueASA"])
 
 print temp
 
-temp=AC.CalculateAutoTotal(ProteinSequence)
+temp = AC.CalculateAutoTotal(ProteinSequence)
 
-print '...............................................................'
+print "..............................................................."
 
 print "testing the CTD module"
 
@@ -92,33 +102,31 @@ temp = CTD.CalculateCTD(ProteinSequence)
 
 print temp
 
-print '...............................................................'
+print "..............................................................."
 
 print "testing the QuasiSequenceOrder module"
 
-temp=QSO.GetSequenceOrderCouplingNumberTotal(ProteinSequence,maxlag=30)
+temp = QSO.GetSequenceOrderCouplingNumberTotal(ProteinSequence, maxlag=30)
 
 print temp
 
-temp=QSO.GetQuasiSequenceOrder(ProteinSequence,maxlag=30,weight=0.1)
+temp = QSO.GetQuasiSequenceOrder(ProteinSequence, maxlag=30, weight=0.1)
 
 print temp
 
-print '...............................................................'
+print "..............................................................."
 
 print "testing the PseudoAAC module"
 
-temp= PAAC.GetAPseudoAAC(ProteinSequence,lamda=10,weight=0.5)
+temp = PAAC.GetAPseudoAAC(ProteinSequence, lamda=10, weight=0.5)
 
 print temp
 
 
-temp= PAAC._GetPseudoAAC(ProteinSequence,lamda=10,weight=0.05)
+temp = PAAC._GetPseudoAAC(ProteinSequence, lamda=10, weight=0.05)
 
 print temp
 
-print '...............................................................'
+print "..............................................................."
 
 print "Tested successfully!"
-
-

@@ -13,126 +13,159 @@ Date: 2012.9.4
 Email: oriental-cds@163.com
 
 """
-from AAComposition import CalculateAAComposition, CalculateDipeptideComposition, GetSpectrumDict
+from AAComposition import (
+    CalculateAAComposition,
+    CalculateDipeptideComposition,
+    GetSpectrumDict,
+)
 
-from Autocorrelation import CalculateNormalizedMoreauBrotoAutoTotal,CalculateMoranAutoTotal,CalculateGearyAutoTotal
+from Autocorrelation import (
+    CalculateNormalizedMoreauBrotoAutoTotal,
+    CalculateMoranAutoTotal,
+    CalculateGearyAutoTotal,
+)
 
-from Autocorrelation import CalculateEachGearyAuto,CalculateEachMoranAuto,CalculateEachNormalizedMoreauBrotoAuto
+from Autocorrelation import (
+    CalculateEachGearyAuto,
+    CalculateEachMoranAuto,
+    CalculateEachNormalizedMoreauBrotoAuto,
+)
 
 from CTD import CalculateCTD
 
-from QuasiSequenceOrder import GetSequenceOrderCouplingNumberTotal, GetQuasiSequenceOrder
+from QuasiSequenceOrder import (
+    GetSequenceOrderCouplingNumberTotal,
+    GetQuasiSequenceOrder,
+)
 
-from QuasiSequenceOrder import GetSequenceOrderCouplingNumberp,GetQuasiSequenceOrderp
+from QuasiSequenceOrder import GetSequenceOrderCouplingNumberp, GetQuasiSequenceOrderp
 
-from PseudoAAC import _GetPseudoAAC, GetAPseudoAAC,GetPseudoAAC
+from PseudoAAC import _GetPseudoAAC, GetAPseudoAAC, GetPseudoAAC
 
 from GetSubSeq import GetSubSequence
 
 from AAIndex import GetAAIndex1, GetAAIndex23
 
+
 class GetProDes:
-	"""
+    """
 	This GetProDes class aims at collecting all descriptor calcualtion modules into a simple class.
 	
 	"""
-	AALetter=["A","R","N","D","C","E","Q","G","H","I","L","K","M","F","P","S","T","W","Y","V"]
-	
-	Version = 1.0
-	
 
-	def __init__(self,ProteinSequence=''):
-		"""
+    AALetter = [
+        "A",
+        "R",
+        "N",
+        "D",
+        "C",
+        "E",
+        "Q",
+        "G",
+        "H",
+        "I",
+        "L",
+        "K",
+        "M",
+        "F",
+        "P",
+        "S",
+        "T",
+        "W",
+        "Y",
+        "V",
+    ]
+
+    Version = 1.0
+
+    def __init__(self, ProteinSequence=""):
+        """
 		input a protein sequence
 		"""
-		if len(ProteinSequence)==0:
-			print "You must input a protein sequence when constructing a object. It is a string!"
-		else:
-			self.ProteinSequence=ProteinSequence
+        if len(ProteinSequence) == 0:
+            print "You must input a protein sequence when constructing a object. It is a string!"
+        else:
+            self.ProteinSequence = ProteinSequence
 
-
-	def GetAAComp(self):
-		"""
+    def GetAAComp(self):
+        """
 		amino acid compositon descriptors (20)
 		
 		Usage:
 		
 		result = GetAAComp()
 		"""
-		res=CalculateAAComposition(self.ProteinSequence)
-		return res
+        res = CalculateAAComposition(self.ProteinSequence)
+        return res
 
-	def GetDPComp(self):
-		"""
+    def GetDPComp(self):
+        """
 		dipeptide composition descriptors (400) 
 		
 		Usage:
 		
 		result = GetDPComp()
 		"""
-		res=CalculateDipeptideComposition(self.ProteinSequence)
-		return res
+        res = CalculateDipeptideComposition(self.ProteinSequence)
+        return res
 
-	def GetTPComp(self):
-		"""
+    def GetTPComp(self):
+        """
 		tri-peptide composition descriptors (8000)
 		
 		Usage:
 		
 		result = GetTPComp()
 		"""
-		res=GetSpectrumDict(self.ProteinSequence)
-		return res
+        res = GetSpectrumDict(self.ProteinSequence)
+        return res
 
-
-	def GetMoreauBrotoAuto(self):
-		"""
+    def GetMoreauBrotoAuto(self):
+        """
 		Normalized Moreau-Broto autocorrelation descriptors (240)
 		
 		Usage:
 		
 		result = GetMoreauBrotoAuto()
 		"""
-		res=CalculateNormalizedMoreauBrotoAutoTotal(self.ProteinSequence)
-		return res
+        res = CalculateNormalizedMoreauBrotoAutoTotal(self.ProteinSequence)
+        return res
 
-	def GetMoranAuto(self):
-		"""
+    def GetMoranAuto(self):
+        """
 		Moran autocorrelation descriptors (240)
 		
 		Usage:
 		
 		result = GetMoranAuto()
 		"""
-		res=CalculateMoranAutoTotal(self.ProteinSequence)
-		return res
-	
+        res = CalculateMoranAutoTotal(self.ProteinSequence)
+        return res
 
-	def GetGearyAuto(self):
-		"""
+    def GetGearyAuto(self):
+        """
 		Geary autocorrelation descriptors (240)
 
 		Usage:
 		
 		result = GetGearyAuto()
 		"""
-		res=CalculateGearyAutoTotal(self.ProteinSequence)
-		return res
+        res = CalculateGearyAutoTotal(self.ProteinSequence)
+        return res
 
-	def GetCTD(self):
-		"""
+    def GetCTD(self):
+        """
 		Composition Transition Distribution descriptors (147)
 		
 		Usage:
 		
 		result = GetCTD()
 		"""
-		res=CalculateCTD(self.ProteinSequence)
-		return res
+        res = CalculateCTD(self.ProteinSequence)
+        return res
 
-
-	def GetPAAC(self,lamda=10,weight=0.05):
-		"""
+    def GetPAAC(self, lamda=10, weight=0.05):
+        """
 		Type I Pseudo amino acid composition descriptors (default is 30)
 		
 		Usage:
@@ -153,12 +186,11 @@ class GetProDes:
 	
 		region from 0.05 to 0.7 for the weight factor.
 		"""
-		res=_GetPseudoAAC(self.ProteinSequence,lamda=lamda,weight=weight)
-		return res
+        res = _GetPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
+        return res
 
-
-	def GetPAACp(self,lamda=10,weight=0.05,AAP=[]):
-		"""
+    def GetPAACp(self, lamda=10, weight=0.05, AAP=[]):
+        """
 		Type I Pseudo amino acid composition descriptors for the given properties (default is 30)
 		
 		Usage:
@@ -181,12 +213,11 @@ class GetProDes:
 		
 		AAP is a list form containing the properties, each of which is a dict form.
 		"""
-		res=GetPseudoAAC(self.ProteinSequence,lamda=lamda,weight=weight,AAP=AAP)
-		return res
+        res = GetPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight, AAP=AAP)
+        return res
 
-
-	def GetAPAAC(self,lamda=10,weight=0.5):
-		"""
+    def GetAPAAC(self, lamda=10, weight=0.5):
+        """
 		Amphiphilic (Type II) Pseudo amino acid composition descriptors 
 		
 		default is 30
@@ -210,11 +241,11 @@ class GetProDes:
 		region from 0.05 to 0.7 for the weight factor.
 		
 		"""
-		res=GetAPseudoAAC(self.ProteinSequence,lamda=lamda,weight=weight)
-		return res
-	
-	def GetSOCN(self,maxlag=45):
-		"""
+        res = GetAPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
+        return res
+
+    def GetSOCN(self, maxlag=45):
+        """
 		Sequence order coupling numbers  default is 45
 		
 		Usage:
@@ -225,11 +256,11 @@ class GetProDes:
 	
 		than maxlag. default is 45.
 		"""
-		res=GetSequenceOrderCouplingNumberTotal(self.ProteinSequence,maxlag=maxlag)
-		return res
-		
-	def GetSOCNp(self,maxlag=45,distancematrix={}):
-		"""
+        res = GetSequenceOrderCouplingNumberTotal(self.ProteinSequence, maxlag=maxlag)
+        return res
+
+    def GetSOCNp(self, maxlag=45, distancematrix={}):
+        """
 		Sequence order coupling numbers  default is 45
 		
 		Usage:
@@ -242,11 +273,13 @@ class GetProDes:
 
 		distancematrix is a dict form containing 400 distance values
 		"""
-		res=GetSequenceOrderCouplingNumberp(self.ProteinSequence,maxlag=maxlag,distancematrix=distancematrix)
-		return res
-	
-	def GetQSO(self,maxlag=30,weight=0.1):
-		"""
+        res = GetSequenceOrderCouplingNumberp(
+            self.ProteinSequence, maxlag=maxlag, distancematrix=distancematrix
+        )
+        return res
+
+    def GetQSO(self, maxlag=30, weight=0.1):
+        """
 		Quasi sequence order descriptors  default is 50
 		
 		result = GetQSO(maxlag=30, weight=0.1)
@@ -255,11 +288,11 @@ class GetProDes:
 	
 		than maxlag. default is 45.
 		"""
-		res=GetQuasiSequenceOrder(self.ProteinSequence,maxlag=maxlag,weight=weight)
-		return res
+        res = GetQuasiSequenceOrder(self.ProteinSequence, maxlag=maxlag, weight=weight)
+        return res
 
-	def GetQSOp(self,maxlag=30,weight=0.1,distancematrix={}):
-		"""
+    def GetQSOp(self, maxlag=30, weight=0.1, distancematrix={}):
+        """
 		Quasi sequence order descriptors  default is 50
 		
 		result = GetQSO(maxlag=30, weight=0.1)
@@ -270,11 +303,16 @@ class GetProDes:
 		
 		distancematrix is a dict form containing 400 distance values
 		"""
-		res=GetQuasiSequenceOrderp(self.ProteinSequence,maxlag=maxlag,weight=weight,distancematrix=distancematrix)
-		return res
-		
-	def GetMoreauBrotoAutop(self,AAP={},AAPName='p'):
-		"""
+        res = GetQuasiSequenceOrderp(
+            self.ProteinSequence,
+            maxlag=maxlag,
+            weight=weight,
+            distancematrix=distancematrix,
+        )
+        return res
+
+    def GetMoreauBrotoAutop(self, AAP={}, AAPName="p"):
+        """
 		Normalized Moreau-Broto autocorrelation descriptors for the given property (30)
 		
 		Usage:
@@ -283,11 +321,13 @@ class GetProDes:
 		
 		AAP is a dict containing physicochemical properities of 20 amino acids
 		"""
-		res=CalculateEachNormalizedMoreauBrotoAuto(self.ProteinSequence,AAP=AAP,AAPName=AAPName)
-		return res
+        res = CalculateEachNormalizedMoreauBrotoAuto(
+            self.ProteinSequence, AAP=AAP, AAPName=AAPName
+        )
+        return res
 
-	def GetMoranAutop(self,AAP={},AAPName='p'):
-		"""
+    def GetMoranAutop(self, AAP={}, AAPName="p"):
+        """
 		Moran autocorrelation descriptors for the given property (30)
 		
 		Usage:
@@ -296,12 +336,11 @@ class GetProDes:
 		
 		AAP is a dict containing physicochemical properities of 20 amino acids
 		"""
-		res=CalculateEachMoranAuto(self.ProteinSequence,AAP=AAP,AAPName=AAPName)
-		return res
-	
+        res = CalculateEachMoranAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
+        return res
 
-	def GetGearyAutop(self,AAP={},AAPName='p'):
-		"""
+    def GetGearyAutop(self, AAP={}, AAPName="p"):
+        """
 		Geary autocorrelation descriptors for the given property (30)
 		
 		Usage:
@@ -310,11 +349,11 @@ class GetProDes:
 		
 		AAP is a dict containing physicochemical properities of 20 amino acids
 		"""
-		res=CalculateEachGearyAuto(self.ProteinSequence,AAP=AAP,AAPName=AAPName)
-		return res
-	
-	def GetSubSeq(self,ToAA='S',window=3):
-		"""
+        res = CalculateEachGearyAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
+        return res
+
+    def GetSubSeq(self, ToAA="S", window=3):
+        """
 		obtain the sub sequences wit length 2*window+1, whose central point is ToAA
 		
 		Usage:
@@ -325,29 +364,29 @@ class GetProDes:
 	
 		window is the span.
 		"""
-		res=GetSubSequence(self.ProteinSequence,ToAA=ToAA,window=window)
-		return res
-	
-	def GetALL(self):
-		"""
+        res = GetSubSequence(self.ProteinSequence, ToAA=ToAA, window=window)
+        return res
+
+    def GetALL(self):
+        """
 		Calcualte all descriptors except tri-peptide descriptors
 		"""
-		res={}
-		res.update(self.GetAAComp())
-		res.update(self.GetDPComp())
-#		res.update(self.GetTPComp())
-		res.update(self.GetMoreauBrotoAuto())
-		res.update(self.GetMoranAuto())
-		res.update(self.GetGearyAuto())
-		res.update(self.GetCTD())
-		res.update(self.GetPAAC())
-		res.update(self.GetAPAAC())
-		res.update(self.GetSOCN())
-		res.update(self.GetQSO())
-		return res
+        res = {}
+        res.update(self.GetAAComp())
+        res.update(self.GetDPComp())
+        # 		res.update(self.GetTPComp())
+        res.update(self.GetMoreauBrotoAuto())
+        res.update(self.GetMoranAuto())
+        res.update(self.GetGearyAuto())
+        res.update(self.GetCTD())
+        res.update(self.GetPAAC())
+        res.update(self.GetAPAAC())
+        res.update(self.GetSOCN())
+        res.update(self.GetQSO())
+        return res
 
-	def GetAAindex1(self,name,path='.'):
-		"""
+    def GetAAindex1(self, name, path="."):
+        """
 		Get the amino acid property values from aaindex1
 		
 		Usage:
@@ -359,11 +398,10 @@ class GetProDes:
 		Output: result is a dict form containing the properties of 20 amino acids
 		"""
 
-		return GetAAIndex1(name,path=path)
+        return GetAAIndex1(name, path=path)
 
-
-	def GetAAindex23(self,name,path='.'):
-		"""
+    def GetAAindex23(self, name, path="."):
+        """
 		Get the amino acid property values from aaindex2 and aaindex3
 		
 		Usage:
@@ -374,33 +412,35 @@ class GetProDes:
 		
 		Output: result is a dict form containing the properties of 400 amino acid pairs
 		"""
-		return GetAAIndex23(name,path=path)
+        return GetAAIndex23(name, path=path)
+
+
 #####################################################################################################
-if __name__=="__main__":
-	
-	
-	from Autocorrelation import _Steric
-	from PseudoAAC import _Hydrophobicity,_hydrophilicity,_residuemass
-	protein="ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-	cds=GetProDes(protein)
+if __name__ == "__main__":
 
-#	print cds.GetAAComp()
-#	print cds.GetDPComp()
-#	print cds.GetTPComp()
-#	print cds.GetCTD()
-	print cds.GetPAAC(lamda=5)
-#	print cds.GetALL()
-	print cds.GetMoreauBrotoAutop(AAP=_Steric,AAPName='Steric')
-	print cds.GetMoranAutop(AAP=_Steric,AAPName='Steric')
-	print cds.GetGearyAutop(AAP=_Steric,AAPName='Steric')
-	
-	print cds.GetPAACp(lamda=5,weight=0.05,AAP=[_Hydrophobicity,_hydrophilicity])
-	
-	print cds.GetSubSeq(ToAA='D',window=5)
-	
-	proper=cds.GetAAindex23('GRAR740104',path='/home/orient')
-#	print cds.GetAAindex1('KRIW790103',path='/home/orient')
+    from Autocorrelation import _Steric
+    from PseudoAAC import _Hydrophobicity, _hydrophilicity, _residuemass
 
-	print cds.GetQSOp(maxlag=30,weight=0.1,distancematrix=proper)
-	
-	print cds.GetSOCNp(maxlag=30,distancematrix=proper)
+    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
+    cds = GetProDes(protein)
+
+    # 	print cds.GetAAComp()
+    # 	print cds.GetDPComp()
+    # 	print cds.GetTPComp()
+    # 	print cds.GetCTD()
+    print cds.GetPAAC(lamda=5)
+    # 	print cds.GetALL()
+    print cds.GetMoreauBrotoAutop(AAP=_Steric, AAPName="Steric")
+    print cds.GetMoranAutop(AAP=_Steric, AAPName="Steric")
+    print cds.GetGearyAutop(AAP=_Steric, AAPName="Steric")
+
+    print cds.GetPAACp(lamda=5, weight=0.05, AAP=[_Hydrophobicity, _hydrophilicity])
+
+    print cds.GetSubSeq(ToAA="D", window=5)
+
+    proper = cds.GetAAindex23("GRAR740104", path="/home/orient")
+    # 	print cds.GetAAindex1('KRIW790103',path='/home/orient')
+
+    print cds.GetQSOp(maxlag=30, weight=0.1, distancematrix=proper)
+
+    print cds.GetSOCNp(maxlag=30, distancematrix=proper)

@@ -25,12 +25,34 @@ Email: oriental-cds@163.com
 import re
 import string
 
-AALetter=["A","R","N","D","C","E","Q","G","H","I","L","K","M","F","P","S","T","W","Y","V"]
+AALetter = [
+    "A",
+    "R",
+    "N",
+    "D",
+    "C",
+    "E",
+    "Q",
+    "G",
+    "H",
+    "I",
+    "L",
+    "K",
+    "M",
+    "F",
+    "P",
+    "S",
+    "T",
+    "W",
+    "Y",
+    "V",
+]
 #############################################################################################
 
-def GetSubSequence(ProteinSequence, ToAA='S', window=3):
 
-	"""
+def GetSubSequence(ProteinSequence, ToAA="S", window=3):
+
+    """
 	#######################################################################
 	Get all 2*window+1 sub-sequences whose cener is ToAA in a protein.
 	
@@ -47,32 +69,30 @@ def GetSubSequence(ProteinSequence, ToAA='S', window=3):
 	result is a list form containing all satisfied sub-sequences.
 	#######################################################################
 	"""
-	
-	if ToAA not in AALetter:
-		ToAA=ProteinSequence[1]
-	
-	Num=len(ProteinSequence)
-	seqiter=re.finditer(ToAA,ProteinSequence)
-	AAindex=[]
-	for i in seqiter:
-		AAindex.append(i.end())
-	
-	result=[]
-	for i in AAindex:
-		if i-window>0 and Num-i+1-window>0:
-			temp=ProteinSequence[i-window-1:i+window]
-			result.append(temp)
-	
-	return result
-	
+
+    if ToAA not in AALetter:
+        ToAA = ProteinSequence[1]
+
+    Num = len(ProteinSequence)
+    seqiter = re.finditer(ToAA, ProteinSequence)
+    AAindex = []
+    for i in seqiter:
+        AAindex.append(i.end())
+
+    result = []
+    for i in AAindex:
+        if i - window > 0 and Num - i + 1 - window > 0:
+            temp = ProteinSequence[i - window - 1 : i + window]
+            result.append(temp)
+
+    return result
+
+
 #############################################################################################
-if __name__=="__main__":
+if __name__ == "__main__":
 
-	protein="ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-	subseq=GetSubSequence(protein,ToAA='D',window=10)
-	print subseq
-	print len(subseq)
-	#print len(subseq[0])
-
-
-
+    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
+    subseq = GetSubSequence(protein, ToAA="D", window=10)
+    print subseq
+    print len(subseq)
+    # print len(subseq[0])

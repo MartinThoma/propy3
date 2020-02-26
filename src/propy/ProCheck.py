@@ -17,10 +17,32 @@ Email: oriental-cds@163.com
 
 """
 
-AALetter=["A","R","N","D","C","E","Q","G","H","I","L","K","M","F","P","S","T","W","Y","V"]
+AALetter = [
+    "A",
+    "R",
+    "N",
+    "D",
+    "C",
+    "E",
+    "Q",
+    "G",
+    "H",
+    "I",
+    "L",
+    "K",
+    "M",
+    "F",
+    "P",
+    "S",
+    "T",
+    "W",
+    "Y",
+    "V",
+]
+
 
 def ProteinCheck(ProteinSequence):
-	"""
+    """
 	###################################################################################
 	Check whether the protein sequence is a valid amino acid sequence or not
 	
@@ -36,18 +58,18 @@ def ProteinCheck(ProteinSequence):
 	###################################################################################
 	"""
 
-	NumPro=len(ProteinSequence)
-	for i in ProteinSequence:
-		if i not in AALetter:
-			flag=0
-			break
-		else:
-			flag=NumPro
-	
-	return flag
+    NumPro = len(ProteinSequence)
+    for i in ProteinSequence:
+        if i not in AALetter:
+            flag = 0
+            break
+        else:
+            flag = NumPro
+
+    return flag
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
 
-	protein="ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDASU"
-	print ProteinCheck(protein)
+    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDASU"
+    print ProteinCheck(protein)
