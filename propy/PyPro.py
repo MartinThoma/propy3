@@ -412,7 +412,7 @@ class GetProDes:
 if __name__ == "__main__":
 
     from .Autocorrelation import _Steric
-    from .PseudoAAC import _Hydrophobicity, _hydrophilicity, _residuemass
+    from .PseudoAAC import _Hydrophobicity, _hydrophilicity
 
     protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
     cds = GetProDes(protein)
