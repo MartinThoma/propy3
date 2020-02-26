@@ -36,8 +36,10 @@ Email: oriental-cds@163.com
 """
 
 
-import string, math, copy
-
+# Core Library
+import copy
+import math
+import string
 
 AALetter = [
     "A",

@@ -13,7 +13,10 @@ Email: oriental-cds@163.com
 
 """
 
-import sys, os, string
+# Core Library
+import os
+import string
+import sys
 
 AALetter = [
     "A",

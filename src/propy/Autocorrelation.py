@@ -41,8 +41,9 @@ Email: oriental-cds@163.com
 ##########################################################################################
 """
 
-import math, string
-
+# Core Library
+import math
+import string
 
 AALetter = [
     "A",

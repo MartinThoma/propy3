@@ -13,38 +13,30 @@ Date: 2012.9.4
 Email: oriental-cds@163.com
 
 """
+# First party
 from AAComposition import (
     CalculateAAComposition,
     CalculateDipeptideComposition,
     GetSpectrumDict,
 )
-
-from Autocorrelation import (
-    CalculateNormalizedMoreauBrotoAutoTotal,
-    CalculateMoranAutoTotal,
-    CalculateGearyAutoTotal,
-)
-
+from AAIndex import GetAAIndex1, GetAAIndex23
 from Autocorrelation import (
     CalculateEachGearyAuto,
     CalculateEachMoranAuto,
     CalculateEachNormalizedMoreauBrotoAuto,
+    CalculateGearyAutoTotal,
+    CalculateMoranAutoTotal,
+    CalculateNormalizedMoreauBrotoAutoTotal,
 )
-
 from CTD import CalculateCTD
-
-from QuasiSequenceOrder import (
-    GetSequenceOrderCouplingNumberTotal,
-    GetQuasiSequenceOrder,
-)
-
-from QuasiSequenceOrder import GetSequenceOrderCouplingNumberp, GetQuasiSequenceOrderp
-
-from PseudoAAC import _GetPseudoAAC, GetAPseudoAAC, GetPseudoAAC
-
 from GetSubSeq import GetSubSequence
-
-from AAIndex import GetAAIndex1, GetAAIndex23
+from PseudoAAC import GetAPseudoAAC, GetPseudoAAC, _GetPseudoAAC
+from QuasiSequenceOrder import (
+    GetQuasiSequenceOrder,
+    GetQuasiSequenceOrderp,
+    GetSequenceOrderCouplingNumberp,
+    GetSequenceOrderCouplingNumberTotal,
+)
 
 
 class GetProDes:
