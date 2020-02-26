@@ -1,3 +1,9 @@
+[![PyPI version](https://badge.fury.io/py/propy3.svg)](https://badge.fury.io/py/propy3)
+[![Python Support](https://img.shields.io/pypi/pyversions/propy3.svg)](https://pypi.org/project/propy3/)
+[![Documentation Status](https://readthedocs.org/projects/propy3/badge/?version=latest)](https://propy3.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/MartinThoma/propy3.svg?branch=master)](https://travis-ci.org/MartinThoma/propy3)
+[![Coverage Status](https://coveralls.io/repos/github/MartinThoma/propy3/badge.svg?branch=master)](https://coveralls.io/github/MartinThoma/propy3?branch=master)
+
 # propy3
 
 `propy3` is a drop-in replacement for [`propy`](https://code.google.com/archive/p/protpy/).
