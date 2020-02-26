@@ -1,16 +1,11 @@
 """
 This module is used for obtaining the properties of amino acids or their pairs
-
 from the aaindex database. You can freely use and distribute it. If you hava
-
 any problem, you could contact with us timely!
 
 Authors: Dongsheng Cao and Yizeng Liang.
-
 Date: 2012.09.10
-
 Email: oriental-cds@163.com
-
 """
 
 # Core Library
@@ -46,9 +41,7 @@ _aaindex = dict()
 
 
 class Record:
-    """
-    Amino acid index (AAindex) Record
-    """
+    """Amino acid index (AAindex) Record."""
 
     aakeys = "ARNDCQEGHILKMFPSTWYV"
 
@@ -89,9 +82,7 @@ class Record:
 
 
 class MatrixRecord(Record):
-    """
-    Matrix record for mutation matrices or pair-wise contact potentials.
-    """
+    """Matrix record for mutation matrices or pair-wise contact potentials."""
 
     def __init__(self):
         Record.__init__(self)
@@ -283,13 +274,19 @@ def GetAAIndex1(name, path="."):
     """
     Get the amino acid property values from aaindex1
 
-    Usage:
+    Parameters
+    ----------
+    name : str
+        name of amino acid property (e.g., KRIW790103)
 
-    result=GetAAIndex1(name)
+    Returns
+    -------
+    result : Dict
+        contains the properties of 20 amino acids
 
-    Input: name is the name of amino acid property (e.g., KRIW790103)
-
-    Output: result is a dict form containing the properties of 20 amino acids
+    Examples
+    --------
+    >>> result = GetAAIndex1(name)
     """
 
     init(path=path)
@@ -305,13 +302,19 @@ def GetAAIndex23(name, path="."):
     """
     Get the amino acid property values from aaindex2 and aaindex3
 
-    Usage:
+    Parameters
+    ----------
+    name : str
+        name of amino acid property (e.g.,TANS760101,GRAR740104)
 
-    result = GetAAIndex23(name)
+    Returns
+    -------
+    result : Dict
+        contains the properties of 400 amino acid pairs
 
-    Input: name is the name of amino acid property (e.g.,TANS760101,GRAR740104)
-
-    Output: result is a dict form containing the properties of 400 amino acid pairs
+    Examples
+    --------
+    >>> result = GetAAIndex23(name)
     """
     init(path=path)
     name = str(name)
@@ -324,13 +327,11 @@ def GetAAIndex23(name, path="."):
 
 
 if __name__ == "__main__":
-
     # init(path='.')
-
     # grep('volume')
     # x = get('KRIW790103')
-    # print x
-    # print x.get('W')
+    # print(x)
+    # print(x.get('W'))
     temp1 = GetAAIndex1("KRIW790103")
     print(len(temp1))
 
