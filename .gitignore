@@ -107,3 +107,5 @@ tests/reports/
 
 # https://pypi.org/project/mutmut/
 .mutmut-cache
+
+.envrc
