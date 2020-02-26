@@ -9,8 +9,8 @@ Date: 2012.09.11
 Email: oriental-cds@163.com
 """
 
-# Core Library
-from distutils.core import setup
+# Third party
+from setuptools import setup
 
 packagedata = {
     "propy": [
