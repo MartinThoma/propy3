@@ -1,4 +1,15 @@
-## INSTRUCTION
+# propy3
+
+`propy3` is a drop-in replacement for [`propy`](https://code.google.com/archive/p/protpy/).
+The original project was developed by Dongsheng Cao. See the commit history
+for all changes made afterwards.
+
+The reason for creating this fork of propy is to add Python 3 support.
+
+The only point where you have to enter `propy3` is at installation. Afterwards,
+you simply `import propy`.
+
+## Introduction
 
 Sequence-derived structural and physicochemical features are highly useful for
 representing and distinguishing proteins or peptides of different structural,
@@ -11,28 +22,29 @@ order to conveniently apply these structural features from a protein sequence
 for researchers, we developed a propy package using pure python language, which
 could calculate a large number of protein descriptors from a protein sequence.
 
-## FEATURES
+## Features
 
 The propy package has the following significant features:
-(1): It is written by the pure python language. It only needs the support
-of some built-in modules in the python software.
-(2): For academic users, it is free of charge. They can freely use and distribute
- it. For commercial purpose, they must contact the author.
-(3): It can calculate a large number of protein descriptors including:
-amino acid composition descriptors, dipeptide composition descriptors,
-tri-peptide composition descriptors, Normalized Moreau-Broto autocorrelation descriptors,
-Moran autocorrelation descriptors, Geary autocorrelation descriptors, Composition,
-Transition, Distribution descriptors (CTD), sequence order coupling numbers,
-quasi-sequence order descriptors, pseudo amino acid composition descriptors,
-amphiphilic pseudo amino acid composition descriptors.
-(4): The users could specify the needed properties of 20 amino acids to calculate
-the corresponding protein descriptors.
-(5): The package includes the module which could directly download the protein
-sequence form uniprot website by uniprot id.
-(6): The package includes the module which could automatrically download the property
-from the AAindex database. Thus, the user could calcualte thousands of protein features.
 
--------------------------------------------------------------------------------
+1. It is written by the pure python language. It only needs the support of some
+   built-in modules in the python software.
+2. For academic users, it is free of charge. They can freely use and distribute
+   it. For commercial purpose, they must contact the author.
+3. It can calculate a large number of protein descriptors including: amino acid
+   composition descriptors, dipeptide composition descriptors, tri-peptide
+   composition descriptors, Normalized Moreau-Broto autocorrelation
+   descriptors, Moran autocorrelation descriptors, Geary autocorrelation
+   descriptors, Composition, Transition, Distribution descriptors (CTD),
+   sequence order coupling numbers, quasi-sequence order descriptors, pseudo
+   amino acid composition descriptors, amphiphilic pseudo amino acid
+   composition descriptors.
+4. The users could specify the needed properties of 20 amino acids to calculate
+   the corresponding protein descriptors.
+5. The package includes the module which could directly download the protein
+   sequence form uniprot website by uniprot id.
+6. The package includes the module which could automatrically download the
+   property from the AAindex database. Thus, the user could calcualte thousands
+   of protein features.
 
 The protein descriptors calculated by propy
 
@@ -48,27 +60,11 @@ The protein descriptors calculated by propy
 9. PAAC: pseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50)
 10. APAAC: amphiphilic pseudo amino acid composition descriptors(depend on the choice of lamda, the default is 50)
 
--------------------------------------------------------------------------------
-Download
-
-propy can be download from http://protpy.googlecode.com/files/propy-1.0.tar.gz
--------------------------------------------------------------------------------
-
 ## Install
 
-### Windows
-
-1. download the propy package (.gz)
-2. extract or uncompress the .gz file
-3. `cd propy-1.0`
-4. `pip install .`
-
-### Linux
-
-1. download the propy package (.tar.gz)
-2. `tar -zxf propy-1.0.tar.gz`
-3. `cd propy-1.0`
-4. `pip install .`
+```
+pip install propy3
+```
 
 ## Usage Example
 
@@ -78,7 +74,7 @@ For more examples, please see the user guide.
 from propy import PyPro
 from propy.GetProteinFromUniprot import GetProteinSequence
 
-proteinsequence = GetProteinSequence('P48039')    # download the protein sequence by uniprot id
+proteinsequence = GetProteinSequence("P48039")    # download the protein sequence by uniprot id
 DesObject = PyPro.GetProDes(proteinsequence)      # construct a GetProDes object
 print(DesObject.GetCTD())                         # calculate 147 CTD descriptors
 print(DesObject.GetAAComp())                      # calculate 20 amino acid composition descriptors
