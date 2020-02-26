@@ -2,11 +2,11 @@
 """
 ###############################################################################
 
-The module is used for computing the composition of amino acids, dipetide and 
+The module is used for computing the composition of amino acids, dipetide and
 
-3-mers (tri-peptide) for a given protein sequence. You can get 8420 descriptors 
+3-mers (tri-peptide) for a given protein sequence. You can get 8420 descriptors
 
-for a given protein sequence. You can freely use and distribute it. If you hava 
+for a given protein sequence. You can freely use and distribute it. If you hava
 
 any problem, you could contact with us timely!
 
@@ -65,18 +65,18 @@ def CalculateAAComposition(ProteinSequence):
 
     """
 	########################################################################
-	Calculate the composition of Amino acids 
-	
+	Calculate the composition of Amino acids
+
 	for a given protein sequence.
-	
+
 	Usage:
-	
+
 	result=CalculateAAComposition(protein)
-	
+
 	Input: protein is a pure protein sequence.
-	
-	Output: result is a dict form containing the composition of 
-	
+
+	Output: result is a dict form containing the composition of
+
 	20 amino acids.
 	########################################################################
 	"""
@@ -92,15 +92,15 @@ def CalculateDipeptideComposition(ProteinSequence):
     """
 	########################################################################
 	Calculate the composition of dipeptidefor a given protein sequence.
-	
-	Usage: 
-	
+
+	Usage:
+
 	result=CalculateDipeptideComposition(protein)
-	
+
 	Input: protein is a pure protein sequence.
-	
-	Output: result is a dict form containing the composition of 
-	
+
+	Output: result is a dict form containing the composition of
+
 	400 dipeptides.
 	########################################################################
 	"""
@@ -122,14 +122,14 @@ def CalculateDipeptideComposition(ProteinSequence):
 def Getkmers():
     """
 	########################################################################
-	Get the amino acid list of 3-mers. 
-	
-	Usage: 
-	
+	Get the amino acid list of 3-mers.
+
+	Usage:
+
 	result=Getkmers()
-	
+
 	Output: result is a list form containing 8000 tri-peptides.
-	
+
 	########################################################################
 	"""
     kmers = list()
@@ -145,15 +145,15 @@ def GetSpectrumDict(proteinsequence):
     """
 	########################################################################
 	Calcualte the spectrum descriptors of 3-mers for a given protein.
-	
-	Usage: 
-	
+
+	Usage:
+
 	result=GetSpectrumDict(protein)
-	
+
 	Input: protein is a pure protein sequence.
-	
+
 	Output: result is a dict form containing the composition values of 8000
-	
+
 	3-mers.
 	########################################################################
 	"""
@@ -169,18 +169,18 @@ def CalculateAADipeptideComposition(ProteinSequence):
 
     """
 	########################################################################
-	Calculate the composition of AADs, dipeptide and 3-mers for a 
-	
+	Calculate the composition of AADs, dipeptide and 3-mers for a
+
 	given protein sequence.
-	
+
 	Usage:
-	
+
 	result=CalculateAADipeptideComposition(protein)
-	
+
 	Input: protein is a pure protein sequence.
-	
-	Output: result is a dict form containing all composition values of 
-	
+
+	Output: result is a dict form containing all composition values of
+
 	AADs, dipeptide and 3-mers (8420).
 	########################################################################
 	"""

@@ -2,14 +2,14 @@
 """
 ################################################################################################
 
-This module is used to download the protein sequence from the uniprot (http://www.uniprot.org/) 
+This module is used to download the protein sequence from the uniprot (http://www.uniprot.org/)
 
 website. You can only need input a protein ID or prepare a file (ID.txt) related to ID. You can
 
- obtain a .txt (ProteinSequence.txt) file saving protein sequence you need.  You can freely use 
- 
+ obtain a .txt (ProteinSequence.txt) file saving protein sequence you need.  You can freely use
+
  and distribute it. If you hava  any problem, you could contact with us timely!
- 
+
 Authors: Dongsheng Cao and Yizeng Liang.
 
 Date: 2012.9.3
@@ -27,13 +27,13 @@ def GetProteinSequence(ProteinID):
     """
 	#########################################################################################
 	Get the protein sequence from the uniprot website by ID.
-	
+
 	Usage:
-	
+
 	result=GetProteinSequence(ProteinID)
-	
+
 	Input: ProteinID is a string indicating ID such as "P48039".
-	
+
 	Output: result is a protein sequence.
 	#########################################################################################
 	"""
@@ -52,15 +52,15 @@ def GetProteinSequenceFromTxt(path, openfile, savefile):
     """
 	#########################################################################################
 	Get the protein sequence from the uniprot website by the file containing ID.
-	
-	Usage: 
-	
+
+	Usage:
+
 	result=GetProteinSequenceFromTxt(path,openfile,savefile)
-	
-	Input: path is a directory path containing the ID file such as "/home/orient/protein/" 
-	
+
+	Input: path is a directory path containing the ID file such as "/home/orient/protein/"
+
 	openfile is the ID file such as "proteinID.txt"
-	
+
 	savefile is the file saving the obtained protein sequences such as "protein.txt"
 	#########################################################################################
 	"""

@@ -1,7 +1,7 @@
 """
 This module is used for obtaining the properties of amino acids or their pairs
 
-from the aaindex database. You can freely use and distribute it. If you hava 
+from the aaindex database. You can freely use and distribute it. If you hava
 
 any problem, you could contact with us timely!
 
@@ -10,7 +10,7 @@ Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2012.09.10
 
 Email: oriental-cds@163.com
- 
+
 """
 
 import sys, os, string
@@ -284,13 +284,13 @@ def _parse(filename, rec, quiet=True):
 def GetAAIndex1(name, path="."):
     """
 	Get the amino acid property values from aaindex1
-	
+
 	Usage:
-	
+
 	result=GetAAIndex1(name)
-	
+
 	Input: name is the name of amino acid property (e.g., KRIW790103)
-	
+
 	Output: result is a dict form containing the properties of 20 amino acids
 	"""
 
@@ -307,13 +307,13 @@ def GetAAIndex1(name, path="."):
 def GetAAIndex23(name, path="."):
     """
 	Get the amino acid property values from aaindex2 and aaindex3
-	
+
 	Usage:
-	
+
 	result=GetAAIndex23(name)
-	
+
 	Input: name is the name of amino acid property (e.g.,TANS760101,GRAR740104)
-	
+
 	Output: result is a dict form containing the properties of 400 amino acid pairs
 	"""
     init(path=path)

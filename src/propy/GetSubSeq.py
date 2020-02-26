@@ -2,13 +2,13 @@
 """
 #####################################################################################
 
-The prediction of functional sites (e.g.,methylation) of proteins usually needs to 
+The prediction of functional sites (e.g.,methylation) of proteins usually needs to
 
-split the total protein into a set of segments around specific amino acid. Given a 
+split the total protein into a set of segments around specific amino acid. Given a
 
-specific window size p, we can obtain all segments of length equal to (2*p+1) very 
+specific window size p, we can obtain all segments of length equal to (2*p+1) very
 
-easily. Note that the output of the method is a list form. You can freely use and 
+easily. Note that the output of the method is a list form. You can freely use and
 
 distribute it. If you have any problem, you could contact with us timely.
 
@@ -55,17 +55,17 @@ def GetSubSequence(ProteinSequence, ToAA="S", window=3):
     """
 	#######################################################################
 	Get all 2*window+1 sub-sequences whose cener is ToAA in a protein.
-	
+
 	Usage:
-	
+
 	result=GetSubSequence(protein,ToAA,window)
-	
+
 	Input:protein is a pure problem sequence.
-	
+
 	ToAA is the central (query point) amino acid in the sub-sequence.
-	
+
 	window is the span.
-	
+
 	result is a list form containing all satisfied sub-sequences.
 	#######################################################################
 	"""
