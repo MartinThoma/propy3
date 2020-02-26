@@ -1,34 +1,24 @@
 # -*- coding: utf-8 -*-
 """
 The module is used for computing the composition of amino acids, dipetide and
-
 3-mers (tri-peptide) for a given protein sequence. You can get 8420 descriptors
-
 for a given protein sequence. You can freely use and distribute it. If you hava
-
 any problem, you could contact with us timely!
 
-References:
+References
+----------
+.. [1] Reczko, M. and Bohr, H. (1994) The DEF data base of sequence based protein
+   fold class predictions. Nucleic Acids Res, 22, 3616-3619.
 
-[1]: Reczko, M. and Bohr, H. (1994) The DEF data base of sequence based protein
+.. [2] Hua, S. and Sun, Z. (2001) Support vector machine approach for protein
+   subcellular localization prediction. Bioinformatics, 17, 721-728.
 
-fold class predictions. Nucleic Acids Res, 22, 3616-3619.
-
-[2]: Hua, S. and Sun, Z. (2001) Support vector machine approach for protein
-
-subcellular localization prediction. Bioinformatics, 17, 721-728.
-
-
-[3]:Grassmann, J., Reczko, M., Suhai, S. and Edler, L. (1999) Protein fold class
-
-prediction: new methods of statistical classification. Proc Int Conf Intell Syst Mol
-
-Biol, 106-112.
+.. [3] Grassmann, J., Reczko, M., Suhai, S. and Edler, L. (1999) Protein fold
+   class prediction: new methods of statistical classification. Proc Int Conf
+   Intell Syst Mol Biol, 106-112.
 
 Authors: Dongsheng Cao and Yizeng Liang.
-
 Date: 2012.3.27
-
 Email: oriental-cds@163.com
 """
 
@@ -63,36 +53,42 @@ def CalculateAAComposition(ProteinSequence):
     """
     Calculate the composition of Amino acids for a given protein sequence.
 
-    Usage
-    -----
-    result = CalculateAAComposition(protein)
+    Parameters
+    ----------
+    ProteinSequence: a pure protein sequence
 
-    Input: protein is a pure protein sequence.
+    Returns
+    -------
+    result : Dict
+        contains the composition of 20 amino acids.
 
-    Output: result is a dict form containing the composition of
-
-    20 amino acids.
+    Examples
+    --------
+    >>> result = CalculateAAComposition(protein)
     """
     LengthSequence = len(ProteinSequence)
-    Result = {}
+    result = {}
     for i in AALetter:
-        Result[i] = round(float(ProteinSequence.count(i)) / LengthSequence * 100, 3)
-    return Result
+        result[i] = round(float(ProteinSequence.count(i)) / LengthSequence * 100, 3)
+    return result
 
 
 def CalculateDipeptideComposition(ProteinSequence):
     """
     Calculate the composition of dipeptidefor a given protein sequence.
 
-    Usage:
+    Parameters
+    ----------
+    ProteinSequence : a pure protein sequence
 
-    result=CalculateDipeptideComposition(protein)
+    Returns
+    -------
+    result : Dict
+        contains the composition of 400 dipeptides
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing the composition of
-
-    400 dipeptides.
+    Examples
+    --------
+    >>> result = CalculateDipeptideComposition(protein)
     """
 
     LengthSequence = len(ProteinSequence)
@@ -110,11 +106,14 @@ def Getkmers():
     """
     Get the amino acid list of 3-mers.
 
-    Usage:
+    Returns
+    -------
+    result : List
+        contains 8000 tri-peptides
 
-    result=Getkmers()
-
-    Output: result is a list form containing 8000 tri-peptides.
+    Examples
+    --------
+    >>> result = Getkmers()
     """
     kmers = list()
     for i in AALetter:
@@ -128,15 +127,18 @@ def GetSpectrumDict(proteinsequence):
     """
     Calcualte the spectrum descriptors of 3-mers for a given protein.
 
-    Usage:
+    Parameters
+    ----------
+    proteinsequence : a pure protein sequence
 
-    result = GetSpectrumDict(protein)
+    Returns
+    -------
+    result : Dict
+        contains the composition values of 8000 3-mers
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing the composition values of 8000
-
-    3-mers.
+    Examples
+    --------
+    >>> result = GetSpectrumDict(protein)
     """
     result = {}
     kmers = Getkmers()
@@ -147,18 +149,22 @@ def GetSpectrumDict(proteinsequence):
 
 def CalculateAADipeptideComposition(ProteinSequence):
     """
-    Calculate the composition of AADs, dipeptide and 3-mers for a
-    given protein sequence.
+    Calculate the composition of AADs, dipeptide and 3-mers for a given protein
+    sequence.
 
-    Usage:
+    Parameters
+    ----------
+    ProteinSequence : a pure protein sequence
 
-    result = CalculateAADipeptideComposition(protein)
+    Returns
+    -------
+    result : Dict
+        contains all composition values of AADs, dipeptide and 3-mers (8420).
 
-    Input: protein is a pure protein sequence.
 
-    Output: result is a dict form containing all composition values of
-
-    AADs, dipeptide and 3-mers (8420).
+    Examples
+    --------
+    >>> result = CalculateAADipeptideComposition(protein)
     """
 
     result = {}
