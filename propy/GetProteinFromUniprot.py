@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-
-This module is used to download the protein sequence from the uniprot (http://www.uniprot.org/)
-
-website. You can only need input a protein ID or prepare a file (ID.txt) related to ID. You can
-
- obtain a .txt (ProteinSequence.txt) file saving protein sequence you need.  You can freely use
-
- and distribute it. If you hava  any problem, you could contact with us timely!
+This module is used to download the protein sequence from the uniprot
+(http://www.uniprot.org/) website. You can only need input a protein ID or
+prepare a file (ID.txt) related to ID. You can obtain a .txt
+(ProteinSequence.txt) file saving protein sequence you need.  You can freely
+use and distribute it. If you have  any problem, you could contact with us
+timely!
 
 Authors: Dongsheng Cao and Yizeng Liang.
-
 Date: 2012.9.3
-
 Email: oriental-cds@163.com
 """
 
@@ -28,10 +24,9 @@ def GetProteinSequence(ProteinID):
 
     Usage:
 
-    result=GetProteinSequence(ProteinID)
+    result = GetProteinSequence(ProteinID)
 
     Input: ProteinID is a string indicating ID such as "P48039".
-
     Output: result is a protein sequence.
     """
 
@@ -52,16 +47,15 @@ def GetProteinSequenceFromTxt(path, openfile, savefile):
 
     Usage:
 
-    result=GetProteinSequenceFromTxt(path,openfile,savefile)
+    result = GetProteinSequenceFromTxt(path, openfile, savefile)
 
-    Input: path is a directory path containing the ID file such as "/home/orient/protein/"
-
-    openfile is the ID file such as "proteinID.txt"
-
-    savefile is the file saving the obtained protein sequences such as "protein.txt"
+    Input:
+        path is a directory path containing the ID file such as "/home/orient/protein/"
+        openfile is the ID file such as "proteinID.txt"
+        savefile is the file saving the obtained protein sequences such as "protein.txt"
     """
-    f1 = file(path + savefile, "wb")
-    f2 = file(path + openfile, "r")
+    f1 = open(path + savefile, "wb")
+    f2 = open(path + openfile, "r")
     #     res=[]
     for index, i in enumerate(f2):
 
@@ -87,10 +81,10 @@ if __name__ == "__main__":
     import os
 
     path = os.getcwd()  # please run the script in the directory containing the files
-    #     path="/home/orient/plosone/data/"
-    savefile = file(path + "/result.txt", "wb")
-    localfile = file(path + "/target.txt", "r")
-    #     res=[]
+    # path="/home/orient/plosone/data/"
+    savefile = open(os.path.join(path, "result.txt"), "wb")
+    localfile = open(os.path.join(path, "target.txt"), "r")
+    # res=[]
     for index, i in enumerate(localfile):
         itrim = i.strip()
         if itrim == "":
