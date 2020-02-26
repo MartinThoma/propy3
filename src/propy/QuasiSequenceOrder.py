@@ -1349,11 +1349,11 @@ HFPSNWKGAWKEVKEEIVNLPKERYRGTNDPKRIFFQRQWGDPETANLWFNCHGEFFYCK\
 MDWFLNYLNNLTVDADHNECKNTSGTKSGNKRAPGPCVQRTYVACHIRSVIIWLETISKK\
 TYAPPREGHLECTSTVTGMTVELNYIPKNRTNVTLSPQIESIWAAELDRYKLVEITPIGF\
 APTEVRRYTGGHERQKRVPFVVQSQHLLAGILQQQKNLLAAVEAQQQMLKLTIWGVK"
-    print len(protein)
+    print(len(protein))
     SCN = GetSequenceOrderCouplingNumberTotal(protein, maxlag=30)
-    print len(SCN)
+    print(len(SCN))
     for i in SCN:
-        print i, SCN[i]
+        print(i, SCN[i])
     #
     # 	QSO1=GetQuasiSequenceOrder1(protein,maxlag=30,weight=0.1)
     # 	print QSO1
@@ -1375,6 +1375,6 @@ APTEVRRYTGGHERQKRVPFVVQSQHLLAGILQQQKNLLAAVEAQQQMLKLTIWGVK"
     # 		print i, SCN[i]
 
     QSO = GetQuasiSequenceOrderp(protein, maxlag=30, distancematrix=_Distance1)
-    print len(QSO)
+    print(len(QSO))
     for i in QSO:
-        print i, QSO[i]
+        print(i, QSO[i])

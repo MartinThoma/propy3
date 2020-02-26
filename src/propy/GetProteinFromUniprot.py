@@ -21,7 +21,9 @@ Email: oriental-cds@163.com
 
 # Core Library
 import string
-import urllib
+import urllib.error
+import urllib.parse
+import urllib.request
 
 
 ##################################################################################################
@@ -41,7 +43,9 @@ def GetProteinSequence(ProteinID):
 	"""
 
     ID = str(ProteinID)
-    localfile = urllib.urlopen("http://www.uniprot.org/uniprot/" + ID + ".fasta")
+    localfile = urllib.request.urlopen(
+        "http://www.uniprot.org/uniprot/" + ID + ".fasta"
+    )
     temp = localfile.readlines()
     res = ""
     for i in range(1, len(temp)):
@@ -76,11 +80,11 @@ def GetProteinSequenceFromTxt(path, openfile, savefile):
             continue
         else:
             temp = GetProteinSequence(itrim)
-            print "--------------------------------------------------------"
-            print "The %d protein sequence has been downloaded!" % (index + 1)
-            print temp
+            print("--------------------------------------------------------")
+            print("The %d protein sequence has been downloaded!" % (index + 1))
+            print(temp)
             f1.write(temp + "\n")
-            print "--------------------------------------------------------"
+            print("--------------------------------------------------------")
     # 		res.append(temp+'\n')
     # 	f1.writelines(res)
     f2.close()
@@ -104,15 +108,15 @@ if __name__ == "__main__":
             continue
         else:
             temp = GetProteinSequence(itrim)
-            print "--------------------------------------------------------"
-            print "The %d protein sequence has been downloaded!" % (index + 1)
-            print temp
+            print("--------------------------------------------------------")
+            print("The %d protein sequence has been downloaded!" % (index + 1))
+            print(temp)
             savefile.write(temp + "\n")
-            print "--------------------------------------------------------"
+            print("--------------------------------------------------------")
     # 			res.append(temp+'\n')
     # 	savefile.writelines(res)
     localfile.close()
     savefile.close()
 
     flag = GetProteinSequenceFromTxt("/home/orient/ProPy/", "target.txt", "result.txt")
-    print flag
+    print(flag)

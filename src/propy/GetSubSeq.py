@@ -94,6 +94,6 @@ if __name__ == "__main__":
 
     protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
     subseq = GetSubSequence(protein, ToAA="D", window=10)
-    print subseq
-    print len(subseq)
+    print(subseq)
+    print(len(subseq))
     # print len(subseq[0])

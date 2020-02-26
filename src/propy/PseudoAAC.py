@@ -275,12 +275,14 @@ def NormalizeEachAAP(AAP):
 	of 20 amino acids.
 	########################################################################################
 	"""
-    if len(AAP.values()) != 20:
-        print "You can not input the correct number of properities of Amino acids!"
+    if len(list(AAP.values())) != 20:
+        print("You can not input the correct number of properities of Amino acids!")
     else:
         Result = {}
-        for i, j in AAP.items():
-            Result[i] = (j - _mean(AAP.values())) / _std(AAP.values(), ddof=0)
+        for i, j in list(AAP.items()):
+            Result[i] = (j - _mean(list(AAP.values()))) / _std(
+                list(AAP.values()), ddof=0
+            )
 
     return Result
 
@@ -825,4 +827,4 @@ AELQNREKAREQRNWALADEIRGRLKRAGIEVTDTADGPQWSLLGGDTK"
     PAAC = GetPseudoAAC(protein, lamda=5, AAP=[_Hydrophobicity, _hydrophilicity])
 
     for i in PAAC:
-        print i, PAAC[i]
+        print(i, PAAC[i])

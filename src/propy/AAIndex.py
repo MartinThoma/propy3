@@ -75,7 +75,7 @@ class Record:
         return self.get(aai)
 
     def median(self):
-        x = sorted(filter(None, self.index.values()))
+        x = sorted([_f for _f in list(self.index.values()) if _f])
         half = len(x) / 2
         if len(x) % 2 == 1:
             return x[half]
@@ -122,7 +122,7 @@ class MatrixRecord(Record):
     def median(self):
         x = []
         for y in self.index:
-            x.extend(filter(None, y))
+            x.extend([_f for _f in y if _f])
         x.sort()
         if len(x) % 2 == 1:
             return x[len(x) / 2]
@@ -140,7 +140,7 @@ def search(pattern, searchtitle=True, casesensitive=False):
         pattern = pattern.lower()
         whatcase = lambda i: i.lower()
     matches = []
-    for record in _aaindex.itervalues():
+    for record in _aaindex.values():
         if (
             pattern in whatcase(record.desc)
             or searchtitle
@@ -158,7 +158,7 @@ def grep(pattern):
 
 	"""
     for record in search(pattern):
-        print record
+        print(record)
 
 
 #####################################################################################################
@@ -191,7 +191,7 @@ def init(path=None, index="123"):
         for path in [os.path.split(__file__)[0], "."]:
             if os.path.exists(os.path.join(path, "aaindex" + index[0])):
                 break
-        print >> sys.stderr, "path =", path
+        print("path =", path, file=sys.stderr)
     if "1" in index:
         _parse(path + "/aaindex1", Record)
     if "2" in index:
@@ -212,13 +212,13 @@ def _parse(filename, rec, quiet=True):
 	`MarixRecord` for aaindex2 and aaindex3.
 	"""
     if not os.path.exists(filename):
-        import urllib
+        import urllib.request, urllib.parse, urllib.error
 
         url = (
             "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
         )
         # 		print 'Downloading "%s"' % (url)
-        filename = urllib.urlretrieve(url, filename)[0]
+        filename = urllib.request.urlretrieve(url, filename)[0]
     # 		print 'Saved to "%s"' % (filename)
     f = open(filename)
 
@@ -252,15 +252,15 @@ def _parse(filename, rec, quiet=True):
         elif key == "I ":
             a = line[1:].split()
             if a[0] != "A/L":
-                current.extend(map(_float_or_None, a))
+                current.extend(list(map(_float_or_None, a)))
             elif list(Record.aakeys) != [i[0] for i in a] + [i[-1] for i in a]:
-                print "Warning: wrong amino acid sequence for", current.key
+                print("Warning: wrong amino acid sequence for", current.key)
             else:
                 try:
                     assert list(Record.aakeys[:10]) == [i[0] for i in a]
                     assert list(Record.aakeys[10:]) == [i[2] for i in a]
                 except:
-                    print "Warning: wrong amino acid sequence for", current.key
+                    print("Warning: wrong amino acid sequence for", current.key)
         elif key == "M ":
             a = line[2:].split()
             if a[0] == "rows":
@@ -276,9 +276,9 @@ def _parse(filename, rec, quiet=True):
                     current.cols[aa] = i
                     i += 1
             else:
-                current.extend(map(_float_or_None, a))
+                current.extend(list(map(_float_or_None, a)))
         elif not quiet:
-            print 'Warning: line starts with "%s"' % (key)
+            print('Warning: line starts with "%s"' % (key))
         lastkey = key
     f.close()
 
@@ -340,9 +340,9 @@ if __name__ == "__main__":
     # 	print x
     # 	print x.get('W')
     temp1 = GetAAIndex1("KRIW790103")
-    print len(temp1)
+    print(len(temp1))
 
     temp2 = GetAAIndex23("TANS760101")
-    print len(temp2)
+    print(len(temp2))
     temp2 = GetAAIndex23("GRAR740104")
-    print len(temp2)
+    print(len(temp2))

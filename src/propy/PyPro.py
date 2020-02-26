@@ -13,14 +13,14 @@ Date: 2012.9.4
 Email: oriental-cds@163.com
 
 """
-# First party
-from AAComposition import (
+# Local
+from .AAComposition import (
     CalculateAAComposition,
     CalculateDipeptideComposition,
     GetSpectrumDict,
 )
-from AAIndex import GetAAIndex1, GetAAIndex23
-from Autocorrelation import (
+from .AAIndex import GetAAIndex1, GetAAIndex23
+from .Autocorrelation import (
     CalculateEachGearyAuto,
     CalculateEachMoranAuto,
     CalculateEachNormalizedMoreauBrotoAuto,
@@ -28,10 +28,10 @@ from Autocorrelation import (
     CalculateMoranAutoTotal,
     CalculateNormalizedMoreauBrotoAutoTotal,
 )
-from CTD import CalculateCTD
-from GetSubSeq import GetSubSequence
-from PseudoAAC import GetAPseudoAAC, GetPseudoAAC, _GetPseudoAAC
-from QuasiSequenceOrder import (
+from .CTD import CalculateCTD
+from .GetSubSeq import GetSubSequence
+from .PseudoAAC import GetAPseudoAAC, GetPseudoAAC, _GetPseudoAAC
+from .QuasiSequenceOrder import (
     GetQuasiSequenceOrder,
     GetQuasiSequenceOrderp,
     GetSequenceOrderCouplingNumberp,
@@ -75,7 +75,9 @@ class GetProDes:
 		input a protein sequence
 		"""
         if len(ProteinSequence) == 0:
-            print "You must input a protein sequence when constructing a object. It is a string!"
+            print(
+                "You must input a protein sequence when constructing a object. It is a string!"
+            )
         else:
             self.ProteinSequence = ProteinSequence
 
@@ -410,8 +412,8 @@ class GetProDes:
 #####################################################################################################
 if __name__ == "__main__":
 
-    from Autocorrelation import _Steric
-    from PseudoAAC import _Hydrophobicity, _hydrophilicity, _residuemass
+    from .Autocorrelation import _Steric
+    from .PseudoAAC import _Hydrophobicity, _hydrophilicity, _residuemass
 
     protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
     cds = GetProDes(protein)
@@ -420,19 +422,19 @@ if __name__ == "__main__":
     # 	print cds.GetDPComp()
     # 	print cds.GetTPComp()
     # 	print cds.GetCTD()
-    print cds.GetPAAC(lamda=5)
+    print(cds.GetPAAC(lamda=5))
     # 	print cds.GetALL()
-    print cds.GetMoreauBrotoAutop(AAP=_Steric, AAPName="Steric")
-    print cds.GetMoranAutop(AAP=_Steric, AAPName="Steric")
-    print cds.GetGearyAutop(AAP=_Steric, AAPName="Steric")
+    print(cds.GetMoreauBrotoAutop(AAP=_Steric, AAPName="Steric"))
+    print(cds.GetMoranAutop(AAP=_Steric, AAPName="Steric"))
+    print(cds.GetGearyAutop(AAP=_Steric, AAPName="Steric"))
 
-    print cds.GetPAACp(lamda=5, weight=0.05, AAP=[_Hydrophobicity, _hydrophilicity])
+    print(cds.GetPAACp(lamda=5, weight=0.05, AAP=[_Hydrophobicity, _hydrophilicity]))
 
-    print cds.GetSubSeq(ToAA="D", window=5)
+    print(cds.GetSubSeq(ToAA="D", window=5))
 
     proper = cds.GetAAindex23("GRAR740104", path="/home/orient")
     # 	print cds.GetAAindex1('KRIW790103',path='/home/orient')
 
-    print cds.GetQSOp(maxlag=30, weight=0.1, distancematrix=proper)
+    print(cds.GetQSOp(maxlag=30, weight=0.1, distancematrix=proper))
 
-    print cds.GetSOCNp(maxlag=30, distancematrix=proper)
+    print(cds.GetSOCNp(maxlag=30, distancematrix=proper))

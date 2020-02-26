@@ -318,12 +318,14 @@ def NormalizeEachAAP(AAP):
 	of 20 amino acids.
 	####################################################################################
 	"""
-    if len(AAP.values()) != 20:
-        print "You can not input the correct number of properities of Amino acids!"
+    if len(list(AAP.values())) != 20:
+        print("You can not input the correct number of properities of Amino acids!")
     else:
         Result = {}
-        for i, j in AAP.items():
-            Result[i] = (j - _mean(AAP.values())) / _std(AAP.values(), ddof=0)
+        for i, j in list(AAP.items()):
+            Result[i] = (j - _mean(list(AAP.values()))) / _std(
+                list(AAP.values()), ddof=0
+            )
 
     return Result
 
@@ -1283,5 +1285,5 @@ if __name__ == "__main__":
     )
     # print temp1
     temp2 = CalculateMoranAutoMutability(protein)
-    print temp2
-    print len(CalculateAutoTotal(protein))
+    print(temp2)
+    print(len(CalculateAutoTotal(protein)))

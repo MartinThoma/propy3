@@ -130,7 +130,7 @@ def StringtoNum(ProteinSequence, AAProperty):
 	"""
 
     hardProteinSequence = copy.deepcopy(ProteinSequence)
-    for k, m in AAProperty.items():
+    for k, m in list(AAProperty.items()):
         for index in m:
             hardProteinSequence = string.replace(hardProteinSequence, index, k)
     TProteinSequence = hardProteinSequence
@@ -851,4 +851,4 @@ if __name__ == "__main__":
     # 	print len(CalculateC(protein))
     # 	print len(CalculateT(protein))
     # 	print len(CalculateD(protein))
-    print CalculateCTD(protein)
+    print(CalculateCTD(protein))
