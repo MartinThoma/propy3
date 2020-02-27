@@ -90,7 +90,7 @@ class MatrixRecord(Record):
 
     def __init__(self):
         Record.__init__(self)
-        self.index: List[Any] = []
+        self.index: List[Any] = []  # type: ignore
         self.rows = dict()
         self.cols = dict()
 
@@ -216,7 +216,7 @@ def _parse(filename, rec, quiet=True):
     for line in f:
         key = line[0:2]
         if key[0] == " ":
-            key = lastkey
+            key = lastkey  # type: ignore
         if key == "//":
             _aaindex[current.key] = current
             current = rec()

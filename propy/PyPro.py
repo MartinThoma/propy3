@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-A class used for computing different types of protein descriptors!
+Computing different types of protein descriptors.
 
 Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2012.9.4
 Email: oriental-cds@163.com
 """
+
+# Core Library
+from typing import Any, Dict
+
 # Local
 from .AAComposition import (
     CalculateAAComposition,
@@ -352,10 +356,8 @@ class GetProDes:
         return res
 
     def GetALL(self):
-        """
-        Calcualte all descriptors except tri-peptide descriptors
-        """
-        res = {}
+        """Calcualte all descriptors except tri-peptide descriptors."""
+        res: Dict[Any, Any] = {}
         res.update(self.GetAAComp())
         res.update(self.GetDPComp())
         # res.update(self.GetTPComp())

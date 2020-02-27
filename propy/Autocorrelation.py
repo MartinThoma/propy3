@@ -28,6 +28,7 @@ Email: oriental-cds@163.com
 
 # Core Library
 import math
+from typing import Any, Dict
 
 AALetter = [
     "A",
@@ -382,8 +383,8 @@ def CalculateEachMoranAuto(ProteinSequence, AAP, AAPName):
     AAPdic = NormalizeEachAAP(AAP)
 
     cds = 0
-    for i in AALetter:
-        cds = cds + (ProteinSequence.count(i)) * (AAPdic[i])
+    for char in AALetter:
+        cds = cds + (ProteinSequence.count(char)) * (AAPdic[char])
     Pmean = cds / len(ProteinSequence)
 
     cc = []
@@ -1197,7 +1198,7 @@ def CalculateNormalizedMoreauBrotoAutoTotal(ProteinSequence):
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
-    result = {}
+    result: Dict[Any, Any] = {}
     result.update(CalculateNormalizedMoreauBrotoAutoHydrophobicity(ProteinSequence))
     result.update(CalculateNormalizedMoreauBrotoAutoAvFlexibility(ProteinSequence))
     result.update(CalculateNormalizedMoreauBrotoAutoPolarizability(ProteinSequence))
@@ -1227,7 +1228,7 @@ def CalculateMoranAutoTotal(ProteinSequence):
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
-    result = {}
+    result: Dict[Any, Any] = {}
     result.update(CalculateMoranAutoHydrophobicity(ProteinSequence))
     result.update(CalculateMoranAutoAvFlexibility(ProteinSequence))
     result.update(CalculateMoranAutoPolarizability(ProteinSequence))
@@ -1257,7 +1258,7 @@ def CalculateGearyAutoTotal(ProteinSequence):
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
-    result = {}
+    result: Dict[Any, Any] = {}
     result.update(CalculateGearyAutoHydrophobicity(ProteinSequence))
     result.update(CalculateGearyAutoAvFlexibility(ProteinSequence))
     result.update(CalculateGearyAutoPolarizability(ProteinSequence))
@@ -1287,7 +1288,7 @@ def CalculateAutoTotal(ProteinSequence):
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
-    result = {}
+    result: Dict[Any, Any] = {}
     result.update(CalculateNormalizedMoreauBrotoAutoTotal(ProteinSequence))
     result.update(CalculateMoranAutoTotal(ProteinSequence))
     result.update(CalculateGearyAutoTotal(ProteinSequence))

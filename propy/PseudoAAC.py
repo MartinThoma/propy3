@@ -39,9 +39,7 @@ Clarendon Press Oxford (1986).
 
 # Core Library
 import math
-
-# import scipy
-
+from typing import Any, Dict
 
 AALetter = [
     "A",
@@ -232,9 +230,8 @@ def _std(listvalue, ddof=1):
 
 def NormalizeEachAAP(AAP):
     """
-    All of the amino acid indices are centralized and
-
-    standardized before the calculation.
+    All of the amino acid indices are centralized and standardized before the
+    calculation.
 
     Examples
     --------
@@ -246,9 +243,8 @@ def NormalizeEachAAP(AAP):
 
     Returns
     -------
-    result is the a dict form containing the normalized properties
-
-    of 20 amino acids.
+    result is the a dict form containing the normalized properties of 20 amino
+    acids.
     """
     if len(list(AAP.values())) != 20:
         print("You can not input the correct number of properities of Amino acids!")
@@ -268,9 +264,8 @@ def _GetCorrelationFunction(
     Ri="S", Rj="D", AAP=[_Hydrophobicity, _hydrophilicity, _residuemass]
 ):
     """
-    Computing the correlation between two given amino acids using the above three
-
-    properties.
+    Computing the correlation between two given amino acids using the above
+    three properties.
 
     Examples
     --------
@@ -294,11 +289,10 @@ def _GetCorrelationFunction(
     return theta
 
 
-def _GetSequenceOrderCorrelationFactor(ProteinSequence, k=1):
+def _GetSequenceOrderCorrelationFactor(ProteinSequence: str, k: int = 1) -> float:
     """
-    Computing the Sequence order correlation factor with gap equal to k based on
-
-    [_Hydrophobicity,_hydrophilicity,_residuemass].
+    Computing the Sequence order correlation factor with gap equal to k based
+    on [_Hydrophobicity,_hydrophilicity,_residuemass].
 
     Examples
     --------
@@ -306,13 +300,15 @@ def _GetSequenceOrderCorrelationFactor(ProteinSequence, k=1):
 
     Parameters
     ----------
-    protein is a pure protein sequence.
-
-    k is the gap.
+    ProteinSequence : str
+        a pure protein sequence.
+    k :int
+        is the gap.
 
     Returns
     -------
-    result is the correlation factor value with the gap equal to k.
+    result :float
+        the correlation factor value with the gap equal to k
     """
     LengthSequence = len(ProteinSequence)
     res = []
@@ -324,24 +320,22 @@ def _GetSequenceOrderCorrelationFactor(ProteinSequence, k=1):
     return result
 
 
-def GetAAComposition(ProteinSequence):
-
+def GetAAComposition(ProteinSequence: str) -> Dict[Any, Any]:
     """
-    Calculate the composition of Amino acids
-
-    for a given protein sequence.
-
-    Examples
-    --------
-    >>> result=CalculateAAComposition(protein)
+    Calculate the composition of Amino acids for a given protein sequence.
 
     Parameters
     ----------
-    protein is a pure protein sequence.
+    ProteinSequence : str
+        a pure protein sequence
 
     Returns
     -------
     result is a dict form containing the composition of 20 amino acids.
+
+    Examples
+    --------
+    >>> result=CalculateAAComposition(protein)
     """
     LengthSequence = len(ProteinSequence)
     Result = {}
@@ -365,8 +359,8 @@ def _GetPseudoAAC1(ProteinSequence, lamda=10, weight=0.05):
 
     result = {}
     temp = 1 + weight * rightpart
-    for index, i in enumerate(AALetter):
-        result["PAAC" + str(index + 1)] = round(AAC[i] / temp, 3)
+    for index, char in enumerate(AALetter):
+        result["PAAC" + str(index + 1)] = round(AAC[char] / temp, 3)
 
     return result
 
@@ -429,7 +423,7 @@ def _GetPseudoAAC(ProteinSequence, lamda=10, weight=0.05):
     -------
     result is a dict form containing calculated 20+lamda PAAC descriptors.
     """
-    res = {}
+    res: Dict[Any, Any] = {}
     res.update(_GetPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
     res.update(_GetPseudoAAC2(ProteinSequence, lamda=lamda, weight=weight))
     return res
@@ -515,8 +509,8 @@ def GetAPseudoAAC1(ProteinSequence, lamda=30, weight=0.5):
 
     result = {}
     temp = 1 + weight * rightpart
-    for index, i in enumerate(AALetter):
-        result["APAAC" + str(index + 1)] = round(AAC[i] / temp, 3)
+    for index, char in enumerate(AALetter):
+        result["APAAC" + str(index + 1)] = round(AAC[char] / temp, 3)
 
     return result
 
@@ -579,7 +573,7 @@ def GetAPseudoAAC(ProteinSequence, lamda=30, weight=0.5):
     -------
     result is a dict form containing calculated 20+lamda PAAC descriptors.
     """
-    res = {}
+    res: Dict[Any, Any] = {}
     res.update(GetAPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
     res.update(GetAPseudoAAC2(ProteinSequence, lamda=lamda, weight=weight))
     return res
@@ -664,8 +658,8 @@ def GetPseudoAAC1(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
 
     result = {}
     temp = 1 + weight * rightpart
-    for index, i in enumerate(AALetter):
-        result["PAAC" + str(index + 1)] = round(AAC[i] / temp, 3)
+    for index, char in enumerate(AALetter):
+        result["PAAC" + str(index + 1)] = round(AAC[char] / temp, 3)
 
     return result
 
@@ -728,7 +722,7 @@ def GetPseudoAAC(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
     -------
     result is a dict form containing calculated 20+lamda PAAC descriptors.
     """
-    res = {}
+    res: Dict[Any, Any] = {}
     res.update(GetPseudoAAC1(ProteinSequence, lamda, weight, AAP))
     res.update(GetPseudoAAC2(ProteinSequence, lamda, weight, AAP))
     return res

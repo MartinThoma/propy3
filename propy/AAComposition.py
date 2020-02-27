@@ -24,6 +24,7 @@ Email: oriental-cds@163.com
 
 # Core Library
 import re
+from typing import Any, Dict
 
 AALetter = [
     "A",
@@ -165,7 +166,7 @@ def CalculateAADipeptideComposition(ProteinSequence):
     --------
     >>> result = CalculateAADipeptideComposition(protein)
     """
-    result = {}
+    result: Dict[Any, Any] = {}
     result.update(CalculateAAComposition(ProteinSequence))
     result.update(CalculateDipeptideComposition(ProteinSequence))
     result.update(GetSpectrumDict(ProteinSequence))

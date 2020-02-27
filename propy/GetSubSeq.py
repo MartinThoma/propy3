@@ -66,9 +66,9 @@ def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> Li
 
     Num = len(ProteinSequence)
     seqiter = re.finditer(ToAA, ProteinSequence)
-    AAindex = []
-    for i in seqiter:
-        AAindex.append(i.end())
+    AAindex: List[int] = []
+    for seq_element in seqiter:
+        AAindex.append(seq_element.end())
 
     result = []
     for i in AAindex:
