@@ -1,42 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-
 Instead of using the conventional 20-D amino acid composition to represent the sample
-
 of a protein, Prof. Kuo-Chen Chou proposed the pseudo amino acid (PseAA) composition
-
 in order for inluding the sequence-order information. Based on the concept of Chou's
-
 pseudo amino acid composition, the server PseAA was designed in a flexible way, allowing
-
 users to generate various kinds of pseudo amino acid composition for a given protein
-
 sequence by selecting different parameters and their combinations. This module aims at
-
 computing two types of PseAA descriptors: Type I and Type II.
 
-You can freely use and distribute it. If you have any problem, you could contact
+References
+----------
+.. [1] Kuo-Chen Chou. Prediction of Protein Cellular Attributes Using
+       Pseudo-Amino Acid Composition. PROTEINS: Structure, Function, and
+       Genetics, 2001, 43: 246-255.
 
-with us timely.
-
-References:
-
-[1]: Kuo-Chen Chou. Prediction of Protein Cellular Attributes Using Pseudo-Amino Acid
-
-Composition. PROTEINS: Structure, Function, and Genetics, 2001, 43: 246-255.
-
-[2]: http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/
-
-[3]: http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm
-
-[4]: Kuo-Chen Chou. Using amphiphilic pseudo amino acid composition to predict enzyme
-
-subfamily classes. Bioinformatics, 2005,21,10-19.
+.. [2] http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/
+.. [3] http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm
+.. [4] Kuo-Chen Chou. Using amphiphilic pseudo amino acid composition to
+       predict enzyme subfamily classes. Bioinformatics, 2005,21,10-19.
 
 Authors: Dongsheng Cao and Yizeng Liang.
-
 Date: 2012.9.2
-
 Email: oriental-cds@163.com
 
 
@@ -706,44 +690,3 @@ def GetPseudoAAC(ProteinSequence, lamda=30, weight=0.05, AAP=[]):
     res.update(GetPseudoAAC1(ProteinSequence, lamda, weight, AAP))
     res.update(GetPseudoAAC2(ProteinSequence, lamda, weight, AAP))
     return res
-
-
-if __name__ == "__main__":
-    protein = "MTDRARLRLHDTAAGVVRDFVPLRPGHVSIYLCGATVQGLPHIGHVRSGVAFDILRRWLL\
-ARGYDVAFIRNVTDIEDKILAKAAAAGRPWWEWAATHERAFTAAYDALDVLPPSAEPRAT\
-GHITQMIEMIERLIQAGHAYTGGGDVYFDVLSYPEYGQLSGHKIDDVHQGEGVAAGKRDQ\
-RDFTLWKGEKPGEPSWPTPWGRGRPGWHLECSAMARSYLGPEFDIHCGGMDLVFPHHENE\
-IAQSRAAGDGFARYWLHNGWVTMGGEKMSKSLGNVLSMPAMLQRVRPAELRYYLGSAHYR\
-SMLEFSETAMQDAVKAYVGLEDFLHRVRTRVGAVCPGDPTPRFAEALDDDLSVPIALAEI\
-HHVRAEGNRALDAGDHDGALRSASAIRAMMGILGCDPLDQRWESRDETSAALAAVDVLVQ\
-AELQNREKAREQRNWALADEIRGRLKRAGIEVTDTADGPQWSLLGGDTK"
-    protein = protein.strip()
-    #     temp=_GetCorrelationFunction('S','D')
-    #     print temp
-    #
-    #     print _GetSequenceOrderCorrelationFactor(protein,k=4)
-    #
-    #     PAAC1=_GetPseudoAAC1(protein,lamda=4)
-    #     for i in PAAC1:
-    #         print i, PAAC1[i]
-    #     PAAC2=_GetPseudoAAC2(protein,lamda=4)
-    #     for i in PAAC2:
-    #         print i, PAAC2[i]
-    #     print len(PAAC1)
-    #     print _GetSequenceOrderCorrelationFactorForAPAAC(protein,k=1)
-    #     APAAC1=_GetAPseudoAAC1(protein,lamda=4)
-    #     for i in APAAC1:
-    #         print i, APAAC1[i]
-
-    #     APAAC2=GetAPseudoAAC2(protein,lamda=4)
-    #     for i in APAAC2:
-    #         print i, APAAC2[i]
-    #     APAAC=GetAPseudoAAC(protein,lamda=4)
-    #
-    #     for i in APAAC:
-    #         print i, APAAC[i]
-
-    PAAC = GetPseudoAAC(protein, lamda=5, AAP=[_Hydrophobicity, _hydrophilicity])
-
-    for i in PAAC:
-        print(i, PAAC[i])

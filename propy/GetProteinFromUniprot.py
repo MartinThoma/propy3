@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-This module is used to download the protein sequence from the uniprot
-(http://www.uniprot.org/) website. You can only need input a protein ID or
-prepare a file (ID.txt) related to ID. You can obtain a .txt
-(ProteinSequence.txt) file saving protein sequence you need.  You can freely
-use and distribute it. If you have  any problem, you could contact with us
-timely!
+Download the protein sequence from [the uniprot website](http://www.uniprot.org/).
+
+You can only need input a protein ID or prepare a file (ID.txt) related to ID.
+You can obtain a .txt (ProteinSequence.txt) file saving protein sequence you
+need.
 
 Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2012.9.3
@@ -13,21 +12,29 @@ Email: oriental-cds@163.com
 """
 
 # Core Library
+import os
 import urllib.error
 import urllib.parse
 import urllib.request
 
 
-def GetProteinSequence(ProteinID):
+def GetProteinSequence(ProteinID: str):
     """
     Get the protein sequence from the uniprot website by ID.
 
-    Usage:
+    Parameters
+    ----------
+    ProteinID : str
+        indicating ID such as "P48039".
 
-    result = GetProteinSequence(ProteinID)
+    Returns
+    -------
+    result :
+        a protein sequence.
 
-    Input: ProteinID is a string indicating ID such as "P48039".
-    Output: result is a protein sequence.
+    Examples
+    --------
+    >>> result = GetProteinSequence(ProteinID)
     """
 
     ID = str(ProteinID)
@@ -41,65 +48,34 @@ def GetProteinSequence(ProteinID):
     return res
 
 
-def GetProteinSequenceFromTxt(path, openfile, savefile):
+def GetProteinSequenceFromTxt(path: str, openfile: str, savefile: str):
     """
     Get the protein sequence from the uniprot website by the file containing ID.
 
-    Usage:
+    Parameters
+    ----------
+    path : str
+        a directory path containing the ID file such as "/home/orient/protein/"
+    openfile : str
+        the ID file such as "proteinID.txt"
+    savefile : str
+        the file saving the obtained protein sequences such as "protein.txt"
 
-    result = GetProteinSequenceFromTxt(path, openfile, savefile)
-
-    Input:
-        path is a directory path containing the ID file such as "/home/orient/protein/"
-        openfile is the ID file such as "proteinID.txt"
-        savefile is the file saving the obtained protein sequences such as "protein.txt"
+    Examples
+    --------
+    >>> result = GetProteinSequenceFromTxt(path, openfile, savefile)
     """
-    f1 = open(path + savefile, "wb")
-    f2 = open(path + openfile, "r")
-    #     res=[]
-    for index, i in enumerate(f2):
-
-        itrim = i.strip()
-        if itrim == "":
-            continue
-        else:
-            temp = GetProteinSequence(itrim)
-            print("--------------------------------------------------------")
-            print("The %d protein sequence has been downloaded!" % (index + 1))
-            print(temp)
-            f1.write(temp + "\n")
-            print("--------------------------------------------------------")
-    #         res.append(temp+'\n')
-    #     f1.writelines(res)
-    f2.close()
-    f1.close()
+    with open(os.path.join(path, savefile), "wb") as f1:
+        with open(os.path.join(path, openfile), "r") as f2:
+            for index, i in enumerate(f2):
+                itrim = i.strip()
+                if itrim == "":
+                    continue
+                else:
+                    temp = GetProteinSequence(itrim)
+                    print("-" * 80)
+                    print("The {index + 1} protein sequence has been downloaded!")
+                    print(temp)
+                    f1.write(temp + "\n")
+                    print("-" * 80)
     return 0
-
-
-if __name__ == "__main__":
-
-    import os
-
-    path = os.getcwd()  # please run the script in the directory containing the files
-    # path="/home/orient/plosone/data/"
-    savefile = open(os.path.join(path, "result.txt"), "wb")
-    localfile = open(os.path.join(path, "target.txt"), "r")
-    # res=[]
-    for index, i in enumerate(localfile):
-        itrim = i.strip()
-        if itrim == "":
-            continue
-        else:
-            temp = GetProteinSequence(itrim)
-            print("--------------------------------------------------------")
-            print("The %d protein sequence has been downloaded!" % (index + 1))
-            print(temp)
-            savefile.write(temp + "\n")
-            print("--------------------------------------------------------")
-    #             res.append(temp+'\n')
-    #     savefile.writelines(res)
-    localfile.close()
-    savefile.close()
-
-    flag = GetProteinSequenceFromTxt("/home/orient/ProPy/", "target.txt", "result.txt")
-    print(flag)

@@ -2,19 +2,19 @@
 """
 This module is used for computing the composition, transition and distribution
 descriptors based on the different properties of AADs. The AADs with the same
-properties is marked as the same number. You can get 147 descriptors for a given
-protein sequence. You can freely use and distribute it. If you hava  any problem,
-you could contact with us timely!
+properties is marked as the same number. You can get 147 descriptors for a
+given protein sequence.
 
-References:
+References
+----------
+.. [1] Inna Dubchak, Ilya Muchink, Stephen R.Holbrook and Sung-Hou Kim.
+       Prediction of protein folding class using global description of amino
+       acid sequence. Proc.Natl. Acad.Sci.USA, 1995, 92, 8700-8704.
 
-[1]: Inna Dubchak, Ilya Muchink, Stephen R.Holbrook and Sung-Hou Kim. Prediction
-of protein folding class using global description of amino acid sequence. Proc.Natl.
-Acad.Sci.USA, 1995, 92, 8700-8704.
-
-[2]:Inna Dubchak, Ilya Muchink, Christopher Mayor, Igor Dralyuk and Sung-Hou Kim.
-Recognition of a Protein Fold in the Context of the SCOP classification. Proteins:
-Structure, Function and Genetics,1999,35,401-407.
+.. [2] Inna Dubchak, Ilya Muchink, Christopher Mayor, Igor Dralyuk and Sung-Hou
+       Kim. Recognition of a Protein Fold in the Context of the SCOP
+       classification. Proteins: Structure, Function and
+       Genetics,1999,35,401-407.
 
 Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2010.11.22
@@ -737,25 +737,3 @@ def CalculateCTD(ProteinSequence):
     result.update(CalculateDistributionNormalizedVDWV(ProteinSequence))
     result.update(CalculateDistributionHydrophobicity(ProteinSequence))
     return result
-
-
-if __name__ == "__main__":
-    # import scipy,string
-
-    # result=scipy.zeros((268,147))
-    # f=file('protein1.txt','r')
-    # for i,j in enumerate(f):
-    #     temp=CalculateCTD(j.strip())
-    #     result[i,:]=temp.values()
-    # scipy.savetxt('ResultNCTRER.txt', result, fmt='%15.5f',delimiter='')
-    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-    # print StringtoNum(protein,_Hydrophobicity)
-    # print CalculateComposition(protein,_Hydrophobicity,'_Hydrophobicity')
-    # print CalculateTransition(protein,_Hydrophobicity,'_Hydrophobicity')
-    # print CalculateDistribution(protein,_Hydrophobicity,'_Hydrophobicity')
-    # print CalculateDistributionSolventAccessibility(protein)
-    # print len(CalculateCTD(protein))
-    # print len(CalculateC(protein))
-    # print len(CalculateT(protein))
-    # print len(CalculateD(protein))
-    print(CalculateCTD(protein))

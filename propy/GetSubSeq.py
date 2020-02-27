@@ -1,22 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-
-The prediction of functional sites (e.g.,methylation) of proteins usually needs to
-
-split the total protein into a set of segments around specific amino acid. Given a
-
-specific window size p, we can obtain all segments of length equal to (2*p+1) very
-
-easily. Note that the output of the method is a list form. You can freely use and
-
-distribute it. If you have any problem, you could contact with us timely.
+The prediction of functional sites (e.g.,methylation) of proteins usually needs
+to split the total protein into a set of segments around specific amino acid.
+Given a specific window size p, we can obtain all segments of length equal to
+(2*p+1) very easily. Note that the output of the method is a list form.
 
 Authors: Dongsheng Cao and Yizeng Liang.
-
 Date: 2012.9.2
-
 Email: oriental-cds@163.com
-
 """
 
 # Core Library
@@ -80,12 +71,3 @@ def GetSubSequence(ProteinSequence, ToAA="S", window=3):
             result.append(temp)
 
     return result
-
-
-if __name__ == "__main__":
-
-    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-    subseq = GetSubSequence(protein, ToAA="D", window=10)
-    print(subseq)
-    print(len(subseq))
-    # print len(subseq[0])

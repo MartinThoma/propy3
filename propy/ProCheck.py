@@ -58,8 +58,3 @@ def ProteinCheck(ProteinSequence):
             flag = NumPro
 
     return flag
-
-
-if __name__ == "__main__":
-    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDASU"
-    print(ProteinCheck(protein))

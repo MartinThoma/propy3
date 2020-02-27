@@ -327,18 +327,3 @@ def GetAAIndex23(name: str, path: str = ".") -> Dict[Any, Any]:
         for j in AALetter:
             res[i + j] = temp.get(i, j)
     return res
-
-
-if __name__ == "__main__":
-    # init(path='.')
-    # grep('volume')
-    # x = get('KRIW790103')
-    # print(x)
-    # print(x.get('W'))
-    temp1 = GetAAIndex1("KRIW790103")
-    print(len(temp1))
-
-    temp2 = GetAAIndex23("TANS760101")
-    print(len(temp2))
-    temp2 = GetAAIndex23("GRAR740104")
-    print(len(temp2))

@@ -55,7 +55,8 @@ def CalculateAAComposition(ProteinSequence):
 
     Parameters
     ----------
-    ProteinSequence: a pure protein sequence
+    ProteinSequence: str
+        a pure protein sequence
 
     Returns
     -------
@@ -170,16 +171,3 @@ def CalculateAADipeptideComposition(ProteinSequence):
     result.update(GetSpectrumDict(ProteinSequence))
 
     return result
-
-
-if __name__ == "__main__":
-    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-
-    AAC = CalculateAAComposition(protein)
-    print(AAC)
-    DIP = CalculateDipeptideComposition(protein)
-    print(DIP)
-    spectrum = GetSpectrumDict(protein)
-    print(spectrum)
-    res = CalculateAADipeptideComposition(protein)
-    print(len(res))
