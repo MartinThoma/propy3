@@ -90,7 +90,6 @@ def CalculateDipeptideComposition(ProteinSequence):
     --------
     >>> result = CalculateDipeptideComposition(protein)
     """
-
     LengthSequence = len(ProteinSequence)
     Result = {}
     for i in AALetter:
@@ -161,12 +160,10 @@ def CalculateAADipeptideComposition(ProteinSequence):
     result : Dict
         contains all composition values of AADs, dipeptide and 3-mers (8420).
 
-
     Examples
     --------
     >>> result = CalculateAADipeptideComposition(protein)
     """
-
     result = {}
     result.update(CalculateAAComposition(ProteinSequence))
     result.update(CalculateDipeptideComposition(ProteinSequence))

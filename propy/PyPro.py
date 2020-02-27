@@ -2,16 +2,9 @@
 """
 A class used for computing different types of protein descriptors!
 
-You can freely use and distribute it. If you have any problem,
-
-you could contact with us timely.
-
 Authors: Dongsheng Cao and Yizeng Liang.
-
 Date: 2012.9.4
-
 Email: oriental-cds@163.com
-
 """
 # Local
 from .AAComposition import (
@@ -40,10 +33,7 @@ from .QuasiSequenceOrder import (
 
 
 class GetProDes:
-    """
-    This GetProDes class aims at collecting all descriptor calcualtion modules into a simple class.
-
-    """
+    """Collect all descriptor calcualtion modules."""
 
     AALetter = [
         "A",
@@ -85,9 +75,9 @@ class GetProDes:
         """
         amino acid compositon descriptors (20)
 
-        Usage:
-
-        result = GetAAComp()
+        Examples
+        --------
+        >>> result = GetAAComp()
         """
         res = CalculateAAComposition(self.ProteinSequence)
         return res
@@ -96,9 +86,9 @@ class GetProDes:
         """
         dipeptide composition descriptors (400)
 
-        Usage:
-
-        result = GetDPComp()
+        Examples
+        --------
+        >>> result = GetDPComp()
         """
         res = CalculateDipeptideComposition(self.ProteinSequence)
         return res
@@ -107,9 +97,9 @@ class GetProDes:
         """
         tri-peptide composition descriptors (8000)
 
-        Usage:
-
-        result = GetTPComp()
+        Examples
+        --------
+        >>> result = GetTPComp()
         """
         res = GetSpectrumDict(self.ProteinSequence)
         return res
@@ -118,9 +108,9 @@ class GetProDes:
         """
         Normalized Moreau-Broto autocorrelation descriptors (240)
 
-        Usage:
-
-        result = GetMoreauBrotoAuto()
+        Examples
+        --------
+        >>> result = GetMoreauBrotoAuto()
         """
         res = CalculateNormalizedMoreauBrotoAutoTotal(self.ProteinSequence)
         return res
@@ -129,9 +119,9 @@ class GetProDes:
         """
         Moran autocorrelation descriptors (240)
 
-        Usage:
-
-        result = GetMoranAuto()
+        Examples
+        --------
+        >>> result = GetMoranAuto()
         """
         res = CalculateMoranAutoTotal(self.ProteinSequence)
         return res
@@ -140,9 +130,9 @@ class GetProDes:
         """
         Geary autocorrelation descriptors (240)
 
-        Usage:
-
-        result = GetGearyAuto()
+        Examples
+        --------
+        >>> result = GetGearyAuto()
         """
         res = CalculateGearyAutoTotal(self.ProteinSequence)
         return res
@@ -151,9 +141,9 @@ class GetProDes:
         """
         Composition Transition Distribution descriptors (147)
 
-        Usage:
-
-        result = GetCTD()
+        Examples
+        --------
+        >>> result = GetCTD()
         """
         res = CalculateCTD(self.ProteinSequence)
         return res
@@ -162,9 +152,9 @@ class GetProDes:
         """
         Type I Pseudo amino acid composition descriptors (default is 30)
 
-        Usage:
-
-        result = GetPAAC(lamda=10,weight=0.05)
+        Examples
+        --------
+        >>> result = GetPAAC(lamda=10,weight=0.05)
 
         lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
 
@@ -187,9 +177,9 @@ class GetProDes:
         """
         Type I Pseudo amino acid composition descriptors for the given properties (default is 30)
 
-        Usage:
-
-        result = GetPAACp(lamda=10,weight=0.05,AAP=[])
+        Examples
+        --------
+        >>> result = GetPAACp(lamda=10,weight=0.05,AAP=[])
 
         lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
 
@@ -216,9 +206,9 @@ class GetProDes:
 
         default is 30
 
-        Usage:
-
-        result = GetAPAAC(lamda=10,weight=0.5)
+        Examples
+        --------
+        >>> result = GetAPAAC(lamda=10,weight=0.5)
 
         lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
 
@@ -242,9 +232,9 @@ class GetProDes:
         """
         Sequence order coupling numbers  default is 45
 
-        Usage:
-
-        result = GetSOCN(maxlag=45)
+        Examples
+        --------
+        >>> result = GetSOCN(maxlag=45)
 
         maxlag is the maximum lag and the length of the protein should be larger
 
@@ -257,9 +247,9 @@ class GetProDes:
         """
         Sequence order coupling numbers  default is 45
 
-        Usage:
-
-        result = GetSOCN(maxlag=45)
+        Examples
+        --------
+        >>> result = GetSOCN(maxlag=45)
 
         maxlag is the maximum lag and the length of the protein should be larger
 
@@ -309,9 +299,9 @@ class GetProDes:
         """
         Normalized Moreau-Broto autocorrelation descriptors for the given property (30)
 
-        Usage:
-
-        result = GetMoreauBrotoAutop(AAP={},AAPName='p')
+        Examples
+        --------
+        >>> result = GetMoreauBrotoAutop(AAP={},AAPName='p')
 
         AAP is a dict containing physicochemical properities of 20 amino acids
         """
@@ -324,9 +314,9 @@ class GetProDes:
         """
         Moran autocorrelation descriptors for the given property (30)
 
-        Usage:
-
-        result = GetMoranAutop(AAP={},AAPName='p')
+        Examples
+        --------
+        >>> result = GetMoranAutop(AAP={},AAPName='p')
 
         AAP is a dict containing physicochemical properities of 20 amino acids
         """
@@ -337,9 +327,9 @@ class GetProDes:
         """
         Geary autocorrelation descriptors for the given property (30)
 
-        Usage:
-
-        result = GetGearyAutop(AAP={},AAPName='p')
+        Examples
+        --------
+        >>> result = GetGearyAutop(AAP={},AAPName='p')
 
         AAP is a dict containing physicochemical properities of 20 amino acids
         """
@@ -350,9 +340,9 @@ class GetProDes:
         """
         obtain the sub sequences wit length 2*window+1, whose central point is ToAA
 
-        Usage:
-
-        result = GetSubSeq(ToAA='S',window=3)
+        Examples
+        --------
+        >>> result = GetSubSeq(ToAA='S',window=3)
 
         ToAA is the central (query point) amino acid in the sub-sequence.
 
@@ -368,7 +358,7 @@ class GetProDes:
         res = {}
         res.update(self.GetAAComp())
         res.update(self.GetDPComp())
-        #         res.update(self.GetTPComp())
+        # res.update(self.GetTPComp())
         res.update(self.GetMoreauBrotoAuto())
         res.update(self.GetMoranAuto())
         res.update(self.GetGearyAuto())
@@ -383,9 +373,9 @@ class GetProDes:
         """
         Get the amino acid property values from aaindex1
 
-        Usage:
-
-        result=GetAAIndex1(name)
+        Examples
+        --------
+        >>> result=GetAAIndex1(name)
 
         Input: name is the name of amino acid property (e.g., KRIW790103)
 
@@ -398,42 +388,12 @@ class GetProDes:
         """
         Get the amino acid property values from aaindex2 and aaindex3
 
-        Usage:
-
-        result=GetAAIndex23(name)
+        Examples
+        --------
+        >>> result=GetAAIndex23(name)
 
         Input: name is the name of amino acid property (e.g.,TANS760101,GRAR740104)
 
         Output: result is a dict form containing the properties of 400 amino acid pairs
         """
         return GetAAIndex23(name, path=path)
-
-
-if __name__ == "__main__":
-
-    from .Autocorrelation import _Steric
-    from .PseudoAAC import _Hydrophobicity, _hydrophilicity
-
-    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-    cds = GetProDes(protein)
-
-    #     print cds.GetAAComp()
-    #     print cds.GetDPComp()
-    #     print cds.GetTPComp()
-    #     print cds.GetCTD()
-    print(cds.GetPAAC(lamda=5))
-    #     print cds.GetALL()
-    print(cds.GetMoreauBrotoAutop(AAP=_Steric, AAPName="Steric"))
-    print(cds.GetMoranAutop(AAP=_Steric, AAPName="Steric"))
-    print(cds.GetGearyAutop(AAP=_Steric, AAPName="Steric"))
-
-    print(cds.GetPAACp(lamda=5, weight=0.05, AAP=[_Hydrophobicity, _hydrophilicity]))
-
-    print(cds.GetSubSeq(ToAA="D", window=5))
-
-    proper = cds.GetAAindex23("GRAR740104", path="/home/orient")
-    #     print cds.GetAAindex1('KRIW790103',path='/home/orient')
-
-    print(cds.GetQSOp(maxlag=30, weight=0.1, distancematrix=proper))
-
-    print(cds.GetSOCNp(maxlag=30, distancematrix=proper))

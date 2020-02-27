@@ -14,9 +14,12 @@ import os
 import sys
 from typing import Any, Dict, List
 
+# Third party
+import pkg_resources
+
 logger = logging.getLogger(__name__)
 
-AALetter = [
+AALetter: List[str] = [
     "A",
     "R",
     "N",
@@ -175,16 +178,15 @@ def init(path=None, index="123"):
     """
     index = str(index)
     if path is None:
-        for path in [os.path.split(__file__)[0], "."]:
-            if os.path.exists(os.path.join(path, "aaindex" + index[0])):
-                break
+        filepath = pkg_resources.resource_filename(__name__, "aaindex1")
+        path = os.path.dirname(filepath)
         print("path =", path, file=sys.stderr)
     if "1" in index:
-        _parse(path + "/aaindex1", Record)
+        _parse(os.path.join(path, "aaindex1"), Record)
     if "2" in index:
-        _parse(path + "/aaindex2", MatrixRecord)
+        _parse(os.path.join(path, "aaindex2"), MatrixRecord)
     if "3" in index:
-        _parse(path + "/aaindex3", MatrixRecord)
+        _parse(os.path.join(path, "aaindex3"), MatrixRecord)
 
 
 def init_from_file(filename, type=Record):
@@ -271,7 +273,7 @@ def _parse(filename, rec, quiet=True):
     f.close()
 
 
-def GetAAIndex1(name, path="."):
+def GetAAIndex1(name: str, path: str = ".") -> Dict[str, Any]:
     """
     Get the amino acid property values from aaindex1
 
@@ -282,7 +284,7 @@ def GetAAIndex1(name, path="."):
 
     Returns
     -------
-    result : Dict
+    result : Dict[str, Any]
         contains the properties of 20 amino acids
 
     Examples
@@ -299,7 +301,7 @@ def GetAAIndex1(name, path="."):
     return res
 
 
-def GetAAIndex23(name, path="."):
+def GetAAIndex23(name: str, path: str = ".") -> Dict[Any, Any]:
     """
     Get the amino acid property values from aaindex2 and aaindex3
 
