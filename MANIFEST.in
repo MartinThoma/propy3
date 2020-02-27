@@ -1,0 +1,4 @@
+include propy/data/*.json
+include propy/aaindex1
+include propy/aaindex2
+include propy/aaindex3

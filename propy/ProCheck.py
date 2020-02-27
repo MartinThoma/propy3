@@ -7,31 +7,10 @@ Date: 2012.09.09
 Email: oriental-cds@163.com
 """
 
-AALetter = [
-    "A",
-    "R",
-    "N",
-    "D",
-    "C",
-    "E",
-    "Q",
-    "G",
-    "H",
-    "I",
-    "L",
-    "K",
-    "M",
-    "F",
-    "P",
-    "S",
-    "T",
-    "W",
-    "Y",
-    "V",
-]
+AALetter = list("ARNDCEQGHILKMFPSTWYV")
 
 
-def ProteinCheck(ProteinSequence):
+def ProteinCheck(ProteinSequence: str) -> int:
     """
     Check whether the protein sequence is a valid amino acid sequence or not.
 

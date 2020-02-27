@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 The module is used for computing the composition of amino acids, dipetide and
-3-mers (tri-peptide) for a given protein sequence. You can get 8420 descriptors
-for a given protein sequence. You can freely use and distribute it. If you hava
-any problem, you could contact with us timely!
+3-mers (tri-peptide) for a given protein sequence.
 
 References
 ----------

@@ -1,7 +1,6 @@
 """
 This module is used for obtaining the properties of amino acids or their pairs
-from the aaindex database. You can freely use and distribute it. If you hava
-any problem, you could contact with us timely!
+from the aaindex database.
 
 Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2012.09.10
@@ -12,36 +11,16 @@ Email: oriental-cds@163.com
 import logging
 import os
 import sys
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 # Third party
 import pkg_resources
 
 logger = logging.getLogger(__name__)
 
-AALetter: List[str] = [
-    "A",
-    "R",
-    "N",
-    "D",
-    "C",
-    "E",
-    "Q",
-    "G",
-    "H",
-    "I",
-    "L",
-    "K",
-    "M",
-    "F",
-    "P",
-    "S",
-    "T",
-    "W",
-    "Y",
-    "V",
-]
-_aaindex: Dict[Any, Any] = dict()
+AALetter: List[str] = list("ARNDCEQGHILKMFPSTWYV")
+
+_aaindex: Dict[Any, Any] = {}
 
 
 class Record:
@@ -56,8 +35,8 @@ class Record:
         self.authors = ""
         self.title = ""
         self.journal = ""
-        self.correlated = dict()
-        self.index = dict()
+        self.correlated = {}
+        self.index = {}
         self.comment = ""
 
     def extend(self, row):
@@ -91,8 +70,8 @@ class MatrixRecord(Record):
     def __init__(self):
         Record.__init__(self)
         self.index: List[Any] = []  # type: ignore
-        self.rows = dict()
-        self.cols = dict()
+        self.rows = {}
+        self.cols = {}
 
     def extend(self, row):
         self.index.append(row)
@@ -156,14 +135,14 @@ def grep(pattern):
         print(record)
 
 
-def get(key):
+def get(key: str):
     """Get record for key."""
     if len(_aaindex) == 0:
         init()
     return _aaindex[key]
 
 
-def _float_or_None(x):
+def _float_or_None(x) -> Optional[float]:
     if x == "NA" or x == "-":
         return None
     return float(x)
@@ -172,9 +151,9 @@ def _float_or_None(x):
 def init(path=None, index="123"):
     """
     Read in the aaindex files. You need to run this (once) before you can
-    access any records. If the files are not within the current directory,
-    you need to specify the correct directory path. By default all three
-    aaindex files are read in.
+    access any records. If the files are not within the current directory, you
+    need to specify the correct directory path. By default all three aaindex
+    files are read in.
     """
     index = str(index)
     if path is None:
@@ -193,7 +172,7 @@ def init_from_file(filename, type=Record):
     _parse(filename, type)
 
 
-def _parse(filename, rec, quiet=True):
+def _parse(filename: str, rec, quiet: bool = True):
     """
     Parse aaindex input file. `rec` must be `Record` for aaindex1 and
     `MarixRecord` for aaindex2 and aaindex3.
@@ -206,9 +185,9 @@ def _parse(filename, rec, quiet=True):
         url = (
             "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
         )
-        #         print 'Downloading "%s"' % (url)
+        logger.debug(f'Downloading "{url}"')
         filename = urllib.request.urlretrieve(url, filename)[0]
-    #         print 'Saved to "%s"' % (filename)
+    logger.debug(f'Saved to "{filename}"')
     f = open(filename)
 
     current = rec()
@@ -241,7 +220,7 @@ def _parse(filename, rec, quiet=True):
         elif key == "I ":
             a = line[1:].split()
             if a[0] != "A/L":
-                current.extend(list(map(_float_or_None, a)))
+                current.extend([_float_or_None(el) for el in a])
             elif list(Record.aakeys) != [i[0] for i in a] + [i[-1] for i in a]:
                 print("Warning: wrong amino acid sequence for", current.key)
             else:
@@ -266,16 +245,16 @@ def _parse(filename, rec, quiet=True):
                     current.cols[aa] = i
                     i += 1
             else:
-                current.extend(list(map(_float_or_None, a)))
+                current.extend([_float_or_None(el) for el in a])
         elif not quiet:
             print('Warning: line starts with "%s"' % (key))
         lastkey = key
     f.close()
 
 
-def GetAAIndex1(name: str, path: str = ".") -> Dict[str, Any]:
+def GetAAIndex1(name: str, path: str = ".") -> Dict[str, float]:
     """
-    Get the amino acid property values from aaindex1
+    Get the amino acid property values from aaindex1.
 
     Parameters
     ----------
@@ -284,12 +263,12 @@ def GetAAIndex1(name: str, path: str = ".") -> Dict[str, Any]:
 
     Returns
     -------
-    result : Dict[str, Any]
+    result : Dict[str, float]
         contains the properties of 20 amino acids
 
     Examples
     --------
-    >>> result = GetAAIndex1(name)
+    >>> result = GetAAIndex1("KRIW790103")
     """
 
     init(path=path)
@@ -301,9 +280,9 @@ def GetAAIndex1(name: str, path: str = ".") -> Dict[str, Any]:
     return res
 
 
-def GetAAIndex23(name: str, path: str = ".") -> Dict[Any, Any]:
+def GetAAIndex23(name: str, path: str = ".") -> Dict[str, float]:
     """
-    Get the amino acid property values from aaindex2 and aaindex3
+    Get the amino acid property values from aaindex2 and aaindex3.
 
     Parameters
     ----------
@@ -312,12 +291,12 @@ def GetAAIndex23(name: str, path: str = ".") -> Dict[Any, Any]:
 
     Returns
     -------
-    result : Dict
+    result : Dict[str, float]
         contains the properties of 400 amino acid pairs
 
     Examples
     --------
-    >>> result = GetAAIndex23(name)
+    >>> result = GetAAIndex23("TANS760101")
     """
     init(path=path)
     name = str(name)

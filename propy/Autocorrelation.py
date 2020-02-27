@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-This module is used for computing the Autocorrelation descriptors based different
- properties of AADs.You can also input your properties of AADs, then it can help you
-to compute Autocorrelation descriptors based on the property of AADs. Currently, You
-can get 720 descriptors for a given protein sequence based on our provided physicochemical
-properties of AADs. You can freely use and distribute it. If you hava  any problem,
-you could contact with us timely!
+This module is used for computing the Autocorrelation descriptors based
+different properties of AADs.You can also input your properties of AADs, then
+it can help you to compute Autocorrelation descriptors based on the property of
+AADs. Currently, You can get 720 descriptors for a given protein sequence based
+on our provided physicochemical properties of AADs.
 
 References
 ----------

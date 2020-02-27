@@ -38,169 +38,33 @@ Clarendon Press Oxford (1986).
 """
 
 # Core Library
+import json
 import math
 from typing import Any, Dict
 
-AALetter = [
-    "A",
-    "R",
-    "N",
-    "D",
-    "C",
-    "E",
-    "Q",
-    "G",
-    "H",
-    "I",
-    "L",
-    "K",
-    "M",
-    "F",
-    "P",
-    "S",
-    "T",
-    "W",
-    "Y",
-    "V",
-]
+# Third party
+from pkg_resources import resource_filename
 
-_Hydrophobicity = {
-    "A": 0.62,
-    "R": -2.53,
-    "N": -0.78,
-    "D": -0.90,
-    "C": 0.29,
-    "Q": -0.85,
-    "E": -0.74,
-    "G": 0.48,
-    "H": -0.40,
-    "I": 1.38,
-    "L": 1.06,
-    "K": -1.50,
-    "M": 0.64,
-    "F": 1.19,
-    "P": 0.12,
-    "S": -0.18,
-    "T": -0.05,
-    "W": 0.81,
-    "Y": 0.26,
-    "V": 1.08,
-}
+AALetter = list("ARNDCEQGHILKMFPSTWYV")
 
-_hydrophilicity = {
-    "A": -0.5,
-    "R": 3.0,
-    "N": 0.2,
-    "D": 3.0,
-    "C": -1.0,
-    "Q": 0.2,
-    "E": 3.0,
-    "G": 0.0,
-    "H": -0.5,
-    "I": -1.8,
-    "L": -1.8,
-    "K": 3.0,
-    "M": -1.3,
-    "F": -2.5,
-    "P": 0.0,
-    "S": 0.3,
-    "T": -0.4,
-    "W": -3.4,
-    "Y": -2.3,
-    "V": -1.5,
-}
+with open(resource_filename(__name__, "data/hydrophobicity.json"), "r") as f:
+    _Hydrophobicity: Dict[str, float] = json.load(f)
 
-_residuemass = {
-    "A": 15.0,
-    "R": 101.0,
-    "N": 58.0,
-    "D": 59.0,
-    "C": 47.0,
-    "Q": 72.0,
-    "E": 73.0,
-    "G": 1.000,
-    "H": 82.0,
-    "I": 57.0,
-    "L": 57.0,
-    "K": 73.0,
-    "M": 75.0,
-    "F": 91.0,
-    "P": 42.0,
-    "S": 31.0,
-    "T": 45.0,
-    "W": 130.0,
-    "Y": 107.0,
-    "V": 43.0,
-}
+with open(resource_filename(__name__, "data/hydrophilicity.json"), "r") as f:
+    _hydrophilicity: Dict[str, float] = json.load(f)
 
-_pK1 = {
-    "A": 2.35,
-    "C": 1.71,
-    "D": 1.88,
-    "E": 2.19,
-    "F": 2.58,
-    "G": 2.34,
-    "H": 1.78,
-    "I": 2.32,
-    "K": 2.20,
-    "L": 2.36,
-    "M": 2.28,
-    "N": 2.18,
-    "P": 1.99,
-    "Q": 2.17,
-    "R": 2.18,
-    "S": 2.21,
-    "T": 2.15,
-    "V": 2.29,
-    "W": 2.38,
-    "Y": 2.20,
-}
+with open(resource_filename(__name__, "data/residuemass.json"), "r") as f:
+    _residuemass: Dict[str, float] = json.load(f)
 
-_pK2 = {
-    "A": 9.87,
-    "C": 10.78,
-    "D": 9.60,
-    "E": 9.67,
-    "F": 9.24,
-    "G": 9.60,
-    "H": 8.97,
-    "I": 9.76,
-    "K": 8.90,
-    "L": 9.60,
-    "M": 9.21,
-    "N": 9.09,
-    "P": 10.6,
-    "Q": 9.13,
-    "R": 9.09,
-    "S": 9.15,
-    "T": 9.12,
-    "V": 9.74,
-    "W": 9.39,
-    "Y": 9.11,
-}
 
-_pI = {
-    "A": 6.11,
-    "C": 5.02,
-    "D": 2.98,
-    "E": 3.08,
-    "F": 5.91,
-    "G": 6.06,
-    "H": 7.64,
-    "I": 6.04,
-    "K": 9.47,
-    "L": 6.04,
-    "M": 5.74,
-    "N": 10.76,
-    "P": 6.30,
-    "Q": 5.65,
-    "R": 10.76,
-    "S": 5.68,
-    "T": 5.60,
-    "V": 6.02,
-    "W": 5.88,
-    "Y": 5.63,
-}
+with open(resource_filename(__name__, "data/pK1.json"), "r") as f:
+    _pK1: Dict[str, float] = json.load(f)
+
+with open(resource_filename(__name__, "data/pK2.json"), "r") as f:
+    _pK2: Dict[str, float] = json.load(f)
+
+with open(resource_filename(__name__, "data/pI.json"), "r") as f:
+    _pI: Dict[str, float] = json.load(f)
 
 
 def _mean(listvalue):
