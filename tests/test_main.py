@@ -11,6 +11,26 @@ def test_docs():
     gps(uniprotid)  # Check the return value!
 
 
+def test_marina():
+    from propy import AAComposition as AAC
+    from propy import CTD
+    from propy.PyPro import GetProDes
+
+    # Protein sequence
+    proseq = (
+        "MENATLLKSTTRHIRIFAAEIDRDGELVPSNQVLTLDIDPDNEFNWNEDALQKIYRKFDELV"
+        "EASSGADLTDYNLRRIGSDLEHYLRSLLQKGEISYNLSARVTNYSLGLPQVAVEDK"
+    )
+    _ = AAC.CalculateAAComposition(proseq)  # TODO: Check return value
+
+    _ = CTD.CalculateC(proseq)  # TODO: Check return value
+
+    Des = GetProDes(proseq)
+    alldes = Des.GetALL()
+    for desc in alldes:
+        print(desc, alldes[desc])
+
+
 @pytest.mark.xfail()
 def test_p33765():
     # TODO: "P33765" gives "HTTP Error 300" (abiguity?) Why?
