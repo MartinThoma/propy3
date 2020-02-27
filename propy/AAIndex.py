@@ -12,6 +12,7 @@ Email: oriental-cds@163.com
 import logging
 import os
 import sys
+from typing import Any, Dict, List
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +38,7 @@ AALetter = [
     "Y",
     "V",
 ]
-_aaindex = dict()
+_aaindex: Dict[Any, Any] = dict()
 
 
 class Record:
@@ -71,7 +72,7 @@ class Record:
 
     def median(self):
         x = sorted([_f for _f in list(self.index.values()) if _f])
-        half = len(x) / 2
+        half = len(x) // 2
         if len(x) % 2 == 1:
             return x[half]
         return (x[half - 1] + x[half]) / 2.0
@@ -86,7 +87,7 @@ class MatrixRecord(Record):
 
     def __init__(self):
         Record.__init__(self)
-        self.index = []
+        self.index: List[Any] = []
         self.rows = dict()
         self.cols = dict()
 
@@ -119,8 +120,8 @@ class MatrixRecord(Record):
             x.extend([_f for _f in y if _f])
         x.sort()
         if len(x) % 2 == 1:
-            return x[len(x) / 2]
-        return sum(x[len(x) / 2 - 1 : len(x) / 2 + 1]) / 2.0
+            return x[len(x) // 2]
+        return sum(x[len(x) // 2 - 1 : len(x) // 2 + 1]) / 2.0
 
 
 def search(pattern, searchtitle=True, casesensitive=False):
