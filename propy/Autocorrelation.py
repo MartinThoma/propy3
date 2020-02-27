@@ -7,18 +7,19 @@ can get 720 descriptors for a given protein sequence based on our provided physi
 properties of AADs. You can freely use and distribute it. If you hava  any problem,
 you could contact with us timely!
 
-References:
+References
+----------
+.. [1] http://www.genome.ad.jp/dbget/aaindex.html
 
-[1]: http://www.genome.ad.jp/dbget/aaindex.html
-[2]:Feng, Z.P. and Zhang, C.T. (2000) Prediction of membrane protein types based on
-the hydrophobic index of amino acids. J Protein Chem, 19, 269-275.
+.. [2] Feng, Z.P. and Zhang, C.T. (2000) Prediction of membrane protein types based on
+   the hydrophobic index of amino acids. J Protein Chem, 19, 269-275.
 
-[3]:Horne, D.S. (1988) Prediction of protein helix content from an autocorrelation
-analysis of sequence hydrophobicities. Biopolymers, 27, 451-477.
+.. [3] Horne, D.S. (1988) Prediction of protein helix content from an autocorrelation
+   analysis of sequence hydrophobicities. Biopolymers, 27, 451-477.
 
-[4]:Sokal, R.R. and Thomson, B.A. (2006) Population structure inferred by local
-spatial autocorrelation: an Usage from an Amerindian tribal population. Am J
-Phys Anthropol, 129, 121-131.
+.. [4] Sokal, R.R. and Thomson, B.A. (2006) Population structure inferred by local
+   spatial autocorrelation: an Usage from an Amerindian tribal population. Am J
+   Phys Anthropol, 129, 121-131.
 
 Authors: Dongsheng Cao and Yizeng Liang.
 Date: 2010.11.22
@@ -282,20 +283,16 @@ def _std(listvalue, ddof=1):
 
 def NormalizeEachAAP(AAP):
     """
+    Centralizes and standardizes all amino acid indices before the calculation
 
-    All of the amino acid indices are centralized and
+    Parameters
+    ----------
+    ProteinSequence: Dict with the the properties of 20 amino acids
 
-    standardized before the calculation.
-
-    Usage:
-
-    result=NormalizeEachAAP(AAP)
-
-    Input: AAP is a dict form containing the properties of 20 amino acids.
-
-    Output: result is the a dict form containing the normalized properties
-
-    of 20 amino acids.
+    Returns
+    -------
+    result : Dict
+        contains the normalized properties of 20 amino acids
 
     """
     if len(list(AAP.values())) != 20:
