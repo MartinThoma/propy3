@@ -12,6 +12,7 @@ Email: oriental-cds@163.com
 
 # Core Library
 import re
+from typing import List
 
 AALetter = [
     "A",
@@ -37,22 +38,27 @@ AALetter = [
 ]
 
 
-def GetSubSequence(ProteinSequence, ToAA="S", window=3):
-
+def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> List[str]:
     """
     Get all 2*window+1 sub-sequences whose cener is ToAA in a protein.
 
-    Usage:
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure problem sequence
+    ToAA :str
+        the central (query point) amino acid in the sub-sequence
+    window : int
+        the span
 
-    result=GetSubSequence(protein,ToAA,window)
+    Returns
+    -------
+    result : List[str]
+        contains all satisfied sub-sequences
 
-    Input:protein is a pure problem sequence.
-
-    ToAA is the central (query point) amino acid in the sub-sequence.
-
-    window is the span.
-
-    result is a list form containing all satisfied sub-sequences.
+    Examples
+    --------
+    >>> result = GetSubSequence(protein, ToAA, window)
     """
 
     if ToAA not in AALetter:

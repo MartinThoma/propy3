@@ -315,17 +315,21 @@ def CalculateEachNormalizedMoreauBrotoAuto(ProteinSequence, AAP, AAPName):
 
     descriptors for different properties based on AADs.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateEachNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
 
-    result=CalculateEachNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
-
-    Input: protein is a pure protein sequence.
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
     AAP is a dict form containing the properties of 20 amino acids (e.g., _AvFlexibility).
 
     AAPName is a string used for indicating the property (e.g., '_AvFlexibility').
 
-    Output: result is a dict form containing 30 Normalized Moreau-Broto autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto autocorrelation
 
     descriptors based on the given property.
     """
@@ -356,17 +360,21 @@ def CalculateEachMoranAuto(ProteinSequence, AAP, AAPName):
 
     descriptors for different properties based on AADs.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateEachMoranAuto(protein,AAP,AAPName)
 
-    result=CalculateEachMoranAuto(protein,AAP,AAPName)
-
-    Input: protein is a pure protein sequence.
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
     AAP is a dict form containing the properties of 20 amino acids (e.g., _AvFlexibility).
 
     AAPName is a string used for indicating the property (e.g., '_AvFlexibility').
 
-    Output: result is a dict form containing 30 Moran autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran autocorrelation
 
     descriptors based on the given property.
     """
@@ -411,17 +419,21 @@ def CalculateEachGearyAuto(ProteinSequence, AAP, AAPName):
 
     descriptors for different properties based on AADs.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateEachGearyAuto(protein,AAP,AAPName)
 
-    result=CalculateEachGearyAuto(protein,AAP,AAPName)
-
-    Input: protein is a pure protein sequence.
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
     AAP is a dict form containing the properties of 20 amino acids (e.g., _AvFlexibility).
 
     AAPName is a string used for indicating the property (e.g., '_AvFlexibility').
 
-    Output: result is a dict form containing 30 Geary autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Geary autocorrelation
 
     descriptors based on the given property.
     """
@@ -458,17 +470,21 @@ def CalculateNormalizedMoreauBrotoAuto(ProteinSequence, AAProperty, AAPropertyNa
     """
     A method used for computing MoreauBrotoAuto for all properties.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
 
-    result=CalculateNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
-
-    Input: protein is a pure protein sequence.
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
     AAProperty is a list or tuple form containing the properties of 20 amino acids (e.g., _AAProperty).
 
     AAPName is a list or tuple form used for indicating the property (e.g., '_AAPropertyName').
 
-    Output: result is a dict form containing 30*p Normalized Moreau-Broto autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30*p Normalized Moreau-Broto autocorrelation
 
     descriptors based on the given properties.
 
@@ -486,17 +502,21 @@ def CalculateMoranAuto(ProteinSequence, AAProperty, AAPropertyName):
     """
     A method used for computing MoranAuto for all properties
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAuto(protein,AAP,AAPName)
 
-    result=CalculateMoranAuto(protein,AAP,AAPName)
-
-    Input: protein is a pure protein sequence.
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
     AAProperty is a list or tuple form containing the properties of 20 amino acids (e.g., _AAProperty).
 
     AAPName is a list or tuple form used for indicating the property (e.g., '_AAPropertyName').
 
-    Output: result is a dict form containing 30*p Moran autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30*p Moran autocorrelation
 
     descriptors based on the given properties.
     """
@@ -513,16 +533,20 @@ def CalculateGearyAuto(ProteinSequence, AAProperty, AAPropertyName):
     """
     A method used for computing GearyAuto for all properties
 
-    Usage:
+    Examples
+    --------
+    >>> result = CalculateGearyAuto(protein, AAP, AAPName)
 
-    result = CalculateGearyAuto(protein, AAP, AAPName)
-
-    Input: protein is a pure protein sequence.
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
     AAProperty is a list or tuple form containing the properties of 20 amino acids (e.g., _AAProperty).
     AAPName is a list or tuple form used for indicating the property (e.g., '_AAPropertyName').
 
-    Output: result is a dict form containing 30*p Geary autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30*p Geary autocorrelation
 
     descriptors based on the given properties.
     """
@@ -542,13 +566,17 @@ def CalculateNormalizedMoreauBrotoAutoHydrophobicity(ProteinSequence):
 
     hydrophobicity.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoHydrophobicity(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoHydrophobicity(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on Hydrophobicity.
     """
@@ -566,13 +594,17 @@ def CalculateNormalizedMoreauBrotoAutoAvFlexibility(ProteinSequence):
 
     AvFlexibility.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoAvFlexibility(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoAvFlexibility(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on AvFlexibility.
     """
@@ -590,13 +622,17 @@ def CalculateNormalizedMoreauBrotoAutoPolarizability(ProteinSequence):
 
     Polarizability.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoPolarizability(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoPolarizability(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on Polarizability.
     """
@@ -614,13 +650,17 @@ def CalculateNormalizedMoreauBrotoAutoFreeEnergy(ProteinSequence):
 
     FreeEnergy.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoFreeEnergy(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoFreeEnergy(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on FreeEnergy.
     """
@@ -638,13 +678,17 @@ def CalculateNormalizedMoreauBrotoAutoResidueASA(ProteinSequence):
 
     ResidueASA.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoResidueASA(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoResidueASA(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on ResidueASA.
     """
@@ -662,13 +706,17 @@ def CalculateNormalizedMoreauBrotoAutoResidueVol(ProteinSequence):
 
     ResidueVol.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoResidueVol(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoResidueVol(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on ResidueVol.
     """
@@ -684,13 +732,17 @@ def CalculateNormalizedMoreauBrotoAutoSteric(ProteinSequence):
     """
     Calculte the NormalizedMoreauBorto Autocorrelation descriptors based on Steric.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoSteric(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoSteric(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on Steric.
     """
@@ -704,13 +756,17 @@ def CalculateNormalizedMoreauBrotoAutoMutability(ProteinSequence):
     """
     Calculte the NormalizedMoreauBorto Autocorrelation descriptors based on Mutability.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoMutability(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoMutability(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Normalized Moreau-Broto Autocorrelation
 
     descriptors based on Mutability.
     """
@@ -727,13 +783,17 @@ def CalculateMoranAutoHydrophobicity(ProteinSequence):
     """
     Calculte the MoranAuto Autocorrelation descriptors based on hydrophobicity.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoHydrophobicity(protein)
 
-    result=CalculateMoranAutoHydrophobicity(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on hydrophobicity.
     """
@@ -749,13 +809,17 @@ def CalculateMoranAutoAvFlexibility(ProteinSequence):
 
     AvFlexibility.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoAvFlexibility(protein)
 
-    result=CalculateMoranAutoAvFlexibility(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on AvFlexibility.
     """
@@ -771,13 +835,17 @@ def CalculateMoranAutoPolarizability(ProteinSequence):
 
     Polarizability.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoPolarizability(protein)
 
-    result=CalculateMoranAutoPolarizability(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on Polarizability.
     """
@@ -793,13 +861,17 @@ def CalculateMoranAutoFreeEnergy(ProteinSequence):
 
     FreeEnergy.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoFreeEnergy(protein)
 
-    result=CalculateMoranAutoFreeEnergy(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on FreeEnergy.
     """
@@ -815,13 +887,17 @@ def CalculateMoranAutoResidueASA(ProteinSequence):
 
     ResidueASA.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoResidueASA(protein)
 
-    result=CalculateMoranAutoResidueASA(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on ResidueASA.
     """
@@ -837,13 +913,17 @@ def CalculateMoranAutoResidueVol(ProteinSequence):
 
     ResidueVol.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoResidueVol(protein)
 
-    result=CalculateMoranAutoResidueVol(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on ResidueVol.
     """
@@ -859,13 +939,17 @@ def CalculateMoranAutoSteric(ProteinSequence):
 
     AutoSteric.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoSteric(protein)
 
-    result=CalculateMoranAutoSteric(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on AutoSteric.
     """
@@ -881,13 +965,17 @@ def CalculateMoranAutoMutability(ProteinSequence):
 
     Mutability.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoMutability(protein)
 
-    result=CalculateMoranAutoMutability(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Moran Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Moran Autocorrelation
 
     descriptors based on Mutability.
     """
@@ -904,13 +992,17 @@ def CalculateGearyAutoHydrophobicity(ProteinSequence):
 
     hydrophobicity.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateGearyAutoHydrophobicity(protein)
 
-    result=CalculateGearyAutoHydrophobicity(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Geary Autocorrelation
 
     descriptors based on hydrophobicity.
     """
@@ -920,42 +1012,44 @@ def CalculateGearyAutoHydrophobicity(ProteinSequence):
 
 
 def CalculateGearyAutoAvFlexibility(ProteinSequence):
-
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on
+    Calculte the GearyAuto Autocorrelation descriptors based on AvFlexibility.
 
-    AvFlexibility.
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence.
 
-    Usage:
-    result=CalculateGearyAutoAvFlexibility(protein)
+    Returns
+    -------
+    result : Dict
+        contains 30 Geary Autocorrelation descriptors based on AvFlexibility.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
-
-    descriptors based on AvFlexibility.
+    Examples
+    --------
+    >>> result = CalculateGearyAutoAvFlexibility(protein)
     """
-
     result = CalculateEachGearyAuto(ProteinSequence, _AvFlexibility, "_AvFlexibility")
     return result
 
 
 def CalculateGearyAutoPolarizability(ProteinSequence):
-
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on
+    Calculte the GearyAuto Autocorrelation descriptors based on Polarizability.
 
-    Polarizability.
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence.
 
-    Usage:
+    Returns
+    -------
+    result : Dict
+        contains 30 Geary Autocorrelation descriptors based on Polarizability.
 
-    result=CalculateGearyAutoPolarizability(protein)
-
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
-
-    descriptors based on Polarizability.
+    Examples
+    --------
+    >>> result=CalculateGearyAutoPolarizability(protein)
     """
 
     result = CalculateEachGearyAuto(ProteinSequence, _Polarizability, "_Polarizability")
@@ -963,111 +1057,122 @@ def CalculateGearyAutoPolarizability(ProteinSequence):
 
 
 def CalculateGearyAutoFreeEnergy(ProteinSequence):
-
     """
     Calculte the GearyAuto Autocorrelation descriptors based on
 
     FreeEnergy.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateGearyAutoFreeEnergy(protein)
 
-    result=CalculateGearyAutoFreeEnergy(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Geary Autocorrelation
 
     descriptors based on FreeEnergy.
     """
-
     result = CalculateEachGearyAuto(ProteinSequence, _FreeEnergy, "_FreeEnergy")
     return result
 
 
 def CalculateGearyAutoResidueASA(ProteinSequence):
-
     """
     Calculte the GearyAuto Autocorrelation descriptors based on
 
     ResidueASA.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateGearyAutoResidueASA(protein)
 
-    result=CalculateGearyAutoResidueASA(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Geary Autocorrelation
 
     descriptors based on ResidueASA.
     """
-
     result = CalculateEachGearyAuto(ProteinSequence, _ResidueASA, "_ResidueASA")
     return result
 
 
 def CalculateGearyAutoResidueVol(ProteinSequence):
-
     """
     Calculte the GearyAuto Autocorrelation descriptors based on
 
     ResidueVol.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateGearyAutoResidueVol(protein)
 
-    result=CalculateGearyAutoResidueVol(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Geary Autocorrelation
 
     descriptors based on ResidueVol.
     """
-
     result = CalculateEachGearyAuto(ProteinSequence, _ResidueVol, "_ResidueVol")
     return result
 
 
 def CalculateGearyAutoSteric(ProteinSequence):
-
     """
     Calculte the GearyAuto Autocorrelation descriptors based on
 
     Steric.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateGearyAutoSteric(protein)
 
-    result=CalculateGearyAutoSteric(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Geary Autocorrelation
 
     descriptors based on Steric.
     """
-
     result = CalculateEachGearyAuto(ProteinSequence, _Steric, "_Steric")
     return result
 
 
 def CalculateGearyAutoMutability(ProteinSequence):
-
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on
+    Calculte the GearyAuto Autocorrelation descriptors based on Mutability.
 
-    Mutability.
+    Examples
+    --------
+    >>>
+    Examples
+    --------
+    >>> result=CalculateGearyAutoMutability(protein)
 
-    Usage:
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    result=CalculateGearyAutoMutability(protein)
-
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30 Geary Autocorrelation
+    Returns
+    -------
+    result is a dict form containing 30 Geary Autocorrelation
 
     descriptors based on Mutability.
     """
-
     result = CalculateEachGearyAuto(ProteinSequence, _Mutability, "_Mutability")
     return result
 
@@ -1078,13 +1183,17 @@ def CalculateNormalizedMoreauBrotoAutoTotal(ProteinSequence):
 
     on 8 proterties of AADs.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateNormalizedMoreauBrotoAutoTotal(protein)
 
-    result=CalculateNormalizedMoreauBrotoAutoTotal(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30*8=240 normalized Moreau Broto
+    Returns
+    -------
+    result is a dict form containing 30*8=240 normalized Moreau Broto
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
@@ -1104,13 +1213,17 @@ def CalculateMoranAutoTotal(ProteinSequence):
     """
     A method used for computing Moran autocorrelation descriptors based on 8 properties of AADs.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateMoranAutoTotal(protein)
 
-    result=CalculateMoranAutoTotal(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30*8=240 Moran
+    Returns
+    -------
+    result is a dict form containing 30*8=240 Moran
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
@@ -1130,13 +1243,17 @@ def CalculateGearyAutoTotal(ProteinSequence):
     """
     A method used for computing Geary autocorrelation descriptors based on 8 properties of AADs.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateGearyAutoTotal(protein)
 
-    result=CalculateGearyAutoTotal(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30*8=240 Geary
+    Returns
+    -------
+    result is a dict form containing 30*8=240 Geary
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
@@ -1156,13 +1273,17 @@ def CalculateAutoTotal(ProteinSequence):
     """
     A method used for computing all autocorrelation descriptors based on 8 properties of AADs.
 
-    Usage:
+    Examples
+    --------
+    >>> result=CalculateGearyAutoTotal(protein)
 
-    result=CalculateGearyAutoTotal(protein)
+    Parameters
+    ----------
+    protein is a pure protein sequence.
 
-    Input: protein is a pure protein sequence.
-
-    Output: result is a dict form containing 30*8*3=720 normalized Moreau Broto, Moran, and Geary
+    Returns
+    -------
+    result is a dict form containing 30*8*3=720 normalized Moreau Broto, Moran, and Geary
 
     autocorrelation descriptors based on the given properties(i.e., _AAPropert).
     """
@@ -1171,14 +1292,3 @@ def CalculateAutoTotal(ProteinSequence):
     result.update(CalculateMoranAutoTotal(ProteinSequence))
     result.update(CalculateGearyAutoTotal(ProteinSequence))
     return result
-
-
-if __name__ == "__main__":
-    protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
-    temp1 = CalculateNormalizedMoreauBrotoAuto(
-        protein, AAProperty=_AAProperty, AAPropertyName=_AAPropertyName
-    )
-    # print temp1
-    temp2 = CalculateMoranAutoMutability(protein)
-    print(temp2)
-    print(len(CalculateAutoTotal(protein)))
