@@ -22,33 +22,12 @@ Email: oriental-cds@163.com
 
 # Core Library
 import re
-from typing import Any, Dict
+from typing import Any, Dict, List
 
-AALetter = [
-    "A",
-    "R",
-    "N",
-    "D",
-    "C",
-    "E",
-    "Q",
-    "G",
-    "H",
-    "I",
-    "L",
-    "K",
-    "M",
-    "F",
-    "P",
-    "S",
-    "T",
-    "W",
-    "Y",
-    "V",
-]
+AALetter: List[str] = list("ARNDCEQGHILKMFPSTWYV")
 
 
-def CalculateAAComposition(ProteinSequence):
+def CalculateAAComposition(ProteinSequence: str) -> Dict[str, float]:
     """
     Calculate the composition of Amino acids for a given protein sequence.
 
@@ -59,7 +38,7 @@ def CalculateAAComposition(ProteinSequence):
 
     Returns
     -------
-    result : Dict
+    result : Dict[str, float]
         contains the composition of 20 amino acids.
 
     Examples
@@ -73,7 +52,7 @@ def CalculateAAComposition(ProteinSequence):
     return result
 
 
-def CalculateDipeptideComposition(ProteinSequence):
+def CalculateDipeptideComposition(ProteinSequence: str):
     """
     Calculate the composition of dipeptidefor a given protein sequence.
 
@@ -122,7 +101,7 @@ def Getkmers():
     return kmers
 
 
-def GetSpectrumDict(proteinsequence):
+def GetSpectrumDict(proteinsequence: str):
     """
     Calcualte the spectrum descriptors of 3-mers for a given protein.
 
@@ -146,14 +125,15 @@ def GetSpectrumDict(proteinsequence):
     return result
 
 
-def CalculateAADipeptideComposition(ProteinSequence):
+def CalculateAADipeptideComposition(ProteinSequence: str):
     """
     Calculate the composition of AADs, dipeptide and 3-mers for a given protein
     sequence.
 
     Parameters
     ----------
-    ProteinSequence : a pure protein sequence
+    ProteinSequence : str
+        a pure protein sequence
 
     Returns
     -------
