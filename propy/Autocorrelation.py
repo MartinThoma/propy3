@@ -26,9 +26,9 @@ Email: oriental-cds@163.com
 """
 
 # Core Library
+import json
 import math
 from typing import Any, Dict, List
-import json
 
 # Third party
 from pkg_resources import resource_filename
@@ -144,7 +144,7 @@ def CalculateEachNormalizedMoreauBrotoAuto(
 
     Examples
     --------
-    >>> result=CalculateEachNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
+    >>> result = CalculateEachNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
 
     Parameters
     ----------
@@ -187,7 +187,7 @@ def CalculateEachMoranAuto(
 
     Examples
     --------
-    >>> result=CalculateEachMoranAuto(protein,AAP,AAPName)
+    >>> result = CalculateEachMoranAuto(protein,AAP,AAPName)
 
     Parameters
     ----------
@@ -243,7 +243,7 @@ def CalculateEachGearyAuto(
 
     Examples
     --------
-    >>> result=CalculateEachGearyAuto(protein,AAP,AAPName)
+    >>> result = CalculateEachGearyAuto(protein,AAP,AAPName)
 
     Parameters
     ----------
@@ -294,7 +294,7 @@ def CalculateNormalizedMoreauBrotoAuto(
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
+    >>> result = CalculateNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
 
     Parameters
     ----------
@@ -325,7 +325,7 @@ def CalculateMoranAuto(ProteinSequence, AAProperty, AAPropertyName) -> Dict[Any,
 
     Examples
     --------
-    >>> result=CalculateMoranAuto(protein,AAP,AAPName)
+    >>> result = CalculateMoranAuto(protein,AAP,AAPName)
 
     Parameters
     ----------
@@ -390,7 +390,7 @@ def CalculateNormalizedMoreauBrotoAutoHydrophobicity(ProteinSequence) -> Dict[An
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoHydrophobicity(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoHydrophobicity(protein)
 
     Parameters
     ----------
@@ -415,7 +415,7 @@ def CalculateNormalizedMoreauBrotoAutoAvFlexibility(ProteinSequence) -> Dict[Any
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoAvFlexibility(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoAvFlexibility(protein)
 
     Parameters
     ----------
@@ -434,7 +434,7 @@ def CalculateNormalizedMoreauBrotoAutoAvFlexibility(ProteinSequence) -> Dict[Any
 
 
 def CalculateNormalizedMoreauBrotoAutoPolarizability(
-    ProteinSequence: str
+    ProteinSequence: str,
 ) -> Dict[Any, Any]:
     """
     Calculte the NormalizedMoreauBorto Autocorrelation descriptors based on
@@ -442,7 +442,7 @@ def CalculateNormalizedMoreauBrotoAutoPolarizability(
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoPolarizability(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoPolarizability(protein)
 
     Parameters
     ----------
@@ -461,7 +461,7 @@ def CalculateNormalizedMoreauBrotoAutoPolarizability(
 
 
 def CalculateNormalizedMoreauBrotoAutoFreeEnergy(
-    ProteinSequence: str
+    ProteinSequence: str,
 ) -> Dict[Any, Any]:
     """
     Calculte the NormalizedMoreauBorto Autocorrelation descriptors based on
@@ -469,7 +469,7 @@ def CalculateNormalizedMoreauBrotoAutoFreeEnergy(
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoFreeEnergy(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoFreeEnergy(protein)
 
     Parameters
     ----------
@@ -488,7 +488,7 @@ def CalculateNormalizedMoreauBrotoAutoFreeEnergy(
 
 
 def CalculateNormalizedMoreauBrotoAutoResidueASA(
-    ProteinSequence: str
+    ProteinSequence: str,
 ) -> Dict[Any, Any]:
     """
     Calculte the NormalizedMoreauBorto Autocorrelation descriptors based on
@@ -496,7 +496,7 @@ def CalculateNormalizedMoreauBrotoAutoResidueASA(
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoResidueASA(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoResidueASA(protein)
 
     Parameters
     ----------
@@ -521,7 +521,7 @@ def CalculateNormalizedMoreauBrotoAutoResidueVol(ProteinSequence) -> Dict[Any, A
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoResidueVol(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoResidueVol(protein)
 
     Parameters
     ----------
@@ -545,7 +545,7 @@ def CalculateNormalizedMoreauBrotoAutoSteric(ProteinSequence) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoSteric(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoSteric(protein)
 
     Parameters
     ----------
@@ -567,7 +567,7 @@ def CalculateNormalizedMoreauBrotoAutoMutability(ProteinSequence) -> Dict[Any, A
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoMutability(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoMutability(protein)
 
     Parameters
     ----------
@@ -592,7 +592,7 @@ def CalculateMoranAutoHydrophobicity(ProteinSequence) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoHydrophobicity(protein)
+    >>> result = CalculateMoranAutoHydrophobicity(protein)
 
     Parameters
     ----------
@@ -614,7 +614,7 @@ def CalculateMoranAutoAvFlexibility(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoAvFlexibility(protein)
+    >>> result = CalculateMoranAutoAvFlexibility(protein)
 
     Parameters
     ----------
@@ -636,7 +636,7 @@ def CalculateMoranAutoPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoPolarizability(protein)
+    >>> result = CalculateMoranAutoPolarizability(protein)
 
     Parameters
     ----------
@@ -660,7 +660,7 @@ def CalculateMoranAutoFreeEnergy(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoFreeEnergy(protein)
+    >>> result = CalculateMoranAutoFreeEnergy(protein)
 
     Parameters
     ----------
@@ -681,7 +681,7 @@ def CalculateMoranAutoResidueASA(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoResidueASA(protein)
+    >>> result = CalculateMoranAutoResidueASA(protein)
 
     Parameters
     ----------
@@ -702,7 +702,7 @@ def CalculateMoranAutoResidueVol(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoResidueVol(protein)
+    >>> result = CalculateMoranAutoResidueVol(protein)
 
     Parameters
     ----------
@@ -723,7 +723,7 @@ def CalculateMoranAutoSteric(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoSteric(protein)
+    >>> result = CalculateMoranAutoSteric(protein)
 
     Parameters
     ----------
@@ -744,7 +744,7 @@ def CalculateMoranAutoMutability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoMutability(protein)
+    >>> result = CalculateMoranAutoMutability(protein)
 
     Parameters
     ----------
@@ -766,7 +766,7 @@ def CalculateGearyAutoHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateGearyAutoHydrophobicity(protein)
+    >>> result = CalculateGearyAutoHydrophobicity(protein)
 
     Parameters
     ----------
@@ -820,7 +820,7 @@ def CalculateGearyAutoPolarizability(ProteinSequence):
 
     Examples
     --------
-    >>> result=CalculateGearyAutoPolarizability(protein)
+    >>> result = CalculateGearyAutoPolarizability(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _Polarizability, "_Polarizability")
     return result
@@ -832,7 +832,7 @@ def CalculateGearyAutoFreeEnergy(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateGearyAutoFreeEnergy(protein)
+    >>> result = CalculateGearyAutoFreeEnergy(protein)
 
     Parameters
     ----------
@@ -853,7 +853,7 @@ def CalculateGearyAutoResidueASA(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateGearyAutoResidueASA(protein)
+    >>> result = CalculateGearyAutoResidueASA(protein)
 
     Parameters
     ----------
@@ -874,7 +874,7 @@ def CalculateGearyAutoResidueVol(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateGearyAutoResidueVol(protein)
+    >>> result = CalculateGearyAutoResidueVol(protein)
 
     Parameters
     ----------
@@ -895,7 +895,7 @@ def CalculateGearyAutoSteric(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateGearyAutoSteric(protein)
+    >>> result = CalculateGearyAutoSteric(protein)
 
     Parameters
     ----------
@@ -916,10 +916,7 @@ def CalculateGearyAutoMutability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>>
-    Examples
-    --------
-    >>> result=CalculateGearyAutoMutability(protein)
+    >>> result = CalculateGearyAutoMutability(protein)
 
     Parameters
     ----------
@@ -941,7 +938,7 @@ def CalculateNormalizedMoreauBrotoAutoTotal(ProteinSequence: str) -> Dict[Any, A
 
     Examples
     --------
-    >>> result=CalculateNormalizedMoreauBrotoAutoTotal(protein)
+    >>> result = CalculateNormalizedMoreauBrotoAutoTotal(protein)
 
     Parameters
     ----------
@@ -972,7 +969,7 @@ def CalculateMoranAutoTotal(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateMoranAutoTotal(protein)
+    >>> result = CalculateMoranAutoTotal(protein)
 
     Parameters
     ----------
@@ -1003,7 +1000,7 @@ def CalculateGearyAutoTotal(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateGearyAutoTotal(protein)
+    >>> result = CalculateGearyAutoTotal(protein)
 
     Parameters
     ----------
@@ -1034,7 +1031,7 @@ def CalculateAutoTotal(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result=CalculateGearyAutoTotal(protein)
+    >>> result = CalculateGearyAutoTotal(protein)
 
     Parameters
     ----------
