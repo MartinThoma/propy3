@@ -52,7 +52,7 @@ class GetProDes:
         else:
             self.ProteinSequence = ProteinSequence
 
-    def GetAAComp(self):
+    def GetAAComp(self) -> Dict[str, float]:
         """
         Amino acid compositon descriptors (20).
 
@@ -63,7 +63,7 @@ class GetProDes:
         res = CalculateAAComposition(self.ProteinSequence)
         return res
 
-    def GetDPComp(self):
+    def GetDPComp(self) -> Dict[str, float]:
         """
         Dipeptide composition descriptors (400).
 
