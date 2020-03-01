@@ -59,7 +59,8 @@ def GetProteinSequenceFromTxt(path: str, openfile: str, savefile: str):
     --------
     >>> result = GetProteinSequenceFromTxt(path, openfile, savefile)
     """
-    with open(os.path.join(path, savefile), "wb") as f1:
+    path = os.path.abspath(path)  # makes debugging easier
+    with open(os.path.join(path, savefile), "w") as f1:
         with open(os.path.join(path, openfile), "r") as f2:
             for index, i in enumerate(f2):
                 itrim = i.strip()
@@ -68,7 +69,7 @@ def GetProteinSequenceFromTxt(path: str, openfile: str, savefile: str):
                 else:
                     temp = GetProteinSequence(itrim)
                     print("-" * 80)
-                    print("The {index + 1} protein sequence has been downloaded!")
+                    print(f"The {index + 1} protein sequence has been downloaded!")
                     print(temp)
                     f1.write(temp + "\n")
                     print("-" * 80)
