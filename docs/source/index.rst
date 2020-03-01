@@ -8,13 +8,13 @@ Welcome to propy3's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: User Guide:
+   :caption: User Guide
 
    UserGuide
 
 .. toctree::
    :maxdepth: 2
-   :caption: API Reference:
+   :caption: API Reference
 
    AAComposition
    AAIndex
