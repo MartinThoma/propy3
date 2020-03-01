@@ -6,18 +6,11 @@
 Welcome to propy3's documentation!
 ==================================
 
-
-User Guide
-------------
-
 .. toctree::
    :maxdepth: 2
    :caption: User Guide:
 
    UserGuide
-
-API Reference
--------------
 
 .. toctree::
    :maxdepth: 2

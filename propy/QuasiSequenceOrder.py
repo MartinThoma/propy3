@@ -401,6 +401,8 @@ def GetQuasiSequenceOrder(ProteinSequence, maxlag=30, weight=0.1) -> Dict[Any, A
     """
     Computing quasi-sequence-order descriptors for a given protein.
 
+    See [1]_ for details.
+
     Parameters
     ----------
     protein is a pure protein sequence
@@ -419,12 +421,6 @@ def GetQuasiSequenceOrder(ProteinSequence, maxlag=30, weight=0.1) -> Dict[Any, A
     Examples
     --------
     >>> result = GetQuasiSequenceOrder(protein, maxlag, weight)
-
-    References
-    ----------
-    .. [1] Kuo-Chen Chou. Prediction of Protein Subcellar Locations by
-           Incorporating Quasi-Sequence-Order Effect. Biochemical and
-           Biophysical Research Communications 2000, 278, 477-483.
     """
     result: Dict[Any, Any] = dict()
     result.update(GetQuasiSequenceOrder1SW(ProteinSequence, maxlag, weight, _Distance1))
@@ -447,6 +443,8 @@ def GetQuasiSequenceOrderp(
     """
     Computing quasi-sequence-order descriptors for a given protein.
 
+    See [1]_ for details.
+
     Parameters
     ----------
     ProteinSequence : a pure protein sequence
@@ -465,12 +463,6 @@ def GetQuasiSequenceOrderp(
     Examples
     --------
     >>> result = GetQuasiSequenceOrderp(protein,maxlag,weight,distancematrix)
-
-    References
-    ----------
-    .. [1] Kuo-Chen Chou. Prediction of Protein Subcellar Locations by
-           Incorporating Quasi-Sequence-Order Effect. Biochemical and
-           Biophysical Research Communications 2000, 278, 477-483.
     """
     result: Dict[Any, Any] = dict()
     result.update(
