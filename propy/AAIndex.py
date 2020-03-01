@@ -11,7 +11,7 @@ Email: oriental-cds@163.com
 import logging
 import os
 import sys
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Type, cast
 
 # Third party
 import pkg_resources
@@ -39,7 +39,8 @@ class Record:
         self.index = {}
         self.comment = ""
 
-    def extend(self, row):
+    def extend(self, row: List[Optional[float]]):
+        """Extend self.index by the elements of the list."""
         i = len(self.index)
         for x in row:
             self.index[self.aakeys[i]] = x
@@ -172,7 +173,7 @@ def init_from_file(filename, type=Record):
     _parse(filename, type)
 
 
-def _parse(filename: str, rec, quiet: bool = True):
+def _parse(filename: str, rec: Type[Record], quiet: bool = True):
     """
     Parse aaindex input file. `rec` must be `Record` for aaindex1 and
     `MarixRecord` for aaindex2 and aaindex3.
@@ -229,6 +230,7 @@ def _parse(filename: str, rec, quiet: bool = True):
                     logger.debug(e)
                     print("Warning: wrong amino acid sequence for", current.key)
         elif key == "M ":
+            current = cast(MatrixRecord, current)  # TODO: is this guaranteed?
             a = line[2:].split()
             if a[0] == "rows":
                 if a[4] == "rows":

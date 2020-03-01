@@ -211,8 +211,8 @@ def CalculateEachMoranAuto(
     Pmean = cds / len(ProteinSequence)
 
     cc = []
-    for i in ProteinSequence:
-        cc.append(AAPdic[i])
+    for char in ProteinSequence:
+        cc.append(AAPdic[char])
 
     K = (_std(cc, ddof=0)) ** 2
 
