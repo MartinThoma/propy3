@@ -1,9 +1,5 @@
-User Guide
-==========
-
-
 Installation
-------------
+============
 
 .. code-block:: bash
 
@@ -11,7 +7,7 @@ Installation
 
 
 Download proteins from Uniprot
-------------------------------
+==============================
 
 You can get a protein sequence from the Uniprot website by providing a Uniprot ID:
 
@@ -91,7 +87,7 @@ it is valid; otherwise 0.
 
 
 Obtaining the property from the AAindex database
-------------------------------------------------
+================================================
 
 You could get the properties of amino acids from the AAindex database by
 providing a property name (e.g., KRIW790103). The output is given in the form
@@ -106,6 +102,6 @@ get the property.
 TODO
 
 Calculating protein descriptors
--------------------------------
+===============================
 
 TODO

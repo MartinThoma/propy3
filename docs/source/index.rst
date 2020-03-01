@@ -12,6 +12,7 @@ User Guide
 
 .. toctree::
    :maxdepth: 2
+   :caption: User Guide:
 
    UserGuide
 
@@ -20,7 +21,7 @@ API Reference
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: API Reference:
 
    AAComposition
    AAIndex
