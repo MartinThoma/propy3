@@ -70,3 +70,6 @@ html_static_path = ["_static"]
 
 # Old sphinx:
 master_doc = "index"
+
+napoleon_google_docstring = False
+napoleon_numpy_docstring = True

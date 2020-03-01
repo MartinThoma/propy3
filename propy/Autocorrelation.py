@@ -762,7 +762,7 @@ def CalculateMoranAutoMutability(ProteinSequence: str) -> Dict[Any, Any]:
 # GearyAuto####################################################################
 def CalculateGearyAutoHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on hydrophobicity.
+    Calculte the Geary Autocorrelation descriptors based on hydrophobicity.
 
     Examples
     --------
@@ -784,7 +784,7 @@ def CalculateGearyAutoHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
 
 def CalculateGearyAutoAvFlexibility(ProteinSequence):
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on AvFlexibility.
+    Calculte the Geary Autocorrelation descriptors based on AvFlexibility.
 
     Parameters
     ----------
@@ -806,7 +806,7 @@ def CalculateGearyAutoAvFlexibility(ProteinSequence):
 
 def CalculateGearyAutoPolarizability(ProteinSequence):
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on Polarizability.
+    Calculte the Geary Autocorrelation descriptors based on Polarizability.
 
     Parameters
     ----------
@@ -828,7 +828,7 @@ def CalculateGearyAutoPolarizability(ProteinSequence):
 
 def CalculateGearyAutoFreeEnergy(ProteinSequence: str) -> Dict[Any, Any]:
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on FreeEnergy.
+    Calculte the Geary Autocorrelation descriptors based on FreeEnergy.
 
     Examples
     --------
@@ -849,7 +849,7 @@ def CalculateGearyAutoFreeEnergy(ProteinSequence: str) -> Dict[Any, Any]:
 
 def CalculateGearyAutoResidueASA(ProteinSequence: str) -> Dict[Any, Any]:
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on ResidueASA.
+    Calculte the Geary Autocorrelation descriptors based on ResidueASA.
 
     Examples
     --------
@@ -870,7 +870,7 @@ def CalculateGearyAutoResidueASA(ProteinSequence: str) -> Dict[Any, Any]:
 
 def CalculateGearyAutoResidueVol(ProteinSequence: str) -> Dict[Any, Any]:
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on ResidueVol.
+    Calculte the Geary Autocorrelation descriptors based on ResidueVol.
 
     Examples
     --------
@@ -891,7 +891,7 @@ def CalculateGearyAutoResidueVol(ProteinSequence: str) -> Dict[Any, Any]:
 
 def CalculateGearyAutoSteric(ProteinSequence: str) -> Dict[Any, Any]:
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on Steric.
+    Calculte the Geary Autocorrelation descriptors based on Steric.
 
     Examples
     --------
@@ -912,7 +912,7 @@ def CalculateGearyAutoSteric(ProteinSequence: str) -> Dict[Any, Any]:
 
 def CalculateGearyAutoMutability(ProteinSequence: str) -> Dict[Any, Any]:
     """
-    Calculte the GearyAuto Autocorrelation descriptors based on Mutability.
+    Calculte the Geary Autocorrelation descriptors based on Mutability.
 
     Examples
     --------
