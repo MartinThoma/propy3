@@ -227,7 +227,7 @@ class GetProDes:
         res = GetSequenceOrderCouplingNumberTotal(self.ProteinSequence, maxlag=maxlag)
         return res
 
-    def GetSOCNp(self, maxlag=45, distancematrix={}):
+    def GetSOCNp(self, maxlag=45, distancematrix=None):
         """
         Sequence order coupling numbers  default is 45.
 
@@ -243,6 +243,8 @@ class GetProDes:
         --------
         >>> result = GetSOCN(maxlag=45)
         """
+        if distancematrix is None:
+            distancematrix = {}
         res = GetSequenceOrderCouplingNumberp(
             self.ProteinSequence, maxlag=maxlag, distancematrix=distancematrix
         )
@@ -263,7 +265,7 @@ class GetProDes:
         res = GetQuasiSequenceOrder(self.ProteinSequence, maxlag=maxlag, weight=weight)
         return res
 
-    def GetQSOp(self, maxlag=30, weight=0.1, distancematrix={}):
+    def GetQSOp(self, maxlag=30, weight=0.1, distancematrix=None):
         """
         Quasi sequence order descriptors  default is 50.
 
@@ -277,6 +279,8 @@ class GetProDes:
 
         distancematrix is a dict form containing 400 distance values
         """
+        if distancematrix is None:
+            distancematrix = {}
         res = GetQuasiSequenceOrderp(
             self.ProteinSequence,
             maxlag=maxlag,
@@ -285,50 +289,59 @@ class GetProDes:
         )
         return res
 
-    def GetMoreauBrotoAutop(self, AAP={}, AAPName="p"):
+    def GetMoreauBrotoAutop(self, AAP: Dict[Any, Any] = None, AAPName="p"):
         """
         Normalized Moreau-Broto autocorrelation descriptors for the given property (30).
 
         Parameters
         ----------
-        AAP is a dict containing physicochemical properities of 20 amino acids
+        AAP : Dict[Any, Any]
+            contains physicochemical properities of 20 amino acids
 
         Examples
         --------
         >>> result = GetMoreauBrotoAutop(AAP={}, AAPName='p')
         """
+        if AAP is None:
+            AAP = {}
         res = CalculateEachNormalizedMoreauBrotoAuto(
             self.ProteinSequence, AAP=AAP, AAPName=AAPName
         )
         return res
 
-    def GetMoranAutop(self, AAP={}, AAPName="p"):
+    def GetMoranAutop(self, AAP=None, AAPName="p"):
         """
         Moran autocorrelation descriptors for the given property (30).
 
         Parameters
         ----------
-        AAP is a dict containing physicochemical properities of 20 amino acids
+        AAP : Dict[Any, Any]
+            contains physicochemical properities of 20 amino acids
 
         Examples
         --------
         >>> result = GetMoranAutop(AAP={}, AAPName='p')
         """
+        if AAP is None:
+            AAP = {}
         res = CalculateEachMoranAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
         return res
 
-    def GetGearyAutop(self, AAP={}, AAPName="p"):
+    def GetGearyAutop(self, AAP=None, AAPName="p"):
         """
         Geary autocorrelation descriptors for the given property (30).
 
         Parameters
         ----------
-        AAP is a dict containing physicochemical properities of 20 amino acids
+        AAP : Dict[Any, Any]
+            contains physicochemical properities of 20 amino acids
 
         Examples
         --------
         >>> result = GetGearyAutop(AAP={}, AAPName='p')
         """
+        if AAP is None:
+            AAP = {}
         res = CalculateEachGearyAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
         return res
 

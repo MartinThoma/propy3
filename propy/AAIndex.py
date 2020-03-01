@@ -178,15 +178,13 @@ def _parse(filename: str, rec, quiet: bool = True):
     `MarixRecord` for aaindex2 and aaindex3.
     """
     if not os.path.exists(filename):
-        import urllib.request
-        import urllib.parse
-        import urllib.error
+        from urllib.request import urlretrieve
 
         url = (
             "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
         )
         logger.debug(f'Downloading "{url}"')
-        filename = urllib.request.urlretrieve(url, filename)[0]
+        filename = urlretrieve(url, filename)[0]
     logger.debug(f'Saved to "{filename}"')
     f = open(filename)
 
