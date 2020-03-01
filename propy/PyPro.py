@@ -39,35 +39,12 @@ from .QuasiSequenceOrder import (
 class GetProDes:
     """Collect all descriptor calcualtion modules."""
 
-    AALetter = [
-        "A",
-        "R",
-        "N",
-        "D",
-        "C",
-        "E",
-        "Q",
-        "G",
-        "H",
-        "I",
-        "L",
-        "K",
-        "M",
-        "F",
-        "P",
-        "S",
-        "T",
-        "W",
-        "Y",
-        "V",
-    ]
+    AALetter = list("ARNDCEQGHILKMFPSTWYV")
 
     Version = 1.0
 
     def __init__(self, ProteinSequence=""):
-        """
-        input a protein sequence
-        """
+        """Input a protein sequence."""
         if len(ProteinSequence) == 0:
             print(
                 "You must input a protein sequence when constructing a object. It is a string!"
@@ -77,7 +54,7 @@ class GetProDes:
 
     def GetAAComp(self):
         """
-        amino acid compositon descriptors (20)
+        Amino acid compositon descriptors (20).
 
         Examples
         --------
@@ -88,7 +65,7 @@ class GetProDes:
 
     def GetDPComp(self):
         """
-        dipeptide composition descriptors (400)
+        Dipeptide composition descriptors (400).
 
         Examples
         --------
@@ -99,7 +76,7 @@ class GetProDes:
 
     def GetTPComp(self):
         """
-        tri-peptide composition descriptors (8000)
+        Tri-peptide composition descriptors (8000).
 
         Examples
         --------
@@ -110,7 +87,7 @@ class GetProDes:
 
     def GetMoreauBrotoAuto(self):
         """
-        Normalized Moreau-Broto autocorrelation descriptors (240)
+        Normalized Moreau-Broto autocorrelation descriptors (240).
 
         Examples
         --------
@@ -121,7 +98,7 @@ class GetProDes:
 
     def GetMoranAuto(self):
         """
-        Moran autocorrelation descriptors (240)
+        Moran autocorrelation descriptors (240).
 
         Examples
         --------
@@ -132,7 +109,7 @@ class GetProDes:
 
     def GetGearyAuto(self):
         """
-        Geary autocorrelation descriptors (240)
+        Geary autocorrelation descriptors (240).
 
         Examples
         --------
@@ -143,7 +120,7 @@ class GetProDes:
 
     def GetCTD(self):
         """
-        Composition Transition Distribution descriptors (147)
+        Composition Transition Distribution descriptors (147).
 
         Examples
         --------
@@ -154,112 +131,117 @@ class GetProDes:
 
     def GetPAAC(self, lamda=10, weight=0.05):
         """
-        Type I Pseudo amino acid composition descriptors (default is 30)
+        Type I Pseudo amino acid composition descriptors (default is 30).
+
+        Parameters
+        ----------
+        lamda : int, optional (default: 10)
+            reflects the rank of correlation and is a non-Negative integer,
+            such as 15. Note that (1)lamda should NOT be larger than the length
+            of input protein sequence; (2) lamda must be non-Negative integer,
+            such as 0, 1, 2, ...; (3) when lamda =0, the output of PseAA server
+            is the 20-D amino acid composition.
+        weight : float, optional (default: 0.05)
+            is designed for the users to put weight on the additional PseAA
+            components with respect to the conventional AA components. The user
+            can select any value within the region from 0.05 to 0.7 for the
+            weight factor.
 
         Examples
         --------
-        >>> result = GetPAAC(lamda=10,weight=0.05)
-
-        lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
-
-        Note that (1)lamda should NOT be larger than the length of input protein sequence;
-
-        (2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
-
-        output of PseAA server is the 20-D amino acid composition.
-
-        weight factor is designed for the users to put weight on the additional PseAA components
-
-        with respect to the conventional AA components. The user can select any value within the
-
-        region from 0.05 to 0.7 for the weight factor.
+        >>> result = GetPAAC(lamda=10, weight=0.05)
         """
         res = _GetPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
         return res
 
-    def GetPAACp(self, lamda=10, weight=0.05, AAP=[]):
+    def GetPAACp(self, lamda=10, weight=0.05, AAP=None):
         """
-        Type I Pseudo amino acid composition descriptors for the given properties (default is 30)
+        Type I Pseudo amino acid composition descriptors for the given properties (default is 30).
+
+        Parameters
+        ----------
+        lamda : int, optional (default: 10)
+            reflects the rank of correlation and is a non-Negative integer,
+            such as 15. Note that (1)lamda should NOT be larger than the length
+            of input protein sequence; (2) lamda must be non-Negative integer,
+            such as 0, 1, 2, ...; (3) when lamda =0, the output of PseAA server
+            is the 20-D amino acid composition.
+        weight : float, optional (default: 0.05)
+            is designed for the users to put weight on the additional PseAA
+            components with respect to the conventional AA components. The user
+            can select any value within the region from 0.05 to 0.7 for the
+            weight factor.
+        AAP : List
+            contains the properties, each of which is a dict form.
 
         Examples
         --------
-        >>> result = GetPAACp(lamda=10,weight=0.05,AAP=[])
-
-        lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
-
-        Note that (1)lamda should NOT be larger than the length of input protein sequence;
-
-        (2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
-
-        output of PseAA server is the 20-D amino acid composition.
-
-        weight factor is designed for the users to put weight on the additional PseAA components
-
-        with respect to the conventional AA components. The user can select any value within the
-
-        region from 0.05 to 0.7 for the weight factor.
-
-        AAP is a list form containing the properties, each of which is a dict form.
+        >>> result = GetPAACp(lamda=10, weight=0.05, AAP=[])
         """
+        if AAP is None:
+            AAP = []
         res = GetPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight, AAP=AAP)
         return res
 
     def GetAPAAC(self, lamda=10, weight=0.5):
         """
-        Amphiphilic (Type II) Pseudo amino acid composition descriptors
+        Amphiphilic (Type II) Pseudo amino acid composition descriptors.
 
         default is 30
 
+        Parameters
+        ----------
+        lamda : int, optional (default: 10)
+            reflects the rank of correlation and is a non-Negative integer,
+            such as 15. Note that (1)lamda should NOT be larger than the length
+            of input protein sequence; (2) lamda must be non-Negative integer,
+            such as 0, 1, 2, ...; (3) when lamda =0, the output of PseAA server
+            is the 20-D amino acid composition.
+        weight : float, optional (default: 0.05)
+            is designed for the users to put weight on the additional PseAA
+            components with respect to the conventional AA components. The user
+            can select any value within the region from 0.05 to 0.7 for the
+            weight factor.
+
         Examples
         --------
-        >>> result = GetAPAAC(lamda=10,weight=0.5)
-
-        lamda factor reflects the rank of correlation and is a non-Negative integer, such as 15.
-
-        Note that (1)lamda should NOT be larger than the length of input protein sequence;
-
-        (2) lamda must be non-Negative integer, such as 0, 1, 2, ...; (3) when lamda =0, the
-
-        output of PseAA server is the 20-D amino acid composition.
-
-        weight factor is designed for the users to put weight on the additional PseAA components
-
-        with respect to the conventional AA components. The user can select any value within the
-
-        region from 0.05 to 0.7 for the weight factor.
-
+        >>> result = GetAPAAC(lamda=10, weight=0.5)
         """
         res = GetAPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
         return res
 
-    def GetSOCN(self, maxlag=45):
+    def GetSOCN(self, maxlag: int = 45):
         """
-        Sequence order coupling numbers  default is 45
+        Sequence order coupling numbers  default is 45.
+
+        Parameters
+        ----------
+        maxlag : int
+            is the maximum lag and the length of the protein should be larger
+            than maxlag
 
         Examples
         --------
         >>> result = GetSOCN(maxlag=45)
-
-        maxlag is the maximum lag and the length of the protein should be larger
-
-        than maxlag. default is 45.
         """
         res = GetSequenceOrderCouplingNumberTotal(self.ProteinSequence, maxlag=maxlag)
         return res
 
     def GetSOCNp(self, maxlag=45, distancematrix={}):
         """
-        Sequence order coupling numbers  default is 45
+        Sequence order coupling numbers  default is 45.
 
-        Examples
-        --------
-        >>> result = GetSOCN(maxlag=45)
-
+        Parameters
+        ----------
         maxlag is the maximum lag and the length of the protein should be larger
 
         than maxlag. default is 45.
 
         distancematrix is a dict form containing 400 distance values
+
+        Examples
+        --------
+        >>> result = GetSOCN(maxlag=45)
         """
         res = GetSequenceOrderCouplingNumberp(
             self.ProteinSequence, maxlag=maxlag, distancematrix=distancematrix
@@ -268,8 +250,10 @@ class GetProDes:
 
     def GetQSO(self, maxlag=30, weight=0.1):
         """
-        Quasi sequence order descriptors  default is 50
+        Quasi sequence order descriptors  default is 50.
 
+        Parameters
+        ----------
         result = GetQSO(maxlag=30, weight=0.1)
 
         maxlag is the maximum lag and the length of the protein should be larger
@@ -281,8 +265,10 @@ class GetProDes:
 
     def GetQSOp(self, maxlag=30, weight=0.1, distancematrix={}):
         """
-        Quasi sequence order descriptors  default is 50
+        Quasi sequence order descriptors  default is 50.
 
+        Parameters
+        ----------
         result = GetQSO(maxlag=30, weight=0.1)
 
         maxlag is the maximum lag and the length of the protein should be larger
@@ -301,13 +287,15 @@ class GetProDes:
 
     def GetMoreauBrotoAutop(self, AAP={}, AAPName="p"):
         """
-        Normalized Moreau-Broto autocorrelation descriptors for the given property (30)
+        Normalized Moreau-Broto autocorrelation descriptors for the given property (30).
+
+        Parameters
+        ----------
+        AAP is a dict containing physicochemical properities of 20 amino acids
 
         Examples
         --------
-        >>> result = GetMoreauBrotoAutop(AAP={},AAPName='p')
-
-        AAP is a dict containing physicochemical properities of 20 amino acids
+        >>> result = GetMoreauBrotoAutop(AAP={}, AAPName='p')
         """
         res = CalculateEachNormalizedMoreauBrotoAuto(
             self.ProteinSequence, AAP=AAP, AAPName=AAPName
@@ -316,41 +304,45 @@ class GetProDes:
 
     def GetMoranAutop(self, AAP={}, AAPName="p"):
         """
-        Moran autocorrelation descriptors for the given property (30)
+        Moran autocorrelation descriptors for the given property (30).
+
+        Parameters
+        ----------
+        AAP is a dict containing physicochemical properities of 20 amino acids
 
         Examples
         --------
-        >>> result = GetMoranAutop(AAP={},AAPName='p')
-
-        AAP is a dict containing physicochemical properities of 20 amino acids
+        >>> result = GetMoranAutop(AAP={}, AAPName='p')
         """
         res = CalculateEachMoranAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
         return res
 
     def GetGearyAutop(self, AAP={}, AAPName="p"):
         """
-        Geary autocorrelation descriptors for the given property (30)
+        Geary autocorrelation descriptors for the given property (30).
+
+        Parameters
+        ----------
+        AAP is a dict containing physicochemical properities of 20 amino acids
 
         Examples
         --------
-        >>> result = GetGearyAutop(AAP={},AAPName='p')
-
-        AAP is a dict containing physicochemical properities of 20 amino acids
+        >>> result = GetGearyAutop(AAP={}, AAPName='p')
         """
         res = CalculateEachGearyAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
         return res
 
     def GetSubSeq(self, ToAA="S", window=3):
         """
-        obtain the sub sequences wit length 2*window+1, whose central point is ToAA
-
-        Examples
-        --------
-        >>> result = GetSubSeq(ToAA='S',window=3)
+        Obtain the sub sequences wit length 2*window+1, whose central point is ToAA.
 
         ToAA is the central (query point) amino acid in the sub-sequence.
 
         window is the span.
+
+        Examples
+        --------
+        >>> result = GetSubSeq(ToAA='S', window=3)
         """
         res = GetSubSequence(self.ProteinSequence, ToAA=ToAA, window=window)
         return res
@@ -371,31 +363,39 @@ class GetProDes:
         res.update(self.GetQSO())
         return res
 
-    def GetAAindex1(self, name, path="."):
+    def GetAAindex1(self, name: str, path="."):
         """
-        Get the amino acid property values from aaindex1
+        Get the amino acid property values from aaindex1.
+
+        Parameters
+        ----------
+        name : str
+            is the name of amino acid property (e.g., KRIW790103)
+
+        Returns
+        -------
+        result is a dict form containing the properties of 20 amino acids
 
         Examples
         --------
-        >>> result=GetAAIndex1(name)
-
-        Input: name is the name of amino acid property (e.g., KRIW790103)
-
-        Output: result is a dict form containing the properties of 20 amino acids
+        >>> result = GetAAIndex1(name)
         """
-
         return GetAAIndex1(name, path=path)
 
     def GetAAindex23(self, name, path="."):
         """
-        Get the amino acid property values from aaindex2 and aaindex3
+        Get the amino acid property values from aaindex2 and aaindex3.
+
+        Parameters
+        ----------
+        name is the name of amino acid property (e.g. TANS760101, GRAR740104)
+
+        Returns
+        -------
+        result is a dict form containing the properties of 400 amino acid pairs
 
         Examples
         --------
-        >>> result=GetAAIndex23(name)
-
-        Input: name is the name of amino acid property (e.g.,TANS760101,GRAR740104)
-
-        Output: result is a dict form containing the properties of 400 amino acid pairs
+        >>> result = GetAAIndex23(name)
         """
         return GetAAIndex23(name, path=path)

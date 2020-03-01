@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-The prediction of functional sites (e.g.,methylation) of proteins usually needs
+The prediction of functional sites (e.g. methylation) of proteins usually needs
 to split the total protein into a set of segments around specific amino acid.
 Given a specific window size p, we can obtain all segments of length equal to
 (2*p+1) very easily. Note that the output of the method is a list form.
@@ -14,28 +14,7 @@ Email: oriental-cds@163.com
 import re
 from typing import List
 
-AALetter = [
-    "A",
-    "R",
-    "N",
-    "D",
-    "C",
-    "E",
-    "Q",
-    "G",
-    "H",
-    "I",
-    "L",
-    "K",
-    "M",
-    "F",
-    "P",
-    "S",
-    "T",
-    "W",
-    "Y",
-    "V",
-]
+AALetter = list("ARNDCEQGHILKMFPSTWYV")
 
 
 def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> List[str]:

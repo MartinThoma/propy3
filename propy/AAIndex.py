@@ -287,7 +287,7 @@ def GetAAIndex23(name: str, path: str = ".") -> Dict[str, float]:
     Parameters
     ----------
     name : str
-        name of amino acid property (e.g.,TANS760101,GRAR740104)
+        name of amino acid property (e.g. TANS760101, GRAR740104)
 
     Returns
     -------

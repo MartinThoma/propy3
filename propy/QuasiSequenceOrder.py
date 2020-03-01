@@ -64,7 +64,7 @@ def GetSequenceOrderCouplingNumber(ProteinSequence, d=1, distancematrix=_Distanc
 
     Example
     -------
-    >>> result = GetSequenceOrderCouplingNumber(protein,d)
+    >>> result = GetSequenceOrderCouplingNumber(protein, d)
     """
     NumProtein = len(ProteinSequence)
     tau = 0.0
@@ -96,7 +96,7 @@ def GetSequenceOrderCouplingNumberp(ProteinSequence, maxlag=30, distancematrix={
 
     Examples
     --------
-    >>> result = GetSequenceOrderCouplingNumberp(protein, maxlag,distancematrix)
+    >>> result = GetSequenceOrderCouplingNumberp(protein, maxlag, distancematrix)
     """
     # NumProtein = len(ProteinSequence) # TODO: this was calculated, but not
     # used... is here a bug?
@@ -268,7 +268,7 @@ def GetQuasiSequenceOrder2(ProteinSequence, maxlag=30, weight=0.1, distancematri
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder2(protein,maxlag,weigt)
+    >>> result = GetQuasiSequenceOrder2(protein, maxlag, weigt)
 
     see method GetQuasiSequenceOrder for the choice of parameters.
     """
@@ -321,7 +321,7 @@ def GetQuasiSequenceOrder2SW(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder2SW(protein,maxlag,weigt)
+    >>> result = GetQuasiSequenceOrder2SW(protein, maxlag, weigt)
 
     see method GetQuasiSequenceOrder for the choice of parameters.
     """
@@ -462,7 +462,7 @@ def GetQuasiSequenceOrderp(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrderp(protein,maxlag,weight,distancematrix)
+    >>> result = GetQuasiSequenceOrderp(protein, maxlag, weight, distancematrix)
     """
     result: Dict[Any, Any] = dict()
     result.update(

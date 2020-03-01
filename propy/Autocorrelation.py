@@ -144,7 +144,7 @@ def CalculateEachNormalizedMoreauBrotoAuto(
 
     Examples
     --------
-    >>> result = CalculateEachNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
+    >>> result = CalculateEachNormalizedMoreauBrotoAuto(protein, AAP, AAPName)
 
     Parameters
     ----------
@@ -187,7 +187,7 @@ def CalculateEachMoranAuto(
 
     Examples
     --------
-    >>> result = CalculateEachMoranAuto(protein,AAP,AAPName)
+    >>> result = CalculateEachMoranAuto(protein, AAP, AAPName)
 
     Parameters
     ----------
@@ -243,7 +243,7 @@ def CalculateEachGearyAuto(
 
     Examples
     --------
-    >>> result = CalculateEachGearyAuto(protein,AAP,AAPName)
+    >>> result = CalculateEachGearyAuto(protein, AAP, AAPName)
 
     Parameters
     ----------
@@ -294,7 +294,7 @@ def CalculateNormalizedMoreauBrotoAuto(
 
     Examples
     --------
-    >>> result = CalculateNormalizedMoreauBrotoAuto(protein,AAP,AAPName)
+    >>> result = CalculateNormalizedMoreauBrotoAuto(protein, AAP, AAPName)
 
     Parameters
     ----------
@@ -321,11 +321,7 @@ def CalculateNormalizedMoreauBrotoAuto(
 
 def CalculateMoranAuto(ProteinSequence, AAProperty, AAPropertyName) -> Dict[Any, Any]:
     """
-    A method used for computing MoranAuto for all properties
-
-    Examples
-    --------
-    >>> result = CalculateMoranAuto(protein,AAP,AAPName)
+    A method used for computing MoranAuto for all properties.
 
     Parameters
     ----------
@@ -340,6 +336,10 @@ def CalculateMoranAuto(ProteinSequence, AAProperty, AAPropertyName) -> Dict[Any,
     -------
     result contains 30*p Moran autocorrelation descriptors based on the given
     properties.
+
+    Examples
+    --------
+    >>> result = CalculateMoranAuto(protein, AAP, AAPName)
     """
     Result = {}
     for i in range(len(AAProperty)):
