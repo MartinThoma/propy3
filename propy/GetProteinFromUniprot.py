@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Download the protein sequence from `the uniprot website<http://www.uniprot.org/>`_.
+Download the protein sequence from `the uniprot website <http://www.uniprot.org/>`_.
 
 You can only need input a protein ID or prepare a file (ID.txt) related to ID.
 You can obtain a .txt (ProteinSequence.txt) file saving protein sequence you
@@ -16,7 +16,7 @@ import os
 from urllib.request import urlopen
 
 
-def GetProteinSequence(ProteinID: str):
+def GetProteinSequence(ProteinID: str) -> str:
     """
     Get the protein sequence from the uniprot website by ID.
 
@@ -27,8 +27,7 @@ def GetProteinSequence(ProteinID: str):
 
     Returns
     -------
-    result :
-        a protein sequence.
+    protein_sequence : str
 
     Examples
     --------
@@ -36,10 +35,10 @@ def GetProteinSequence(ProteinID: str):
     """
     localfile = urlopen(f"http://www.uniprot.org/uniprot/{ProteinID}.fasta")
     temp = localfile.readlines()
-    res = ""
+    protein_sequence = ""
     for i in range(1, len(temp)):  # The first line is a comment
-        res = res + temp[i].decode("utf8").strip()
-    return res
+        protein_sequence = protein_sequence + temp[i].decode("utf8").strip()
+    return protein_sequence
 
 
 def GetProteinSequenceFromTxt(path: str, openfile: str, savefile: str):
