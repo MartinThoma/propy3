@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Download the protein sequence from [the uniprot website](http://www.uniprot.org/).
+Download the protein sequence from `the uniprot website<http://www.uniprot.org/>`_.
 
 You can only need input a protein ID or prepare a file (ID.txt) related to ID.
 You can obtain a .txt (ProteinSequence.txt) file saving protein sequence you
@@ -13,9 +13,7 @@ Email: oriental-cds@163.com
 
 # Core Library
 import os
-import urllib.error
-import urllib.parse
-import urllib.request
+from urllib.request import urlopen
 
 
 def GetProteinSequence(ProteinID: str):
@@ -34,16 +32,12 @@ def GetProteinSequence(ProteinID: str):
 
     Examples
     --------
-    >>> result = GetProteinSequence(ProteinID)
+    >>> result = GetProteinSequence(ProteinID="P48039")
     """
-
-    ID = str(ProteinID)
-    localfile = urllib.request.urlopen(
-        "http://www.uniprot.org/uniprot/" + ID + ".fasta"
-    )
+    localfile = urlopen(f"http://www.uniprot.org/uniprot/{ProteinID}.fasta")
     temp = localfile.readlines()
     res = ""
-    for i in range(1, len(temp)):
+    for i in range(1, len(temp)):  # The first line is a comment
         res = res + temp[i].decode("utf8").strip()
     return res
 

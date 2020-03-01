@@ -1,4 +1,5 @@
 include propy/data/*.json
-include propy/aaindex1
-include propy/aaindex2
-include propy/aaindex3
+include propy/aaindex/README.md
+include propy/aaindex/aaindex1
+include propy/aaindex/aaindex2
+include propy/aaindex/aaindex3
