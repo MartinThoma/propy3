@@ -16,9 +16,11 @@ from typing import Any, Dict, List, Optional, Type, cast
 # Third party
 import pkg_resources
 
+# First party
+from propy import AALetter
+
 logger = logging.getLogger(__name__)
 
-AALetter: List[str] = list("ARNDCEQGHILKMFPSTWYV")
 
 _aaindex: Dict[Any, Any] = {}
 

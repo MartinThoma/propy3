@@ -24,7 +24,8 @@ Email: oriental-cds@163.com
 import re
 from typing import Any, Dict, List
 
-AALetter: List[str] = list("ARNDCEQGHILKMFPSTWYV")
+# First party
+from propy import AALetter
 
 
 def CalculateAAComposition(ProteinSequence: str) -> Dict[str, float]:

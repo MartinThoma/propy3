@@ -33,7 +33,8 @@ from typing import Any, Dict
 # Third party
 from pkg_resources import resource_filename
 
-AALetter = list("ARNDCEQGHILKMFPSTWYV")
+# First party
+from propy import AALetter
 
 # Distance is the Schneider-Wrede physicochemical distance matrix
 # used by Chou et. al.

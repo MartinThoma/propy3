@@ -7,7 +7,8 @@ Date: 2012.09.09
 Email: oriental-cds@163.com
 """
 
-AALetter = list("ARNDCEQGHILKMFPSTWYV")
+# First party
+from propy import AALetter
 
 
 def ProteinCheck(ProteinSequence: str) -> int:

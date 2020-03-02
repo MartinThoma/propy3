@@ -27,8 +27,6 @@ import copy
 import math
 from typing import Any, Dict
 
-AALetter = list("ARNDCEQGHILKMFPSTWYV")
-
 _Hydrophobicity = {"1": "RKEDQN", "2": "GASTPHY", "3": "CLVIMFW"}
 # '1'stand for Polar; '2'stand for Neutral, '3' stand for Hydrophobicity
 

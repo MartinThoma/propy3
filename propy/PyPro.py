@@ -74,7 +74,7 @@ class GetProDes:
         res = CalculateDipeptideComposition(self.ProteinSequence)
         return res
 
-    def GetTPComp(self):
+    def GetTPComp(self) -> Dict[str, int]:
         """
         Tri-peptide composition descriptors (8000).
 

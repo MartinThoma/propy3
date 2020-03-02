@@ -14,7 +14,8 @@ Email: oriental-cds@163.com
 import re
 from typing import List
 
-AALetter = list("ARNDCEQGHILKMFPSTWYV")
+# First party
+from propy import AALetter
 
 
 def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> List[str]:

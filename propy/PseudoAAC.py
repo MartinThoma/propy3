@@ -46,7 +46,8 @@ from typing import Any, Dict
 # Third party
 from pkg_resources import resource_filename
 
-AALetter = list("ARNDCEQGHILKMFPSTWYV")
+# First party
+from propy import AALetter
 
 with open(resource_filename(__name__, "data/hydrophobicity.json"), "r") as f:
     _Hydrophobicity: Dict[str, float] = json.load(f)
