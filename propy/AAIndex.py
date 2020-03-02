@@ -41,7 +41,7 @@ class Record:
         self.index = {}
         self.comment = ""
 
-    def extend(self, row: List[Optional[float]]):
+    def extend(self, row: List[Optional[float]]) -> None:
         """Extend self.index by the elements of the list."""
         i = len(self.index)
         for x in row:

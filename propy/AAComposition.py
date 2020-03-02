@@ -46,10 +46,10 @@ def CalculateAAComposition(ProteinSequence: str) -> Dict[str, float]:
     --------
     >>> result = CalculateAAComposition(protein)
     """
-    LengthSequence = len(ProteinSequence)
-    result = {}
+    sequence_length = len(ProteinSequence)
+    result: Dict[str, float] = {}
     for i in AALetter:
-        result[i] = round(float(ProteinSequence.count(i)) / LengthSequence * 100, 3)
+        result[i] = round(float(ProteinSequence.count(i)) / sequence_length * 100, 3)
     return result
 
 
@@ -70,13 +70,13 @@ def CalculateDipeptideComposition(ProteinSequence: str) -> Dict[str, float]:
     --------
     >>> result = CalculateDipeptideComposition(protein)
     """
-    LengthSequence = len(ProteinSequence)
+    sequence_length = len(ProteinSequence)
     result = {}
     for i in AALetter:
         for j in AALetter:
             dipeptide = i + j
             result[dipeptide] = round(
-                float(ProteinSequence.count(dipeptide)) / (LengthSequence - 1) * 100, 2
+                float(ProteinSequence.count(dipeptide)) / (sequence_length - 1) * 100, 2
             )
     return result
 
