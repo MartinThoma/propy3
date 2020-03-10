@@ -110,13 +110,13 @@ def _std(listvalue, ddof=1):
     return res
 
 
-def NormalizeEachAAP(AAP) -> Dict[Any, Any]:
+def NormalizeEachAAP(AAP: Dict[Any, Any]) -> Dict[Any, Any]:
     """
     Centralizes and standardizes all amino acid indices before the calculation
 
     Parameters
     ----------
-    AAP : Dict
+    AAP : Dict[Any, Any]
         contains the properties of 20 amino acids
 
     Returns

@@ -51,19 +51,22 @@ with open(filepath, "r") as f:
 
 
 def GetSequenceOrderCouplingNumber(
-    ProteinSequence: str, d=1, distancematrix=_Distance1
+    ProteinSequence: str, d: int = 1, distancematrix: Dict[str, float] = _Distance1
 ):
     """
     Compute the dth-rank sequence order coupling number for a protein.
 
     Parameters
     ----------
-    ProteinSequence : a pure protein sequence
-    d : the gap between two amino acids.
+    ProteinSequence : str
+        a pure protein sequence
+    d : int
+        the gap between two amino acids.
+    distancematrix : Dict[str, float]
 
     Returns
     -------
-    a numeric value
+    tau : float
 
     Example
     -------
@@ -81,25 +84,26 @@ def GetSequenceOrderCouplingNumber(
 
 
 def GetSequenceOrderCouplingNumberp(
-    ProteinSequence: str, maxlag: int = 30, distancematrix=None
+    ProteinSequence: str, maxlag: int = 30, distancematrix: Dict[Any, Any] = None
 ):
     """
     Compute the sequence order coupling numbers from 1 to maxlag
-
     for a given protein sequence based on the user-defined property.
 
     Parameters
     ----------
-    protein : a pure protein sequence
+    ProteinSequence : str
+        a pure protein sequence
     maxlag : int, optional (default: 30)
         the maximum lag and the length of the protein should be larger
         than maxlag.
-    distancematrix : Dict
-        a dict form containing 400 distance values
+    distancematrix : Dict[Any, Any]
+        contains 400 distance values
 
     Returns
     -------
-    a dict form containing all sequence order coupling numbers based on the given property
+    Tau : Dict[str]
+        contains all sequence order coupling numbers based on the given property
 
     Examples
     --------
@@ -129,18 +133,19 @@ def GetSequenceOrderCouplingNumberSW(
 
     Parameters
     ----------
-    protein is a pure protein sequence
-
-    maxlag is the maximum lag and the length of the protein should be larger
-    than maxlag. default is 30.
-
-    distancematrix is a dict form containing Schneider-Wrede physicochemical
-    distance matrix. omitted!
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger than
+        maxlag
+    distancematrix : Dict[Any, Any]
+        contains Schneider-Wrede physicochemical distance matrix
 
     Returns
     -------
-    result is a dict form containing all sequence order coupling
-    numbers based on the Schneider-Wrede physicochemical distance matrix
+    Tau : Dict[Any, Any]
+        contains all sequence order coupling numbers based on the
+        Schneider-Wrede physicochemical distance matrix
 
     Examples
     --------
@@ -167,19 +172,19 @@ def GetSequenceOrderCouplingNumberGrant(
 
     Parameters
     ----------
-    protein is a pure protein sequence
-
-    maxlag is the maximum lag and the length of the protein should be larger
-
-    than maxlag. default is 30.
-
-    distancematrix is a dict form containing Grantham chemical distance
-    matrix. omitted!
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger than
+        maxlag
+    distancematrix : Dict[Any, Any]
+        contains Schneider-Wrede physicochemical distance matrix
 
     Returns
     -------
-    result is a dict form containing all sequence order coupling numbers
-    based on the Grantham chemical distance matrix
+    Tau : Dict[Any, Any]
+        contains all sequence order coupling numbers based on the Grantham
+        chemical distance matrix
 
     Examples
     --------
@@ -250,18 +255,25 @@ def GetAAComposition(ProteinSequence: str) -> Dict[str, float]:
     >>> result = CalculateAAComposition(protein)
     """
     LengthSequence = len(ProteinSequence)
-    Result: Dict[str, float] = {}
+    result: Dict[str, float] = {}
     for i in AALetter:
-        Result[i] = round(float(ProteinSequence.count(i)) / LengthSequence, 3)
-    return Result
+        result[i] = round(float(ProteinSequence.count(i)) / LengthSequence, 3)
+    return result
 
 
 def GetQuasiSequenceOrder1(
-    ProteinSequence, maxlag: int = 30, weight: float = 0.1, distancematrix=None
+    ProteinSequence: str, maxlag: int = 30, weight: float = 0.1, distancematrix=None
 ):
     """
     Compute the first 20 quasi-sequence-order descriptors for a given protein
     sequence.
+
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger
 
     Examples
     --------
@@ -287,10 +299,19 @@ def GetQuasiSequenceOrder1(
     return result
 
 
-def GetQuasiSequenceOrder2(ProteinSequence, maxlag=30, weight=0.1, distancematrix=None):
+def GetQuasiSequenceOrder2(
+    ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=None
+):
     """
     Compute the last maxlag quasi-sequence-order descriptors for a given
     protein sequence.
+
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger
 
     Examples
     --------
@@ -316,11 +337,18 @@ def GetQuasiSequenceOrder2(ProteinSequence, maxlag=30, weight=0.1, distancematri
 
 
 def GetQuasiSequenceOrder1SW(
-    ProteinSequence, maxlag=30, weight=0.1, distancematrix=_Distance1
+    ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=_Distance1
 ):
     """
     Compute the first 20 quasi-sequence-order descriptors for a given protein
     sequence.
+
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger
 
     Examples
     --------
@@ -345,11 +373,18 @@ def GetQuasiSequenceOrder1SW(
 
 
 def GetQuasiSequenceOrder2SW(
-    ProteinSequence, maxlag=30, weight=0.1, distancematrix=_Distance1
+    ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=_Distance1
 ):
     """
     Compute the last maxlag quasi-sequence-order descriptors for a given
     protein sequence.
+
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger
 
     Examples
     --------
@@ -385,6 +420,13 @@ def GetQuasiSequenceOrder1Grant(
     Compute the first 20 quasi-sequence-order descriptors for a given protein
     sequence.
 
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger
+
     Examples
     --------
     >>> from propy.GetProteinFromUniprot import GetProteinSequence
@@ -416,6 +458,13 @@ def GetQuasiSequenceOrder2Grant(
     """
     Compute the last maxlag quasi-sequence-order descriptors for a given
     protein sequence.
+
+    Parameters
+    ----------
+    ProteinSequence : str
+        a pure protein sequence
+    maxlag : int, optional (default: 30)
+        the maximum lag and the length of the protein should be larger
 
     Examples
     --------
@@ -451,8 +500,8 @@ def GetQuasiSequenceOrder(
 
     Parameters
     ----------
-    protein is a pure protein sequence
-
+    ProteinSequence : str
+        a pure protein sequence
     maxlag : int, optional (default: 30)
         the maximum lag and the length of the protein should be larger than
         maxlag
@@ -487,7 +536,7 @@ def GetQuasiSequenceOrderp(
     maxlag: int = 30,
     weight: float = 0.1,
     distancematrix: Dict[Any, Any] = None,
-):
+) -> Dict[Any, Any]:
     """
     Compute quasi-sequence-order descriptors for a given protein.
 
@@ -495,7 +544,8 @@ def GetQuasiSequenceOrderp(
 
     Parameters
     ----------
-    ProteinSequence : a pure protein sequence
+    ProteinSequence : str
+        a pure protein sequence
     maxlag : int, optional (default: 30)
         the maximum lag and the length of the protein should be larger than
         maxlag
@@ -506,7 +556,8 @@ def GetQuasiSequenceOrderp(
 
     Returns
     -------
-    result is a dict form containing all quasi-sequence-order descriptors
+    result : Dict[Any, Any]
+        contains all quasi-sequence-order descriptors
 
     Examples
     --------
