@@ -67,7 +67,9 @@ def GetSequenceOrderCouplingNumber(
 
     Example
     -------
-    >>> result = GetSequenceOrderCouplingNumber(protein, d)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSequenceOrderCouplingNumber(protein)
     """
     NumProtein = len(ProteinSequence)
     tau = 0.0
@@ -79,7 +81,7 @@ def GetSequenceOrderCouplingNumber(
 
 
 def GetSequenceOrderCouplingNumberp(
-    ProteinSequence: str, maxlag: int = 30, distancematrix={}
+    ProteinSequence: str, maxlag: int = 30, distancematrix=None
 ):
     """
     Compute the sequence order coupling numbers from 1 to maxlag
@@ -101,8 +103,12 @@ def GetSequenceOrderCouplingNumberp(
 
     Examples
     --------
-    >>> result = GetSequenceOrderCouplingNumberp(protein, maxlag, distancematrix)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSequenceOrderCouplingNumberp(protein)
     """
+    if distancematrix is None:
+        distancematrix = {}
     # NumProtein = len(ProteinSequence) # TODO: this was calculated, but not
     # used... is here a bug?
     Tau = {}
@@ -121,10 +127,6 @@ def GetSequenceOrderCouplingNumberSW(
     protein sequence based on the Schneider-Wrede physicochemical distance
     matrix.
 
-    Examples
-    --------
-    >>> result = GetSequenceOrderCouplingNumberSW(protein, maxlag, distancematrix)
-
     Parameters
     ----------
     protein is a pure protein sequence
@@ -139,6 +141,12 @@ def GetSequenceOrderCouplingNumberSW(
     -------
     result is a dict form containing all sequence order coupling
     numbers based on the Schneider-Wrede physicochemical distance matrix
+
+    Examples
+    --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSequenceOrderCouplingNumberSW(protein)
     """
     # NumProtein = len(ProteinSequence)  # TODO: This was calculated, but not
     # used ... is here a bug?
@@ -157,10 +165,6 @@ def GetSequenceOrderCouplingNumberGrant(
     Compute the sequence order coupling numbers from 1 to maxlag for a given
     protein sequence based on the Grantham chemical distance matrix.
 
-    Examples
-    --------
-    >>> result = GetSequenceOrderCouplingNumberGrant(protein, maxlag, distancematrix)
-
     Parameters
     ----------
     protein is a pure protein sequence
@@ -176,6 +180,12 @@ def GetSequenceOrderCouplingNumberGrant(
     -------
     result is a dict form containing all sequence order coupling numbers
     based on the Grantham chemical distance matrix
+
+    Examples
+    --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSequenceOrderCouplingNumberGrant(protein)
     """
     # NumProtein = len(ProteinSequence)  # TODO: This was calculated, but not
     # used ... is here a bug?
@@ -208,7 +218,9 @@ def GetSequenceOrderCouplingNumberTotal(
 
     Examples
     --------
-    >>> result = GetSequenceOrderCouplingNumberTotal(protein, maxlag)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSequenceOrderCouplingNumberTotal(protein)
     """
     Tau: Dict[Any, Any] = {}
     Tau.update(GetSequenceOrderCouplingNumberSW(ProteinSequence, maxlag=maxlag))
@@ -232,6 +244,9 @@ def GetAAComposition(ProteinSequence: str) -> Dict[str, float]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> from propy.AAComposition import CalculateAAComposition
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateAAComposition(protein)
     """
     LengthSequence = len(ProteinSequence)
@@ -242,7 +257,7 @@ def GetAAComposition(ProteinSequence: str) -> Dict[str, float]:
 
 
 def GetQuasiSequenceOrder1(
-    ProteinSequence, maxlag: int = 30, weight: float = 0.1, distancematrix={}
+    ProteinSequence, maxlag: int = 30, weight: float = 0.1, distancematrix=None
 ):
     """
     Compute the first 20 quasi-sequence-order descriptors for a given protein
@@ -250,10 +265,14 @@ def GetQuasiSequenceOrder1(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder1(protein, maxlag, weigt)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrder1(protein)
 
     see :py:func:`GetQuasiSequenceOrder` for the choice of parameters.
     """
+    if distancematrix is None:
+        distancematrix = {}
     rightpart = 0.0
     for i in range(maxlag):
         rightpart = rightpart + GetSequenceOrderCouplingNumber(
@@ -268,17 +287,21 @@ def GetQuasiSequenceOrder1(
     return result
 
 
-def GetQuasiSequenceOrder2(ProteinSequence, maxlag=30, weight=0.1, distancematrix={}):
+def GetQuasiSequenceOrder2(ProteinSequence, maxlag=30, weight=0.1, distancematrix=None):
     """
     Compute the last maxlag quasi-sequence-order descriptors for a given
     protein sequence.
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder2(protein, maxlag, weigt)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrder2(protein)
 
     see :py:func:`GetQuasiSequenceOrder` for the choice of parameters.
     """
+    if distancematrix is None:
+        distancematrix = {}
     rightpart = []
     for i in range(maxlag):
         rightpart.append(
@@ -301,7 +324,9 @@ def GetQuasiSequenceOrder1SW(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder1SW(protein, maxlag, weigt)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrder1SW(protein)
 
     see :py:func:`GetQuasiSequenceOrder` for the choice of parameters.
     """
@@ -328,7 +353,9 @@ def GetQuasiSequenceOrder2SW(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder2SW(protein, maxlag, weigt)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrder2SW(protein)
 
     see :py:func:`GetQuasiSequenceOrder` for the choice of parameters.
     """
@@ -360,7 +387,9 @@ def GetQuasiSequenceOrder1Grant(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder1Grant(protein, maxlag, weigt)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrder1Grant(protein)
 
     see :py:func:`GetQuasiSequenceOrder` for the choice of parameters.
     """
@@ -390,7 +419,9 @@ def GetQuasiSequenceOrder2Grant(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder2Grant(protein, maxlag, weigt)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrder2Grant(protein)
 
     see :py:func:`GetQuasiSequenceOrder` for the choice of parameters.
     """
@@ -435,7 +466,9 @@ def GetQuasiSequenceOrder(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrder(protein, maxlag, weight)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrder(protein)
     """
     result: Dict[Any, Any] = dict()
     result.update(GetQuasiSequenceOrder1SW(ProteinSequence, maxlag, weight, _Distance1))
@@ -453,7 +486,7 @@ def GetQuasiSequenceOrderp(
     ProteinSequence: str,
     maxlag: int = 30,
     weight: float = 0.1,
-    distancematrix: Dict[Any, Any] = {},
+    distancematrix: Dict[Any, Any] = None,
 ):
     """
     Compute quasi-sequence-order descriptors for a given protein.
@@ -477,8 +510,12 @@ def GetQuasiSequenceOrderp(
 
     Examples
     --------
-    >>> result = GetQuasiSequenceOrderp(protein, maxlag, weight, distancematrix)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetQuasiSequenceOrderp(protein)
     """
+    if distancematrix is None:
+        distancematrix = {}
     result: Dict[Any, Any] = dict()
     result.update(
         GetQuasiSequenceOrder1(ProteinSequence, maxlag, weight, distancematrix)

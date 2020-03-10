@@ -38,7 +38,9 @@ def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> Li
 
     Examples
     --------
-    >>> result = GetSubSequence(protein, ToAA, window)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSubSequence(protein)
     """
 
     if ToAA not in AALetter:

@@ -127,13 +127,13 @@ def NormalizeEachAAP(AAP) -> Dict[Any, Any]:
     if len(list(AAP.values())) != 20:
         print("You can not input the correct number of properities of Amino acids!")
     else:
-        Result: Dict[Any, Any] = {}
+        result: Dict[Any, Any] = {}
         for i, j in list(AAP.items()):
-            Result[i] = (j - _mean(list(AAP.values()))) / _std(
+            result[i] = (j - _mean(list(AAP.values()))) / _std(
                 list(AAP.values()), ddof=0
             )
 
-    return Result
+    return result
 
 
 def CalculateEachNormalizedMoreauBrotoAuto(
@@ -141,10 +141,6 @@ def CalculateEachNormalizedMoreauBrotoAuto(
 ) -> Dict[str, float]:
     """
     Compute MoreauBrotoAuto descriptors for different properties based on AADs.
-
-    Examples
-    --------
-    >>> result = CalculateEachNormalizedMoreauBrotoAuto(protein, AAP, AAPName)
 
     Parameters
     ----------
@@ -160,6 +156,13 @@ def CalculateEachNormalizedMoreauBrotoAuto(
     result : Dict[str, float]
         contains 30 Normalized Moreau-Broto autocorrelation descriptors
         based on the given property.
+
+    Examples
+    --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAP, AAPName = _Hydrophobicity, "_Hydrophobicity"
+    >>> result = CalculateEachNormalizedMoreauBrotoAuto(protein, AAP, AAPName)
     """
     AAPdic = NormalizeEachAAP(AAP)
 
@@ -201,6 +204,9 @@ def CalculateEachMoranAuto(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAP, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateEachMoranAuto(protein, AAP, AAPName)
     """
     AAPdic = NormalizeEachAAP(AAP)
@@ -216,7 +222,7 @@ def CalculateEachMoranAuto(
 
     K = (_std(cc, ddof=0)) ** 2
 
-    Result = {}
+    result = {}
     for i in range(1, 31):
         temp = 0
         for j in range(len(ProteinSequence) - i):
@@ -224,15 +230,15 @@ def CalculateEachMoranAuto(
                 AAPdic[ProteinSequence[j + i]] - Pmean
             )
         if len(ProteinSequence) - i == 0:
-            Result["MoranAuto" + AAPName + str(i)] = round(
+            result["MoranAuto" + AAPName + str(i)] = round(
                 temp / (len(ProteinSequence)) / K, 3
             )
         else:
-            Result["MoranAuto" + AAPName + str(i)] = round(
+            result["MoranAuto" + AAPName + str(i)] = round(
                 temp / (len(ProteinSequence) - i) / K, 3
             )
 
-    return Result
+    return result
 
 
 def CalculateEachGearyAuto(
@@ -258,6 +264,9 @@ def CalculateEachGearyAuto(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAP, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateEachGearyAuto(protein, AAP, AAPName)
     """
     AAPdic = NormalizeEachAAP(AAP)
@@ -267,7 +276,7 @@ def CalculateEachGearyAuto(
         cc.append(AAPdic[i])
 
     K = ((_std(cc)) ** 2) * len(ProteinSequence) / (len(ProteinSequence) - 1)
-    Result = {}
+    result = {}
     for i in range(1, 31):
         temp = 0
         for j in range(len(ProteinSequence) - i):
@@ -276,14 +285,14 @@ def CalculateEachGearyAuto(
                 + (AAPdic[ProteinSequence[j]] - AAPdic[ProteinSequence[j + i]]) ** 2
             )
         if len(ProteinSequence) - i == 0:
-            Result["GearyAuto" + AAPName + str(i)] = round(
+            result["GearyAuto" + AAPName + str(i)] = round(
                 temp / (2 * (len(ProteinSequence))) / K, 3
             )
         else:
-            Result["GearyAuto" + AAPName + str(i)] = round(
+            result["GearyAuto" + AAPName + str(i)] = round(
                 temp / (2 * (len(ProteinSequence) - i)) / K, 3
             )
-    return Result
+    return result
 
 
 def CalculateNormalizedMoreauBrotoAuto(
@@ -308,15 +317,18 @@ def CalculateNormalizedMoreauBrotoAuto(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAP, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateNormalizedMoreauBrotoAuto(protein, AAP, AAPName)
     """
-    Result = {}
+    result = {}
     for i in range(len(AAProperty)):
-        Result[AAPropertyName[i]] = CalculateEachNormalizedMoreauBrotoAuto(
+        result[AAPropertyName[i]] = CalculateEachNormalizedMoreauBrotoAuto(
             ProteinSequence, AAProperty[i], AAPropertyName[i]
         )
 
-    return Result
+    return result
 
 
 def CalculateMoranAuto(ProteinSequence, AAProperty, AAPropertyName) -> Dict[Any, Any]:
@@ -339,15 +351,18 @@ def CalculateMoranAuto(ProteinSequence, AAProperty, AAPropertyName) -> Dict[Any,
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAP, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateMoranAuto(protein, AAP, AAPName)
     """
-    Result = {}
+    result = {}
     for i in range(len(AAProperty)):
-        Result[AAPropertyName[i]] = CalculateEachMoranAuto(
+        result[AAPropertyName[i]] = CalculateEachMoranAuto(
             ProteinSequence, AAProperty[i], AAPropertyName[i]
         )
 
-    return Result
+    return result
 
 
 def CalculateGearyAuto(ProteinSequence, AAProperty, AAPropertyName) -> Dict[Any, Any]:
@@ -371,15 +386,18 @@ def CalculateGearyAuto(ProteinSequence, AAProperty, AAPropertyName) -> Dict[Any,
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAP, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateGearyAuto(protein, AAP, AAPName)
     """
-    Result = {}
+    result = {}
     for i in range(len(AAProperty)):
-        Result[AAPropertyName[i]] = CalculateEachGearyAuto(
+        result[AAPropertyName[i]] = CalculateEachGearyAuto(
             ProteinSequence, AAProperty[i], AAPropertyName[i]
         )
 
-    return Result
+    return result
 
 
 # NormalizedMoreauBorto #######################################################
@@ -400,6 +418,8 @@ def CalculateNormalizedMoreauBrotoAutoHydrophobicity(ProteinSequence) -> Dict[An
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoHydrophobicity(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(
@@ -427,6 +447,8 @@ def CalculateNormalizedMoreauBrotoAutoAvFlexibility(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoAvFlexibility(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(
@@ -454,6 +476,8 @@ def CalculateNormalizedMoreauBrotoAutoPolarizability(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoPolarizability(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(
@@ -481,6 +505,8 @@ def CalculateNormalizedMoreauBrotoAutoFreeEnergy(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoFreeEnergy(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(
@@ -508,6 +534,8 @@ def CalculateNormalizedMoreauBrotoAutoResidueASA(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoResidueASA(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(
@@ -535,6 +563,8 @@ def CalculateNormalizedMoreauBrotoAutoResidueVol(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoResidueVol(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(
@@ -559,6 +589,8 @@ def CalculateNormalizedMoreauBrotoAutoSteric(ProteinSequence: str) -> Dict[Any, 
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoSteric(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(ProteinSequence, _Steric, "_Steric")
@@ -583,6 +615,8 @@ def CalculateNormalizedMoreauBrotoAutoMutability(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoMutability(protein)
     """
     result = CalculateEachNormalizedMoreauBrotoAuto(
@@ -608,6 +642,8 @@ def CalculateMoranAutoHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoHydrophobicity(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _Hydrophobicity, "_Hydrophobicity")
@@ -630,6 +666,8 @@ def CalculateMoranAutoAvFlexibility(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoAvFlexibility(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _AvFlexibility, "_AvFlexibility")
@@ -652,6 +690,8 @@ def CalculateMoranAutoPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoPolarizability(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _Polarizability, "_Polarizability")
@@ -673,6 +713,8 @@ def CalculateMoranAutoFreeEnergy(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoFreeEnergy(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _FreeEnergy, "_FreeEnergy")
@@ -694,6 +736,8 @@ def CalculateMoranAutoResidueASA(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoResidueASA(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _ResidueASA, "_ResidueASA")
@@ -715,6 +759,8 @@ def CalculateMoranAutoResidueVol(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoResidueVol(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _ResidueVol, "_ResidueVol")
@@ -736,6 +782,8 @@ def CalculateMoranAutoSteric(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoSteric(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _Steric, "_Steric")
@@ -757,6 +805,8 @@ def CalculateMoranAutoMutability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoMutability(protein)
     """
     result = CalculateEachMoranAuto(ProteinSequence, _Mutability, "_Mutability")
@@ -780,6 +830,8 @@ def CalculateGearyAutoHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoHydrophobicity(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _Hydrophobicity, "_Hydrophobicity")
@@ -802,6 +854,8 @@ def CalculateGearyAutoAvFlexibility(ProteinSequence: str):
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoAvFlexibility(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _AvFlexibility, "_AvFlexibility")
@@ -824,6 +878,8 @@ def CalculateGearyAutoPolarizability(ProteinSequence: str):
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoPolarizability(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _Polarizability, "_Polarizability")
@@ -845,6 +901,8 @@ def CalculateGearyAutoFreeEnergy(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoFreeEnergy(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _FreeEnergy, "_FreeEnergy")
@@ -866,6 +924,8 @@ def CalculateGearyAutoResidueASA(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoResidueASA(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _ResidueASA, "_ResidueASA")
@@ -887,6 +947,8 @@ def CalculateGearyAutoResidueVol(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoResidueVol(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _ResidueVol, "_ResidueVol")
@@ -908,6 +970,8 @@ def CalculateGearyAutoSteric(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoSteric(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _Steric, "_Steric")
@@ -929,6 +993,8 @@ def CalculateGearyAutoMutability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoMutability(protein)
     """
     result = CalculateEachGearyAuto(ProteinSequence, _Mutability, "_Mutability")
@@ -952,6 +1018,8 @@ def CalculateNormalizedMoreauBrotoAutoTotal(ProteinSequence: str) -> Dict[Any, A
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateNormalizedMoreauBrotoAutoTotal(protein)
     """
     result: Dict[Any, Any] = {}
@@ -982,6 +1050,8 @@ def CalculateMoranAutoTotal(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateMoranAutoTotal(protein)
     """
     result: Dict[Any, Any] = {}
@@ -1012,6 +1082,8 @@ def CalculateGearyAutoTotal(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoTotal(protein)
     """
     result: Dict[Any, Any] = {}
@@ -1044,6 +1116,8 @@ def CalculateAutoTotal(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateGearyAutoTotal(protein)
     """
     result: Dict[Any, Any] = {}

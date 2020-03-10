@@ -58,7 +58,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetAAComp()
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetAAComp()
         """
         res = CalculateAAComposition(self.ProteinSequence)
         return res
@@ -69,7 +71,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetDPComp()
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetDPComp()
         """
         res = CalculateDipeptideComposition(self.ProteinSequence)
         return res
@@ -80,7 +84,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetTPComp()
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetTPComp()
         """
         res = GetSpectrumDict(self.ProteinSequence)
         return res
@@ -91,7 +97,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetMoreauBrotoAuto()
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetMoreauBrotoAuto()
         """
         res = CalculateNormalizedMoreauBrotoAutoTotal(self.ProteinSequence)
         return res
@@ -102,7 +110,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetMoranAuto()
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetMoranAuto()
         """
         res = CalculateMoranAutoTotal(self.ProteinSequence)
         return res
@@ -113,7 +123,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetGearyAuto()
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetGearyAuto()
         """
         res = CalculateGearyAutoTotal(self.ProteinSequence)
         return res
@@ -124,7 +136,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetCTD()
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetCTD()
         """
         res = CalculateCTD(self.ProteinSequence)
         return res
@@ -149,7 +163,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetPAAC(lamda=10, weight=0.05)
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetPAAC(lamda=10, weight=0.05)
         """
         res = _GetPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
         return res
@@ -176,7 +192,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetPAACp(lamda=10, weight=0.05, AAP=[])
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetPAACp(lamda=10, weight=0.05, AAP=[])
         """
         if AAP is None:
             AAP = []
@@ -205,7 +223,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetAPAAC(lamda=10, weight=0.5)
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetAPAAC(lamda=10, weight=0.5)
         """
         res = GetAPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
         return res
@@ -222,7 +242,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetSOCN(maxlag=45)
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetSOCN(maxlag=45)
         """
         res = GetSequenceOrderCouplingNumberTotal(self.ProteinSequence, maxlag=maxlag)
         return res
@@ -234,14 +256,15 @@ class GetProDes:
         Parameters
         ----------
         maxlag is the maximum lag and the length of the protein should be larger
-
         than maxlag. default is 45.
 
         distancematrix is a dict form containing 400 distance values
 
         Examples
         --------
-        >>> result = GetSOCN(maxlag=45)
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetSOCN(maxlag=45)
         """
         if distancematrix is None:
             distancematrix = {}
@@ -300,7 +323,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetMoreauBrotoAutop(AAP={}, AAPName='p')
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetMoreauBrotoAutop(AAP={}, AAPName='p')
         """
         if AAP is None:
             AAP = {}
@@ -320,7 +345,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetMoranAutop(AAP={}, AAPName='p')
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetMoranAutop(AAP={}, AAPName='p')
         """
         if AAP is None:
             AAP = {}
@@ -338,7 +365,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetGearyAutop(AAP={}, AAPName='p')
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetGearyAutop(AAP={}, AAPName='p')
         """
         if AAP is None:
             AAP = {}
@@ -355,7 +384,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetSubSeq(ToAA='S', window=3)
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetSubSeq(ToAA='S', window=3)
         """
         res = GetSubSequence(self.ProteinSequence, ToAA=ToAA, window=window)
         return res
@@ -391,7 +422,9 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetAAIndex1(name)
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetAAindex1(name="KRIW790103")
         """
         return GetAAIndex1(name, path=path)
 
@@ -409,6 +442,8 @@ class GetProDes:
 
         Examples
         --------
-        >>> result = GetAAIndex23(name)
+        >>> from propy.GetProteinFromUniprot import GetProteinSequence
+        >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+        >>> result = GetProDes(protein).GetAAindex23(name="KRIW790103")
         """
         return GetAAIndex23(name, path=path)

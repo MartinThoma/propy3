@@ -91,6 +91,9 @@ def StringtoNum(ProteinSequence: str, AAProperty: Dict[Any, Any]) -> str:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAProperty, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = StringtoNum(protein, AAProperty)
     """
     hardProteinSequence = copy.deepcopy(ProteinSequence)
@@ -124,6 +127,9 @@ def CalculateComposition(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAProperty, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateComposition(protein, AAProperty, AAPName)
     """
     TProteinSequence = StringtoNum(ProteinSequence, AAProperty)
@@ -157,6 +163,9 @@ def CalculateTransition(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAProperty, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateTransition(protein, AAProperty, AAPName)
     """
     TProteinSequence = StringtoNum(ProteinSequence, AAProperty)
@@ -196,6 +205,9 @@ def CalculateDistribution(
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> AAProperty, AAPName = _Hydrophobicity, "_Hydrophobicity"
     >>> result = CalculateDistribution(protein, AAProperty, AAPName)
     """
     TProteinSequence = StringtoNum(ProteinSequence, AAProperty)
@@ -249,6 +261,8 @@ def CalculateCompositionHydrophobicity(ProteinSequence: str):
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCompositionHydrophobicity(protein)
     """
     return CalculateComposition(ProteinSequence, _Hydrophobicity, "_Hydrophobicity")
@@ -270,6 +284,8 @@ def CalculateCompositionNormalizedVDWV(ProteinSequence: str):
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCompositionNormalizedVDWV(protein)
     """
     return CalculateComposition(ProteinSequence, _NormalizedVDWV, "_NormalizedVDWV")
@@ -291,6 +307,8 @@ def CalculateCompositionPolarity(ProteinSequence: str):
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCompositionPolarity(protein)
     """
     return CalculateComposition(ProteinSequence, _Polarity, "_Polarity")
@@ -312,6 +330,8 @@ def CalculateCompositionCharge(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCompositionCharge(protein)
     """
     return CalculateComposition(ProteinSequence, _Charge, "_Charge")
@@ -333,6 +353,8 @@ def CalculateCompositionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCompositionSecondaryStr(protein)
     """
     return CalculateComposition(ProteinSequence, _SecondaryStr, "_SecondaryStr")
@@ -354,6 +376,8 @@ def CalculateCompositionSolventAccessibility(ProteinSequence: str) -> Dict[Any, 
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCompositionSolventAccessibility(protein)
     """
     return CalculateComposition(
@@ -377,6 +401,8 @@ def CalculateCompositionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCompositionPolarizability(protein)
     """
     return CalculateComposition(ProteinSequence, _Polarizability, "_Polarizability")
@@ -398,6 +424,8 @@ def CalculateTransitionHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateTransitionHydrophobicity(protein)
     """
     result = CalculateTransition(ProteinSequence, _Hydrophobicity, "_Hydrophobicity")
@@ -420,6 +448,8 @@ def CalculateTransitionNormalizedVDWV(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateTransitionNormalizedVDWV(protein)
     """
     result = CalculateTransition(ProteinSequence, _NormalizedVDWV, "_NormalizedVDWV")
@@ -442,6 +472,8 @@ def CalculateTransitionPolarity(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateTransitionPolarity(protein)
     """
     result = CalculateTransition(ProteinSequence, _Polarity, "_Polarity")
@@ -464,6 +496,8 @@ def CalculateTransitionCharge(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateTransitionCharge(protein)
     """
     result = CalculateTransition(ProteinSequence, _Charge, "_Charge")
@@ -486,6 +520,8 @@ def CalculateTransitionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateTransitionSecondaryStr(protein)
     """
     result = CalculateTransition(ProteinSequence, _SecondaryStr, "_SecondaryStr")
@@ -508,6 +544,8 @@ def CalculateTransitionSolventAccessibility(ProteinSequence: str) -> Dict[Any, A
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateTransitionSolventAccessibility(protein)
     """
     result = CalculateTransition(
@@ -532,6 +570,8 @@ def CalculateTransitionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateTransitionPolarizability(protein)
     """
     result = CalculateTransition(ProteinSequence, _Polarizability, "_Polarizability")
@@ -554,6 +594,8 @@ def CalculateDistributionHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDistributionHydrophobicity(protein)
     """
     result = CalculateDistribution(ProteinSequence, _Hydrophobicity, "_Hydrophobicity")
@@ -576,6 +618,8 @@ def CalculateDistributionNormalizedVDWV(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDistributionNormalizedVDWV(protein)
     """
     result = CalculateDistribution(ProteinSequence, _NormalizedVDWV, "_NormalizedVDWV")
@@ -598,6 +642,8 @@ def CalculateDistributionPolarity(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDistributionPolarity(protein)
     """
     result = CalculateDistribution(ProteinSequence, _Polarity, "_Polarity")
@@ -620,6 +666,8 @@ def CalculateDistributionCharge(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDistributionCharge(protein)
     """
     result = CalculateDistribution(ProteinSequence, _Charge, "_Charge")
@@ -642,6 +690,8 @@ def CalculateDistributionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDistributionSecondaryStr(protein)
     """
     result = CalculateDistribution(ProteinSequence, _SecondaryStr, "_SecondaryStr")
@@ -664,6 +714,8 @@ def CalculateDistributionSolventAccessibility(ProteinSequence: str) -> Dict[Any,
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDistributionSolventAccessibility(protein)
     """
     result = CalculateDistribution(
@@ -688,6 +740,8 @@ def CalculateDistributionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDistributionPolarizability(protein)
     """
     result = CalculateDistribution(ProteinSequence, _Polarizability, "_Polarizability")
@@ -710,6 +764,8 @@ def CalculateC(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateC(protein)
     """
     result: Dict[Any, Any] = {}
@@ -739,6 +795,8 @@ def CalculateT(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateT(protein)
     """
     result: Dict[Any, Any] = {}
@@ -768,6 +826,8 @@ def CalculateD(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateD(protein)
     """
     result: Dict[Any, Any] = {}
@@ -797,6 +857,8 @@ def CalculateCTD(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCTD(protein)
     """
     result: Dict[Any, Any] = {}

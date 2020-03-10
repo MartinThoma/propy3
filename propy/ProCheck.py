@@ -27,6 +27,8 @@ def ProteinCheck(ProteinSequence: str) -> int:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = ProteinCheck(protein)
     """
     NumPro = len(ProteinSequence)

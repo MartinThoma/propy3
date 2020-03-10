@@ -44,6 +44,8 @@ def CalculateAAComposition(ProteinSequence: str) -> Dict[str, float]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateAAComposition(protein)
     """
     sequence_length = len(ProteinSequence)
@@ -68,6 +70,8 @@ def CalculateDipeptideComposition(ProteinSequence: str) -> Dict[str, float]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateDipeptideComposition(protein)
     """
     sequence_length = len(ProteinSequence)
@@ -117,6 +121,8 @@ def GetSpectrumDict(proteinsequence: str) -> Dict[str, int]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = GetSpectrumDict(protein)
     """
     result = {}
@@ -143,6 +149,8 @@ def CalculateAADipeptideComposition(ProteinSequence: str) -> Dict[str, float]:
 
     Examples
     --------
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateAADipeptideComposition(protein)
     """
     result: Dict[Any, Any] = {}

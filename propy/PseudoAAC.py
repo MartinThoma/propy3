@@ -75,7 +75,8 @@ def _mean(listvalue):
 
     Examples
     --------
-    >>> result = _mean(listvalue)
+    >>> _mean(listvalue=[1, 2, 3])
+    2.0
     """
     return sum(listvalue) / len(listvalue)
 
@@ -86,7 +87,8 @@ def _std(listvalue, ddof=1):
 
     Examples
     --------
-    >>> result = _std(listvalue)
+    >>> _std(listvalue=[1, 2, 3])
+    1.0
     """
     mean = _mean(listvalue)
     temp = [math.pow(i - mean, 2) for i in listvalue]
@@ -110,18 +112,18 @@ def NormalizeEachAAP(AAP):
 
     Examples
     --------
-    >>> result = NormalizeEachAAP(AAP)
+    >>> result = NormalizeEachAAP(AAP=_Hydrophobicity)
     """
     if len(list(AAP.values())) != 20:
         print("You can not input the correct number of properities of Amino acids!")
     else:
-        Result = {}
+        result = {}
         for i, j in list(AAP.items()):
-            Result[i] = (j - _mean(list(AAP.values()))) / _std(
+            result[i] = (j - _mean(list(AAP.values()))) / _std(
                 list(AAP.values()), ddof=0
             )
 
-    return Result
+    return result
 
 
 # Type I descriptors###########################################################
@@ -143,7 +145,7 @@ def _GetCorrelationFunction(
 
     Examples
     --------
-    >>> result = _GetCorrelationFunction(Ri, Rj)
+    >>> result = _GetCorrelationFunction(Ri="S", Rj="D")
     """
     Hydrophobicity = NormalizeEachAAP(AAP[0])
     hydrophilicity = NormalizeEachAAP(AAP[1])
@@ -174,7 +176,9 @@ def _GetSequenceOrderCorrelationFactor(ProteinSequence: str, k: int = 1) -> floa
 
     Examples
     --------
-    >>> result = _GetSequenceOrderCorrelationFactor(protein, k)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = _GetSequenceOrderCorrelationFactor(protein)
     """
     LengthSequence = len(ProteinSequence)
     res = []
@@ -201,7 +205,9 @@ def GetAAComposition(ProteinSequence: str) -> Dict[Any, Any]:
 
     Examples
     --------
-    >>> result = CalculateAAComposition(protein)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetAAComposition(protein)
     """
     LengthSequence = len(ProteinSequence)
     Result = {}
@@ -286,7 +292,9 @@ def _GetPseudoAAC(
 
     Examples
     --------
-    >>> result = _GetAPseudoAAC(protein, lamda, weight)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = _GetPseudoAAC(protein)
     """
     res: Dict[Any, Any] = {}
     res.update(_GetPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
@@ -314,7 +322,7 @@ def _GetCorrelationFunctionForAPAAC(
 
     Examples
     --------
-    >>> result = _GetCorrelationFunctionForAPAAC(Ri, Rj)
+    >>> result = _GetCorrelationFunctionForAPAAC(Ri="S", Rj="D")
     """
     Hydrophobicity = NormalizeEachAAP(AAP[0])
     hydrophilicity = NormalizeEachAAP(AAP[1])
@@ -343,7 +351,9 @@ def GetSequenceOrderCorrelationFactorForAPAAC(ProteinSequence, k=1):
 
     Examples
     --------
-    >>> result = GetSequenceOrderCorrelationFactorForAPAAC(protein, k)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSequenceOrderCorrelationFactorForAPAAC(protein)
     """
     LengthSequence = len(ProteinSequence)
     resHydrophobicity = []
@@ -435,7 +445,9 @@ def GetAPseudoAAC(ProteinSequence, lamda: int = 30, weight: float = 0.5):
 
     Examples
     --------
-    >>> result = GetAPseudoAAC(protein, lamda, weight)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetAPseudoAAC(protein)
     """
     res: Dict[Any, Any] = {}
     res.update(GetAPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
@@ -466,7 +478,7 @@ def GetCorrelationFunction(Ri="S", Rj="D", AAP=None):
 
     Examples
     --------
-    >>> result = GetCorrelationFunction(Ri, Rj, AAP)
+    >>> GetCorrelationFunction(Ri="S", Rj="D", AAP=_Hydrophobicity)
     """
     if AAP is None:
         AAP = []
@@ -499,7 +511,9 @@ def GetSequenceOrderCorrelationFactor(ProteinSequence, k: int = 1, AAP=None):
 
     Examples
     --------
-    >>> result = GetSequenceOrderCorrelationFactor(protein, k, AAP)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetSequenceOrderCorrelationFactor(protein)
     """
     if AAP is None:
         AAP = []
@@ -587,7 +601,9 @@ def GetPseudoAAC(ProteinSequence: str, lamda: int = 30, weight: float = 0.05, AA
 
     Examples
     --------
-    >>> result = GetPseudoAAC(protein, lamda, weight)
+    >>> from propy.GetProteinFromUniprot import GetProteinSequence
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
+    >>> result = GetPseudoAAC(protein)
     """
     if AAP is None:
         AAP = []

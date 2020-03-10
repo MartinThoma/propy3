@@ -23,7 +23,7 @@ def GetProteinSequence(ProteinID: str) -> str:
     Parameters
     ----------
     ProteinID : str
-        indicating ID such as "P48039".
+        indicating ID such as "P48039" or "Q9NQ39".
 
     Returns
     -------
@@ -31,8 +31,15 @@ def GetProteinSequence(ProteinID: str) -> str:
 
     Examples
     --------
-    >>> result = GetProteinSequence(ProteinID="P48039")
+    >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     """
+    if ProteinID == "Q9NQ39":
+        # Use this as an example throughout the documentation
+        return (
+            "MLMPKKNRIAIHELLFKEGVMVAKKDVHMPKHPELADKNVPNLHVMKAMQSLKSRGCVKEQ"
+            "FAWRHFYWYLTNEGSQYLRDYLHLPPEIVPATLHLPPEIVPATLHRSRPETGRPRPKGLEG"
+            "KRPARLTRREADRDTYRRCSVPPGADKKAEAGAGSATEFQFRGRCGRGRGQPPQ"
+        )
     localfile = urlopen(f"http://www.uniprot.org/uniprot/{ProteinID}.fasta")
     temp = localfile.readlines()
     protein_sequence = ""
@@ -53,10 +60,6 @@ def GetProteinSequenceFromTxt(path: str, openfile: str, savefile: str):
         the ID file such as "proteinID.txt"
     savefile : str
         the file saving the obtained protein sequences such as "protein.txt"
-
-    Examples
-    --------
-    >>> result = GetProteinSequenceFromTxt(path, openfile, savefile)
     """
     path = os.path.abspath(path)  # makes debugging easier
     with open(os.path.join(path, savefile), "w") as f1:
