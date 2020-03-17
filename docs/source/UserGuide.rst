@@ -15,6 +15,7 @@ You can get a protein sequence from the Uniprot website by providing a Uniprot I
 .. code-block:: python
 
    from propy.GetProteinFromUniprot import GetProteinSequence as gps
+
    uniprotid = "P48039"
    proseq = gps(uniprotid)
 
@@ -58,6 +59,7 @@ Uniprot IDs of these proteins.
 .. code-block:: python
 
    from propy.GetProteinFromUniprot import GetProteinSequenceFromTxt as gpst
+
    tag = gpst("propy/data", "target.txt", "target1.txt")
 
 prints

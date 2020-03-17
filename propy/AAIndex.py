@@ -64,7 +64,7 @@ class Record:
 
     def __str__(self):
         desc = self.desc.replace("\n", " ").strip()
-        return "%s(%s: %s)" % (self.__class__.__name__, self.key, desc)
+        return f"{self.__class__.__name__}({self.key}: {desc})"
 
 
 class MatrixRecord(Record):
