@@ -30,10 +30,10 @@ from typing import Any, Dict
 _Hydrophobicity = {"1": "RKEDQN", "2": "GASTPHY", "3": "CLVIMFW"}
 # '1'stand for Polar; '2'stand for Neutral, '3' stand for Hydrophobicity
 
-_NormalizedVDWV = {"1": "GASTPD", "2": "NVEQIL", "3": "MHKFRYW"}
+_NormalizedVDWV = {"1": "GASTPDC", "2": "NVEQIL", "3": "MHKFRYW"}
 # '1'stand for (0-2.78); '2'stand for (2.95-4.0), '3' stand for (4.03-8.08)
 
-_Polarity = {"1": "LIFWCMVY", "2": "CPNVEQIL", "3": "KMHFRYW"}
+_Polarity = {"1": "LIFWCMVY", "2": "PATGS", "3": "HQRKNED"}
 # '1'stand for (4.9-6.2); '2'stand for (8.0-9.2), '3' stand for (10.4-13.0)
 
 _Charge = {"1": "KR", "2": "ANCQGHILMFPSTWYV", "3": "DE"}
