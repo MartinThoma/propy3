@@ -22,7 +22,7 @@ representing and distinguishing proteins or peptides of different structural,
 functional and interaction properties, and have been extensively used in
 developing methods and software for predicting protein structural and
 functional classes, protein-protein interactions, drug-target interactions,
-protein substrates, molecualr binding sites on proteins, subcellular locations,
+protein substrates, molecular binding sites on proteins, subcellular locations,
 protein crystallization propensity and peptides of specific properties. In
 order to conveniently apply these structural features from a protein sequence
 for researchers, we developed a propy package using pure python language, which
