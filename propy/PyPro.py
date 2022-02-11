@@ -391,8 +391,33 @@ class GetProDes:
         res = GetSubSequence(self.ProteinSequence, ToAA=ToAA, window=window)
         return res
 
-    def GetALL(self):
-        """Calcualte all descriptors except tri-peptide descriptors."""
+    def GetALL(self, lamda=10, weight=0.05, weight_qso=0.1, maxlag: int = 45):
+        """
+        Calcualte all descriptors except tri-peptide descriptors.
+
+        Parameters
+        ----------
+        lamda : int, optional (default: 10)
+            Used by GetPAAC() and GetAPAAC()
+            reflects the rank of correlation and is a non-Negative integer,
+            such as 15. Note that (1)lamda should NOT be larger than the length
+            of input protein sequence; (2) lamda must be non-Negative integer,
+            such as 0, 1, 2, ...; (3) when lamda =0, the output of PseAA server
+            is the 20-D amino acid composition.
+        weight : float, optional (default: 0.05)
+            Used by GetPAAC() and GetAPAAC()
+            is designed for the users to put weight on the additional PseAA
+            components with respect to the conventional AA components. The user
+            can select any value within the region from 0.05 to 0.7 for the
+            weight factor.
+        weight_qso : float, optional (default: 0.1)
+            Used by GetQSO()
+        maxlag : int
+            Used by GetSOCN()
+            is the maximum lag and the length of the protein should be larger
+            than maxlag
+        """
+
         res: Dict[Any, Any] = {}
         res.update(self.GetAAComp())
         res.update(self.GetDPComp())
@@ -401,10 +426,10 @@ class GetProDes:
         res.update(self.GetMoranAuto())
         res.update(self.GetGearyAuto())
         res.update(self.GetCTD())
-        res.update(self.GetPAAC())
-        res.update(self.GetAPAAC())
-        res.update(self.GetSOCN())
-        res.update(self.GetQSO())
+        res.update(self.GetPAAC(lamda=lamda, weight=weight))
+        res.update(self.GetAPAAC(lamda=lamda, weight=weight))
+        res.update(self.GetSOCN(maxlag=maxlag))
+        res.update(self.GetQSO(weight=weight_qso))
         return res
 
     def GetAAindex1(self, name: str, path="."):
