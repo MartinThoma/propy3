@@ -22,25 +22,27 @@ def test_original():
     ProteinSequence = GPFU.GetProteinSequence("P08172")
 
     print("testing the GetSubSeq module")
-    temp = GSS.GetSubSequence(ProteinSequence, ToAA="D", window=5)
-    print(temp)
+    sub_sequence = GSS.GetSubSequence(ProteinSequence, ToAA="D", window=5)
+    print(sub_sequence)
 
     print("testing the AAComposition module")
-    temp = AAC.CalculateAAComposition(ProteinSequence)
-    print(temp)
+    aa_composition = AAC.CalculateAAComposition(ProteinSequence)
+    print(aa_composition)
 
-    temp = AAC.CalculateDipeptideComposition(ProteinSequence)
-    temp = AAC.GetSpectrumDict(ProteinSequence)
-    temp = AAC.CalculateAADipeptideComposition(ProteinSequence)
+    _dipeptide_composition = AAC.CalculateDipeptideComposition(ProteinSequence)
+    _spectrum_dict = AAC.GetSpectrumDict(ProteinSequence)
+    _aa_dipeptide_comp = AAC.CalculateAADipeptideComposition(ProteinSequence)
 
     print("testing the Autocorrelation module")
-    temp = AC.CalculateNormalizedMoreauBrotoAuto(
+    normalized_moreau_broto_auto = AC.CalculateNormalizedMoreauBrotoAuto(
         ProteinSequence, [AC._ResidueASA], ["ResidueASA"]
     )
-    print(temp)
+    print(normalized_moreau_broto_auto)
 
-    temp = AC.CalculateMoranAuto(ProteinSequence, [AC._ResidueASA], ["ResidueASA"])
-    print(temp)
+    moran_auto = AC.CalculateMoranAuto(
+        ProteinSequence, [AC._ResidueASA], ["ResidueASA"]
+    )
+    print(moran_auto)
     temp = AC.CalculateGearyAuto(ProteinSequence, [AC._ResidueASA], ["ResidueASA"])
     print(temp)
     temp = AC.CalculateAutoTotal(ProteinSequence)

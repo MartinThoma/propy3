@@ -31,7 +31,7 @@ jobs:
     - name: Test with pytest
       run: pytest
     - name: Test with mypy
-      run: mypy . --exclude=build
+      run: mypy . --exclude=build --exclude=docs
     - name: Test with flake8
       run: flake8
     - name: Test with black
