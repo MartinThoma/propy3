@@ -9,13 +9,14 @@ Email: oriental-cds@163.com
 
 
 def test_original():
+    # First party
     import propy.AAComposition as AAC
     import propy.Autocorrelation as AC
     import propy.CTD as CTD
-    import propy.QuasiSequenceOrder as QSO
-    import propy.PseudoAAC as PAAC
     import propy.GetProteinFromUniprot as GPFU
     import propy.GetSubSeq as GSS
+    import propy.PseudoAAC as PAAC
+    import propy.QuasiSequenceOrder as QSO
 
     print("testing the GetProteinFromUniprot module")
     ProteinSequence = GPFU.GetProteinSequence("P08172")
