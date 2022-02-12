@@ -10,7 +10,8 @@ if _python_version.major == 2:
 if _python_version.major == 3 and _python_version.minor < 8:
     warnings.warn(
         "Python 3.6 and Python 3.7 might get deprecated. "
-        "Please participate in the discussion: https://github.com/MartinThoma/propy3/issues/12"
+        "Please participate in the discussion: "
+        "https://github.com/MartinThoma/propy3/issues/12"
     )
 
 AALetter: List[str] = list("ARNDCEQGHILKMFPSTWYV")
