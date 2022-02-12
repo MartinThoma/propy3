@@ -12,8 +12,9 @@ def test_docs():
 
 
 def test_marina():
-    from propy import AAComposition as AAC
+    # First party
     from propy import CTD
+    from propy import AAComposition as AAC
     from propy.PyPro import GetProDes
 
     # Protein sequence

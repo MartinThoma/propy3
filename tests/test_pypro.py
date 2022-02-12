@@ -4,9 +4,10 @@ import pytest
 
 @pytest.mark.skip(reason="Currently fails on travis-ci.org with timeout")
 def test_main():
-    from propy.PyPro import GetProDes
+    # First party
     from propy.Autocorrelation import _Steric
-    from propy.PseudoAAC import _Hydrophobicity, _hydrophilicity
+    from propy.PseudoAAC import _hydrophilicity, _Hydrophobicity
+    from propy.PyPro import GetProDes
 
     protein = "ADGCGVGEGTGQGPMCNCMCMKWVYADEDAADLESDSFADEDASLESDSFPWSNQRVFCSFADEDAS"
     cds = GetProDes(protein)

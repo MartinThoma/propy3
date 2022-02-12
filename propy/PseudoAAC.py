@@ -33,7 +33,8 @@ The side-chain mass for each of the 20 amino acids.
 
 CRC Handbook of Chemistry and Physics, 66th ed., CRC Press, Boca Raton, Florida (1985).
 
-R.M.C. Dawson, D.C. Elliott, W.H. Elliott, K.M. Jones, Data for Biochemical Research 3rd ed.,
+R.M.C. Dawson, D.C. Elliott, W.H. Elliott, K.M. Jones,
+Data for Biochemical Research 3rd ed.,
 
 Clarendon Press Oxford (1986).
 """
@@ -129,7 +130,7 @@ def NormalizeEachAAP(AAP):
 # Type I descriptors###########################################################
 # Pseudo-Amino Acid Composition descriptors####################################
 def _GetCorrelationFunction(
-    Ri="S", Rj="D", AAP=[_Hydrophobicity, _hydrophilicity, _residuemass]
+    Ri="S", Rj="D", AAP=(_Hydrophobicity, _hydrophilicity, _residuemass)
 ):
     """
     Computing the correlation between two given amino acids using the above
@@ -305,7 +306,7 @@ def _GetPseudoAAC(
 # Type II descriptors##########################################################
 # Amphiphilic Pseudo-Amino Acid Composition descriptors########################
 def _GetCorrelationFunctionForAPAAC(
-    Ri="S", Rj="D", AAP=[_Hydrophobicity, _hydrophilicity]
+    Ri="S", Rj="D", AAP=(_Hydrophobicity, _hydrophilicity)
 ):
     """
     Computing the correlation between two given amino acids using the above two
@@ -393,9 +394,9 @@ def GetAPseudoAAC1(ProteinSequence, lamda=30, weight=0.5):
 
 def GetAPseudoAAC2(ProteinSequence, lamda=30, weight=0.5):
     """
-    Computing the last lamda of type II pseudo-amino acid compostion descriptors based on
+    Computing the last lamda of type II pseudo-amino acid compostion descriptors
 
-    [_Hydrophobicity, _hydrophilicity].
+    based on (_Hydrophobicity, _hydrophilicity).
     """
     rightpart = []
     for i in range(lamda):

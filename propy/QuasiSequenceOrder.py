@@ -519,7 +519,7 @@ def GetQuasiSequenceOrder(
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = GetQuasiSequenceOrder(protein)
     """
-    result: Dict[Any, Any] = dict()
+    result: Dict[Any, Any] = {}
     result.update(GetQuasiSequenceOrder1SW(ProteinSequence, maxlag, weight, _Distance1))
     result.update(GetQuasiSequenceOrder2SW(ProteinSequence, maxlag, weight, _Distance1))
     result.update(
@@ -567,7 +567,7 @@ def GetQuasiSequenceOrderp(
     """
     if distancematrix is None:
         distancematrix = {}
-    result: Dict[Any, Any] = dict()
+    result: Dict[Any, Any] = {}
     result.update(
         GetQuasiSequenceOrder1(ProteinSequence, maxlag, weight, distancematrix)
     )

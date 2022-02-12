@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
 
     steps:
     - uses: actions/checkout@v2
@@ -31,8 +31,8 @@ jobs:
     - name: Test with pytest
       run: pytest
     - name: Test with mypy
-      run: mypy . --exclude=build
+      run: mypy . --exclude=build --exclude=docs
     - name: Test with flake8
-      run: flake8
+      run: flake8 --exclude=build,docs
     - name: Test with black
       run: black --check .

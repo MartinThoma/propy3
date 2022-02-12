@@ -1,6 +1,13 @@
+maint:
+	pip install -r requirements/dev.txt
+	pre-commit autoupdate && pre-commit run --all-files
+	pip-compile -U setup.py
+	pip-compile -U requirements/ci.in
+	pip-compile -U requirements/dev.in
+
 upload:
 	make clean
-	python3 setup.py sdist bdist_wheel && twine upload dist/*
+	python setup.py sdist bdist_wheel && twine upload -s dist/*
 
 clean:
 	python setup.py clean --all
