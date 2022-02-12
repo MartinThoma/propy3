@@ -33,6 +33,6 @@ jobs:
     - name: Test with mypy
       run: mypy . --exclude=build --exclude=docs
     - name: Test with flake8
-      run: flake8
+      run: flake8 --exclude=build,docs
     - name: Test with black
       run: black --check .

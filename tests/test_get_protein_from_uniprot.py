@@ -20,7 +20,7 @@ def test_main():
                     print("--------------------------------------------------------")
                     print("The %d protein sequence has been downloaded!" % (index + 1))
                     print(temp)
-                    savefile.write((temp + "\n").encode('utf8'))
+                    savefile.write((temp + "\n").encode("utf8"))
                     print("--------------------------------------------------------")
 
     flag = GetProteinSequenceFromTxt(

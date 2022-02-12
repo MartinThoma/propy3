@@ -29,9 +29,10 @@ def test_original():
     aa_composition = AAC.CalculateAAComposition(ProteinSequence)
     print(aa_composition)
 
-    _dipeptide_composition = AAC.CalculateDipeptideComposition(ProteinSequence)
-    _spectrum_dict = AAC.GetSpectrumDict(ProteinSequence)
-    _aa_dipeptide_comp = AAC.CalculateAADipeptideComposition(ProteinSequence)
+    # Just call it. Would be nice to know what the expected return value is
+    AAC.CalculateDipeptideComposition(ProteinSequence)
+    AAC.GetSpectrumDict(ProteinSequence)
+    AAC.CalculateAADipeptideComposition(ProteinSequence)
 
     print("testing the Autocorrelation module")
     normalized_moreau_broto_auto = AC.CalculateNormalizedMoreauBrotoAuto(
