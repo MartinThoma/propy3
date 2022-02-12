@@ -56,7 +56,7 @@ class Record:
         return self.get(aai)
 
     def median(self):
-        x = sorted([_f for _f in list(self.index.values()) if _f])
+        x = sorted(_f for _f in list(self.index.values()) if _f)
         half = len(x) // 2
         if len(x) % 2 == 1:
             return x[half]
@@ -181,6 +181,7 @@ def _parse(filename: str, rec: Type[Record], quiet: bool = True):
     `MarixRecord` for aaindex2 and aaindex3.
     """
     if not os.path.exists(filename):
+        # Core Library
         from urllib.request import urlretrieve
 
         url = (

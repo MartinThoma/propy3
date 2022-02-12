@@ -47,7 +47,8 @@ class GetProDes:
         """Input a protein sequence."""
         if len(ProteinSequence) == 0:
             print(
-                "You must input a protein sequence when constructing a object. It is a string!"
+                "You must input a protein sequence "
+                "when constructing a object. It is a string!"
             )
         else:
             self.ProteinSequence = ProteinSequence
@@ -172,7 +173,9 @@ class GetProDes:
 
     def GetPAACp(self, lamda=10, weight=0.05, AAP=None):
         """
-        Type I Pseudo amino acid composition descriptors for the given properties (default is 30).
+        Type I Pseudo amino acid composition descriptors for the given properties
+
+        Default is 30.
 
         Parameters
         ----------
