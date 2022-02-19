@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
-"""
-Set up the propy package
+# propy3, formerly protpy, is a Python package to compute protein descriptors
+# Copyright (C) 2012 Dongsheng Cao and Yizeng Liang, oriental-cds@163.com
+# Copyright (C) 2020-2022 Martin Thoma
 
-Authors: Dongsheng Cao and Yizeng Liang.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 
-Date: 2012.09.11
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 
-Email: oriental-cds@163.com
-"""
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA  02110-1301, USA.
+"""Set up the propy package"""
 
 # Third party
 from setuptools import setup

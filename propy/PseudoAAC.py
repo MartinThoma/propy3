@@ -1,4 +1,22 @@
 # -*- coding: utf-8 -*-
+# propy3, formerly protpy, is a Python package to compute protein descriptors
+# Copyright (C) 2012 Dongsheng Cao and Yizeng Liang, oriental-cds@163.com
+# Copyright (C) 2020-2022 Martin Thoma
+
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA  02110-1301, USA.
 """
 Instead of using the conventional 20-D amino acid composition to represent the
 sample of a protein, Prof. Kuo-Chen Chou proposed the pseudo amino acid (PseAA)
@@ -19,10 +37,6 @@ References
 .. [3] http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm
 .. [4] Kuo-Chen Chou. Using amphiphilic pseudo amino acid composition to
        predict enzyme subfamily classes. Bioinformatics, 2005, 21, 10-19.
-
-Authors: Dongsheng Cao and Yizeng Liang.
-Date: 2012.9.2
-Email: oriental-cds@163.com
 
 
 The hydrophobicity values are from JACS, 1962, 84: 4240-4246. (C. Tanford).

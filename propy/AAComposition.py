@@ -1,4 +1,22 @@
 # -*- coding: utf-8 -*-
+# propy3, formerly protpy, is a Python package to compute protein descriptors
+# Copyright (C) 2012 Dongsheng Cao and Yizeng Liang, oriental-cds@163.com
+# Copyright (C) 2020-2022 Martin Thoma
+
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA  02110-1301, USA.
 """
 The module is used for computing the composition of amino acids, dipetide and
 3-mers (tri-peptide) for a given protein sequence.
@@ -14,10 +32,6 @@ References
 .. [3] Grassmann, J., Reczko, M., Suhai, S. and Edler, L. (1999) Protein fold
    class prediction: new methods of statistical classification. Proc Int Conf
    Intell Syst Mol Biol, 106-112.
-
-Authors: Dongsheng Cao and Yizeng Liang.
-Date: 2012.3.27
-Email: oriental-cds@163.com
 """
 
 # Core Library

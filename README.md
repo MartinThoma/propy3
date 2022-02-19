@@ -7,8 +7,8 @@
 # propy3
 
 `propy3` is a drop-in replacement for [`propy`](https://code.google.com/archive/p/protpy/).
-The original project was developed by Dongsheng Cao. See the commit history
-for all changes made afterwards.
+The original project was developed by Dongsheng Cao and Yizeng Liang from 2010-2012.
+See the commit history for all changes made afterwards.
 
 The reason for creating this fork of propy is to add Python 3 support.
 
@@ -68,7 +68,7 @@ The protein descriptors calculated by propy
 
 ## Install
 
-```
+```bash
 pip install propy3
 ```
 
