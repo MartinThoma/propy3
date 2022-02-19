@@ -23,7 +23,7 @@ You can get a protein sequence from the Uniprot website by providing a Uniprot I
 
 gives
 
-.. code-block
+.. code-block:: text
 
    MQGNGSALPNASQPVLRGDGARPSWLASALACVLIFTIVVDILGNLLVILSVYRNKKLRNAGNIFVVSLAVA\
    DLVVAIYPYPLVLMSIFNNGWNLGYLHCQVSGFLMGLSVIGSIFNITGIAINRYCYICHSLKYDKLYSSKNS\
@@ -44,7 +44,7 @@ amino acid ToAA.
 
 gives
 
-.. code-block
+.. code-block:: python
 
    ['MQGNGSALPNA', 'ALPNASQPVLR', 'DGARPSWLASA', 'PSWLASALACV', 'LLVILSVYRNK',
     'NIFVVSLAVAD', 'PLVLMSIFNNG', 'LHCQVSGFLMG', 'FLMGLSVIGSI', 'LSVIGSIFNIT',
@@ -64,7 +64,7 @@ Uniprot IDs of these proteins.
 
 prints
 
-.. code-block
+.. code-block:: text
 
     --------------------------------------------------------------------------------
     The 1 protein sequence has been downloaded!
