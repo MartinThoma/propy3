@@ -109,3 +109,7 @@ tests/reports/
 .mutmut-cache
 
 .envrc
+target1.txt
+aaindex1
+aaindex2
+aaindex3
