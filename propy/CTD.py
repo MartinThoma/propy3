@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # propy3, formerly protpy, is a Python package to compute protein descriptors
 # Copyright (C) 2010 Dongsheng Cao and Yizeng Liang, oriental-cds@163.com
 # Copyright (C) 2020-2022 Martin Thoma
