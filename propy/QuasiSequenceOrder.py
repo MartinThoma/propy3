@@ -126,8 +126,6 @@ def GetSequenceOrderCouplingNumberp(
     """
     if distancematrix is None:
         distancematrix = {}
-    # NumProtein = len(ProteinSequence) # TODO: this was calculated, but not
-    # used... is here a bug?
     Tau = {}
     for i in range(maxlag):
         Tau["tau" + str(i + 1)] = GetSequenceOrderCouplingNumber(
@@ -166,8 +164,6 @@ def GetSequenceOrderCouplingNumberSW(
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = GetSequenceOrderCouplingNumberSW(protein)
     """
-    # NumProtein = len(ProteinSequence)  # TODO: This was calculated, but not
-    # used ... is here a bug?
     Tau = {}
     for i in range(maxlag):
         Tau["tausw" + str(i + 1)] = GetSequenceOrderCouplingNumber(
@@ -205,8 +201,6 @@ def GetSequenceOrderCouplingNumberGrant(
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = GetSequenceOrderCouplingNumberGrant(protein)
     """
-    # NumProtein = len(ProteinSequence)  # TODO: This was calculated, but not
-    # used ... is here a bug?
     Tau = {}
     for i in range(maxlag):
         Tau["taugrant" + str(i + 1)] = GetSequenceOrderCouplingNumber(
@@ -341,7 +335,6 @@ def GetQuasiSequenceOrder2(
         rightpart.append(
             GetSequenceOrderCouplingNumber(ProteinSequence, i + 1, distancematrix)
         )
-    # AAC = GetAAComposition(ProteinSequence)  # TODO: was not used. Bug?
     result = {}
     temp = 1 + weight * sum(rightpart)
     for index in range(20, 20 + maxlag):
@@ -412,7 +405,6 @@ def GetQuasiSequenceOrder2SW(
         rightpart.append(
             GetSequenceOrderCouplingNumber(ProteinSequence, i + 1, distancematrix)
         )
-    # AAC = GetAAComposition(ProteinSequence)  # TODO: was not used. Bug?
     result = {}
     temp = 1 + weight * sum(rightpart)
     for index in range(20, 20 + maxlag):
@@ -492,7 +484,6 @@ def GetQuasiSequenceOrder2Grant(
         rightpart.append(
             GetSequenceOrderCouplingNumber(ProteinSequence, i + 1, distancematrix)
         )
-    # AAC = GetAAComposition(ProteinSequence)  # TODO: Was not used. Bug?
     result = {}
     temp = 1 + weight * sum(rightpart)
     for index in range(20, 20 + maxlag):

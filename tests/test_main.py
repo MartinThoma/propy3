@@ -51,9 +51,8 @@ def test_marina():
 
 
 @pytest.mark.xfail()
-def test_p33765():
-    # TODO: "P33765" gives "HTTP Error 300" (abiguity?) Why?
-    proteinsequence = gps("P33765")  # download the protein sequence by uniprot id
+def test_p48039():
+    proteinsequence = gps("P48039")  # download the protein sequence by uniprot id
     DesObject = PyPro.GetProDes(proteinsequence)  # construct a GetProDes object
     print(DesObject.GetCTD())  # calculate 147 CTD descriptors
     print(DesObject.GetAAComp())  # calculate 20 amino acid composition descriptors
