@@ -19,7 +19,7 @@
 """Computing different types of protein descriptors."""
 
 # Core Library
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 
 # Local
 from .AAComposition import (
@@ -54,7 +54,7 @@ class GetProDes:
 
     Version = 1.0
 
-    def __init__(self, ProteinSequence=""):
+    def __init__(self, ProteinSequence: str = "") -> None:
         """Input a protein sequence."""
         if len(ProteinSequence) == 0:
             print(
@@ -103,7 +103,7 @@ class GetProDes:
         res = GetSpectrumDict(self.ProteinSequence)
         return res
 
-    def GetMoreauBrotoAuto(self):
+    def GetMoreauBrotoAuto(self) -> Dict[Any, Any]:
         """
         Normalized Moreau-Broto autocorrelation descriptors (240).
 
@@ -116,7 +116,7 @@ class GetProDes:
         res = CalculateNormalizedMoreauBrotoAutoTotal(self.ProteinSequence)
         return res
 
-    def GetMoranAuto(self):
+    def GetMoranAuto(self) -> Dict[Any, Any]:
         """
         Moran autocorrelation descriptors (240).
 
@@ -129,7 +129,7 @@ class GetProDes:
         res = CalculateMoranAutoTotal(self.ProteinSequence)
         return res
 
-    def GetGearyAuto(self):
+    def GetGearyAuto(self) -> Dict[Any, Any]:
         """
         Geary autocorrelation descriptors (240).
 
@@ -142,7 +142,7 @@ class GetProDes:
         res = CalculateGearyAutoTotal(self.ProteinSequence)
         return res
 
-    def GetCTD(self):
+    def GetCTD(self) -> Dict[Any, Any]:
         """
         Composition Transition Distribution descriptors (147).
 
@@ -155,7 +155,7 @@ class GetProDes:
         res = CalculateCTD(self.ProteinSequence)
         return res
 
-    def GetPAAC(self, lamda=10, weight=0.05):
+    def GetPAAC(self, lamda: int = 10, weight: float = 0.05) -> Dict[Any, Any]:
         """
         Type I Pseudo amino acid composition descriptors (default is 30).
 
@@ -182,7 +182,9 @@ class GetProDes:
         res = _GetPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
         return res
 
-    def GetPAACp(self, lamda=10, weight=0.05, AAP=None):
+    def GetPAACp(
+        self, lamda: int = 10, weight: float = 0.05, AAP: Optional[List[Any]] = None
+    ) -> Dict[Any, Any]:
         """
         Type I Pseudo amino acid composition descriptors for the given properties
 
@@ -215,7 +217,7 @@ class GetProDes:
         res = GetPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight, AAP=AAP)
         return res
 
-    def GetAPAAC(self, lamda=10, weight=0.5):
+    def GetAPAAC(self, lamda: int = 10, weight: float = 0.5) -> Dict[Any, Any]:
         """
         Amphiphilic (Type II) Pseudo amino acid composition descriptors.
 
@@ -244,7 +246,7 @@ class GetProDes:
         res = GetAPseudoAAC(self.ProteinSequence, lamda=lamda, weight=weight)
         return res
 
-    def GetSOCN(self, maxlag: int = 45):
+    def GetSOCN(self, maxlag: int = 45) -> Dict[Any, Any]:
         """
         Sequence order coupling numbers  default is 45.
 
@@ -263,7 +265,9 @@ class GetProDes:
         res = GetSequenceOrderCouplingNumberTotal(self.ProteinSequence, maxlag=maxlag)
         return res
 
-    def GetSOCNp(self, maxlag=45, distancematrix=None):
+    def GetSOCNp(
+        self, maxlag: int = 45, distancematrix: Optional[Dict[Any, Any]] = None
+    ) -> Dict[Any, Any]:
         """
         Sequence order coupling numbers  default is 45.
 
@@ -287,7 +291,7 @@ class GetProDes:
         )
         return res
 
-    def GetQSO(self, maxlag=30, weight=0.1):
+    def GetQSO(self, maxlag: int = 30, weight: float = 0.1) -> Dict[Any, Any]:
         """
         Quasi sequence order descriptors  default is 50.
 
@@ -302,7 +306,12 @@ class GetProDes:
         res = GetQuasiSequenceOrder(self.ProteinSequence, maxlag=maxlag, weight=weight)
         return res
 
-    def GetQSOp(self, maxlag=30, weight=0.1, distancematrix=None):
+    def GetQSOp(
+        self,
+        maxlag: int = 30,
+        weight: float = 0.1,
+        distancematrix: Optional[Dict[Any, Any]] = None,
+    ) -> Dict[Any, Any]:
         """
         Quasi sequence order descriptors  default is 50.
 
@@ -311,7 +320,6 @@ class GetProDes:
         result = GetQSO(maxlag=30, weight=0.1)
 
         maxlag is the maximum lag and the length of the protein should be larger
-
         than maxlag. default is 45.
 
         distancematrix is a dict form containing 400 distance values
@@ -326,7 +334,9 @@ class GetProDes:
         )
         return res
 
-    def GetMoreauBrotoAutop(self, AAP: Dict[Any, Any] = None, AAPName="p"):
+    def GetMoreauBrotoAutop(
+        self, AAP: Optional[Dict[Any, Any]] = None, AAPName: str = "p"
+    ) -> Dict[str, float]:
         """
         Normalized Moreau-Broto autocorrelation descriptors for the given property (30).
 
@@ -348,7 +358,9 @@ class GetProDes:
         )
         return res
 
-    def GetMoranAutop(self, AAP=None, AAPName="p"):
+    def GetMoranAutop(
+        self, AAP: Optional[Dict[Any, Any]] = None, AAPName: str = "p"
+    ) -> Dict[Any, Any]:
         """
         Moran autocorrelation descriptors for the given property (30).
 
@@ -368,7 +380,9 @@ class GetProDes:
         res = CalculateEachMoranAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
         return res
 
-    def GetGearyAutop(self, AAP=None, AAPName="p"):
+    def GetGearyAutop(
+        self, AAP: Optional[Dict[Any, Any]] = None, AAPName: str = "p"
+    ) -> Dict[Any, Any]:
         """
         Geary autocorrelation descriptors for the given property (30).
 
@@ -388,7 +402,7 @@ class GetProDes:
         res = CalculateEachGearyAuto(self.ProteinSequence, AAP=AAP, AAPName=AAPName)
         return res
 
-    def GetSubSeq(self, ToAA="S", window=3):
+    def GetSubSeq(self, ToAA: str = "S", window: int = 3) -> List[str]:
         """
         Obtain the sub sequences wit length 2*window+1, whose central point is ToAA.
 
@@ -405,14 +419,16 @@ class GetProDes:
         res = GetSubSequence(self.ProteinSequence, ToAA=ToAA, window=window)
         return res
 
-    def GetALL(self,
-               paac_lamda: int = 10,
-               paac_weight: float = 0.05,
-               apaac_lamda: int = 10,
-               apaac_weight: float = 0.5,
-               socn_maxlag: int = 45,
-               qso_maxlag: int = 30,
-               qso_weight: float = 0.1):
+    def GetALL(
+        self,
+        paac_lamda: int = 10,
+        paac_weight: float = 0.05,
+        apaac_lamda: int = 10,
+        apaac_weight: float = 0.5,
+        socn_maxlag: int = 45,
+        qso_maxlag: int = 30,
+        qso_weight: float = 0.1,
+    ) -> Dict[Any, Any]:
         """
         Calcualte all descriptors except tri-peptide descriptors.
 
@@ -461,7 +477,7 @@ class GetProDes:
         res.update(self.GetQSO(maxlag=qso_maxlag, weight=qso_weight))
         return res
 
-    def GetAAindex1(self, name: str, path="."):
+    def GetAAindex1(self, name: str, path: Optional[str] = ".") -> Dict[str, float]:
         """
         Get the amino acid property values from aaindex1.
 
@@ -482,7 +498,7 @@ class GetProDes:
         """
         return GetAAIndex1(name, path=path)
 
-    def GetAAindex23(self, name, path="."):
+    def GetAAindex23(self, name: str, path: Optional[str] = ".") -> Dict[str, float]:
         """
         Get the amino acid property values from aaindex2 and aaindex3.
 

@@ -165,7 +165,7 @@ def _float_or_None(x) -> Optional[float]:
     return float(x)
 
 
-def init(path=None, index="123"):
+def init(path: Optional[str] = None, index: str = "123"):
     """
     Read in the aaindex files. You need to run this (once) before you can
     access any records. If the files are not within the current directory, you
@@ -269,7 +269,7 @@ def _parse(filename: str, rec: Type[Record], quiet: bool = True):
     f.close()
 
 
-def GetAAIndex1(name: str, path: str = ".") -> Dict[str, float]:
+def GetAAIndex1(name: str, path: Optional[str] = ".") -> Dict[str, float]:
     """
     Get the amino acid property values from aaindex1.
 
@@ -297,7 +297,7 @@ def GetAAIndex1(name: str, path: str = ".") -> Dict[str, float]:
     return res
 
 
-def GetAAIndex23(name: str, path: str = ".") -> Dict[str, float]:
+def GetAAIndex23(name: str, path: Optional[str] = ".") -> Dict[str, float]:
     """
     Get the amino acid property values from aaindex2 and aaindex3.
 
