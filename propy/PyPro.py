@@ -391,31 +391,46 @@ class GetProDes:
         res = GetSubSequence(self.ProteinSequence, ToAA=ToAA, window=window)
         return res
 
-    def GetALL(self, lamda=10, weight=0.05, weight_qso=0.1, maxlag: int = 45):
+    def GetALL(self,
+               paac_lamda: int = 10,
+               paac_weight: float = 0.05,
+               apaac_lamda: int = 10,
+               apaac_weight: float = 0.5,
+               socn_maxlag: int = 45,
+               qso_maxlag: int = 30,
+               qso_weight: float = 0.1):
         """
         Calcualte all descriptors except tri-peptide descriptors.
 
         Parameters
         ----------
-        lamda : int, optional (default: 10)
-            Used by GetPAAC() and GetAPAAC()
+        paac_lamda : int, optional (default: 10)
+            used by GetPAAC()
             reflects the rank of correlation and is a non-Negative integer,
             such as 15. Note that (1)lamda should NOT be larger than the length
             of input protein sequence; (2) lamda must be non-Negative integer,
             such as 0, 1, 2, ...; (3) when lamda =0, the output of PseAA server
             is the 20-D amino acid composition.
-        weight : float, optional (default: 0.05)
-            Used by GetPAAC() and GetAPAAC()
+        paac_weight : float, optional (default: 0.05)
+            used by GetPAAC()
             is designed for the users to put weight on the additional PseAA
             components with respect to the conventional AA components. The user
             can select any value within the region from 0.05 to 0.7 for the
             weight factor.
-        weight_qso : float, optional (default: 0.1)
-            Used by GetQSO()
-        maxlag : int
+        apaac_lamda : int, optional (default: 10)
+            Same as "paac_lambda" but for APAAC()
+        apaac_weight : float, optional (default: 0.5)
+            Same as "paac_weight" but for APAAC()
+        socn_maxlag : int, optional  (default: 45)
             Used by GetSOCN()
             is the maximum lag and the length of the protein should be larger
-            than maxlag
+            than maxlag.
+        qso_maxlag : int, optional  (default: 30)
+            Used by GetQSO()
+            is the maximum lag and the length of the protein should be larger
+            than maxlag.
+        qso_weight : float, optional (default: 0.1)
+            Used by GetQSO()
         """
 
         res: Dict[Any, Any] = {}
@@ -426,10 +441,10 @@ class GetProDes:
         res.update(self.GetMoranAuto())
         res.update(self.GetGearyAuto())
         res.update(self.GetCTD())
-        res.update(self.GetPAAC(lamda=lamda, weight=weight))
-        res.update(self.GetAPAAC(lamda=lamda, weight=weight))
-        res.update(self.GetSOCN(maxlag=maxlag))
-        res.update(self.GetQSO(weight=weight_qso))
+        res.update(self.GetPAAC(lamda=paac_lamda, weight=paac_weight))
+        res.update(self.GetAPAAC(lamda=apaac_lamda, weight=apaac_weight))
+        res.update(self.GetSOCN(maxlag=socn_maxlag))
+        res.update(self.GetQSO(maxlag=qso_maxlag, weight=qso_weight))
         return res
 
     def GetAAindex1(self, name: str, path="."):
