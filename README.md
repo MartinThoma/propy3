@@ -67,9 +67,14 @@ The protein descriptors calculated by propy
 10. APAAC: amphiphilic pseudo amino acid composition descriptors(depend on the choice of lamda, the default is 50)
 
 ## Install
-
+### Pip
 ```bash
 pip install propy3
+```
+
+### BioConda
+```bash
+conda install -c bioconda propy3
 ```
 
 ## Usage Example
