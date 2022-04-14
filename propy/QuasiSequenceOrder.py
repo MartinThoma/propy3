@@ -60,7 +60,7 @@ with open(filepath, "r") as f:
 # Distance is the Grantham chemical distance matrix used by Grantham et. al.
 filepath = resource_filename(__name__, "data/grantham-chemical-distance-matrix.json")
 with open(filepath, "r") as f:
-    _Distance2: Dict[str, float] = json.load(f)
+    _Distance2: Dict[str, int] = json.load(f)
 
 
 def GetSequenceOrderCouplingNumber(
