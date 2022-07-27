@@ -1,7 +1,7 @@
 # pre-commit run --all-files
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.3.0
     hooks:
     -   id: check-ast
     -   id: check-byte-order-marker
@@ -30,11 +30,11 @@ repos:
     hooks:
     -   id: isort
 -   repo: https://github.com/psf/black
-    rev: 22.1.0
+    rev: 22.6.0
     hooks:
     - id: black
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.0
+    rev: v2.37.3
     hooks:
     -   id: pyupgrade
 -   repo: https://github.com/asottile/blacken-docs
