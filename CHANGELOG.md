@@ -1,3 +1,8 @@
+## 1.1.1
+
+* BUG: Fix Grantham data (#22)
+* DOC: Installation instructions for conda
+
 ## 1.1.0
 
 * Feature: PyPro.GetALL now has parameters
