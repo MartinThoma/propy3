@@ -22,19 +22,16 @@ from the aaindex database.
 """
 
 # Core Library
+import importlib.resources as impl_res
 import logging
 import os
 import sys
 from typing import Any, Dict, List, Optional, Type, cast
 
-# Third party
-import pkg_resources
-
 # First party
 from propy import AALetter
 
 logger = logging.getLogger(__name__)
-
 
 _aaindex: Dict[Any, Any] = {}
 
@@ -120,7 +117,7 @@ class MatrixRecord(Record):
         x.sort()
         if len(x) % 2 == 1:
             return x[len(x) // 2]
-        return sum(x[len(x) // 2 - 1 : len(x) // 2 + 1]) / 2.0
+        return sum(x[len(x) // 2 - 1: len(x) // 2 + 1]) / 2.0
 
 
 def search(pattern, searchtitle=True, casesensitive=False):
@@ -135,9 +132,9 @@ def search(pattern, searchtitle=True, casesensitive=False):
     matches = []
     for record in _aaindex.values():
         if (
-            pattern in whatcase(record.desc)
-            or searchtitle
-            and pattern in whatcase(record.title)
+                pattern in whatcase(record.desc)
+                or searchtitle
+                and pattern in whatcase(record.title)
         ):
             matches.append(record)
     return matches
@@ -174,9 +171,9 @@ def init(path: Optional[str] = None, index: str = "123"):
     """
     index = str(index)
     if path is None:
-        filepath = pkg_resources.resource_filename(__name__, "aaindex1")
-        path = os.path.dirname(filepath)
-        print("path =", path, file=sys.stderr)
+        with impl_res.as_file(impl_res.files("propy") / "aaindex/aaindex1") as filepath:
+            path = os.path.dirname(filepath)
+            print("path =", path, file=sys.stderr)
     if "1" in index:
         _parse(os.path.join(path, "aaindex1"), Record)
     if "2" in index:
@@ -199,7 +196,7 @@ def _parse(filename: str, rec: Type[Record], quiet: bool = True):
         from urllib.request import urlretrieve
 
         url = (
-            "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
+                "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
         )
         logger.debug(f'Downloading "{url}"')
         filename = urlretrieve(url, filename)[0]

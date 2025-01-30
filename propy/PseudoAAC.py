@@ -53,34 +53,36 @@ Clarendon Press Oxford (1986).
 """
 
 # Core Library
+import importlib.resources as impl_res
 import json
 import math
 from typing import Any, Dict
 
-# Third party
-from pkg_resources import resource_filename
-
 # First party
 from propy import AALetter
 
-with open(resource_filename(__name__, "data/hydrophobicity.json"), "r") as f:
-    _Hydrophobicity: Dict[str, float] = json.load(f)
+with impl_res.as_file(impl_res.files("propy") / "data/hydrophobicity.json") as res_path:
+    with open(res_path, "r") as f:
+        _Hydrophobicity: Dict[str, float] = json.load(f)
 
-with open(resource_filename(__name__, "data/hydrophilicity.json"), "r") as f:
-    _hydrophilicity: Dict[str, float] = json.load(f)
+with impl_res.as_file(impl_res.files("propy") / "data/hydrophilicity.json") as res_path:
+    with open(res_path, "r") as f:
+        _hydrophilicity: Dict[str, float] = json.load(f)
 
-with open(resource_filename(__name__, "data/residuemass.json"), "r") as f:
-    _residuemass: Dict[str, float] = json.load(f)
+with impl_res.as_file(impl_res.files("propy") / "data/residuemass.json") as res_path:
+    with open(res_path, "r") as f:
+        _residuemass: Dict[str, float] = json.load(f)
 
+with impl_res.as_file(impl_res.files("propy") / "data/pK1.json") as res_path:
+    with open(res_path, "r") as f:
+        _pK1: Dict[str, float] = json.load(f)
 
-with open(resource_filename(__name__, "data/pK1.json"), "r") as f:
-    _pK1: Dict[str, float] = json.load(f)
-
-with open(resource_filename(__name__, "data/pK2.json"), "r") as f:
-    _pK2: Dict[str, float] = json.load(f)
-
-with open(resource_filename(__name__, "data/pI.json"), "r") as f:
-    _pI: Dict[str, float] = json.load(f)
+with impl_res.as_file(impl_res.files("propy") / "data/pK2.json") as res_path:
+    with open(res_path, "r") as f:
+        _pK2: Dict[str, float] = json.load(f)
+with impl_res.as_file(impl_res.files("propy") / "data/pI.json") as res_path:
+    with open(res_path, "r") as f:
+        _pI: Dict[str, float] = json.load(f)
 
 
 def _mean(listvalue):
@@ -143,7 +145,7 @@ def NormalizeEachAAP(AAP):
 # Type I descriptors###########################################################
 # Pseudo-Amino Acid Composition descriptors####################################
 def _GetCorrelationFunction(
-    Ri="S", Rj="D", AAP=(_Hydrophobicity, _hydrophilicity, _residuemass)
+        Ri="S", Rj="D", AAP=(_Hydrophobicity, _hydrophilicity, _residuemass)
 ):
     """
     Computing the correlation between two given amino acids using the above
@@ -272,7 +274,7 @@ def _GetPseudoAAC2(ProteinSequence, lamda=10, weight=0.05):
 
 
 def _GetPseudoAAC(
-    ProteinSequence: str, lamda: int = 10, weight: float = 0.05
+        ProteinSequence: str, lamda: int = 10, weight: float = 0.05
 ) -> Dict[Any, Any]:
     """
     Computing all of type I pseudo-amino acid compostion descriptors based on
@@ -319,7 +321,7 @@ def _GetPseudoAAC(
 # Type II descriptors##########################################################
 # Amphiphilic Pseudo-Amino Acid Composition descriptors########################
 def _GetCorrelationFunctionForAPAAC(
-    Ri="S", Rj="D", AAP=(_Hydrophobicity, _hydrophilicity)
+        Ri="S", Rj="D", AAP=(_Hydrophobicity, _hydrophilicity)
 ):
     """
     Computing the correlation between two given amino acids using the above two

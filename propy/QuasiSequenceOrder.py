@@ -39,32 +39,29 @@ References
 """
 
 # Core Library
+import importlib.resources as impl_res
 import json
 import math
 from typing import Any, Dict
-
-# Third party
-from pkg_resources import resource_filename
 
 # First party
 from propy import AALetter
 
 # Distance is the Schneider-Wrede physicochemical distance matrix
 # used by Chou et. al.
-filepath = resource_filename(
-    __name__, "data/schneider-wrede-physicochemical-distance-matrix.json"
-)
-with open(filepath, "r") as f:
-    _Distance1: Dict[str, float] = json.load(f)
+with impl_res.as_file(
+        impl_res.files("propy") / "data/schneider-wrede-physicochemical-distance-matrix.json") as res_path:
+    with open(res_path, "r") as f:
+        _Distance1: Dict[str, float] = json.load(f)
 
 # Distance is the Grantham chemical distance matrix used by Grantham et. al.
-filepath = resource_filename(__name__, "data/grantham-chemical-distance-matrix.json")
-with open(filepath, "r") as f:
-    _Distance2: Dict[str, int] = json.load(f)
+with impl_res.as_file(impl_res.files("propy") / "data/grantham-chemical-distance-matrix.json") as res_path:
+    with open(res_path, "r") as f:
+        _Distance2: Dict[str, int] = json.load(f)
 
 
 def GetSequenceOrderCouplingNumber(
-    ProteinSequence: str, d: int = 1, distancematrix: Dict[str, float] = _Distance1
+        ProteinSequence: str, d: int = 1, distancematrix: Dict[str, float] = _Distance1
 ):
     """
     Compute the dth-rank sequence order coupling number for a protein.
@@ -97,7 +94,7 @@ def GetSequenceOrderCouplingNumber(
 
 
 def GetSequenceOrderCouplingNumberp(
-    ProteinSequence: str, maxlag: int = 30, distancematrix: Dict[Any, Any] = None
+        ProteinSequence: str, maxlag: int = 30, distancematrix: Dict[Any, Any] = None
 ):
     """
     Compute the sequence order coupling numbers from 1 to maxlag
@@ -135,7 +132,7 @@ def GetSequenceOrderCouplingNumberp(
 
 
 def GetSequenceOrderCouplingNumberSW(
-    ProteinSequence: str, maxlag: int = 30, distancematrix=_Distance1
+        ProteinSequence: str, maxlag: int = 30, distancematrix=_Distance1
 ):
     """
     Compute the sequence order coupling numbers from 1 to maxlag for a given
@@ -173,7 +170,7 @@ def GetSequenceOrderCouplingNumberSW(
 
 
 def GetSequenceOrderCouplingNumberGrant(
-    ProteinSequence: str, maxlag: int = 30, distancematrix=_Distance2
+        ProteinSequence: str, maxlag: int = 30, distancematrix=_Distance2
 ):
     """
     Compute the sequence order coupling numbers from 1 to maxlag for a given
@@ -210,7 +207,7 @@ def GetSequenceOrderCouplingNumberGrant(
 
 
 def GetSequenceOrderCouplingNumberTotal(
-    ProteinSequence: str, maxlag: int = 30
+        ProteinSequence: str, maxlag: int = 30
 ) -> Dict[Any, Any]:
     """
     Compute the sequence order coupling numbers from 1 to maxlag for a given
@@ -269,7 +266,7 @@ def GetAAComposition(ProteinSequence: str) -> Dict[str, float]:
 
 
 def GetQuasiSequenceOrder1(
-    ProteinSequence: str, maxlag: int = 30, weight: float = 0.1, distancematrix=None
+        ProteinSequence: str, maxlag: int = 30, weight: float = 0.1, distancematrix=None
 ):
     """
     Compute the first 20 quasi-sequence-order descriptors for a given protein
@@ -307,7 +304,7 @@ def GetQuasiSequenceOrder1(
 
 
 def GetQuasiSequenceOrder2(
-    ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=None
+        ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=None
 ):
     """
     Compute the last maxlag quasi-sequence-order descriptors for a given
@@ -343,7 +340,7 @@ def GetQuasiSequenceOrder2(
 
 
 def GetQuasiSequenceOrder1SW(
-    ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=_Distance1
+        ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=_Distance1
 ):
     """
     Compute the first 20 quasi-sequence-order descriptors for a given protein
@@ -379,7 +376,7 @@ def GetQuasiSequenceOrder1SW(
 
 
 def GetQuasiSequenceOrder2SW(
-    ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=_Distance1
+        ProteinSequence: str, maxlag=30, weight=0.1, distancematrix=_Distance1
 ):
     """
     Compute the last maxlag quasi-sequence-order descriptors for a given
@@ -416,10 +413,10 @@ def GetQuasiSequenceOrder2SW(
 
 
 def GetQuasiSequenceOrder1Grant(
-    ProteinSequence: str,
-    maxlag: int = 30,
-    weight: float = 0.1,
-    distancematrix=_Distance2,
+        ProteinSequence: str,
+        maxlag: int = 30,
+        weight: float = 0.1,
+        distancematrix=_Distance2,
 ):
     """
     Compute the first 20 quasi-sequence-order descriptors for a given protein
@@ -455,10 +452,10 @@ def GetQuasiSequenceOrder1Grant(
 
 
 def GetQuasiSequenceOrder2Grant(
-    ProteinSequence: str,
-    maxlag: int = 30,
-    weight: float = 0.1,
-    distancematrix=_Distance2,
+        ProteinSequence: str,
+        maxlag: int = 30,
+        weight: float = 0.1,
+        distancematrix=_Distance2,
 ):
     """
     Compute the last maxlag quasi-sequence-order descriptors for a given
@@ -495,7 +492,7 @@ def GetQuasiSequenceOrder2Grant(
 
 
 def GetQuasiSequenceOrder(
-    ProteinSequence: str, maxlag: int = 30, weight: float = 0.1
+        ProteinSequence: str, maxlag: int = 30, weight: float = 0.1
 ) -> Dict[Any, Any]:
     """
     Compute quasi-sequence-order descriptors for a given protein.
@@ -536,10 +533,10 @@ def GetQuasiSequenceOrder(
 
 
 def GetQuasiSequenceOrderp(
-    ProteinSequence: str,
-    maxlag: int = 30,
-    weight: float = 0.1,
-    distancematrix: Dict[Any, Any] = None,
+        ProteinSequence: str,
+        maxlag: int = 30,
+        weight: float = 0.1,
+        distancematrix: Dict[Any, Any] = None,
 ) -> Dict[Any, Any]:
     """
     Compute quasi-sequence-order descriptors for a given protein.
