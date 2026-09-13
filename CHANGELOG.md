@@ -1,12 +1,18 @@
-## Unreleased
+## 2.0.0
+
+Breaking changes:
+
+* Python 3.10 or newer is required (Python 3.6 - 3.9 are no longer supported).
+* `AAIndex.init()` / `AAIndex.get()` without a path now read the aaindex files
+  bundled with propy instead of trying to download them via FTP.
+
+Other changes:
 
 * BUG: propy no longer depends on `pkg_resources`, which is missing on Python 3.12+
   environments without setuptools and removed from recent setuptools releases.
   Package data is now loaded with `importlib.resources`.
-* BUG: `AAIndex.init()` / `AAIndex.get()` without a path now read the aaindex files
-  bundled with propy instead of trying to download them via FTP.
 * MAINT: Downloads from UniProt and AAindex now use HTTPS.
-* MAINT: Require Python 3.10+ and support Python 3.10 - 3.14.
+* MAINT: Support Python 3.10 - 3.14.
 * MAINT: Move packaging metadata to `pyproject.toml`; use uv, ruff and mypy
   for development; replace Travis CI with GitHub Actions.
 

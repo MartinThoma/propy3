@@ -1,7 +1,7 @@
 [![PyPI version](https://badge.fury.io/py/propy3.svg)](https://badge.fury.io/py/propy3)
 [![Python Support](https://img.shields.io/pypi/pyversions/propy3.svg)](https://pypi.org/project/propy3/)
 [![Documentation Status](https://readthedocs.org/projects/propy3/badge/?version=latest)](https://propy3.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://github.com/MartinThoma/propy3/actions/workflows/python.yaml/badge.svg?branch=master)](https://github.com/MartinThoma/propy3/actions/workflows/python.yaml)
+[![Build Status](https://github.com/MartinThoma/propy3/actions/workflows/python.yaml/badge.svg?branch=main)](https://github.com/MartinThoma/propy3/actions/workflows/python.yaml)
 
 # propy3
 

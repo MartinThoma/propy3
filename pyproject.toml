@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "propy3"
-version = "1.1.1"
+version = "2.0.0"
 description = "Compute protein descriptors"
 readme = "README.md"
 license = "GPL-2.0-only"
@@ -31,7 +31,7 @@ dependencies = []
 [project.urls]
 Homepage = "https://github.com/MartinThoma/propy3"
 Documentation = "https://propy3.readthedocs.io"
-Changelog = "https://github.com/MartinThoma/propy3/blob/master/CHANGELOG.md"
+Changelog = "https://github.com/MartinThoma/propy3/blob/main/CHANGELOG.md"
 Issues = "https://github.com/MartinThoma/propy3/issues"
 
 [dependency-groups]
