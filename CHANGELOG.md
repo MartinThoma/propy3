@@ -1,3 +1,7 @@
+## 2.0.1
+
+* MAINT: Publish releases to PyPI from GitHub Actions via Trusted Publishing.
+
 ## 2.0.0
 
 Breaking changes:
