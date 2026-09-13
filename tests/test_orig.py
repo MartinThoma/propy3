@@ -18,9 +18,11 @@
 # Boston, MA  02110-1301, USA.
 """Test all commonly used functions of propy."""
 
+import pytest
 
+
+@pytest.mark.network
 def test_original():
-    # First party
     import propy.AAComposition as AAC
     import propy.Autocorrelation as AC
     import propy.CTD as CTD

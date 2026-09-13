@@ -16,24 +16,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
-# Third party
-import pytest
 
-# First party
 from propy.AAIndex import GetAAIndex1, GetAAIndex23
 
 
-@pytest.mark.skip(reason="Currently fails on travis-ci.org")
 def test_main():
     # init(path='.')
     # grep('volume')
     # x = get('KRIW790103')
     # print(x)
     # print(x.get('W'))
-    temp1 = GetAAIndex1("KRIW790103")
-    print(len(temp1))
+    temp1 = GetAAIndex1("KRIW790103", path=None)
+    assert len(temp1) == 20
 
-    temp2 = GetAAIndex23("TANS760101")
-    print(len(temp2))
-    temp2 = GetAAIndex23("GRAR740104")
-    print(len(temp2))
+    temp2 = GetAAIndex23("TANS760101", path=None)
+    assert len(temp2) == 400
+    temp2 = GetAAIndex23("GRAR740104", path=None)
+    assert len(temp2) == 400

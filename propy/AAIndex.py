@@ -21,22 +21,18 @@ This module is used for obtaining the properties of amino acids or their pairs
 from the aaindex database.
 """
 
-# Core Library
 import logging
 import os
-import sys
-from typing import Any, Dict, List, Optional, Type, cast
+from importlib.resources import files
+from typing import Any, cast
+from urllib.request import urlretrieve
 
-# Third party
-import pkg_resources
-
-# First party
 from propy import AALetter
 
 logger = logging.getLogger(__name__)
 
 
-_aaindex: Dict[Any, Any] = {}
+_aaindex: dict[Any, Any] = {}
 
 
 class Record:
@@ -55,7 +51,7 @@ class Record:
         self.index = {}
         self.comment = ""
 
-    def extend(self, row: List[Optional[float]]) -> None:
+    def extend(self, row: list[float | None]) -> None:
         """Extend self.index by the elements of the list."""
         i = len(self.index)
         for x in row:
@@ -86,7 +82,7 @@ class MatrixRecord(Record):
 
     def __init__(self):
         Record.__init__(self)
-        self.index: List[Any] = []  # type: ignore
+        self.index: list[Any] = []  # type: ignore
         self.rows = {}
         self.cols = {}
 
@@ -98,7 +94,7 @@ class MatrixRecord(Record):
         j = self.cols[aaj]
         return self.index[i][j]
 
-    def get(self, aai, aaj, d=None):
+    def get(self, aai, aaj, d=None):  # type: ignore[override]
         try:
             return self._get(aai, aaj)
         except Exception as e:
@@ -159,24 +155,24 @@ def get(key: str):
     return _aaindex[key]
 
 
-def _float_or_None(x) -> Optional[float]:
+def _float_or_None(x) -> float | None:
     if x == "NA" or x == "-":
         return None
     return float(x)
 
 
-def init(path: Optional[str] = None, index: str = "123"):
+def init(path: str | None = None, index: str = "123"):
     """
     Read in the aaindex files. You need to run this (once) before you can
-    access any records. If the files are not within the current directory, you
-    need to specify the correct directory path. By default all three aaindex
-    files are read in.
+    access any records. If no path is given, the aaindex files bundled with
+    propy are used. If a directory path is given and the files are missing
+    there, they are downloaded into it. By default all three aaindex files are
+    read in.
     """
     index = str(index)
     if path is None:
-        filepath = pkg_resources.resource_filename(__name__, "aaindex1")
-        path = os.path.dirname(filepath)
-        print("path =", path, file=sys.stderr)
+        path = str(files("propy").joinpath("aaindex"))
+        logger.debug(f'Reading aaindex files from "{path}"')
     if "1" in index:
         _parse(os.path.join(path, "aaindex1"), Record)
     if "2" in index:
@@ -189,87 +185,80 @@ def init_from_file(filename, type=Record):
     _parse(filename, type)
 
 
-def _parse(filename: str, rec: Type[Record], quiet: bool = True):
+def _parse(filename: str, rec: type[Record], quiet: bool = True):
     """
     Parse aaindex input file. `rec` must be `Record` for aaindex1 and
     `MarixRecord` for aaindex2 and aaindex3.
     """
     if not os.path.exists(filename):
-        # Core Library
-        from urllib.request import urlretrieve
-
         url = (
-            "ftp://ftp.genome.jp/pub/db/community/aaindex/" + os.path.split(filename)[1]
+            "https://www.genome.jp/ftp/db/community/aaindex/"
+            + os.path.split(filename)[1]
         )
         logger.debug(f'Downloading "{url}"')
         filename = urlretrieve(url, filename)[0]
     logger.debug(f'Saved to "{filename}"')
-    f = open(filename)
-
-    current = rec()
-    lastkey = None
-    for line in f:
-        key = line[0:2]
-        if key[0] == " ":
-            key = lastkey  # type: ignore
-        if key == "//":
-            _aaindex[current.key] = current
-            current = rec()
-        elif key == "H ":
-            current.key = line[2:].strip()
-        elif key == "R ":
-            current.ref += line[2:]
-        elif key == "D ":
-            current.desc += line[2:]
-        elif key == "A ":
-            current.authors += line[2:]
-        elif key == "T ":
-            current.title += line[2:]
-        elif key == "J ":
-            current.journal += line[2:]
-        elif key == "* ":
-            current.comment += line[2:]
-        elif key == "C ":
-            a = line[2:].split()
-            for i in range(0, len(a), 2):
-                current.correlated[a[i]] = float(a[i + 1])
-        elif key == "I ":
-            a = line[1:].split()
-            if a[0] != "A/L":
-                current.extend([_float_or_None(el) for el in a])
-            elif list(Record.aakeys) != [i[0] for i in a] + [i[-1] for i in a]:
-                print("Warning: wrong amino acid sequence for", current.key)
-            else:
-                try:
-                    assert list(Record.aakeys[:10]) == [i[0] for i in a]
-                    assert list(Record.aakeys[10:]) == [i[2] for i in a]
-                except Exception as e:
-                    logger.debug(e)
+    with open(filename, encoding="utf-8") as f:
+        current = rec()
+        lastkey = None
+        for line in f:
+            key = line[0:2]
+            if key[0] == " ":
+                key = lastkey  # type: ignore
+            if key == "//":
+                _aaindex[current.key] = current
+                current = rec()
+            elif key == "H ":
+                current.key = line[2:].strip()
+            elif key == "R ":
+                current.ref += line[2:]
+            elif key == "D ":
+                current.desc += line[2:]
+            elif key == "A ":
+                current.authors += line[2:]
+            elif key == "T ":
+                current.title += line[2:]
+            elif key == "J ":
+                current.journal += line[2:]
+            elif key == "* ":
+                current.comment += line[2:]
+            elif key == "C ":
+                a = line[2:].split()
+                for i in range(0, len(a), 2):
+                    current.correlated[a[i]] = float(a[i + 1])
+            elif key == "I ":
+                a = line[1:].split()
+                if a[0] != "A/L":
+                    current.extend([_float_or_None(el) for el in a])
+                elif list(Record.aakeys) != [i[0] for i in a] + [i[-1] for i in a]:
                     print("Warning: wrong amino acid sequence for", current.key)
-        elif key == "M ":
-            current = cast(MatrixRecord, current)  # TODO: is this guaranteed?
-            a = line[2:].split()
-            if a[0] == "rows":
-                if a[4] == "rows":
-                    a.pop(4)
-                assert a[3] == "cols" and len(a) == 6
-                i = 0
-                for aa in a[2]:
-                    current.rows[aa] = i
-                    i += 1
-                i = 0
-                for aa in a[5]:
-                    current.cols[aa] = i
-                    i += 1
-            else:
-                current.extend([_float_or_None(el) for el in a])
-        elif not quiet:
-            print('Warning: line starts with "%s"' % (key))
-        lastkey = key
-    f.close()
+                else:
+                    try:
+                        assert list(Record.aakeys[:10]) == [i[0] for i in a]
+                        assert list(Record.aakeys[10:]) == [i[2] for i in a]
+                    except Exception as e:
+                        logger.debug(e)
+                        print("Warning: wrong amino acid sequence for", current.key)
+            elif key == "M ":
+                current = cast(MatrixRecord, current)  # TODO: is this guaranteed?
+                a = line[2:].split()
+                if a[0] == "rows":
+                    if a[4] == "rows":
+                        a.pop(4)
+                    assert a[3] == "cols"
+                    assert len(a) == 6
+                    for i, aa in enumerate(a[2]):
+                        current.rows[aa] = i
+                    for i, aa in enumerate(a[5]):
+                        current.cols[aa] = i
+                else:
+                    current.extend([_float_or_None(el) for el in a])
+            elif not quiet:
+                print(f'Warning: line starts with "{key}"')
+            lastkey = key
 
 
-def GetAAIndex1(name: str, path: Optional[str] = ".") -> Dict[str, float]:
+def GetAAIndex1(name: str, path: str | None = ".") -> dict[str, float]:
     """
     Get the amino acid property values from aaindex1.
 
@@ -297,7 +286,7 @@ def GetAAIndex1(name: str, path: Optional[str] = ".") -> Dict[str, float]:
     return res
 
 
-def GetAAIndex23(name: str, path: Optional[str] = ".") -> Dict[str, float]:
+def GetAAIndex23(name: str, path: str | None = ".") -> dict[str, float]:
     """
     Get the amino acid property values from aaindex2 and aaindex3.
 

@@ -16,21 +16,19 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
-# Third party
 import pytest
 
-# First party
 from propy import PyPro
 from propy.GetProteinFromUniprot import GetProteinSequence as gps
 
 
+@pytest.mark.network
 def test_docs():
     uniprotid = "P48039"
     gps(uniprotid)  # Check the return value!
 
 
 def test_marina():
-    # First party
     from propy import CTD
     from propy import AAComposition as AAC
     from propy.PyPro import GetProDes
@@ -50,7 +48,7 @@ def test_marina():
         print(desc, alldes[desc])
 
 
-@pytest.mark.xfail()
+@pytest.mark.network
 def test_p48039():
     proteinsequence = gps("P48039")  # download the protein sequence by uniprot id
     DesObject = PyPro.GetProDes(proteinsequence)  # construct a GetProDes object

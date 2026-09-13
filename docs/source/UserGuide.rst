@@ -119,11 +119,12 @@ of dictionary.
 
 If the user provides the directory containing the AAindex database (the AAindex
 database could be downloaded from
-ftp://ftp.genome.jp/pub/db/community/aaindex/. It consists of three files:
+https://www.genome.jp/ftp/db/community/aaindex/. It consists of three files:
 aaindex1, aaindex2 and aaindex3), the program will read the given database to
 get the property.
 
 .. code-block:: pycon
+
    >>> from propy.AAIndex import GetAAIndex1, GetAAIndex23
    >>> temp1 = GetAAIndex1("KRIW790103")
    >>> temp1
@@ -135,6 +136,7 @@ Calculating protein descriptors
 ===============================
 
 .. code-block:: pycon
+
    >>> from propy import PyPro
    >>> from propy.GetProteinFromUniprot import GetProteinSequence as gps
    >>> proteinsequence = gps("P48039")

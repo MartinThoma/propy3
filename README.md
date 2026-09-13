@@ -1,8 +1,7 @@
 [![PyPI version](https://badge.fury.io/py/propy3.svg)](https://badge.fury.io/py/propy3)
 [![Python Support](https://img.shields.io/pypi/pyversions/propy3.svg)](https://pypi.org/project/propy3/)
 [![Documentation Status](https://readthedocs.org/projects/propy3/badge/?version=latest)](https://propy3.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://travis-ci.org/MartinThoma/propy3.svg?branch=master)](https://travis-ci.org/MartinThoma/propy3)
-[![Coverage Status](https://coveralls.io/repos/github/MartinThoma/propy3/badge.svg?branch=master)](https://coveralls.io/github/MartinThoma/propy3?branch=master)
+[![Build Status](https://github.com/MartinThoma/propy3/actions/workflows/python.yaml/badge.svg?branch=master)](https://github.com/MartinThoma/propy3/actions/workflows/python.yaml)
 
 # propy3
 
@@ -77,6 +76,18 @@ pip install propy3
 conda install -c bioconda propy3
 ```
 
+## Development
+
+The project uses [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv sync                          # create .venv with all dev dependencies
+uv run pytest                    # run the tests
+uv run pytest -m "not network"   # skip tests that need internet access
+make lint                        # ruff + mypy
+uv run pre-commit install        # optional: run the checks on each commit
+```
+
 ## Usage Example
 
 For more examples, please see the user guide.
@@ -96,5 +107,5 @@ print(DesObject.GetAAComp())  # calculate 20 amino acid composition descriptors
 paac = DesObject.GetPAAC(lamda=10, weight=0.05)
 
 for i in paac:
-    print(i, paaci)
+    print(i, paac[i])
 ```

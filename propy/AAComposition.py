@@ -18,7 +18,7 @@
 # Boston, MA  02110-1301, USA.
 """
 The module is used for computing the composition of amino acids, dipetide and
-3-mers (tri-peptide) for a given protein sequence.
+3-mers (tri-peptide) for a given protein sequence [1]_ [2]_ [3]_.
 
 References
 ----------
@@ -33,15 +33,13 @@ References
    Intell Syst Mol Biol, 106-112.
 """
 
-# Core Library
 import re
-from typing import Any, Dict, List
+from typing import Any
 
-# First party
 from propy import AALetter
 
 
-def CalculateAAComposition(ProteinSequence: str) -> Dict[str, float]:
+def CalculateAAComposition(ProteinSequence: str) -> dict[str, float]:
     """
     Calculate the composition of Amino acids for a given protein sequence.
 
@@ -62,13 +60,13 @@ def CalculateAAComposition(ProteinSequence: str) -> Dict[str, float]:
     >>> result = CalculateAAComposition(protein)
     """
     sequence_length = len(ProteinSequence)
-    result: Dict[str, float] = {}
+    result: dict[str, float] = {}
     for i in AALetter:
         result[i] = round(float(ProteinSequence.count(i)) / sequence_length * 100, 3)
     return result
 
 
-def CalculateDipeptideComposition(ProteinSequence: str) -> Dict[str, float]:
+def CalculateDipeptideComposition(ProteinSequence: str) -> dict[str, float]:
     """
     Calculate the composition of dipeptidefor a given protein sequence.
 
@@ -98,7 +96,7 @@ def CalculateDipeptideComposition(ProteinSequence: str) -> Dict[str, float]:
     return result
 
 
-def Getkmers() -> List[str]:
+def Getkmers() -> list[str]:
     """
     Get the amino acid list of 3-mers.
 
@@ -119,7 +117,7 @@ def Getkmers() -> List[str]:
     return kmers
 
 
-def GetSpectrumDict(proteinsequence: str) -> Dict[str, int]:
+def GetSpectrumDict(proteinsequence: str) -> dict[str, int]:
     """
     Calcualte the spectrum descriptors of 3-mers for a given protein.
 
@@ -145,7 +143,7 @@ def GetSpectrumDict(proteinsequence: str) -> Dict[str, int]:
     return result
 
 
-def CalculateAADipeptideComposition(ProteinSequence: str) -> Dict[str, float]:
+def CalculateAADipeptideComposition(ProteinSequence: str) -> dict[str, float]:
     """
     Calculate the composition of AADs, dipeptide and 3-mers for a given protein
     sequence.
@@ -166,7 +164,7 @@ def CalculateAADipeptideComposition(ProteinSequence: str) -> Dict[str, float]:
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateAADipeptideComposition(protein)
     """
-    result: Dict[Any, Any] = {}
+    result: dict[Any, Any] = {}
     result.update(CalculateAAComposition(ProteinSequence))
     result.update(CalculateDipeptideComposition(ProteinSequence))
     result.update(GetSpectrumDict(ProteinSequence))

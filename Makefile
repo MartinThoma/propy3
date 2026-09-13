@@ -1,19 +1,27 @@
+.PHONY: maint test lint docs upload clean
+
 maint:
-	pip install -r requirements/dev.txt
-	pre-commit autoupdate && pre-commit run --all-files
-	pip-compile -U setup.py
-	pip-compile -U requirements/ci.in
-	pip-compile -U requirements/dev.in
+	uv lock --upgrade
+	uv run pre-commit autoupdate
+	uv run pre-commit run --all-files
+
+test:
+	uv run pytest
+
+lint:
+	uv run ruff format --check
+	uv run ruff check
+	uv run mypy
+
+docs:
+	uv run --group docs sphinx-build -b html docs/source docs/build/html
 
 upload:
 	make clean
-	python setup.py sdist bdist_wheel && twine upload -s dist/*
+	uv build
+	uv publish
 
 clean:
-	python setup.py clean --all
-	pyclean .
-	rm -rf aaindex1 aaindex2 aaindex3 propy/aaindex1 propy/aaindex2 propy/aaindex3
-	rm -rf *.pyc __pycache__ build dist propy3.egg-info propy/__pycache__ tests/__pycache__ tests/reports docs/build .pytest_cache .tox .coverage
-
-mypy:
-	mypy . --ignore-missing-imports --python-version 3.8
+	rm -rf aaindex1 aaindex2 aaindex3
+	rm -rf build dist *.egg-info tests/reports docs/build .pytest_cache .mypy_cache .ruff_cache .coverage
+	find . -name __pycache__ -type d -prune -exec rm -rf {} +

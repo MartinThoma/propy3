@@ -18,7 +18,7 @@
 # Boston, MA  02110-1301, USA.
 """
 Compute the composition, transition and distribution descriptors based on the
-different properties of AADs.
+different properties of AADs [1]_ [2]_.
 
 The AADs with the same properties is marked as the same number. You can get 147
 descriptors for a given protein sequence.
@@ -35,10 +35,9 @@ References
        Genetics, 1999, 35, 401-407.
 """
 
-# Core Library
 import copy
 import math
-from typing import Any, Dict
+from typing import Any
 
 _Hydrophobicity = {"1": "RKEDQN", "2": "GASTPHY", "3": "CLVIMFW"}
 # '1'stand for Polar; '2'stand for Neutral, '3' stand for Hydrophobicity
@@ -86,7 +85,7 @@ _AATPropertyName = (
 )
 
 
-def StringtoNum(ProteinSequence: str, AAProperty: Dict[Any, Any]) -> str:
+def StringtoNum(ProteinSequence: str, AAProperty: dict[Any, Any]) -> str:
     """
     Tranform the protein sequence into the string form such as 32123223132121123.
 
@@ -119,8 +118,8 @@ def StringtoNum(ProteinSequence: str, AAProperty: Dict[Any, Any]) -> str:
 
 
 def CalculateComposition(
-    ProteinSequence: str, AAProperty: Dict[Any, Any], AAPName: str
-) -> Dict[Any, Any]:
+    ProteinSequence: str, AAProperty: dict[Any, Any], AAPName: str
+) -> dict[Any, Any]:
     """
     Compute composition descriptors.
 
@@ -155,8 +154,8 @@ def CalculateComposition(
 
 
 def CalculateTransition(
-    ProteinSequence: str, AAProperty: Dict[Any, Any], AAPName: str
-) -> Dict[Any, Any]:
+    ProteinSequence: str, AAProperty: dict[Any, Any], AAPName: str
+) -> dict[Any, Any]:
     """
     Compute transition descriptors.
 
@@ -198,8 +197,8 @@ def CalculateTransition(
 
 
 def CalculateDistribution(
-    ProteinSequence: str, AAProperty: Dict[Any, Any], AAPName: str
-) -> Dict[Any, Any]:
+    ProteinSequence: str, AAProperty: dict[Any, Any], AAPName: str
+) -> dict[Any, Any]:
     """
     Compute distribution descriptors.
 
@@ -224,7 +223,7 @@ def CalculateDistribution(
     >>> result = CalculateDistribution(protein, AAProperty, AAPName)
     """
     TProteinSequence = StringtoNum(ProteinSequence, AAProperty)
-    Result: Dict[str, float] = {}
+    Result: dict[str, float] = {}
     Num = len(TProteinSequence)
     for i in ("1", "2", "3"):
         num = TProteinSequence.count(i)
@@ -327,7 +326,7 @@ def CalculateCompositionPolarity(ProteinSequence: str):
     return CalculateComposition(ProteinSequence, _Polarity, "_Polarity")
 
 
-def CalculateCompositionCharge(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateCompositionCharge(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate composition descriptors based on Charge of AADs.
 
@@ -350,7 +349,7 @@ def CalculateCompositionCharge(ProteinSequence: str) -> Dict[Any, Any]:
     return CalculateComposition(ProteinSequence, _Charge, "_Charge")
 
 
-def CalculateCompositionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateCompositionSecondaryStr(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate composition descriptors based on SecondaryStr of AADs.
 
@@ -373,7 +372,7 @@ def CalculateCompositionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
     return CalculateComposition(ProteinSequence, _SecondaryStr, "_SecondaryStr")
 
 
-def CalculateCompositionSolventAccessibility(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateCompositionSolventAccessibility(ProteinSequence: str) -> dict[Any, Any]:
     """
     Clculate composition descriptors based on SolventAccessibility of  AADs.
 
@@ -398,7 +397,7 @@ def CalculateCompositionSolventAccessibility(ProteinSequence: str) -> Dict[Any, 
     )
 
 
-def CalculateCompositionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateCompositionPolarizability(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate composition descriptors based on Polarizability of AADs.
 
@@ -421,7 +420,7 @@ def CalculateCompositionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
     return CalculateComposition(ProteinSequence, _Polarizability, "_Polarizability")
 
 
-def CalculateTransitionHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateTransitionHydrophobicity(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Transition descriptors based on Hydrophobicity of AADs.
 
@@ -445,7 +444,7 @@ def CalculateTransitionHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateTransitionNormalizedVDWV(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateTransitionNormalizedVDWV(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Transition descriptors based on NormalizedVDWV of AADs.
 
@@ -469,7 +468,7 @@ def CalculateTransitionNormalizedVDWV(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateTransitionPolarity(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateTransitionPolarity(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Transition descriptors based on Polarity of AADs.
 
@@ -493,7 +492,7 @@ def CalculateTransitionPolarity(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateTransitionCharge(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateTransitionCharge(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Transition descriptors based on Charge of AADs.
 
@@ -517,7 +516,7 @@ def CalculateTransitionCharge(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateTransitionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateTransitionSecondaryStr(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Transition descriptors based on SecondaryStr of AADs.
 
@@ -541,7 +540,7 @@ def CalculateTransitionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateTransitionSolventAccessibility(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateTransitionSolventAccessibility(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Transition descriptors based on SolventAccessibility of  AADs.
 
@@ -567,7 +566,7 @@ def CalculateTransitionSolventAccessibility(ProteinSequence: str) -> Dict[Any, A
     return result
 
 
-def CalculateTransitionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateTransitionPolarizability(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Transition descriptors based on Polarizability of AADs.
 
@@ -591,7 +590,7 @@ def CalculateTransitionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateDistributionHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateDistributionHydrophobicity(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Distribution descriptors based on Hydrophobicity of AADs.
 
@@ -615,7 +614,7 @@ def CalculateDistributionHydrophobicity(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateDistributionNormalizedVDWV(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateDistributionNormalizedVDWV(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Distribution descriptors based on NormalizedVDWV of AADs.
 
@@ -639,7 +638,7 @@ def CalculateDistributionNormalizedVDWV(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateDistributionPolarity(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateDistributionPolarity(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Distribution descriptors based on Polarity of AADs.
 
@@ -663,7 +662,7 @@ def CalculateDistributionPolarity(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateDistributionCharge(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateDistributionCharge(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Distribution descriptors based on Charge of AADs.
 
@@ -687,7 +686,7 @@ def CalculateDistributionCharge(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateDistributionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateDistributionSecondaryStr(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Distribution descriptors based on SecondaryStr of AADs.
 
@@ -711,7 +710,7 @@ def CalculateDistributionSecondaryStr(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateDistributionSolventAccessibility(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateDistributionSolventAccessibility(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Distribution descriptors based on SolventAccessibility of  AADs.
 
@@ -737,7 +736,7 @@ def CalculateDistributionSolventAccessibility(ProteinSequence: str) -> Dict[Any,
     return result
 
 
-def CalculateDistributionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateDistributionPolarizability(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate Distribution descriptors based on Polarizability of AADs.
 
@@ -761,7 +760,7 @@ def CalculateDistributionPolarizability(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateC(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateC(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate all composition descriptors based seven different properties of AADs.
 
@@ -781,7 +780,7 @@ def CalculateC(ProteinSequence: str) -> Dict[Any, Any]:
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateC(protein)
     """
-    result: Dict[Any, Any] = {}
+    result: dict[Any, Any] = {}
     result.update(CalculateCompositionPolarizability(ProteinSequence))
     result.update(CalculateCompositionSolventAccessibility(ProteinSequence))
     result.update(CalculateCompositionSecondaryStr(ProteinSequence))
@@ -792,7 +791,7 @@ def CalculateC(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateT(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateT(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate all transition descriptors based seven different properties of AADs.
 
@@ -812,7 +811,7 @@ def CalculateT(ProteinSequence: str) -> Dict[Any, Any]:
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateT(protein)
     """
-    result: Dict[Any, Any] = {}
+    result: dict[Any, Any] = {}
     result.update(CalculateTransitionPolarizability(ProteinSequence))
     result.update(CalculateTransitionSolventAccessibility(ProteinSequence))
     result.update(CalculateTransitionSecondaryStr(ProteinSequence))
@@ -823,7 +822,7 @@ def CalculateT(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateD(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateD(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate all distribution descriptors based seven different properties of AADs.
 
@@ -843,7 +842,7 @@ def CalculateD(ProteinSequence: str) -> Dict[Any, Any]:
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateD(protein)
     """
-    result: Dict[Any, Any] = {}
+    result: dict[Any, Any] = {}
     result.update(CalculateDistributionPolarizability(ProteinSequence))
     result.update(CalculateDistributionSolventAccessibility(ProteinSequence))
     result.update(CalculateDistributionSecondaryStr(ProteinSequence))
@@ -854,7 +853,7 @@ def CalculateD(ProteinSequence: str) -> Dict[Any, Any]:
     return result
 
 
-def CalculateCTD(ProteinSequence: str) -> Dict[Any, Any]:
+def CalculateCTD(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate all CTD descriptors based seven different properties of AADs.
 
@@ -874,7 +873,7 @@ def CalculateCTD(ProteinSequence: str) -> Dict[Any, Any]:
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = CalculateCTD(protein)
     """
-    result: Dict[Any, Any] = {}
+    result: dict[Any, Any] = {}
     result.update(CalculateCompositionPolarizability(ProteinSequence))
     result.update(CalculateCompositionSolventAccessibility(ProteinSequence))
     result.update(CalculateCompositionSecondaryStr(ProteinSequence))
