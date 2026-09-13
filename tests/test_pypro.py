@@ -16,13 +16,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
-# Third party
-import pytest
 
 
-@pytest.mark.skip(reason="Currently fails on travis-ci.org with timeout")
 def test_main():
-    # First party
     from propy.Autocorrelation import _Steric
     from propy.PseudoAAC import _hydrophilicity, _Hydrophobicity
     from propy.PyPro import GetProDes

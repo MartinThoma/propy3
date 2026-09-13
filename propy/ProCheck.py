@@ -20,7 +20,6 @@
 Check whether the input protein sequence is a valid amino acid sequence.
 """
 
-# First party
 from propy import AALetter
 
 

@@ -1,0 +1,119 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "propy3"
+version = "1.1.1"
+description = "Compute protein descriptors"
+readme = "README.md"
+license = "GPL-2.0-only"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Martin Thoma", email = "info@martin-thoma.de" },
+    { name = "Julian Hahnfeld" },
+]
+maintainers = [{ name = "Martin Thoma", email = "info@martin-thoma.de" }]
+keywords = ["Bio-Informatics", "Protein"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/MartinThoma/propy3"
+Documentation = "https://propy3.readthedocs.io"
+Changelog = "https://github.com/MartinThoma/propy3/blob/master/CHANGELOG.md"
+Issues = "https://github.com/MartinThoma/propy3/issues"
+
+[dependency-groups]
+dev = [
+    { include-group = "lint" },
+    { include-group = "test" },
+    "pre-commit",
+]
+test = [
+    "pytest>=8",
+    "pytest-cov",
+    "pytest-timeout",
+]
+lint = [
+    "mypy",
+    "ruff",
+]
+docs = [
+    "sphinx",
+    "sphinx-rtd-theme",
+]
+
+[tool.setuptools.packages.find]
+include = ["propy*"]
+
+[tool.setuptools.package-data]
+propy = ["data/*", "aaindex/*"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=propy",
+    "--cov-branch",
+    "--cov-report=term",
+    "--cov-report=html:tests/reports/coverage-html",
+    "--cov-report=xml:tests/reports/coverage.xml",
+    "--durations=3",
+    "--timeout=30",
+]
+markers = ["network: test needs internet access (deselect with '-m \"not network\"')"]
+doctest_encoding = "utf-8"
+
+[tool.coverage.report]
+exclude_also = [
+    "def __repr__",
+    "def __str__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.mypy]
+files = ["propy", "tests"]
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unused_configs = true
+
+[tool.ruff]
+target-version = "py310"
+extend-exclude = ["docs"]
+
+[tool.ruff.lint]
+select = [
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "ISC", # flake8-implicit-str-concat
+    "PT",  # flake8-pytest-style
+    "RSE", # flake8-raise
+    "SIM", # flake8-simplify
+    "UP",  # pyupgrade
+    "W",   # pycodestyle warnings
+]
+ignore = [
+    "E501",  # line length is handled by the formatter
+    "E731",  # lambda assignments
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["propy"]

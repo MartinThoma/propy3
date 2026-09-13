@@ -23,15 +23,12 @@ Given a specific window size p, we can obtain all segments of length equal to
 (2*p+1) very easily. Note that the output of the method is a list form.
 """
 
-# Core Library
 import re
-from typing import List
 
-# First party
 from propy import AALetter
 
 
-def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> List[str]:
+def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> list[str]:
     """
     Get all 2*window+1 sub-sequences whose cener is ToAA in a protein.
 
@@ -61,7 +58,7 @@ def GetSubSequence(ProteinSequence: str, ToAA: str = "S", window: int = 3) -> Li
 
     Num = len(ProteinSequence)
     seqiter = re.finditer(ToAA, ProteinSequence)
-    AAindex: List[int] = []
+    AAindex: list[int] = []
     for seq_element in seqiter:
         AAindex.append(seq_element.end())
 

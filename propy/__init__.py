@@ -15,23 +15,19 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
-# Core Library
-import sys
-import warnings
-from typing import List
+import json
+from importlib.resources import files
+from typing import Any
 
-_python_version = sys.version_info
+AALetter: list[str] = list("ARNDCEQGHILKMFPSTWYV")
 
-if _python_version.major == 2:
-    warnings.warn("Python 2 is not supported. Please use Python 3.")
-if _python_version.major == 3 and _python_version.minor < 8:
-    warnings.warn(
-        "Python 3.6 and Python 3.7 might get deprecated. "
-        "Please participate in the discussion: "
-        "https://github.com/MartinThoma/propy3/issues/12"
+
+def _load_json(name: str) -> Any:
+    """Load a JSON file shipped in the ``propy/data`` directory."""
+    return json.loads(
+        files(__name__).joinpath("data", name).read_text(encoding="utf-8")
     )
 
-AALetter: List[str] = list("ARNDCEQGHILKMFPSTWYV")
 
 ProteinSequence_docstring = """ProteinSequence: str
         a pure protein sequence"""

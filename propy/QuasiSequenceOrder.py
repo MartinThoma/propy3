@@ -19,8 +19,8 @@
 """
 Compute the quasi sequence order descriptors based on the given protein
 sequence. We can obtain two types of descriptors: Sequence-order-coupling
-number and quasi-sequence-order descriptors. Two distance matrixes between 20
-amino acids are employed.
+number and quasi-sequence-order descriptors [1]_ [2]_. Two distance matrixes
+between 20 amino acids are employed, e.g. the one by Schneider and Wrede [3]_.
 
 References
 ----------
@@ -38,33 +38,23 @@ References
        Journal, 1994, 66, 335-344.
 """
 
-# Core Library
-import json
 import math
-from typing import Any, Dict
+from typing import Any
 
-# Third party
-from pkg_resources import resource_filename
-
-# First party
-from propy import AALetter
+from propy import AALetter, _load_json
 
 # Distance is the Schneider-Wrede physicochemical distance matrix
 # used by Chou et. al.
-filepath = resource_filename(
-    __name__, "data/schneider-wrede-physicochemical-distance-matrix.json"
+_Distance1: dict[str, float] = _load_json(
+    "schneider-wrede-physicochemical-distance-matrix.json"
 )
-with open(filepath, "r") as f:
-    _Distance1: Dict[str, float] = json.load(f)
 
 # Distance is the Grantham chemical distance matrix used by Grantham et. al.
-filepath = resource_filename(__name__, "data/grantham-chemical-distance-matrix.json")
-with open(filepath, "r") as f:
-    _Distance2: Dict[str, int] = json.load(f)
+_Distance2: dict[str, int] = _load_json("grantham-chemical-distance-matrix.json")
 
 
 def GetSequenceOrderCouplingNumber(
-    ProteinSequence: str, d: int = 1, distancematrix: Dict[str, float] = _Distance1
+    ProteinSequence: str, d: int = 1, distancematrix: dict[str, float] = _Distance1
 ):
     """
     Compute the dth-rank sequence order coupling number for a protein.
@@ -97,7 +87,7 @@ def GetSequenceOrderCouplingNumber(
 
 
 def GetSequenceOrderCouplingNumberp(
-    ProteinSequence: str, maxlag: int = 30, distancematrix: Dict[Any, Any] = None
+    ProteinSequence: str, maxlag: int = 30, distancematrix: dict[Any, Any] | None = None
 ):
     """
     Compute the sequence order coupling numbers from 1 to maxlag
@@ -211,7 +201,7 @@ def GetSequenceOrderCouplingNumberGrant(
 
 def GetSequenceOrderCouplingNumberTotal(
     ProteinSequence: str, maxlag: int = 30
-) -> Dict[Any, Any]:
+) -> dict[Any, Any]:
     """
     Compute the sequence order coupling numbers from 1 to maxlag for a given
     protein sequence.
@@ -234,13 +224,13 @@ def GetSequenceOrderCouplingNumberTotal(
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = GetSequenceOrderCouplingNumberTotal(protein)
     """
-    Tau: Dict[Any, Any] = {}
+    Tau: dict[Any, Any] = {}
     Tau.update(GetSequenceOrderCouplingNumberSW(ProteinSequence, maxlag=maxlag))
     Tau.update(GetSequenceOrderCouplingNumberGrant(ProteinSequence, maxlag=maxlag))
     return Tau
 
 
-def GetAAComposition(ProteinSequence: str) -> Dict[str, float]:
+def GetAAComposition(ProteinSequence: str) -> dict[str, float]:
     """
     Calculate the composition of Amino acids for a given protein sequence.
 
@@ -262,7 +252,7 @@ def GetAAComposition(ProteinSequence: str) -> Dict[str, float]:
     >>> result = CalculateAAComposition(protein)
     """
     LengthSequence = len(ProteinSequence)
-    result: Dict[str, float] = {}
+    result: dict[str, float] = {}
     for i in AALetter:
         result[i] = round(float(ProteinSequence.count(i)) / LengthSequence, 3)
     return result
@@ -298,7 +288,7 @@ def GetQuasiSequenceOrder1(
             ProteinSequence, i + 1, distancematrix
         )
     AAC = GetAAComposition(ProteinSequence)
-    result: Dict[str, float] = {}
+    result: dict[str, float] = {}
     temp = 1 + weight * rightpart
     for index, aaletter_char in enumerate(AALetter):
         result["QSO" + str(index + 1)] = round(AAC[aaletter_char] / temp, 6)
@@ -496,7 +486,7 @@ def GetQuasiSequenceOrder2Grant(
 
 def GetQuasiSequenceOrder(
     ProteinSequence: str, maxlag: int = 30, weight: float = 0.1
-) -> Dict[Any, Any]:
+) -> dict[Any, Any]:
     """
     Compute quasi-sequence-order descriptors for a given protein.
 
@@ -523,7 +513,7 @@ def GetQuasiSequenceOrder(
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = GetQuasiSequenceOrder(protein)
     """
-    result: Dict[Any, Any] = {}
+    result: dict[Any, Any] = {}
     result.update(GetQuasiSequenceOrder1SW(ProteinSequence, maxlag, weight, _Distance1))
     result.update(GetQuasiSequenceOrder2SW(ProteinSequence, maxlag, weight, _Distance1))
     result.update(
@@ -539,8 +529,8 @@ def GetQuasiSequenceOrderp(
     ProteinSequence: str,
     maxlag: int = 30,
     weight: float = 0.1,
-    distancematrix: Dict[Any, Any] = None,
-) -> Dict[Any, Any]:
+    distancematrix: dict[Any, Any] | None = None,
+) -> dict[Any, Any]:
     """
     Compute quasi-sequence-order descriptors for a given protein.
 
@@ -571,7 +561,7 @@ def GetQuasiSequenceOrderp(
     """
     if distancematrix is None:
         distancematrix = {}
-    result: Dict[Any, Any] = {}
+    result: dict[Any, Any] = {}
     result.update(
         GetQuasiSequenceOrder1(ProteinSequence, maxlag, weight, distancematrix)
     )

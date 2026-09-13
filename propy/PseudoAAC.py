@@ -19,12 +19,12 @@
 """
 Instead of using the conventional 20-D amino acid composition to represent the
 sample of a protein, Prof. Kuo-Chen Chou proposed the pseudo amino acid (PseAA)
-composition in order for inluding the sequence-order information. Based on the
-concept of Chou's pseudo amino acid composition, the server PseAA was designed
-in a flexible way, allowing users to generate various kinds of pseudo amino
-acid composition for a given protein sequence by selecting different parameters
-and their combinations. This module aims at computing two types of PseAA
-descriptors: Type I and Type II.
+composition in order for inluding the sequence-order information [1]_. Based on
+the concept of Chou's pseudo amino acid composition, the server PseAA [2]_ was
+designed in a flexible way, allowing users to generate various kinds of pseudo
+amino acid composition for a given protein sequence by selecting different
+parameters and their combinations. This module aims at computing two types of PseAA
+descriptors: Type I [1]_ and Type II [3]_ [4]_.
 
 References
 ----------
@@ -52,35 +52,23 @@ Data for Biochemical Research 3rd ed.,
 Clarendon Press Oxford (1986).
 """
 
-# Core Library
-import json
 import math
-from typing import Any, Dict
+from typing import Any
 
-# Third party
-from pkg_resources import resource_filename
+from propy import AALetter, _load_json
 
-# First party
-from propy import AALetter
+_Hydrophobicity: dict[str, float] = _load_json("hydrophobicity.json")
 
-with open(resource_filename(__name__, "data/hydrophobicity.json"), "r") as f:
-    _Hydrophobicity: Dict[str, float] = json.load(f)
+_hydrophilicity: dict[str, float] = _load_json("hydrophilicity.json")
 
-with open(resource_filename(__name__, "data/hydrophilicity.json"), "r") as f:
-    _hydrophilicity: Dict[str, float] = json.load(f)
-
-with open(resource_filename(__name__, "data/residuemass.json"), "r") as f:
-    _residuemass: Dict[str, float] = json.load(f)
+_residuemass: dict[str, float] = _load_json("residuemass.json")
 
 
-with open(resource_filename(__name__, "data/pK1.json"), "r") as f:
-    _pK1: Dict[str, float] = json.load(f)
+_pK1: dict[str, float] = _load_json("pK1.json")
 
-with open(resource_filename(__name__, "data/pK2.json"), "r") as f:
-    _pK2: Dict[str, float] = json.load(f)
+_pK2: dict[str, float] = _load_json("pK2.json")
 
-with open(resource_filename(__name__, "data/pI.json"), "r") as f:
-    _pI: Dict[str, float] = json.load(f)
+_pI: dict[str, float] = _load_json("pI.json")
 
 
 def _mean(listvalue):
@@ -204,7 +192,7 @@ def _GetSequenceOrderCorrelationFactor(ProteinSequence: str, k: int = 1) -> floa
     return result
 
 
-def GetAAComposition(ProteinSequence: str) -> Dict[Any, Any]:
+def GetAAComposition(ProteinSequence: str) -> dict[Any, Any]:
     """
     Calculate the composition of Amino acids for a given protein sequence.
 
@@ -273,7 +261,7 @@ def _GetPseudoAAC2(ProteinSequence, lamda=10, weight=0.05):
 
 def _GetPseudoAAC(
     ProteinSequence: str, lamda: int = 10, weight: float = 0.05
-) -> Dict[Any, Any]:
+) -> dict[Any, Any]:
     """
     Computing all of type I pseudo-amino acid compostion descriptors based on
     three given properties. Note that the number of PAAC strongly depends on
@@ -310,7 +298,7 @@ def _GetPseudoAAC(
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = _GetPseudoAAC(protein)
     """
-    res: Dict[Any, Any] = {}
+    res: dict[Any, Any] = {}
     res.update(_GetPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
     res.update(_GetPseudoAAC2(ProteinSequence, lamda=lamda, weight=weight))
     return res
@@ -463,7 +451,7 @@ def GetAPseudoAAC(ProteinSequence, lamda: int = 30, weight: float = 0.5):
     >>> protein = GetProteinSequence(ProteinID="Q9NQ39")
     >>> result = GetAPseudoAAC(protein)
     """
-    res: Dict[Any, Any] = {}
+    res: dict[Any, Any] = {}
     res.update(GetAPseudoAAC1(ProteinSequence, lamda=lamda, weight=weight))
     res.update(GetAPseudoAAC2(ProteinSequence, lamda=lamda, weight=weight))
     return res
@@ -621,7 +609,7 @@ def GetPseudoAAC(ProteinSequence: str, lamda: int = 30, weight: float = 0.05, AA
     """
     if AAP is None:
         AAP = []
-    res: Dict[Any, Any] = {}
+    res: dict[Any, Any] = {}
     res.update(GetPseudoAAC1(ProteinSequence, lamda, weight, AAP))
     res.update(GetPseudoAAC2(ProteinSequence, lamda, weight, AAP))
     return res
